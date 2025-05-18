@@ -1,0 +1,25 @@
+# Features
+ac_add_options --disable-updater
+
+# Build options
+ac_add_options --disable-bootstrap
+ac_add_options --disable-elf-hack
+ac_add_options --enable-default-toolkit=cairo-gtk3-wayland
+ac_add_options --enable-hardening
+ac_add_options --enable-linker=mold
+ac_add_options --enable-optimize="-O3"
+ac_add_options --enable-release
+ac_add_options --enable-rust-simd
+ac_add_options --enable-wasm-simd
+ac_add_options --prefix=/usr
+ac_add_options --with-wasi-sysroot=/usr/share/wasi-sysroot
+export MOZ_INCLUDE_SOURCE_INFO=1
+ac_add_options OPT_LEVEL="3"
+ac_add_options RUSTC_OPT_LEVEL="3"
+
+# Other
+export AR=/usr/bin/llvm-ar
+export CC=/usr/bin/clang
+export CXX=/usr/bin/clang++
+export NM=/usr/bin/llvm-nm
+export RANLIB=/usr/bin/llvm-ranlib

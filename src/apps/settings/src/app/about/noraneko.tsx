@@ -49,12 +49,8 @@ export default function Page() {
               />
               <p className="text-xl">
                 {t("about.browserVersion", {
-                  browserVersion:
-                    constantsData?.MOZ_APP_VERSION.split("@")[1] ??
-                      "unknown",
-                  firefoxVersion:
-                    constantsData?.MOZ_APP_VERSION.split("@")[0] ??
-                      "unknown",
+                  browserVersion: constantsData?.MOZ_APP_VERSION_DISPLAY ?? "unknown",
+                  firefoxVersion: constantsData?.MOZ_APP_VERSION ?? "unknown",
                 })}
               </p>
             </div>

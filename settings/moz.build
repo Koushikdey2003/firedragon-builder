@@ -1,0 +1,11 @@
+FINAL_TARGET_FILES += [
+  "firedragon.cfg",
+]
+
+FINAL_TARGET_FILES.distribution += [
+  "distribution/policies.json",
+]
+
+FINAL_TARGET_FILES.defaults.pref += [
+  "defaults/pref/local-settings.js",
+]

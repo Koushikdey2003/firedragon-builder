@@ -453,5 +453,18 @@
             "cancel": "Cancel",
             "cancelDescription": "Cancel editing"
         }
+    },
+    "advanced": {
+        "header": "Advanced Preferences",
+        "description": "We carefully choose default settings to focus on privacy and security. When changing these settings, read the descriptions to understand the implications of those changes.",
+        "general": {
+            "header": "Browser Behaviour",
+            "enableSync": "Enable Firefox Sync",
+            "allowUserChromeCss": "Allow userChrome.css customization"
+        },
+        "network": {
+            "header": "Networking",
+            "enableIPv6": "Enable IPv6"
+        }
     }
 }

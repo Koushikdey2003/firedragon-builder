@@ -1,0 +1,36 @@
+stages:
+  - source
+  - build
+
+source:
+  stage: source
+  parallel:
+    matrix:
+      - EDITION: [dr640nized, catppuccin]
+  image: registry.gitlab.com/stefanwimmer128/archlinux-chaotic-paru-user:latest
+  before_script:
+    - paru -Syu --noconfirm deno rsync
+    - deno install --allow-scripts
+  script:
+    - deno task make --edition=$EDITION source
+  artifacts:
+    paths:
+      - .dist/*.source.tar.zst
+
+build:
+  stage: build
+  needs:
+    - job: source
+      artifacts: true
+  parallel:
+    matrix:
+      - EDITION: [dr640nized, catppuccin]
+  image: registry.gitlab.com/stefanwimmer128/archlinux-chaotic-paru-user:latest
+  before_script:
+    - paru -Syu --noconfirm deno rsync python clang mold llvm alsa-lib jack libpulse rust cbindgen nodejs gtk3 unzip nasm wasi-compiler-rt wasi-libc wasi-libc++ wasi-libc++abi lld dbus-glib libsm
+    - deno install --allow-scripts
+  script:
+    - deno task make --edition=$EDITION build
+  artifacts:
+    paths:
+      - .dist/*.linux-x86_64.tar.zst

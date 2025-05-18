@@ -64,12 +64,16 @@ export class WorkspacesService implements WorkspacesDataManagerBase {
 
   deleteWorkspace(workspaceID: TWorkspaceID): void {
     if (workspacesDataStore.data.size === 1) return;
-    this.tabManagerCtx.removeTabByWorkspaceId(workspaceID);
-    setWorkspacesDataStore(
-      "order",
-      (prev) => prev.filter((v) => v !== workspaceID),
-    );
-    this.dataManagerCtx.deleteWorkspace(workspaceID);
+    const workspace = this.getRawWorkspace(workspaceID);
+    const result = Services.prompt.confirm(window, 'Delete workspace', 'Do you really want to delete this workspace: ' + workspace.name);
+    if (result) {
+      this.tabManagerCtx.removeTabByWorkspaceId(workspaceID);
+      setWorkspacesDataStore(
+          "order",
+          (prev) => prev.filter((v) => v !== workspaceID),
+      );
+      this.dataManagerCtx.deleteWorkspace(workspaceID);
+    }
   }
 
   /**

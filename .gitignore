@@ -11,3 +11,7 @@
 .idea/
 
 target/
+
+/.dist/
+
+vite.config.ts.timestamp-*

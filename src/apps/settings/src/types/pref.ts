@@ -176,3 +176,10 @@ export const zKeyboardShortcutFormData = zKeyboardShortcutConfig;
 export type KeyboardShortcutFormData = z.infer<
   typeof zKeyboardShortcutFormData
 >;
+
+export const zAdvancedConfig = z.object({
+  enableSync: z.boolean(),
+  allowUserChromeCss: z.boolean(),
+  enableIPv6: z.boolean(),
+});
+export type AdvancedFormData = z.infer<typeof zAdvancedConfig>;

@@ -10,6 +10,7 @@ import {
   PanelLeft,
   PencilRuler,
   UserRoundPen,
+    Settings,
 } from "lucide-react";
 import { NavHeader } from "@/components/nav-header.tsx";
 import {
@@ -58,6 +59,11 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       title: t("pages.profileAndAccount"),
       url: "/features/accounts",
       icon: UserRoundPen,
+    },
+    {
+      title: t('advanced.header'),
+      url: "/features/advanced",
+      icon: Settings,
     },
   ];
 
