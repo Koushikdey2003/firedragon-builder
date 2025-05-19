@@ -1,40 +1,96 @@
 import { rpc } from "../../lib/rpc/rpc.ts";
 import { type AdvancedFormData } from "../../types/pref.ts";
 
-export async function saveAdvancedSettings(
-    settings: AdvancedFormData,
-): Promise<null | void> {
+export async function saveAdvancedSettings(settings: AdvancedFormData): Promise<void> {
     await Promise.all([
-        rpc.setBoolPref(
-            'identity.fxaccounts.enabled',
-            Boolean(settings.enableSync),
-        ),
-        rpc.setBoolPref(
-            'toolkit.legacyUserProfileCustomizations.stylesheets',
-            Boolean(settings.allowUserChromeCss),
-        ),
-        rpc.setBoolPref(
-            'network.dns.disableIPv6',
-            !Boolean(settings.enableIPv6)
-        ),
+        rpc.setBoolPref('extensions.update.enabled', settings.enableExtensionUpdate),
+        rpc.setBoolPref('extensions.update.autoUpdateDefault', settings.enableExtensionAutoUpdate),
+        rpc.setBoolPref('identity.fxaccounts.enabled', settings.enableSync),
+        rpc.setBoolPref('clipboard.autocopy', settings.enableClipboardAutocopy),
+        rpc.setBoolPref('middlemouse.paste', settings.enableMiddlemousePaste),
+        rpc.setBoolPref('toolkit.legacyUserProfileCustomizations.stylesheets', settings.allowUserChromeCss),
+        rpc.setBoolPref('network.dns.disableIPv6', settings.disableIPv6),
+        rpc.setIntPref('network.http.referer.XOriginPolicy', settings.xOriginPolicy),
+        rpc.setBoolPref('privacy.resistFingerprinting', settings.enableRFP),
+        rpc.setBoolPref('privacy.resistFingerprinting.letterboxing', settings.enableLetterboxing),
+        rpc.setBoolPref('webgl.disabled', settings.disableWebGL),
+        rpc.setBoolPref('security.OCSP.require', settings.enforceOCSP),
+        rpc.setBoolPref('browser.safebrowsing.malware.enabled', settings.enableSafebrowsingMalware),
+        rpc.setBoolPref('browser.safebrowsing.phishing.enabled', settings.enableSafebrowsingPhishing),
+        rpc.setBoolPref('browser.safebrowsing.blockedURIs.enabled', settings.enableSafebrowsingBlockedURIs),
+        rpc.setStringPref('browser.safebrowsing.provider.google4.gethashURL', settings.safebrowsingProviderGoogle4GethashURL),
+        rpc.setStringPref('browser.safebrowsing.provider.google4.updateURL', settings.safebrowsingProviderGoogleUpdateURL),
+        rpc.setStringPref('browser.safebrowsing.privider.google.gethashURL', settings.safebrowsingProviderGoogleGethashURL),
+        rpc.setStringPref('browser.safebrowsing.provider.google.updateURL', settings.safebrowsingProviderGoogleUpdateURL),
+        rpc.setBoolPref('browser.safebrowsing.downloads.enabled', settings.enableSafebrowsingDownloads),
     ]);
 }
 
-export async function getAdvancedSettings(): Promise<
-    AdvancedFormData | null
-> {
+export async function getAdvancedSettings(): Promise<AdvancedFormData> {
     const [
+        enableExtensionUpdate,
+        enableExtensionAutoUpdate,
         enableSync,
+        enableClipboardAutocopy,
+        enableMiddlemousePaste,
         allowUserChromeCss,
-        enableIPv6,
+        disableIPv6,
+        xOriginPolicy,
+        enableRFP,
+        enableLetterboxing,
+        disableWebGL,
+        enforceOCSP,
+        enableSafebrowsingMalware,
+        enableSafebrowsingPhishing,
+        enableSafebrowsingBlockedURIs,
+        safebrowsingProviderGoogle4GethashURL,
+        safebrowsingProviderGoogle4UpdateURL,
+        safebrowsingProviderGoogleGethashURL,
+        safebrowsingProviderGoogleUpdateURL,
+        enableSafebrowsingDownloads,
     ] = await Promise.all([
+        rpc.getBoolPref('extensions.update.enabled'),
+        rpc.getBoolPref('extensions.update.autoUpdateDefault'),
         rpc.getBoolPref('identity.fxaccounts.enabled'),
+        rpc.getBoolPref('clipboard.autocopy'),
+        rpc.getBoolPref('middlemouse.paste'),
         rpc.getBoolPref('toolkit.legacyUserProfileCustomizations.stylesheets'),
-        rpc.getBoolPref('network.dns.disableIPv6').then(value => !value),
+        rpc.getBoolPref('network.dns.disableIPv6'),
+        rpc.getIntPref('network.http.referer.XOriginPolicy'),
+        rpc.getBoolPref('privacy.resistFingerprinting'),
+        rpc.getBoolPref('privacy.resistFingerprinting.letterboxing'),
+        rpc.getBoolPref('webgl.disabled'),
+        rpc.getBoolPref('security.OCSP.require'),
+        rpc.getBoolPref('browser.safebrowsing.malware.enabled'),
+        rpc.getBoolPref('browser.safebrowsing.phishing.enabled'),
+        rpc.getBoolPref('browser.safebrowsing.blockedURIs.enabled'),
+        rpc.getStringPref('browser.safebrowsing.provider.google4.gethashURL'),
+        rpc.getStringPref('browser.safebrowsing.provider.google4.updateURL'),
+        rpc.getStringPref('browser.safebrowsing.provider.google.gethashURL'),
+        rpc.getStringPref('browser.safebrowsing.provider.google.updateURL'),
+        rpc.getBoolPref('browser.safebrowsing.downloads.enabled'),
     ]);
 
     return {
+        enableExtensionUpdate,
+        enableExtensionAutoUpdate,
         enableSync,
+        enableClipboardAutocopy,
+        enableMiddlemousePaste,
         allowUserChromeCss,
+        disableIPv6,
+        xOriginPolicy,
+        enableRFP,
+        enableLetterboxing,
+        disableWebGL,
+        enforceOCSP,
+        enableSafebrowsingMalware,
+        enableSafebrowsingPhishing,
+        enableSafebrowsingBlockedURIs,
+        safebrowsingProviderGoogle4GethashURL,
+        safebrowsingProviderGoogle4UpdateURL,
+        safebrowsingProviderGoogleGethashURL,
+        safebrowsingProviderGoogleUpdateURL,
+        enableSafebrowsingDownloads,
     };
 }

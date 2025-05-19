@@ -32,7 +32,8 @@
         "aboutBrowser": "About {{productName}}",
         "debug": "Debug",
         "mouseGesture": "Mouse Gestures",
-        "keyboardShortcut": "Keyboard Shortcuts"
+        "keyboardShortcut": "Keyboard Shortcuts",
+        "advanced": "Advanced"
     },
     "home": {
         "welcome": "Welcome, {{name}} 👋",
@@ -459,12 +460,43 @@
         "description": "We carefully choose default settings to focus on privacy and security. When changing these settings, read the descriptions to understand the implications of those changes.",
         "general": {
             "header": "Browser Behaviour",
+            "enableExtensionUpdate": "Update add-ons automatically",
+            "enableExtensionUpdateDescription": "Keep extensions up to date without manual intervention. A good choice for your security. If you don't review the code of your extensions before every update, you should enable this option.",
             "enableSync": "Enable Firefox Sync",
-            "allowUserChromeCss": "Allow userChrome.css customization"
+            "enableSyncDescription": "Sync your data with other browsers. Requires restart. Firefox Sync encrypts data locally before transmitting it to the server.",
+            "enableSyncNeedsRestartDescription": "{{productName}}'s restart is required to completely enable or disable Firefox Sync.",
+            "enableMiddlemousePaste": "Enable middle click paste",
+            "enableMiddlemousePasteDescription": "Select some text to copy it, then paste it with a middle-mouse click.",
+            "allowUserChromeCss": "Allow userChrome.css customization",
+            "allowUserChromeCssDescription": "Enable this if you want to customize the UI with a manually loaded theme. Make sure you trust the provider of the theme."
         },
         "network": {
             "header": "Networking",
-            "enableIPv6": "Enable IPv6"
+            "enableIPv6": "Enable IPv6",
+            "enableIPv6Description": "Allow LibreWolf to connect using IPv6. Instead of blocking IPv6 in the browser, we suggest enabling the IPv6 privacy extension in your OS."
+        },
+        "privacy": {
+            "header": "Privacy",
+            "limitCrossOriginReferrers": "Limit cross-origin referrers",
+            "limitCrossOriginReferrersDescription": "Send a referrer only on same-origin. This may cause breakage. Additionally, even when sent referrers will still be trimmed."
+        },
+        "broken": {
+            "header": "Fingerprinting",
+            "enableRFP": "Enable ResistFingerprinting",
+            "enableRFPDescription": "ResistFingerprinting is the best in class anti-fingerprinting tool. If you need to disable it, consider using an extension like Canvas Blocker.",
+            "enableLetterboxing": "Enable letterboxing",
+            "enableLetterboxingDescription": "Letterboxing applies margins around your windows, in order to return a limited set of rounded resolutions.",
+            "enableWebGL": "Enable WebGL",
+            "enableWebGLDescription": "WebGL is a strong fingerprinting vector. If you need to enable it, consider using an extension like Canvas Blocker."
+        },
+        "security": {
+            "header": "Security",
+            "enforceOCSP": "Enforce OCSP hard-fail",
+            "enforceOCSPDescription": "Prevent connecting to a website if the OCSP check cannot be performed. This increases security, but it will cause breakage when an OCSP server is down.",
+            "enableGoogleSafeBrowsing": "Enable Google Safe Browsing",
+            "enableGoogleSafeBrowsingDescription": "If you are worried about malware and phishing, consider enabling it. Disabled over censorship concerns but recommended for less advanced users. All the checks happen locally.",
+            "enableSafebrowsingDownloads": "Scan Downloads",
+            "enableSafebrowsingDownloadsDescription": "Allow Safe Browsing to scan your downloads to identify suspicious files. All the checks happen locally."
         }
     }
 }

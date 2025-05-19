@@ -5,6 +5,9 @@ import { getAdvancedSettings, saveAdvancedSettings } from "./dataManager.ts";
 import type { AdvancedFormData } from "@/types/pref.ts";
 import { General } from './components/General.tsx';
 import { Network } from './components/Network.tsx';
+import { Privacy } from './components/Privacy.tsx';
+import { Broken } from './components/Broken.tsx';
+import { Security } from './components/Security.tsx';
 
 
 export default function Page() {
@@ -56,6 +59,9 @@ export default function Page() {
         <form className="space-y-3 pl-6">
           <General />
           <Network />
+          <Privacy />
+          <Broken />
+          <Security />
         </form>
       </FormProvider>
     </div>

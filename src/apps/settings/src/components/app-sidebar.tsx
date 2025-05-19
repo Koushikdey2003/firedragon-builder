@@ -61,7 +61,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       icon: UserRoundPen,
     },
     {
-      title: t('advanced.header'),
+      title: t('pages.advanced'),
       url: "/features/advanced",
       icon: Settings,
     },

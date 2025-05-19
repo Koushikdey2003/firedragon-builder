@@ -178,8 +178,25 @@ export type KeyboardShortcutFormData = z.infer<
 >;
 
 export const zAdvancedConfig = z.object({
+  enableExtensionUpdate: z.boolean(),
+  enableExtensionAutoUpdate: z.boolean(),
   enableSync: z.boolean(),
+  enableClipboardAutocopy: z.boolean(),
+  enableMiddlemousePaste: z.boolean(),
   allowUserChromeCss: z.boolean(),
-  enableIPv6: z.boolean(),
+  disableIPv6: z.boolean(),
+  xOriginPolicy: z.number(),
+  enableRFP: z.boolean(),
+  enableLetterboxing: z.boolean(),
+  disableWebGL: z.boolean(),
+  enforceOCSP: z.boolean(),
+  enableSafebrowsingMalware: z.boolean(),
+  enableSafebrowsingPhishing: z.boolean(),
+  enableSafebrowsingBlockedURIs: z.boolean(),
+  safebrowsingProviderGoogle4GethashURL: z.string(),
+  safebrowsingProviderGoogle4UpdateURL: z.string(),
+  safebrowsingProviderGoogleGethashURL: z.string(),
+  safebrowsingProviderGoogleUpdateURL: z.string(),
+  enableSafebrowsingDownloads: z.boolean(),
 });
 export type AdvancedFormData = z.infer<typeof zAdvancedConfig>;

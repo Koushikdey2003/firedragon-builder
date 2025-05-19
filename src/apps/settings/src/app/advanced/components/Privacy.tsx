@@ -10,7 +10,7 @@ import { Settings } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { AdvancedFormData } from "@/types/pref.ts";
 
-export function Network() {
+export function Privacy() {
     const { t } = useTranslation();
     const { getValues, setValue } = useFormContext<AdvancedFormData>();
 
@@ -19,25 +19,25 @@ export function Network() {
             <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                     <Settings className="size-5" />
-                    {t('advanced.network.header')}
+                    {t('advanced.privacy.header')}
                 </CardTitle>
             </CardHeader>
             <CardContent className="space-y-3">
                 <div className="space-y-1">
                     <div className="flex items-center justify-between gap-2">
-                        <label htmlFor="enable-ipv6">
-                            {t('advanced.network.enableIPv6')}
+                        <label htmlFor="limit-cross-origin-referrers">
+                            {t('advanced.privacy.limitCrossOriginReferrers')}
                         </label>
                         <Switch
-                            id="enable-ipv6"
-                            checked={!getValues("disableIPv6")}
+                            id="limit-cross-origin-referrers"
+                            checked={[1, 2].includes(getValues("xOriginPolicy"))}
                             onChange={(e) => {
-                                setValue("disableIPv6", !e.target.checked);
+                                setValue("xOriginPolicy", e.target.checked ? 2 : 0);
                             }}
                         />
                     </div>
                     <div className="text-sm text-base-content/70">
-                        {t("advanced.network.enableIPv6Description")}
+                        {t("advanced.privacy.limitCrossOriginReferrersDescription")}
                     </div>
                 </div>
             </CardContent>
