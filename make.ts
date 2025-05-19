@@ -13,63 +13,46 @@ async function applyPatches(target: string, ...patches: string[]): Promise<void>
     }
 }
 
-const { version } = packageJson;
-const EDITIONS = {
-    dr640nized: {
-        branding: 'firedragon',
-        theme: 'sweet-dark',
-        basename: 'firedragon',
-    },
-    catppuccin: {
-        branding: 'firedragon-catppuccin',
-        theme: 'catppuccin-mocha-mauve',
-        basename: 'firedragon-catppuccin',
-    },
-};
-const ARCHITECTURES = {
-    'linux-x86_64': {
-        mozconfig: 'linux-x86_64',
-        suffix: 'linux-x86_64',
-    },
-};
-
-const argv = minimist(process.argv.slice(4), {
-    string: ['dist-dir', 'edition', 'arch'],
-    boolean: ['with-sccache'],
-    unknown(arg) {
-        if (arg.startsWith('-')) {
-            throw `Unknown arguments: ${arg}`
-        }
-        return true;
-    },
-});
-
-const distDir = argv['dist-dir'] ?? '.dist';
-const edition = EDITIONS[(argv['edition'] ?? 'dr640nized') as keyof typeof EDITIONS];
-const arch = ARCHITECTURES[(argv['arch'] ?? 'linux-x86_64') as keyof typeof ARCHITECTURES];
-
-if (!edition) {
-    throw `Unsupported edition ${argv['edition']}, must be one of [${Object.keys(EDITIONS).join(', ')}].`;
-}
-if (!arch) {
-    throw `Unsupported architecture ${argv['arch']}, must be one of [${Object.keys(ARCHITECTURES).join(', ')}].`;
+function parseArgv(argv: string[]) {
+    return minimist(argv, {
+        string: ['dist-dir', 'edition', 'arch'],
+        boolean: ['with-sccache'],
+        unknown(arg) {
+            if (arg.startsWith('-')) {
+                throw `Unknown arguments: ${arg}`
+            }
+            return true;
+        },
+        '--': true,
+    });
 }
 
-const tmpDir = tmpdir();
-const basename = `${edition.basename}-${version}`;
+interface BuildInfo {
+    version: string;
+    distDir: string;
+    edition: (typeof EDITIONS)[keyof typeof EDITIONS];
+    basename: string
+    arch: (typeof ARCHITECTURES)[keyof typeof ARCHITECTURES];
+}
 
-async function source() {
+async function source(buildInfo: BuildInfo) {
+    const { distDir, edition, basename } = buildInfo;
+
     const sourceDir = `${tmpDir}/${basename}`;
 
-    // Clone Floorp runtime and inject this repo
-    if (await exists(sourceDir)) {
-        await $`git -C ${quote(sourceDir)} fetch`;
-        await $`git -C ${quote(sourceDir)} pull`;
-        await $`git -C ${quote(sourceDir)} checkout -f`;
-        await $`git -C ${quote(sourceDir)} clean -fdx`;
-    } else {
-        await $`git clone --depth 1 --progress https://github.com/Floorp-Projects/Floorp-12-runtime.git ${quote(sourceDir)}`;
+    const runtimeRelease: {
+        tag_name: string,
+        tarball_url: string,
+    } = await (await fetch('https://api.github.com/repos/Floorp-Projects/Floorp-12-runtime/releases/latest')).json() as any;
+    const runtimeTarball = `${tmpDir}/floorp-runtime-${runtimeRelease.tag_name}.tar.gz`;
+
+    if (!await exists(runtimeTarball)) {
+        await $`curl -L ${quote(runtimeRelease.tarball_url)} -o ${quote(runtimeTarball)}`
     }
+
+    // Extract floorp runtime and inject this repo
+    await $`mkdir ${quote(sourceDir)}`;
+    await $`tar -xf ${quote(runtimeTarball)} --strip-components=1 -C ${quote(sourceDir)}`;
     await $`rsync -a --delete --exclude=_dist --exclude=.build --exclude=.dist --exclude=.git --exclude=.idea --exclude=node_modules --exclude=*.tar.xz ./ ${quote(sourceDir)}/floorp/`;
 
     // Copy branding
@@ -88,17 +71,18 @@ async function source() {
     await $`tar --zstd -cf ${quote(distDir)}/${basename}.source.tar.zst --exclude=.git -C ${quote(tmpDir)} ${basename}`;
 }
 
-async function build() {
+async function build(buildInfo: BuildInfo) {
+    const { distDir, basename, arch } = buildInfo;
+
     const buildBasename = `${basename}.${arch.suffix}`;
     const buildDir = `${tmpDir}/${buildBasename}`
 
-    if (!await exists(buildDir)) {
-        if (!await exists(`${distDir}/${basename}.source.tar.zst`)) {
-            await source();
-        }
-        await $`mkdir ${quote(buildDir)}`;
-        await $`tar -xf ${quote(distDir)}/${basename}.source.tar.zst --strip-components=1 -C ${quote(buildDir)}`;
+    if (!await exists(`${distDir}/${basename}.source.tar.zst`)) {
+        await source(buildInfo);
     }
+
+    await $`mkdir ${quote(buildDir)}`;
+    await $`tar -xf ${quote(distDir)}/${basename}.source.tar.zst --strip-components=1 -C ${quote(buildDir)}`;
 
     // Install deno dependencies
     await $`cd ${quote(buildDir)}/floorp && deno install --allow-scripts`;
@@ -108,10 +92,6 @@ async function build() {
 
     // Combine mozconfig
     await $`cat ${quote(buildDir)}/floorp/gecko/mozconfig ${quote(buildDir)}/floorp/gecko/mozconfig.${arch.mozconfig} > ${quote(buildDir)}/mozconfig`;
-
-    if (argv['with-sccache']) {
-        await $`echo ac_add_options --with-ccache=sccache >> ${quote(buildDir)}/mozconfig`;
-    }
 
     // Run release build before
     await $`cd ${quote(buildDir)}/floorp && NODE_ENV=production deno task build --release-build-before`;
@@ -141,21 +121,77 @@ async function build() {
     await $`tar --zstd -cf ${quote(distDir)}/${buildBasename}.tar.zst --exclude=pingsender -C ${quote(objDistDir)} firedragon`;
 }
 
-await $`mkdir -p ${quote(distDir)}`;
+const EDITIONS = {
+    dr640nized: {
+        branding: 'firedragon',
+        theme: 'sweet-dark',
+        basename: 'firedragon',
+    },
+    catppuccin: {
+        branding: 'firedragon-catppuccin',
+        theme: 'catppuccin-mocha-mauve',
+        basename: 'firedragon-catppuccin',
+    },
+};
+const ARCHITECTURES = {
+    'linux-x86_64': {
+        mozconfig: 'linux-x86_64',
+        suffix: 'linux-x86_64',
+    },
+};
+const { version } = packageJson;
 
-for (let command of argv._) {
-    switch (command) {
-        case "source":
-            await source();
+const tmpDir = tmpdir();
 
+try {
+    let argv = parseArgv(process.argv.slice(4));
+
+    while (true) {
+        const distDir = argv['dist-dir'] ?? '.dist';
+        if (!await exists(distDir)) {
+            await $`mkdir -p ${quote(distDir)}`;
+        }
+
+        const edition = EDITIONS[(argv['edition'] ?? 'dr640nized') as keyof typeof EDITIONS];
+        const arch = ARCHITECTURES[(argv['arch'] ?? 'linux-x86_64') as keyof typeof ARCHITECTURES];
+
+        if (!edition) {
+            throw `Unsupported edition ${argv['edition']}, must be one of [${Object.keys(EDITIONS).join(', ')}].`;
+        }
+        if (!arch) {
+            throw `Unsupported architecture ${argv['arch']}, must be one of [${Object.keys(ARCHITECTURES).join(', ')}].`;
+        }
+
+        const basename = `${edition.basename}-${version}`;
+
+        const buildInfo: BuildInfo = {
+            version,
+            distDir,
+            edition,
+            basename,
+            arch,
+        }
+
+        for (let command of argv._) {
+            switch (command) {
+                case "source":
+                    await source(buildInfo);
+
+                    break;
+                case "build":
+                    await build(buildInfo);
+
+                    break;
+                default:
+                    throw `Unsupported command ${command}, must be one of [source, build]`;
+            }
+        }
+
+        if (!argv['--']?.length) {
             break;
-        case "build":
-            await build();
-
-            break;
-        default:
-            throw `Unsupported command ${command}, must be one of [source, build]`;
+        }
+        argv = parseArgv(argv['--']);
     }
+} finally {
+    await $`rm -rf ${quote(tmpDir)}`;
 }
-
-await $`rm -rf ${quote(tmpDir)}`;
