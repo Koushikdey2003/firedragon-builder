@@ -33,6 +33,17 @@ const ARCHITECTURES = {
     },
 };
 
+const argv = minimist(process.argv.slice(4), {
+    string: ['dist-dir', 'edition', 'arch'],
+    boolean: ['with-sccache'],
+    unknown(arg) {
+        if (arg.startsWith('-')) {
+            throw `Unknown arguments: ${arg}`
+        }
+        return true;
+    },
+});
+
 const distDir = argv['dist-dir'] ?? '.dist';
 const edition = EDITIONS[(argv['edition'] ?? 'dr640nized') as keyof typeof EDITIONS];
 const arch = ARCHITECTURES[(argv['arch'] ?? 'linux-x86_64') as keyof typeof ARCHITECTURES];
@@ -97,6 +108,10 @@ async function build() {
 
     // Combine mozconfig
     await $`cat ${quote(buildDir)}/floorp/gecko/mozconfig ${quote(buildDir)}/floorp/gecko/mozconfig.${arch.mozconfig} > ${quote(buildDir)}/mozconfig`;
+
+    if (argv['with-sccache']) {
+        await $`echo ac_add_options --with-ccache=sccache >> ${quote(buildDir)}/mozconfig`;
+    }
 
     // Run release build before
     await $`cd ${quote(buildDir)}/floorp && NODE_ENV=production deno task build --release-build-before`;
