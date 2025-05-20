@@ -30,6 +30,14 @@ deno task make build
 
 Output can be found in: `.dist/`
 
+### Build linux x86_64 AppImage
+
+``` shell
+deno task make appimage
+```
+
+Output can be found in: `.dist`
+
 ## Editions
 
 FireDragon is available in 2 editions:
