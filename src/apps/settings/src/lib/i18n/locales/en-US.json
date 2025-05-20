@@ -468,7 +468,10 @@
             "enableMiddlemousePaste": "Enable middle click paste",
             "enableMiddlemousePasteDescription": "Select some text to copy it, then paste it with a middle-mouse click.",
             "allowUserChromeCss": "Allow userChrome.css customization",
-            "allowUserChromeCssDescription": "Enable this if you want to customize the UI with a manually loaded theme. Make sure you trust the provider of the theme."
+            "allowUserChromeCssDescription": "Enable this if you want to customize the UI with a manually loaded theme. Make sure you trust the provider of the theme.",
+            "hidePasswdmgr": "Hide password manager",
+            "hidePasswdmgrDescription": "Hide password manager menu item and settings.",
+            "hidePasswdmgrNeedsRestartDescription": "{{productName}}'s restart is required to completely show or hide the password manager."
         },
         "network": {
             "header": "Networking",

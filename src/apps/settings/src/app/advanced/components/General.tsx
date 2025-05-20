@@ -16,6 +16,7 @@ export function General() {
     const { t } = useTranslation();
     const { getValues, setValue } = useFormContext<AdvancedFormData>();
     const [showEnableSyncRestartModal, setShowEnableSyncRestartModal] = useState(false);
+    const [showHidePasswdmgrRestartModal, setShowHidePasswdmgrRestartModal] = useState(false);
 
     return (
         <>
@@ -23,6 +24,12 @@ export function General() {
                 <RestartModal
                     onClose={() => setShowEnableSyncRestartModal(false)}
                     label={t("advanced.general.enableSyncNeedsRestartDescription")}
+                />
+            ) : null}
+            {showHidePasswdmgrRestartModal ? (
+                <RestartModal
+                    onClose={() => setShowHidePasswdmgrRestartModal(false)}
+                    label={t("advanced.general.hidePasswdmgrNeedsRestartDescription")}
                 />
             ) : null}
             <Card>
@@ -102,6 +109,24 @@ export function General() {
                         </div>
                         <div className="text-sm text-base-content/70">
                             {t("advanced.general.allowUserChromeCssDescription")}
+                        </div>
+                    </div>
+                    <div className="space-y-1">
+                        <div className="flex items-center justify-between gap-2">
+                            <label htmlFor="allow-user-chrome-css">
+                                {t('advanced.general.hidePasswdmgr')}
+                            </label>
+                            <Switch
+                                id="allow-user-chrome-css"
+                                checked={getValues("hidePasswdmgr")}
+                                onChange={(e) => {
+                                    setValue("hidePasswdmgr", e.target.checked);
+                                    setShowHidePasswdmgrRestartModal(true);
+                                }}
+                            />
+                        </div>
+                        <div className="text-sm text-base-content/70">
+                            {t("advanced.general.hidePasswdmgrDescription")}
                         </div>
                     </div>
                 </CardContent>

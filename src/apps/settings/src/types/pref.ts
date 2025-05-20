@@ -184,6 +184,7 @@ export const zAdvancedConfig = z.object({
   enableClipboardAutocopy: z.boolean(),
   enableMiddlemousePaste: z.boolean(),
   allowUserChromeCss: z.boolean(),
+  hidePasswdmgr: z.boolean(),
   disableIPv6: z.boolean(),
   xOriginPolicy: z.number(),
   enableRFP: z.boolean(),
