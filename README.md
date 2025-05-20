@@ -11,7 +11,7 @@ Install [deno](https://docs.deno.com/).
 Install dependencies:
 
 ``` shell
-deno install --allow-scripts
+deno install --allow-scripts --frozen
 ```
 
 ### Build source archive
