@@ -60,6 +60,13 @@ appimage:
 
 publish:
   stage: publish
+  needs:
+    - job: source
+      artifacts: true
+    - job: build
+      artifacts: true
+    - job: appimage
+      artifacts: true
   rules:
     - if: $CI_COMMIT_TAG
   image: registry.gitlab.com/stefanwimmer128/archlinux-chaotic-paru-user:latest
@@ -75,6 +82,9 @@ publish:
 
 release:
   stage: release
+  needs:
+    - job: publish
+      artifacts: false
   rules:
     - if: $CI_COMMIT_TAG
   image: registry.gitlab.com/stefanwimmer128/archlinux-chaotic-paru-user:latest
