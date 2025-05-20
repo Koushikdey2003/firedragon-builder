@@ -10,7 +10,7 @@ function exists(path: string): Promise<boolean> {
 
 async function applyPatches(target: string, ...patches: string[]): Promise<void> {
     for (const patch of await glob(patches)) {
-        await $`patch -Nsp1 -d ${quote(target)} -i ${quote(path.resolve(patch))}`;
+        await $`patch -Nsp1 -d ${target} -i ${path.resolve(patch)}`;
     }
 }
 
@@ -48,27 +48,27 @@ async function source(config: Config) {
     const runtimeTarball = `${tmpDir}/floorp-runtime-${runtimeRelease.tag_name}.tar.gz`;
 
     if (!await exists(runtimeTarball)) {
-        await $`curl -L ${quote(runtimeRelease.tarball_url)} -o ${quote(runtimeTarball)}`
+        await $`curl -L ${runtimeRelease.tarball_url} -o ${runtimeTarball}`
     }
 
     // Extract floorp runtime and inject this repo
-    await $`mkdir ${quote(sourceDir)}`;
-    await $`tar -xf ${quote(runtimeTarball)} --strip-components=1 -C ${quote(sourceDir)}`;
-    await $`rsync -a --delete --exclude=_dist --exclude=.dist --exclude=.git --exclude=.idea --exclude=node_modules --exclude=*.tar.xz ./ ${quote(sourceDir)}/floorp/`;
+    await $`mkdir ${sourceDir}`;
+    await $`tar -xf ${runtimeTarball} --strip-components=1 -C ${sourceDir}`;
+    await $`rsync -a --delete --exclude=_dist --exclude=.dist --exclude=.git --exclude=.idea --exclude=node_modules --exclude=*.tar.xz ./ ${sourceDir}/floorp/`;
 
     // Copy branding
-    await $`cp -r gecko/branding/* ${quote(sourceDir)}/browser/branding/`;
+    await $`cp -r gecko/branding/* ${sourceDir}/browser/branding/`;
 
     // Apply edition in default mozconfig
-    await $`sed -i -e 's/@BRANDING@/${edition.branding}/' -e 's/@THEME@/${edition.theme}/' ${quote(sourceDir)}/floorp/gecko/mozconfig`;
+    await $`sed -i -e 's/@BRANDING@/${edition.branding}/' -e 's/@THEME@/${edition.theme}/' ${sourceDir}/floorp/gecko/mozconfig`;
 
     // Set display version
-    await $`echo ${quote(version)} > ${quote(sourceDir)}/browser/config/version_display.txt`;
+    await $`echo ${version} > ${sourceDir}/browser/config/version_display.txt`;
 
     // Apply patches
     await applyPatches(sourceDir, 'patches/**/*.patch');
 
-    await $`tar --zstd -cf ${quote(distDir)}/${basename}.source.tar.zst --exclude=.git -C ${quote(tmpDir)} ${basename}`;
+    await $`tar --zstd -cf ${distDir}/${basename}.source.tar.zst --exclude=.git -C ${tmpDir} ${basename}`;
 }
 
 async function build(config: Config) {
@@ -82,44 +82,44 @@ async function build(config: Config) {
         await source(config);
     }
 
-    await $`mkdir ${quote(buildDir)}`;
-    await $`tar -xf ${quote(sourceTarball)} --strip-components=1 -C ${quote(buildDir)}`;
+    await $`mkdir ${buildDir}`;
+    await $`tar -xf ${sourceTarball} --strip-components=1 -C ${buildDir}`;
 
     // Install deno dependencies
-    await $`cd ${quote(buildDir)}/floorp && deno install --allow-scripts`;
+    await $`cd ${buildDir}/floorp && deno install --allow-scripts`;
 
     // Call --write-version only to generate buildid2 file
-    await $`cd ${quote(buildDir)}/floorp && deno task build --write-version`;
+    await $`cd ${buildDir}/floorp && deno task build --write-version`;
 
     // Combine mozconfig
-    await $`cat ${quote(buildDir)}/floorp/gecko/mozconfig ${quote(buildDir)}/floorp/gecko/mozconfig.${arch.mozconfig} > ${quote(buildDir)}/mozconfig`;
+    await $`cat ${buildDir}/floorp/gecko/mozconfig ${buildDir}/floorp/gecko/mozconfig.${arch.mozconfig} > ${buildDir}/mozconfig`;
 
     // Run release build before
-    await $`cd ${quote(buildDir)}/floorp && NODE_ENV=production deno task build --release-build-before`;
+    await $`cd ${buildDir}/floorp && NODE_ENV=production deno task build --release-build-before`;
 
     // Run configure
-    await $`${quote(buildDir)}/mach configure`;
+    await $`${buildDir}/mach configure`;
 
     // Run build
-    await $`${quote(buildDir)}/mach build`;
+    await $`${buildDir}/mach build`;
 
     // Run release build after
-    await $`cd ${quote(buildDir)}/floorp && deno task build --release-build-after`;
+    await $`cd ${buildDir}/floorp && deno task build --release-build-after`;
 
     // https://www.spinics.net/lists/git/msg391750.html
     const objDistDir = `${buildDir}/obj-artifact-build-output/dist`;
-    await $`rsync -aL ${quote(objDistDir)}/bin/ ${quote(objDistDir)}/tmp__bin/`;
-    await $`rm -rf ${quote(objDistDir)}/bin`;
-    await $`mv ${quote(objDistDir)}/tmp__bin ${quote(objDistDir)}/bin`;
+    await $`rsync -aL ${objDistDir}/bin/ ${objDistDir}/tmp__bin/`;
+    await $`rm -rf ${objDistDir}/bin`;
+    await $`mv ${objDistDir}/tmp__bin ${objDistDir}/bin`;
 
     // Apply patches
     await applyPatches(`${objDistDir}/bin`, 'scripts/git-patches/patches/*.patch');
 
     // Run package
-    await $`${quote(buildDir)}/mach package`;
+    await $`${buildDir}/mach package`;
 
     // Package output archive
-    await $`tar --zstd -cf ${quote(distDir)}/${buildBasename}.tar.zst --exclude=pingsender -C ${quote(objDistDir)} firedragon`;
+    await $`tar --zstd -cf ${distDir}/${buildBasename}.tar.zst --exclude=pingsender -C ${objDistDir} firedragon`;
 }
 
 async function appimage(config: Config) {
@@ -133,19 +133,19 @@ async function appimage(config: Config) {
         await build(config);
     }
 
-    await $`mkdir ${quote(appimageDir)}`;
-    await $`tar -xf ${quote(buildTarball)} --strip-components=1 -C ${quote(appimageDir)}`;
+    await $`mkdir ${appimageDir}`;
+    await $`tar -xf ${buildTarball} --strip-components=1 -C ${appimageDir}`;
 
-    await $`sed 's#/usr/lib/firedragon/firedragon#firedragon#' assets/firedragon.desktop > ${quote(appimageDir)}/firedragon.desktop`;
-    await $`cp ${quote(appimageDir)}/browser/chrome/icons/default/default128.png ${quote(appimageDir)}/firedragon.png`;
+    await $`sed 's#/usr/lib/firedragon/firedragon#firedragon#' assets/firedragon.desktop > ${appimageDir}/firedragon.desktop`;
+    await $`cp ${appimageDir}/browser/chrome/icons/default/default128.png ${appimageDir}/firedragon.png`;
 
-    await $`cp assets/AppRun ${quote(appimageDir)}/AppRun`;
-    await $`chmod a+x ${quote(appimageDir)}/AppRun`;
+    await $`cp assets/AppRun ${appimageDir}/AppRun`;
+    await $`chmod a+x ${appimageDir}/AppRun`;
 
-    await $`curl -L https://github.com/AppImage/appimagetool/releases/download/continuous/appimagetool-x86_64.AppImage -o ${quote(tmpDir)}/appimagetool-x86_64.AppImage`;
-    await $`chmod a+x ${quote(tmpDir)}/appimagetool-x86_64.AppImage`;
+    await $`curl -L https://github.com/AppImage/appimagetool/releases/download/continuous/appimagetool-x86_64.AppImage -o ${tmpDir}/appimagetool-x86_64.AppImage`;
+    await $`chmod a+x ${tmpDir}/appimagetool-x86_64.AppImage`;
 
-    await $`${quote(tmpDir)}/appimagetool-x86_64.AppImage ${quote(appimageDir)} ${quote(distDir)}/${quote(appimageBasename)}.AppImage`;
+    await $`${tmpDir}/appimagetool-x86_64.AppImage ${appimageDir} ${distDir}/${appimageBasename}.AppImage`;
 }
 
 const EDITIONS = {
@@ -178,7 +178,7 @@ try {
     while (true) {
         const distDir = argv['dist-dir'] ?? '.dist';
         if (!await exists(distDir)) {
-            await $`mkdir -p ${quote(distDir)}`;
+            await $`mkdir -p ${distDir}`;
         }
 
         const edition = EDITIONS[(argv['edition'] ?? 'dr640nized') as keyof typeof EDITIONS];
@@ -226,5 +226,5 @@ try {
         argv = parseArgv(argv['--']);
     }
 } finally {
-    await $`rm -rf ${quote(tmpDir)}`;
+    await $`rm -rf ${tmpDir}`;
 }
