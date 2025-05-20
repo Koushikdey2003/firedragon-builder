@@ -13,7 +13,7 @@ source:
   image: registry.gitlab.com/stefanwimmer128/archlinux-chaotic-paru-user:latest
   before_script:
     - paru -Syu --noconfirm deno rsync
-    - deno install --allow-scripts
+    - deno install --allow-scripts --frozen
   script:
     - deno task make --edition=$EDITION source
   artifacts:
@@ -31,7 +31,7 @@ build:
   image: registry.gitlab.com/stefanwimmer128/archlinux-chaotic-paru-user:latest
   before_script:
     - paru -Syu --noconfirm deno rsync python clang mold llvm alsa-lib jack libpulse rust cbindgen nodejs gtk3 unzip nasm wasi-compiler-rt wasi-libc wasi-libc++ wasi-libc++abi lld dbus-glib libsm
-    - deno install --allow-scripts
+    - deno install --allow-scripts --frozen
   script:
     - deno task make --edition=$EDITION build
   artifacts:
@@ -51,7 +51,7 @@ appimage:
   image: registry.gitlab.com/stefanwimmer128/archlinux-chaotic-paru-user:latest
   before_script:
     - paru -Syu --noconfirm deno
-    - deno install --allow-scripts
+    - deno install --allow-scripts --frozen
   script:
     - deno task make --edition=$EDITION appimage
   artifacts:
