@@ -1,3 +1,4 @@
+#filter substitution
 {
   "__COMMENT__ More Information": "https://github.com/mozilla/policy-templates/blob/master/README.md",
   "policies": {
@@ -23,7 +24,9 @@
     },
     "Extensions": {
       "Install": [
-        "https://addons.mozilla.org/firefox/downloads/latest/@THEME@/latest.xpi",
+#ifdef FIREDRAGON_THEME
+        "https://addons.mozilla.org/firefox/downloads/latest/@FIREDRAGON_THEME@/latest.xpi",
+#endif
         "https://addons.mozilla.org/firefox/downloads/latest/darkreader/latest.xpi",
         "https://addons.mozilla.org/firefox/downloads/latest/ublock-origin/latest.xpi",
         "https://addons.mozilla.org/firefox/downloads/latest/flagfox/latest.xpi"

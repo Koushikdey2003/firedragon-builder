@@ -53,14 +53,13 @@ async function source(buildInfo: BuildInfo) {
     // Extract floorp runtime and inject this repo
     await $`mkdir ${quote(sourceDir)}`;
     await $`tar -xf ${quote(runtimeTarball)} --strip-components=1 -C ${quote(sourceDir)}`;
-    await $`rsync -a --delete --exclude=_dist --exclude=.build --exclude=.dist --exclude=.git --exclude=.idea --exclude=node_modules --exclude=*.tar.xz ./ ${quote(sourceDir)}/floorp/`;
+    await $`rsync -a --delete --exclude=_dist --exclude=.dist --exclude=.git --exclude=.idea --exclude=node_modules --exclude=*.tar.xz ./ ${quote(sourceDir)}/floorp/`;
 
     // Copy branding
     await $`cp -r gecko/branding/* ${quote(sourceDir)}/browser/branding/`;
 
-    // Apply edition
-    await $`sed -i 's/@BRANDING@/${edition.branding}/' ${quote(sourceDir)}/floorp/gecko/mozconfig`;
-    await $`sed -i 's/@THEME@/${edition.theme}/' ${quote(sourceDir)}/floorp/settings/distribution/policies.json`;
+    // Apply edition in default mozconfig
+    await $`sed -i -e 's/@BRANDING@/${edition.branding}/' -e 's/@THEME@/${edition.theme}/' ${quote(sourceDir)}/floorp/gecko/mozconfig`;
 
     // Set display version
     await $`echo ${quote(version)} > ${quote(sourceDir)}/browser/config/version_display.txt`;
@@ -172,7 +171,7 @@ try {
             arch,
         }
 
-        for (let command of argv._) {
+        for (const command of argv._) {
             switch (command) {
                 case "source":
                     await source(buildInfo);

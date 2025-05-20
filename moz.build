@@ -1,4 +1,3 @@
-
 DIRS += [
     "_dist/noraneko/content",
     "_dist/noraneko/startup",
@@ -8,5 +7,7 @@ DIRS += [
     "_dist/noraneko/newtab",
     "_dist/noraneko/welcome",
     "_dist/noraneko/notes",
-    "settings",
 ]
+
+if CONFIG["FIREDRAGON_SETTINGS"]:
+    DIRS += ["/%s" % CONFIG["FIREDRAGON_SETTINGS"]]

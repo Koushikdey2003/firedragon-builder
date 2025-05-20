@@ -1,5 +1,5 @@
 diff --git a/browser/installer/package-manifest.in b/browser/installer/package-manifest.in
-index 8e02ea6ca2..1fd3b80782 100644
+index 8e02ea6ca2..71fd5da3d3 100644
 --- a/browser/installer/package-manifest.in
 +++ b/browser/installer/package-manifest.in
 @@ -196,6 +196,11 @@
@@ -14,14 +14,16 @@ index 8e02ea6ca2..1fd3b80782 100644
  ; [Extensions]
  @RESPATH@/components/extensions-toolkit.manifest
  @RESPATH@/browser/components/extensions-browser.manifest
-@@ -266,6 +271,11 @@
+@@ -266,6 +271,13 @@
  ; Remote Settings JSON dumps
  @RESPATH@/browser/defaults/settings
  
-+; FireDragon specific files
++; FireDragon settings
++#ifdef FIREDRAGON_SETTINGS
 +@RESPATH@/defaults/pref/local-settings.js
 +@RESPATH@/distribution/policies.json
 +@RESPATH@/firedragon.cfg
++#endif
 +
  # channel-prefs.js has been removed on macOS.
  #ifndef XP_MACOSX

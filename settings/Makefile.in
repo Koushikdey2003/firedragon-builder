@@ -1,0 +1,6 @@
+libs:: $(srcdir)/distribution/policies.json
+	$(NSINSTALL) -D $(DIST)/bin/distribution
+	$(call py_action,preprocessor $(relativesrcdir)/distribution/policies.json,$(DEFINES) $(ACDEFINES) $^ -o $(DIST)/bin/distribution/policies.json)
+
+libs:: $(srcdir)/firedragon.cfg
+	$(call py_action,preprocessor $(relativesrcdir)/firedragon.cfg,$(DEFINES) $(ACDEFINES) $^ -o $(DIST)/bin/firedragon.cfg)
