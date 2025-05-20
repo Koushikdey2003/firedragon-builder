@@ -125,7 +125,7 @@ async function build(config: Config) {
 async function appimage(config: Config) {
     const { distDir, basename, arch } = config;
 
-    const appimageBasename = `${basename}.appimage-${arch.appimageSuffix}`;
+    const appimageBasename = `${basename}.${arch.appimageSuffix}`;
     const appimageDir = `${tmpDir}/${appimageBasename}`;
 
     const buildTarball = `${distDir}/${basename}.${arch.buildSuffix}.tar.zst`;
