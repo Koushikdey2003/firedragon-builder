@@ -28,7 +28,7 @@ function parseArgv(argv: string[]) {
     });
 }
 
-interface BuildInfo {
+interface Config {
     version: string;
     distDir: string;
     edition: (typeof EDITIONS)[keyof typeof EDITIONS];
@@ -36,8 +36,8 @@ interface BuildInfo {
     arch: (typeof ARCHITECTURES)[keyof typeof ARCHITECTURES];
 }
 
-async function source(buildInfo: BuildInfo) {
-    const { distDir, edition, basename } = buildInfo;
+async function source(config: Config) {
+    const { distDir, edition, basename } = config;
 
     const sourceDir = `${tmpDir}/${basename}`;
 
@@ -71,18 +71,19 @@ async function source(buildInfo: BuildInfo) {
     await $`tar --zstd -cf ${quote(distDir)}/${basename}.source.tar.zst --exclude=.git -C ${quote(tmpDir)} ${basename}`;
 }
 
-async function build(buildInfo: BuildInfo) {
-    const { distDir, basename, arch } = buildInfo;
+async function build(config: Config) {
+    const { distDir, basename, arch } = config;
 
-    const buildBasename = `${basename}.${arch.suffix}`;
+    const buildBasename = `${basename}.${arch.buildSuffix}`;
     const buildDir = `${tmpDir}/${buildBasename}`
 
-    if (!await exists(`${distDir}/${basename}.source.tar.zst`)) {
-        await source(buildInfo);
+    const sourceTarball = `${distDir}/${basename}.source.tar.zst`;
+    if (!await exists(sourceTarball)) {
+        await source(config);
     }
 
     await $`mkdir ${quote(buildDir)}`;
-    await $`tar -xf ${quote(distDir)}/${basename}.source.tar.zst --strip-components=1 -C ${quote(buildDir)}`;
+    await $`tar -xf ${quote(sourceTarball)} --strip-components=1 -C ${quote(buildDir)}`;
 
     // Install deno dependencies
     await $`cd ${quote(buildDir)}/floorp && deno install --allow-scripts`;
@@ -121,6 +122,32 @@ async function build(buildInfo: BuildInfo) {
     await $`tar --zstd -cf ${quote(distDir)}/${buildBasename}.tar.zst --exclude=pingsender -C ${quote(objDistDir)} firedragon`;
 }
 
+async function appimage(config: Config) {
+    const { distDir, basename, arch } = config;
+
+    const appimageBasename = `${basename}.appimage-${arch.appimageSuffix}`;
+    const appimageDir = `${tmpDir}/${appimageBasename}`;
+
+    const buildTarball = `${distDir}/${basename}.${arch.buildSuffix}.tar.zst`;
+    if (!await exists(buildTarball)) {
+        await build(config);
+    }
+
+    await $`mkdir ${quote(appimageDir)}`;
+    await $`tar -xf ${quote(buildTarball)} --strip-components=1 -C ${quote(appimageDir)}`;
+
+    await $`sed 's#/usr/lib/firedragon/firedragon#firedragon#' assets/firedragon.desktop > ${quote(appimageDir)}/firedragon.desktop`;
+    await $`cp ${quote(appimageDir)}/browser/chrome/icons/default/default128.png ${quote(appimageDir)}/firedragon.png`;
+
+    await $`cp assets/AppRun ${quote(appimageDir)}/AppRun`;
+    await $`chmod a+x ${quote(appimageDir)}/AppRun`;
+
+    await $`curl -L https://github.com/AppImage/appimagetool/releases/download/continuous/appimagetool-x86_64.AppImage -o ${quote(tmpDir)}/appimagetool-x86_64.AppImage`;
+    await $`chmod a+x ${quote(tmpDir)}/appimagetool-x86_64.AppImage`;
+
+    await $`${quote(tmpDir)}/appimagetool-x86_64.AppImage ${quote(appimageDir)} ${quote(distDir)}/${quote(appimageBasename)}.AppImage`;
+}
+
 const EDITIONS = {
     dr640nized: {
         branding: 'firedragon',
@@ -136,7 +163,8 @@ const EDITIONS = {
 const ARCHITECTURES = {
     'linux-x86_64': {
         mozconfig: 'linux-x86_64',
-        suffix: 'linux-x86_64',
+        buildSuffix: 'linux-x86_64',
+        appimageSuffix: 'appimage-x86_64',
     },
 };
 const { version } = packageJson;
@@ -165,7 +193,7 @@ try {
 
         const basename = `${edition.basename}-${version}`;
 
-        const buildInfo: BuildInfo = {
+        const config: Config = {
             version,
             distDir,
             edition,
@@ -176,15 +204,19 @@ try {
         for (const command of argv._) {
             switch (command) {
                 case "source":
-                    await source(buildInfo);
+                    await source(config);
 
                     break;
                 case "build":
-                    await build(buildInfo);
+                    await build(config);
+
+                    break;
+                case "appimage":
+                    await appimage(config);
 
                     break;
                 default:
-                    throw `Unsupported command ${command}, must be one of [source, build]`;
+                    throw `Unsupported command ${command}, must be one of [source, build, appimage]`;
             }
         }
 
