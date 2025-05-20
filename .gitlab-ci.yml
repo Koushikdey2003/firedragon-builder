@@ -22,9 +22,6 @@ source:
 
 build:
   stage: build
-  needs:
-    - job: source
-      artifacts: true
   parallel:
     matrix:
       - EDITION: [dr640nized, catppuccin]
@@ -40,9 +37,6 @@ build:
 
 appimage:
   stage: appimage
-  needs:
-    - job: build
-      artifacts: true
   parallel:
     matrix:
       - EDITION: [dr640nized, catppuccin]
