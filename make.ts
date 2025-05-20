@@ -1,6 +1,7 @@
 /// <reference types="zx/globals" />
 
 import { access } from 'node:fs/promises';
+import process from 'node:process';
 import packageJson from './package.json' with { type: 'json' };
 
 function exists(path: string): Promise<boolean> {
@@ -141,6 +142,7 @@ const ARCHITECTURES = {
 const { version } = packageJson;
 
 const tmpDir = tmpdir();
+echo(`Using temporary directory: ${tmpDir}`);
 
 try {
     let argv = parseArgv(process.argv.slice(4));
