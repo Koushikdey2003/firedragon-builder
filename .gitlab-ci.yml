@@ -1,6 +1,7 @@
 stages:
   - source
   - build
+  - appimage
 
 source:
   stage: source
@@ -34,3 +35,23 @@ build:
   artifacts:
     paths:
       - .dist/*.linux-x86_64.tar.zst
+
+appimage:
+  stage: appimage
+  needs:
+    - job: build
+      artifacts: true
+  parallel:
+    matrix:
+      - EDITION: [dr640nized, catppuccin]
+  variables:
+    APPIMAGE_EXTRACT_AND_RUN: 1
+  image: registry.gitlab.com/stefanwimmer128/archlinux-chaotic-paru-user:latest
+  before_script:
+    - paru -Syu --noconfirm deno
+    - deno install --allow-scripts
+  script:
+    - deno task make --edition=$EDITION appimage
+  artifacts:
+    paths:
+      - .dist/*.appimage-x86_64.AppImage
