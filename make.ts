@@ -86,7 +86,7 @@ async function build(config: Config) {
     await $`tar -xf ${sourceTarball} --strip-components=1 -C ${buildDir}`;
 
     // Install deno dependencies
-    await $`cd ${buildDir}/floorp && deno install --allow-scripts`;
+    await $`cd ${buildDir}/floorp && deno install --allow-scripts --frozen`;
 
     // Call --write-version only to generate buildid2 file
     await $`cd ${buildDir}/floorp && deno task build --write-version`;
