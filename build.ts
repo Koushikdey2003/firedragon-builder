@@ -21,8 +21,8 @@ switch (process.platform) {
 }
 
 //? branding
-export const brandingBaseName = "floorp";
-export const brandingName = "Floorp";
+export const brandingBaseName = "firedragon";
+export const brandingName = "FireDragon";
 
 //? when the linux binary has published, I'll sync linux bin version
 const VERSION = process.platform === "win32" ? "001" : "000";
@@ -43,17 +43,8 @@ const isExists = async (path: string) => {
 };
 
 const getBinArchive = () => {
-  const arch = process.arch;
-  if (process.platform === "win32") {
-    return `${brandingBaseName}-win-amd64-moz-artifact.zip`;
-  } else if (process.platform === "linux") {
-    if (arch === "x64") {
-      return `${brandingBaseName}-linux-amd64-moz-artifact.tar.xz`;
-    } else if (arch === "arm64") {
-      return `${brandingBaseName}-linux-arm64-moz-artifact.tar.xz`;
-    }
-  } else if (process.platform === "darwin") {
-    return `${brandingBaseName}-macOS-universal-moz-artifact.dmg`;
+  if (process.platform === "linux" && process.arch === "x64") {
+    return `${brandingBaseName}.linux-x86_64.dev.tar.zst`;
   }
   throw new Error("Unsupported platform/architecture");
 };
