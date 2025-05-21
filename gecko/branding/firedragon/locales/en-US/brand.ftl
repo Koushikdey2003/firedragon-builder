@@ -18,5 +18,5 @@
 # This brand name can be used in messages where the product name needs to
 # remain unchanged across different versions (Nightly, Beta, etc.).
 -brand-product-name = FireDragon
--vendor-short-name = FireDragon
+-vendor-short-name = Garuda Linux
 trademarkInfo = { " " }
