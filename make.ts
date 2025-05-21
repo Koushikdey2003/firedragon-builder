@@ -29,6 +29,7 @@ function parseArgv(argv: string[]) {
 
 interface Config {
     version: string;
+    runtime: string;
     tmpDir: string;
     distDir: string;
     edition: (typeof EDITIONS)[keyof typeof EDITIONS];
@@ -36,18 +37,24 @@ interface Config {
     arch: (typeof ARCHITECTURES)[keyof typeof ARCHITECTURES];
 }
 
-async function getFloorpRuntime({ tmpDir }: Config): Promise<string> {
-    const runtimeRelease: {
-        tag_name: string,
-        tarball_url: string,
-    } = await (await fetch('https://api.github.com/repos/Floorp-Projects/Floorp-runtime/releases/latest')).json() as any;
-    const runtimeTarball = `${tmpDir}/floorp-runtime-${runtimeRelease.tag_name}.tar.gz`;
-
-    if (!await exists(runtimeTarball)) {
-        await $`curl -L ${runtimeRelease.tarball_url} -o ${runtimeTarball}`
+async function getFloorpRuntime({ runtime, tmpDir }: Config): Promise<string> {
+    const response = await fetch(`https://api.github.com/repos/Floorp-Projects/Floorp-runtime/releases/${runtime}`);
+    if (!response.ok) {
+        throw `Invalid runtime release: ${runtime}`;
     }
 
-    return runtimeTarball;
+    const release: {
+        tag_name: string,
+        tarball_url: string,
+    } = await response.json() as any;
+
+    const tarball = `${tmpDir}/floorp-runtime-${release.tag_name}.tar.gz`;
+
+    if (!await exists(tarball)) {
+        await $`curl -L ${release.tarball_url} -o ${tarball}`
+    }
+
+    return tarball;
 }
 
 async function source(config: Config) {
@@ -220,14 +227,13 @@ const ARCHITECTURES = {
         buildDevSuffix: 'linux-x86_64.dev',
     },
 };
-const { version } = packageJson;
 
-const tmpDir = tmpdir();
-echo(`Using temporary directory: ${tmpDir}`);
-
+let tmpDir;
 try {
-    let argv = parseArgv(process.argv.slice(4));
+    tmpDir = tmpdir();
+    echo(`Using temporary directory: ${tmpDir}`);
 
+    let argv = parseArgv(process.argv.slice(4));
     while (true) {
         const distDir = argv['dist-dir'] ?? '.dist';
         if (!await exists(distDir)) {
@@ -247,13 +253,14 @@ try {
         const basename = `${edition.basename}-v${version}`;
 
         const config: Config = {
-            version,
+            version: packageJson.version,
+            runtime: argv.runtime ?? packageJson.runtime,
             tmpDir,
             distDir,
             edition,
             basename,
             arch,
-        }
+        };
 
         for (const command of argv._) {
             switch (command) {
