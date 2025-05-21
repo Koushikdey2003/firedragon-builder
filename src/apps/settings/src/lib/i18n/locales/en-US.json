@@ -481,7 +481,9 @@
         "privacy": {
             "header": "Privacy",
             "limitCrossOriginReferrers": "Limit cross-origin referrers",
-            "limitCrossOriginReferrersDescription": "Send a referrer only on same-origin. This may cause breakage. Additionally, even when sent referrers will still be trimmed."
+            "limitCrossOriginReferrersDescription": "Send a referrer only on same-origin. This may cause breakage. Additionally, even when sent referrers will still be trimmed.",
+            "cookieBannersMode": "Automatically refuse cookie banners",
+            "cookieBannersModeDescription": "When a site asks if they can use cookies, FireDragon automatically refuses for you. Only on supported sites. Not compatible with blocking all cookies / Strict-Mode."
         },
         "broken": {
             "header": "Fingerprinting",

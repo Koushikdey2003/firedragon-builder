@@ -40,6 +40,24 @@ export function Privacy() {
                         {t("advanced.privacy.limitCrossOriginReferrersDescription")}
                     </div>
                 </div>
+                <div className="space-y-1">
+                    <div className="flex items-center justify-between gap-2">
+                        <label htmlFor="limit-cross-origin-referrers">
+                            {t('advanced.privacy.cookieBannersMode')}
+                        </label>
+                        <Switch
+                            id="limit-cross-origin-referrers"
+                            checked={getValues('cookiebannersMode') === 1 && getValues("cookiebannersModePb") === 1}
+                            onChange={(e) => {
+                                setValue("cookiebannersMode", e.target.checked ? 1 : 0);
+                                setValue("cookiebannersModePb", e.target.checked ? 1 : 0);
+                            }}
+                        />
+                    </div>
+                    <div className="text-sm text-base-content/70">
+                        {t("advanced.privacy.cookieBannersModeDescription")}
+                    </div>
+                </div>
             </CardContent>
         </Card>
     );

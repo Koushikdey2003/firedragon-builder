@@ -187,6 +187,8 @@ export const zAdvancedConfig = z.object({
   hidePasswdmgr: z.boolean(),
   disableIPv6: z.boolean(),
   xOriginPolicy: z.number(),
+  cookiebannersMode: z.number(),
+  cookiebannersModePb: z.number(),
   enableRFP: z.boolean(),
   enableLetterboxing: z.boolean(),
   disableWebGL: z.boolean(),

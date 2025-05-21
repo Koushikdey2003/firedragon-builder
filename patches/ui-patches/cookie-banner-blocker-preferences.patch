@@ -1,8 +1,8 @@
 diff --git a/browser/components/preferences/privacy.inc.xhtml b/browser/components/preferences/privacy.inc.xhtml
-index 686f6f861aa8..a9418a717feb 100644
+index 28e325c938..267b151f93 100644
 --- a/browser/components/preferences/privacy.inc.xhtml
 +++ b/browser/components/preferences/privacy.inc.xhtml
-@@ -58,6 +58,14 @@
+@@ -57,6 +57,14 @@
          </description>
        </vbox>
      </hbox>
@@ -17,20 +17,11 @@ index 686f6f861aa8..a9418a717feb 100644
      <hbox id="fpiIncompatibilityWarning" class="info-box-container" hidden="true">
        <vbox class="info-icon-container">
          <html:img class="info-icon"></html:img>
-@@ -520,7 +528,7 @@
-     </hbox>
-     <hbox>
-       <checkbox id="handleCookieBanners"
--                preference="cookiebanners.service.mode.privateBrowsing"
-+                preference="cookiebanners.service.mode"
-                 data-l10n-id="cookie-banner-blocker-checkbox-label"
-                 flex="1" />
-     </hbox>
 diff --git a/browser/components/preferences/privacy.js b/browser/components/preferences/privacy.js
-index 9a5051bdc259..ec600027e2e1 100644
+index 6b4ec7ab4e..1982dd7f87 100644
 --- a/browser/components/preferences/privacy.js
 +++ b/browser/components/preferences/privacy.js
-@@ -162,6 +162,7 @@ Preferences.addAll([
+@@ -164,6 +164,7 @@ Preferences.addAll([
  
    // Cookies
    { id: "network.cookie.cookieBehavior", type: "int" },
@@ -38,17 +29,15 @@ index 9a5051bdc259..ec600027e2e1 100644
    { id: "network.cookie.blockFutureCookies", type: "bool" },
    // Content blocking category
    { id: "browser.contentblocking.category", type: "string" },
-@@ -261,7 +262,9 @@ Preferences.addAll([
+@@ -263,6 +264,7 @@ Preferences.addAll([
  
    // Cookie Banner Handling
    { id: "cookiebanners.ui.desktop.enabled", type: "bool" },
 +  { id: "cookiebanners.service.mode", type: "int" },
    { id: "cookiebanners.service.mode.privateBrowsing", type: "int" },
-+  { id: "cookiebanners.service.detectOnly", type: "bool" },
  
    // DoH
-   { id: "network.trr.mode", type: "int" },
-@@ -351,6 +354,12 @@ function setUpContentBlockingWarnings() {
+@@ -352,6 +354,12 @@ function setUpContentBlockingWarnings() {
    document.getElementById("rfpIncompatibilityWarning").hidden =
      !Preferences.get("privacy.resistFingerprinting").value &&
      !Preferences.get("privacy.resistFingerprinting.pbmode").value;
@@ -61,7 +50,7 @@ index 9a5051bdc259..ec600027e2e1 100644
  }
  
  function initTCPStandardSection() {
-@@ -1424,6 +1433,23 @@ var gPrivacyPane = {
+@@ -1394,6 +1402,23 @@ var gPrivacyPane = {
        setUpContentBlockingWarnings
      );
  
@@ -85,76 +74,48 @@ index 9a5051bdc259..ec600027e2e1 100644
      setUpContentBlockingWarnings();
  
      initTCPStandardSection();
-@@ -2654,12 +2680,15 @@ var gPrivacyPane = {
+@@ -2608,9 +2633,6 @@ var gPrivacyPane = {
+       this.writeCookieBannerMode()
+     );
+ 
+-    let preference = Preferences.get("cookiebanners.ui.desktop.enabled");
+-    preference.on("change", () => this.updateCookieBannerHandlingVisibility());
+-
+     this.updateCookieBannerHandlingVisibility();
    },
  
-   /**
--   * Reads the cookiebanners.service.mode.privateBrowsing pref,
--   * interpreting the multiple modes as a true/false value
-+   * Reads the cookiebanners.service.mode and detectOnly preference value and
-+   * updates the cookie banner handling checkbox accordingly.
+@@ -2648,16 +2670,7 @@ var gPrivacyPane = {
+    * the "cookiebanners.ui.desktop.enabled" pref.
     */
-   readCookieBannerMode() {
-+    if (Preferences.get("cookiebanners.service.detectOnly").value) {
-+      return false;
-+    }
-     return (
--      Preferences.get("cookiebanners.service.mode.privateBrowsing").value !=
-+      Preferences.get("cookiebanners.service.mode").value !=
-       Ci.nsICookieBannerService.MODE_DISABLED
-     );
-   },
-@@ -2670,16 +2699,27 @@ var gPrivacyPane = {
-    */
-   writeCookieBannerMode() {
-     let checkbox = document.getElementById("handleCookieBanners");
--    if (!checkbox.checked) {
--      /* because we removed UI control for the non-PBM pref, disabling it here
--         provides an off-ramp for profiles where it had previously been enabled from the UI */
--      Services.prefs.setIntPref(
--        "cookiebanners.service.mode",
--        Ci.nsICookieBannerService.MODE_DISABLED
--      );
--      return Ci.nsICookieBannerService.MODE_DISABLED;
-+    let mode;
-+    if (checkbox.checked) {
-+      mode = Ci.nsICookieBannerService.MODE_REJECT;
-+
-+      // Also unset the detect-only mode pref, just in case the user enabled
-+      // the feature via about:preferences, not the onboarding doorhanger.
-+      Services.prefs.setBoolPref("cookiebanners.service.detectOnly", false);
-+    } else {
-+      mode = Ci.nsICookieBannerService.MODE_DISABLED;
-     }
--    return Ci.nsICookieBannerService.MODE_REJECT;
-+
-+    /**
-+     * There is a second service.mode pref for private browsing,
-+     * but for now we want it always be the same as service.mode
-+     * more info: https://bugzilla.mozilla.org/show_bug.cgi?id=1817201
-+     */
-+    Services.prefs.setIntPref(
-+      "cookiebanners.service.mode.privateBrowsing",
-+      mode
-+    );
-+    return mode;
+   updateCookieBannerHandlingVisibility() {
+-    let groupbox = document.getElementById("cookieBannerHandlingGroup");
+-    let isEnabled = Preferences.get("cookiebanners.ui.desktop.enabled").value;
+-
+-    // Because the top-level pane showing code unsets the hidden attribute, we
+-    // manually hide the section when cookie banner handling is preffed off.
+-    if (isEnabled) {
+-      groupbox.removeAttribute("style");
+-    } else {
+-      groupbox.setAttribute("style", "display: none !important");
+-    }
++    document.getElementById("cookieBannerHandlingGroup").hidden = true;
    },
  
    /**
 diff --git a/browser/locales/en-US/browser/preferences/preferences.ftl b/browser/locales/en-US/browser/preferences/preferences.ftl
-index cec78329c1d2..b8651de1b7e5 100644
+index 6b4ed8cb55..9f7de39e94 100644
 --- a/browser/locales/en-US/browser/preferences/preferences.ftl
 +++ b/browser/locales/en-US/browser/preferences/preferences.ftl
-@@ -1273,6 +1273,7 @@ content-blocking-fpi-incompatibility-warning = You are using First Party Isolati
+@@ -1290,6 +1290,7 @@ content-blocking-fpi-incompatibility-warning = You are using First Party Isolati
  # feature that can only be enabled via about:config, and it's not exposed to
  # standard users (e.g. via Settings).
  content-blocking-rfp-incompatibility-warning = You’re using Resist Fingerprinting (RFP), which replaces some of { -brand-short-name }’s fingerprinting protection settings. This might cause some sites to break.
-+content-blocking-cookie-blocker-incompatibility-warning = Blocking all cookies is incompatible with Cookie Banner Blocker. If you want to really block all cookies please disable the Cookie Banner Blocker.
++content-blocking-cookie-blocker-incompatibility-warning = Blocking all cookies is incompatible with Cookie Banner Blocker. If you want to really block all cookies please disable the Cookie Banner Blocker in FireDragon Hub.
  
  ## These strings are used to define the different levels of
  ## Enhanced Tracking Protection.
 diff --git a/browser/themes/shared/preferences/privacy.css b/browser/themes/shared/preferences/privacy.css
-index df31828aa15b..486b3b1a383b 100644
+index 4d0f6c26f5..3b65a1f362 100644
 --- a/browser/themes/shared/preferences/privacy.css
 +++ b/browser/themes/shared/preferences/privacy.css
 @@ -85,17 +85,20 @@
