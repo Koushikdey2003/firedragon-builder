@@ -6,8 +6,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/common/card.tsx";
-import { Separator } from "@/components/common/separator.tsx";
-import { SiGithub } from "@icons-pack/react-simple-icons";
+import { SiGitlab } from "@icons-pack/react-simple-icons";
 import { ExternalLink, Scale } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useConstantsData } from "./dataManager";
@@ -55,22 +54,9 @@ export default function Page() {
               </p>
             </div>
             <p>
-              Noraneko is a browser as testhead of Floorp 12. Floorp is based on
-              Firefox & Noraneko.
+              FireDragon is based on the excellent Floorp browser, featuring opinionated presets with a focus on privacy and speed.
             </p>
-            <p>Made by Noraneko Community with ❤</p>
           </CardContent>
-          <CardFooter>
-            <Button asChild>
-              <a
-                href="https://noraneko.example.com/about"
-                className="flex items-center gap-2"
-              >
-                {t("about.releaseNotes")}
-                <ExternalLink className="size-4" />
-              </a>
-            </Button>
-          </CardFooter>
         </Card>
 
         <Card>
@@ -102,13 +88,13 @@ export default function Page() {
             </Button>
             <Button asChild className="w-full">
               <a
-                href="https://github.com/Floorp-Projects/Floorp"
+                href="https://gitlab.com/garuda-linux/firedragon/firedragon12"
                 target="_blank"
                 className="flex items-center gap-2"
                 rel="noreferrer"
               >
-                <SiGithub className="size-4" />
-                GitHub Repository: Floorp-Projects/Floorp
+                <SiGitlab className="size-4" />
+                GitLab Repository: garuda-linux/firedragon/firedragon12
                 <ExternalLink className="size-4" />
               </a>
             </Button>
