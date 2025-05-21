@@ -462,9 +462,9 @@
             "header": "Browser Behaviour",
             "enableExtensionUpdate": "Update add-ons automatically",
             "enableExtensionUpdateDescription": "Keep extensions up to date without manual intervention. A good choice for your security. If you don't review the code of your extensions before every update, you should enable this option.",
-            "enableSync": "Enable FireDragon Sync",
-            "enableSyncDescription": "Sync your data with other browsers. Requires restart. FireDragon Sync encrypts data locally before transmitting it to the server.",
-            "enableSyncNeedsRestartDescription": "{{productName}}'s restart is required to completely enable or disable FireDragon Sync.",
+            "enableSync": "Enable {{productName}} Sync",
+            "enableSyncDescription": "Sync your data with other browsers. Requires restart. {{productName}} Sync encrypts data locally before transmitting it to the server.",
+            "enableSyncNeedsRestartDescription": "{{productName}}'s restart is required to completely enable or disable {{productName}} Sync.",
             "enableMiddlemousePaste": "Enable middle click paste",
             "enableMiddlemousePasteDescription": "Select some text to copy it, then paste it with a middle-mouse click.",
             "allowUserChromeCss": "Allow userChrome.css customization",
@@ -483,7 +483,7 @@
             "limitCrossOriginReferrers": "Limit cross-origin referrers",
             "limitCrossOriginReferrersDescription": "Send a referrer only on same-origin. This may cause breakage. Additionally, even when sent referrers will still be trimmed.",
             "cookieBannersMode": "Automatically refuse cookie banners",
-            "cookieBannersModeDescription": "When a site asks if they can use cookies, FireDragon automatically refuses for you. Only on supported sites. Not compatible with blocking all cookies / Strict-Mode."
+            "cookieBannersModeDescription": "When a site asks if they can use cookies, {{productName}} automatically refuses for you. Only on supported sites. Not compatible with blocking all cookies / Strict-Mode."
         },
         "broken": {
             "header": "Fingerprinting",
