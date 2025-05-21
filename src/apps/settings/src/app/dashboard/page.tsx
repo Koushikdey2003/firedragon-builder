@@ -181,7 +181,7 @@ export default function Page() {
           </CardContent>
           <CardFooter>
             <a
-              href="https://docs.floorp.app/docs/features/"
+              href="https://forum.garudalinux.org/c/issues-assistance/firedragon-browser-support/47"
               className="flex items-center gap-2"
             >
               <Button>
