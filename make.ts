@@ -191,7 +191,7 @@ try {
             throw `Unsupported architecture ${argv['arch']}, must be one of [${Object.keys(ARCHITECTURES).join(', ')}].`;
         }
 
-        const basename = `${edition.basename}-${version}`;
+        const basename = `${edition.basename}-v${version}`;
 
         const config: Config = {
             version,
