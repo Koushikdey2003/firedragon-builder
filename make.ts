@@ -17,7 +17,6 @@ async function applyPatches(target: string, ...patches: string[]): Promise<void>
 function parseArgv(argv: string[]) {
     return minimist(argv, {
         string: ['dist-dir', 'edition', 'arch'],
-        boolean: ['with-sccache'],
         unknown(arg) {
             if (arg.startsWith('-')) {
                 throw `Unknown arguments: ${arg}`
@@ -30,17 +29,14 @@ function parseArgv(argv: string[]) {
 
 interface Config {
     version: string;
+    tmpDir: string;
     distDir: string;
     edition: (typeof EDITIONS)[keyof typeof EDITIONS];
     basename: string
     arch: (typeof ARCHITECTURES)[keyof typeof ARCHITECTURES];
 }
 
-async function source(config: Config) {
-    const { distDir, edition, basename } = config;
-
-    const sourceDir = `${tmpDir}/${basename}`;
-
+async function getFloorpRuntime({ tmpDir }: Config): Promise<string> {
     const runtimeRelease: {
         tag_name: string,
         tarball_url: string,
@@ -51,7 +47,16 @@ async function source(config: Config) {
         await $`curl -L ${runtimeRelease.tarball_url} -o ${runtimeTarball}`
     }
 
+    return runtimeTarball;
+}
+
+async function source(config: Config) {
+    const { tmpDir, distDir, edition, basename } = config;
+
+    const sourceDir = `${tmpDir}/${basename}`;
+
     // Extract floorp runtime and inject this repo
+    const runtimeTarball = await getFloorpRuntime(config);
     await $`mkdir ${sourceDir}`;
     await $`tar -xf ${runtimeTarball} --strip-components=1 -C ${sourceDir}`;
     await $`rsync -a --delete --exclude=_dist --exclude=.dist --exclude=.git --exclude=.idea --exclude=node_modules --exclude=*.tar.xz ./ ${sourceDir}/floorp/`;
@@ -66,13 +71,13 @@ async function source(config: Config) {
     await $`echo ${version} > ${sourceDir}/browser/config/version_display.txt`;
 
     // Apply patches
-    await applyPatches(sourceDir, 'patches/**/*.patch');
+    await applyPatches(sourceDir, 'patches/{shared,packaging}/**/*.patch');
 
     await $`tar --zstd -cf ${distDir}/${basename}.source.tar.zst --exclude=.git -C ${tmpDir} ${basename}`;
 }
 
 async function build(config: Config) {
-    const { distDir, basename, arch } = config;
+    const { tmpDir, distDir, basename, arch } = config;
 
     const buildBasename = `${basename}.${arch.buildSuffix}`;
     const buildDir = `${tmpDir}/${buildBasename}`
@@ -82,6 +87,7 @@ async function build(config: Config) {
         await source(config);
     }
 
+    // Extract source
     await $`mkdir ${buildDir}`;
     await $`tar -xf ${sourceTarball} --strip-components=1 -C ${buildDir}`;
 
@@ -123,7 +129,7 @@ async function build(config: Config) {
 }
 
 async function appimage(config: Config) {
-    const { distDir, basename, arch } = config;
+    const { tmpDir, distDir, basename, arch } = config;
 
     const appimageBasename = `${basename}.${arch.appimageSuffix}`;
     const appimageDir = `${tmpDir}/${appimageBasename}`;
@@ -148,6 +154,52 @@ async function appimage(config: Config) {
     await $`${tmpDir}/appimagetool-x86_64.AppImage ${appimageDir} ${distDir}/${appimageBasename}.AppImage`;
 }
 
+async function buildDev(config: Config) {
+    const { tmpDir, distDir, edition, basename, arch } = config;
+
+    const buildDevBasename = `${basename}.${arch.buildDevSuffix}`
+    const buildDevDir = `${tmpDir}/${buildDevBasename}`;
+
+    // Extract floorp runtime and inject this repo
+    const runtimeTarball = await getFloorpRuntime(config);
+    await $`mkdir ${buildDevDir}`;
+    await $`tar -xf ${runtimeTarball} --strip-components=1 -C ${buildDevDir}`;
+    await $`rsync -a --delete --exclude=_dist --exclude=.dist --exclude=.git --exclude=.idea --exclude=node_modules --exclude=*.tar.xz ./ ${buildDevDir}/floorp/`;
+
+    // Copy branding
+    await $`cp -r gecko/branding/* ${buildDevDir}/browser/branding/`;
+
+    // Apply edition in default mozconfig
+    await $`sed -i -e 's/@BRANDING@/${edition.branding}/' -e 's/@THEME@/${edition.theme}/' ${buildDevDir}/floorp/gecko/mozconfig`;
+
+    // Set display version
+    await $`echo ${version} > ${buildDevDir}/browser/config/version_display.txt`;
+
+    // Apply patches
+    await applyPatches(buildDevDir, 'patches/{shared,dev}/**/*.patch', `${buildDevDir}/.github/patches/dev/**/*.patch`);
+
+    // Combine mozconfig
+    await $`cat ${buildDevDir}/floorp/gecko/mozconfig ${buildDevDir}/floorp/gecko/mozconfig.${arch.mozconfig} > ${buildDevDir}/mozconfig`;
+
+    // Run configure
+    await $`${buildDevDir}/mach configure --enable-chrome-format=flat`;
+
+    // Run build
+    await $`${buildDevDir}/mach build`;
+
+    // https://www.spinics.net/lists/git/msg391750.html
+    const objDistDir = `${buildDevDir}/obj-artifact-build-output/dist`;
+    await $`rsync -aL ${objDistDir}/bin/ ${objDistDir}/tmp__bin/`;
+    await $`rm -rf ${objDistDir}/bin`;
+    await $`mv ${objDistDir}/tmp__bin ${objDistDir}/bin`;
+
+    // Run package
+    await $`${buildDevDir}/mach package`;
+
+    // Package output archive
+    await $`tar --zstd -cf ${distDir}/${buildDevBasename}.tar.zst --exclude=pingsender -C ${objDistDir} firedragon`;
+}
+
 const EDITIONS = {
     dr640nized: {
         branding: 'firedragon',
@@ -165,6 +217,7 @@ const ARCHITECTURES = {
         mozconfig: 'linux-x86_64',
         buildSuffix: 'linux-x86_64',
         appimageSuffix: 'appimage-x86_64',
+        buildDevSuffix: 'linux-x86_64.dev',
     },
 };
 const { version } = packageJson;
@@ -195,6 +248,7 @@ try {
 
         const config: Config = {
             version,
+            tmpDir,
             distDir,
             edition,
             basename,
@@ -205,18 +259,18 @@ try {
             switch (command) {
                 case "source":
                     await source(config);
-
                     break;
                 case "build":
                     await build(config);
-
+                    break;
+                case "build-dev":
+                    await buildDev(config);
                     break;
                 case "appimage":
                     await appimage(config);
-
                     break;
                 default:
-                    throw `Unsupported command ${command}, must be one of [source, build, appimage]`;
+                    throw `Unsupported command ${command}, must be one of [source, build, appimage, build-dev]`;
             }
         }
 
