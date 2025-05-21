@@ -18,12 +18,12 @@ export const overrides = [
           ) as XULElement;
 
           if (IdentityIconLabel) {
-            IdentityIconLabel.setAttribute("value", "Floorp");
-            IdentityIconLabel.value = "Floorp";
-            IdentityIconLabel.textContent = "Floorp";
+            IdentityIconLabel.setAttribute("value", "FireDragon");
+            IdentityIconLabel.value = "FireDragon";
+            IdentityIconLabel.textContent = "FireDragon";
             IdentityIconLabel.setAttribute("collapsed", "false");
           } else {
-            console.log("Floorp: identity-icon label not found");
+            console.log("FireDragon: identity-icon label not found");
           }
         }, 20);
       },
