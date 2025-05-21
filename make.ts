@@ -40,7 +40,7 @@ async function getFloorpRuntime({ tmpDir }: Config): Promise<string> {
     const runtimeRelease: {
         tag_name: string,
         tarball_url: string,
-    } = await (await fetch('https://api.github.com/repos/Floorp-Projects/Floorp-12-runtime/releases/latest')).json() as any;
+    } = await (await fetch('https://api.github.com/repos/Floorp-Projects/Floorp-runtime/releases/latest')).json() as any;
     const runtimeTarball = `${tmpDir}/floorp-runtime-${runtimeRelease.tag_name}.tar.gz`;
 
     if (!await exists(runtimeTarball)) {
