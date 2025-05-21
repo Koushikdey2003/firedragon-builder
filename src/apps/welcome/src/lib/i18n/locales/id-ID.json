@@ -12,11 +12,11 @@
         "next": "Selanjutnya"
     },
     "customize": {
-        "title": "Sesuaikan Floorp",
-        "description": "Sesuaikan dengan kemauan Anda. Penyesuaian dapat diubah kapan pun melalui Floorp Hub atau halaman pengaturan.",
+        "title": "Sesuaikan {{productName}}",
+        "description": "Sesuaikan dengan kemauan Anda. Penyesuaian dapat diubah kapan pun melalui {{productName}} Hub atau halaman pengaturan.",
         "appearance": {
             "title": "Pengaturan Tampilan",
-            "description": "Anda dapat menyesuaikan tampilan Floorp sesuai keinginan Anda. Pilih tema tema atau gelap, atau jadikan tema menyesuaikan pengaturan sistem."
+            "description": "Anda dapat menyesuaikan tampilan {{productName}} sesuai keinginan Anda. Pilih tema tema atau gelap, atau jadikan tema menyesuaikan pengaturan sistem."
         },
         "themes": {
             "light": "Terang",
@@ -37,20 +37,20 @@
     },
     "finish": {
         "title": "Penyiapan Selesai!",
-        "subtitle": "Selamat! Anda telah selesai menyiapkan Floorp. Selamat meramban dengan aman dan nyaman!",
+        "subtitle": "Selamat! Anda telah selesai menyiapkan {{productName}}. Selamat meramban dengan aman dan nyaman!",
         "nextSteps": {
             "title": "Langkah Selanjutnya (Tak Wajib)",
             "setDefault": "Atur sebagai Peramban Utama",
             "documentation": "Dokumentasi"
         },
-        "getStarted": "Memulai dengan Floorp",
+        "getStarted": "Memulai dengan {{productName}}",
         "hint": "Untuk pengaturan yang lebih rinci, Anda dapat mengunjungi Pengaturan melalui tombol menu di kanan atas."
     },
     "welcomePage": {
-        "welcome": "Selamat datang di Floorp!",
-        "description": "Floorp adalah peramban web yang cepat dan ramah pengguna yang menekankan privasi dan keamanan. Panduan ini akan memperkenalkan Anda dengan fitur-fitur dan pengaturan utama Floorp.",
+        "welcome": "Selamat datang di {{productName}}!",
+        "description": "{{productName}} adalah peramban web yang cepat dan ramah pengguna yang menekankan privasi dan keamanan. Panduan ini akan memperkenalkan Anda dengan fitur-fitur dan pengaturan utama {{productName}}.",
         "readyToStart": "Jika siap, klik tombol di bawah untuk melanjutkan.",
-        "features": "Fitur Floorp",
+        "features": "Fitur {{productName}}",
         "privacy": "Privasi",
         "privacyDesc": "Melindungi data Anda",
         "speed": "Cepat",
@@ -60,28 +60,28 @@
         "start": "Memulai"
     },
     "localizationPage": {
-        "title": "Floorp dalam bahasa Anda",
+        "title": "{{productName}} dalam bahasa Anda",
         "subtitle": "Cek pengaturan bahasa dan ubahlah bila perlu",
         "languageSettings": "Pengaturan Bahasa",
         "languageChanged": "Bahasa Diubah!",
         "currentLanguageInfo": "Informasi Bahasa Saat Ini",
         "systemLanguage": "Bahasa Sistem",
-        "floorpLanguage": "Bahasa Floorp",
+        "{{productName}}Language": "Bahasa {{productName}}",
         "selectLanguage": "Pilih Bahasa",
         "useSystemLanguage": "Gunakan Bahasa Sistem",
         "multilingual": "Dukungan Multibahasa",
         "chooseLanguage": "Pilih dari berbagai macam bahasa",
-        "languageChangeNotice": "Mengubah bahasa akan menerapkan bahasa baru tersebut tanpa memulai ulang Floorp. Beberapa pengaya mungkin tidak mendukung perubahan bahasa."
+        "languageChangeNotice": "Mengubah bahasa akan menerapkan bahasa baru tersebut tanpa memulai ulang {{productName}}. Beberapa pengaya mungkin tidak mendukung perubahan bahasa."
     },
     "featuresPage": {
-        "title": "Fitur Utama Floorp",
-        "subtitle": "Floorp hadir dengan banyak fitur berguna. Lihat ringkasan fiturnya!",
+        "title": "Fitur Utama {{productName}}",
+        "subtitle": "{{productName}} hadir dengan banyak fitur berguna. Lihat ringkasan fiturnya!",
         "panelSidebar": {
             "title": "Bilah Sisi",
             "description": "Akses fitur-fitur dari bilah samping di sisi kanan selagi meramban. Anda bisa meletakkan panel web, pencatat, pengaya, markah, dll. di bilah samping.",
             "features": [
                 "Sematkan situs ke bilah sisi",
-                "Buat catatan dengan cepat menggunakan Catatan Floorp selagi meramban",
+                "Buat catatan dengan cepat menggunakan Catatan {{productName}} selagi meramban",
                 "Mendukung kontainer"
             ]
         },
@@ -117,14 +117,14 @@
     },
     "finishPage": {
         "title": "Penyiapan Selesai!",
-        "subtitle": "Selamat! Anda telah selesai menyiapkan Floorp. Selamat meramban dengan aman dan nyaman!",
+        "subtitle": "Selamat! Anda telah selesai menyiapkan {{productName}}. Selamat meramban dengan aman dan nyaman!",
         "nextSteps": "Langkah Selanjutnya (Tak Wajib)",
         "defaultBrowser": "Atur sebagai Peramban Utama",
         "support": "Dukungan",
         "documentation": "Dokumentasi",
-        "getStarted": "Memulai dengan Floorp",
+        "getStarted": "Memulai dengan {{productName}}",
         "hint": "Untuk pengaturan yang lebih rinci, Anda dapat mengunjungi Pengaturan melalui tombol menu di kanan atas.",
         "resourcesLabel": "Sumber-Sumber",
-        "defaultBrowserSuccess": "Floorp telah dijadikan peramban utama Anda!"
+        "defaultBrowserSuccess": "{{productName}} telah dijadikan peramban utama Anda!"
     }
 }

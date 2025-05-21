@@ -12,11 +12,11 @@
         "next": "Weiter"
     },
     "customize": {
-        "title": "Floorp anpassen",
-        "description": "Passen Sie die Einstellungen nach Ihren Wünschen an. Sie können sie später jederzeit über den Floorp Hub oder die Einstellungsseite ändern.",
+        "title": "{{productName}} anpassen",
+        "description": "Passen Sie die Einstellungen nach Ihren Wünschen an. Sie können sie später jederzeit über den {{productName}} Hub oder die Einstellungsseite ändern.",
         "appearance": {
             "title": "Anzeigeneinstellungen",
-            "description": "Sie können das Aussehen von Floorp nach Ihren Wünschen anpassen. Wählen Sie ein helles oder dunkles Design oder lassen Sie es automatisch auf Basis Ihrer Systemeinstellungen wechseln."
+            "description": "Sie können das Aussehen von {{productName}} nach Ihren Wünschen anpassen. Wählen Sie ein helles oder dunkles Design oder lassen Sie es automatisch auf Basis Ihrer Systemeinstellungen wechseln."
         },
         "themes": {
             "light": "Hell",
@@ -37,20 +37,20 @@
     },
     "finish": {
         "title": "Konfiguration abgeschlossen!",
-        "subtitle": "Herzlichen Glückwunsch! Sie haben die Einrichtung von Floorp abgeschlossen. Genießen Sie ein komfortables und sicheres Internet-Browsing-Erlebnis.",
+        "subtitle": "Herzlichen Glückwunsch! Sie haben die Einrichtung von {{productName}} abgeschlossen. Genießen Sie ein komfortables und sicheres Internet-Browsing-Erlebnis.",
         "nextSteps": {
             "title": "Nächste Schritte (optional)",
             "setDefault": "Als Standardbrowser festlegen",
             "documentation": "Dokumentation"
         },
-        "getStarted": "Erste Schritte mit Floorp",
+        "getStarted": "Erste Schritte mit {{productName}}",
         "hint": "Für detailliertere Einstellungen können Sie über die Option Einstellungen in der Menü-Taste oben rechts anpassen."
     },
     "welcomePage": {
-        "welcome": "Willkommen bei Floorp!",
-        "description": "Floorp ist ein schneller und benutzerfreundlicher Webbrowser, bei dem Privatsphäre und Sicherheit im Vordergrund steht. Diese Anleitung führt Sie zu den wichtigsten Funktionen und Einstellungen von Floorp.",
+        "welcome": "Willkommen bei {{productName}}!",
+        "description": "{{productName}} ist ein schneller und benutzerfreundlicher Webbrowser, bei dem Privatsphäre und Sicherheit im Vordergrund steht. Diese Anleitung führt Sie zu den wichtigsten Funktionen und Einstellungen von {{productName}}.",
         "readyToStart": "Wenn Sie bereit sind, klicken Sie auf die Schaltfläche unten, um fortzufahren.",
-        "features": "Floorp Funktionen",
+        "features": "{{productName}} Funktionen",
         "privacy": "Privatsphäre",
         "privacyDesc": "Schützen Sie Ihre Daten",
         "speed": "Geschwindigkeit",
@@ -60,28 +60,28 @@
         "start": "Erste Schritte"
     },
     "localizationPage": {
-        "title": "Floorp spricht Ihre Sprache",
+        "title": "{{productName}} spricht Ihre Sprache",
         "subtitle": "Spracheinstellungen überprüfen und bei Bedarf ändern",
         "languageSettings": "Spracheinstellungen",
         "languageChanged": "Sprache geändert!",
         "currentLanguageInfo": "Aktuelle Sprachinformationen",
         "systemLanguage": "Systemsprache",
-        "floorpLanguage": "Floorp Sprache",
+        "{{productName}}Language": "{{productName}} Sprache",
         "selectLanguage": "Sprache auswählen",
         "useSystemLanguage": "Systemsprache verwenden",
         "multilingual": "Mehrsprachige Unterstützung",
         "chooseLanguage": "Wählen Sie aus einer Vielzahl von Sprachen",
-        "languageChangeNotice": "Wenn Sie die Sprache ändern, wird die neue Sprache übernommen, ohne dass Floorp neu gestartet werden muss. Einige Add-ons unterstützen möglicherweise keine Sprachänderungen."
+        "languageChangeNotice": "Wenn Sie die Sprache ändern, wird die neue Sprache übernommen, ohne dass {{productName}} neu gestartet werden muss. Einige Add-ons unterstützen möglicherweise keine Sprachänderungen."
     },
     "featuresPage": {
-        "title": "Floorp Hauptfunktionen",
-        "subtitle": "Floorp verfügt über viele nützliche Funktionen. Sehen Sie sich die Funktionsübersicht an!",
+        "title": "{{productName}} Hauptfunktionen",
+        "subtitle": "{{productName}} verfügt über viele nützliche Funktionen. Sehen Sie sich die Funktionsübersicht an!",
         "panelSidebar": {
             "title": "Panel Seitenleiste",
             "description": "Greifen Sie beim Surfen über die rechte Seitenleiste auf praktische Funktionen zu. Sie können Webpanels, Notizfunktionen, Add-ons, Lesezeichen usw. in der Seitenleiste platzieren.",
             "features": [
                 "Websites an die Seitenleiste anheften",
-                "Schreibe schnell Notizen mit Floorp Notizen beim Surfen",
+                "Schreibe schnell Notizen mit {{productName}} Notizen beim Surfen",
                 "Unterstützt Container"
             ]
         },
@@ -117,14 +117,14 @@
     },
     "finishPage": {
         "title": "Konfiguration abgeschlossen!",
-        "subtitle": "Herzlichen Glückwunsch! Sie haben die Einrichtung von Floorp abgeschlossen. Genießen Sie ein komfortables und sicheres Internet-Browsing-Erlebnis.",
+        "subtitle": "Herzlichen Glückwunsch! Sie haben die Einrichtung von {{productName}} abgeschlossen. Genießen Sie ein komfortables und sicheres Internet-Browsing-Erlebnis.",
         "nextSteps": "Nächste Schritte (optional)",
         "defaultBrowser": "Als Standardbrowser festlegen",
         "support": "Support",
         "documentation": "Dokumentation",
-        "getStarted": "Erste Schritte mit Floorp",
+        "getStarted": "Erste Schritte mit {{productName}}",
         "hint": "Für detailliertere Einstellungen können Sie über die Option Einstellungen in der Menü-Taste oben rechts anpassen.",
         "resourcesLabel": "Ressourcen",
-        "defaultBrowserSuccess": "Floorp wurde als Ihr Standardbrowser festgelegt!"
+        "defaultBrowserSuccess": "{{productName}} wurde als Ihr Standardbrowser festgelegt!"
     }
 }

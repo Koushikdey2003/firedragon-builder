@@ -12,11 +12,11 @@
         "next": "Sıradaki"
     },
     "customize": {
-        "title": "Floorp'u Kişiselleştirin",
-        "description": "Tercih ettiğiniz ayarlara göre kişiselleştirin. Bunları daha sonra Floorp Hub veya ayarlar sayfasından her zaman değiştirebilirsiniz.",
+        "title": "{{productName}}'u Kişiselleştirin",
+        "description": "Tercih ettiğiniz ayarlara göre kişiselleştirin. Bunları daha sonra {{productName}} Hub veya ayarlar sayfasından her zaman değiştirebilirsiniz.",
         "appearance": {
             "title": "Görünüm Ayarları",
-            "description": "Floorp'un görünümünü tercihinize göre kişiselleştirebilirsiniz. Açık veya koyu bir tema seçin ya da sistem ayarlarınıza göre otomatik olarak geçiş yapmasını sağlayın."
+            "description": "{{productName}}'un görünümünü tercihinize göre kişiselleştirebilirsiniz. Açık veya koyu bir tema seçin ya da sistem ayarlarınıza göre otomatik olarak geçiş yapmasını sağlayın."
         },
         "themes": {
             "light": "Aydınlık",
@@ -37,20 +37,20 @@
     },
     "finish": {
         "title": "Kurulum Tamamlandı!",
-        "subtitle": "Tebrikler! Floorp kurulumunu tamamladınız. Rahat ve güvenli bir internet tarama deneyiminin keyfini çıkarın.",
+        "subtitle": "Tebrikler! {{productName}} kurulumunu tamamladınız. Rahat ve güvenli bir internet tarama deneyiminin keyfini çıkarın.",
         "nextSteps": {
             "title": "Sonraki Adımlar (İsteğe Bağlı)",
             "setDefault": "Varsayılan Tarayıcı Olarak Ayarla",
             "documentation": "Dokümantasyon"
         },
-        "getStarted": "Floorp ile Başlayın",
+        "getStarted": "{{productName}} ile Başlayın",
         "hint": "Daha ayrıntılı ayarlar için, sağ üstteki menü düğmesindeki Ayarlar seçeneği aracılığıyla özelleştirebilirsiniz."
     },
     "welcomePage": {
-        "welcome": "Floorp'a hoş geldiniz!",
-        "description": "Floorp, gizlilik ve güvenliği vurgulayan hızlı ve kullanıcı dostu bir web tarayıcısıdır. Bu kılavuz size Floorp'un ana özelliklerini ve ayarlarını tanıtacaktır.",
+        "welcome": "{{productName}}'a hoş geldiniz!",
+        "description": "{{productName}}, gizlilik ve güvenliği vurgulayan hızlı ve kullanıcı dostu bir web tarayıcısıdır. Bu kılavuz size {{productName}}'un ana özelliklerini ve ayarlarını tanıtacaktır.",
         "readyToStart": "Hazır olduğunuzda, devam etmek için aşağıdaki düğmeye tıklayın.",
-        "features": "Floorp Özellikleri",
+        "features": "{{productName}} Özellikleri",
         "privacy": "Gizlilik",
         "privacyDesc": "Verilerinizi korur",
         "speed": "Hız",
@@ -60,28 +60,28 @@
         "start": "Başlayın"
     },
     "localizationPage": {
-        "title": "Floorp sizin dilinizi konuşur",
+        "title": "{{productName}} sizin dilinizi konuşur",
         "subtitle": "Dil ayarlarını kontrol edin ve gerekirse değiştirin",
         "languageSettings": "Dil Ayarları",
         "languageChanged": "Dil Değişti!",
         "currentLanguageInfo": "Güncel Dil Bilgileri",
         "systemLanguage": "Sistem Dili",
-        "floorpLanguage": "Floorp Dili",
+        "{{productName}}Language": "{{productName}} Dili",
         "selectLanguage": "Dil Seçiniz",
         "useSystemLanguage": "Sistem Dilini Kullanın",
         "multilingual": "Çoklu dil desteği",
         "chooseLanguage": "Çok çeşitli diller arasından seçim yapın",
-        "languageChangeNotice": "Dili değiştirmek, Floorp'u yeniden başlatmaya gerek duymadan seçilen dili uygulayacaktır. Bazı eklentiler dil değişikliklerini desteklemeyebilir."
+        "languageChangeNotice": "Dili değiştirmek, {{productName}}'u yeniden başlatmaya gerek duymadan seçilen dili uygulayacaktır. Bazı eklentiler dil değişikliklerini desteklemeyebilir."
     },
     "featuresPage": {
-        "title": "Floorp'un Ana Özellikleri",
-        "subtitle": "Floorp birçok kullanışlı özellikle birlikte gelir. Onlara bir göz atın!",
+        "title": "{{productName}}'un Ana Özellikleri",
+        "subtitle": "{{productName}} birçok kullanışlı özellikle birlikte gelir. Onlara bir göz atın!",
         "panelSidebar": {
             "title": "Panel Kenar Çubuğu",
             "description": "Gezinirken sağ taraftaki kenar çubuğundan kullanışlı özelliklere erişin. Kenar çubuğuna web panelleri, not alma işlevleri, eklentiler, yer imleri vb. yerleştirebilirsiniz.",
             "features": [
                 "Web sitelerini kenar çubuğuna sabitleyin",
-                "Arama yaparken Floorp Notlar ile hızlıca not alın",
+                "Arama yaparken {{productName}} Notlar ile hızlıca not alın",
                 "Kapsayıcıları destekler"
             ]
         },
@@ -117,14 +117,14 @@
     },
     "finishPage": {
         "title": "Kurulum Tamamlandı!",
-        "subtitle": "Tebrikler! Floorp kurulumunu tamamladınız. Rahat ve güvenli bir internet tarama deneyiminin keyfini çıkarın.",
+        "subtitle": "Tebrikler! {{productName}} kurulumunu tamamladınız. Rahat ve güvenli bir internet tarama deneyiminin keyfini çıkarın.",
         "nextSteps": "Sonraki Adımlar (İsteğe Bağlı)",
         "defaultBrowser": "Varsayılan Tarayıcı Olarak Ayarla",
         "support": "Destek",
         "documentation": "Dokümantasyon",
-        "getStarted": "Floorp ile Başlayın",
+        "getStarted": "{{productName}} ile Başlayın",
         "hint": "Daha detaylı ayarlar için, sağ üstteki menü düğmesindeki Ayarlar kısmını kullanabilirsiniz.",
         "resourcesLabel": "Kaynaklar",
-        "defaultBrowserSuccess": "Floorp varsayılan tarayıcınız olarak ayarlandı!"
+        "defaultBrowserSuccess": "{{productName}} varsayılan tarayıcınız olarak ayarlandı!"
     }
 }

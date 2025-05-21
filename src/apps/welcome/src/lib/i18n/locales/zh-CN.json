@@ -12,11 +12,11 @@
         "next": "Next"
     },
     "customize": {
-        "title": "Customize Floorp",
-        "description": "Customize to your preferred settings. You can always change them later from the Floorp Hub or settings page.",
+        "title": "Customize {{productName}}",
+        "description": "Customize to your preferred settings. You can always change them later from the {{productName}} Hub or settings page.",
         "appearance": {
             "title": "外观设置",
-            "description": "You can customize Floorp's appearance to your preference. Choose a light or dark theme, or have it automatically switch based on your system settings."
+            "description": "You can customize {{productName}}'s appearance to your preference. Choose a light or dark theme, or have it automatically switch based on your system settings."
         },
         "themes": {
             "light": "Light",
@@ -37,20 +37,20 @@
     },
     "finish": {
         "title": "设置已完成！",
-        "subtitle": "Congratulations! You've completed the Floorp setup. Enjoy a comfortable and secure internet browsing experience.",
+        "subtitle": "Congratulations! You've completed the {{productName}} setup. Enjoy a comfortable and secure internet browsing experience.",
         "nextSteps": {
             "title": "下一步（可选）",
             "setDefault": "Set as Default Browser",
             "documentation": "文档"
         },
-        "getStarted": "开始使用 Floorp",
+        "getStarted": "开始使用 {{productName}}",
         "hint": "For more detailed settings, you can customize via the Settings option in the menu button at the top right."
     },
     "welcomePage": {
-        "welcome": "欢迎来到 Floorp！",
-        "description": "Floorp is a fast and user-friendly web browser that emphasizes privacy and security. This guide will introduce you to the main features and settings of Floorp.",
+        "welcome": "欢迎来到 {{productName}}！",
+        "description": "{{productName}} is a fast and user-friendly web browser that emphasizes privacy and security. This guide will introduce you to the main features and settings of {{productName}}.",
         "readyToStart": "When you're ready, click the below button to proceed.",
-        "features": "Floorp 特性",
+        "features": "{{productName}} 特性",
         "privacy": "隐私政策",
         "privacyDesc": "Protects your data",
         "speed": "速度",
@@ -60,28 +60,28 @@
         "start": "开始使用"
     },
     "localizationPage": {
-        "title": "Floorp speaks your language",
+        "title": "{{productName}} speaks your language",
         "subtitle": "Check language settings and change if needed",
         "languageSettings": "语言设置",
         "languageChanged": "语言已更改！",
         "currentLanguageInfo": "当前语言信息",
         "systemLanguage": "系统语言",
-        "floorpLanguage": "Floorp 语言",
+        "{{productName}}Language": "{{productName}} 语言",
         "selectLanguage": "选择语言",
         "useSystemLanguage": "跟随系统语言",
         "multilingual": "Multilingual Support",
         "chooseLanguage": "Choose from a wide range of languages",
-        "languageChangeNotice": "Changing language will apply the new language without restarting Floorp. Some add-ons may not support language changes."
+        "languageChangeNotice": "Changing language will apply the new language without restarting {{productName}}. Some add-ons may not support language changes."
     },
     "featuresPage": {
-        "title": "Main Floorp Features",
-        "subtitle": "Floorp comes with many useful features. Check out the feature overview!",
+        "title": "Main {{productName}} Features",
+        "subtitle": "{{productName}} comes with many useful features. Check out the feature overview!",
         "panelSidebar": {
             "title": "Panel Sidebar",
             "description": "Access convenient features from the sidebar on the right while browsing. You can place web panels, note-taking functions, add-ons, bookmarks, etc. in the sidebar.",
             "features": [
                 "Pin websites to the sidebar",
-                "Quickly take notes with Floorp Notes while browsing",
+                "Quickly take notes with {{productName}} Notes while browsing",
                 "Supports containers"
             ]
         },
@@ -117,14 +117,14 @@
     },
     "finishPage": {
         "title": "设置已完成！",
-        "subtitle": "Congratulations! You've completed the Floorp setup. You can now enjoy comfortable and secure internet browsing.",
+        "subtitle": "Congratulations! You've completed the {{productName}} setup. You can now enjoy comfortable and secure internet browsing.",
         "nextSteps": "下一步（可选）",
         "defaultBrowser": "设置为默认浏览器",
         "support": "支持",
         "documentation": "文档",
-        "getStarted": "开始使用 Floorp",
+        "getStarted": "开始使用 {{productName}}",
         "hint": "For more detailed settings, you can customize via the Settings option in the menu button at the top right.",
         "resourcesLabel": "资源",
-        "defaultBrowserSuccess": "Floorp 已被设置为您的默认浏览器！"
+        "defaultBrowserSuccess": "{{productName}} 已被设置为您的默认浏览器！"
     }
 }

@@ -12,11 +12,11 @@
         "next": "次へ"
     },
     "customize": {
-        "title": "Floorp をカスタマイズ",
-        "description": "お好きな設定にカスタマイズしましょう。 Floorp Hub や設定ページからいつでも変更できます。",
+        "title": "{{productName}} をカスタマイズ",
+        "description": "お好きな設定にカスタマイズしましょう。 {{productName}} Hub や設定ページからいつでも変更できます。",
         "appearance": {
             "title": "外観の設定",
-            "description": "Floorp の外観はお好みに合わせてカスタマイズできます。ライトテーマとダークテーマから選択することも、システムの設定に基づいて自動的に切り替えることもできます。"
+            "description": "{{productName}} の外観はお好みに合わせてカスタマイズできます。ライトテーマとダークテーマから選択することも、システムの設定に基づいて自動的に切り替えることもできます。"
         },
         "themes": {
             "light": "ライト",
@@ -37,20 +37,20 @@
     },
     "finish": {
         "title": "セットアップ完了！",
-        "subtitle": "おめでとうございます！ Floorp の設定が完了しました。快適で安全なブラウジングをお楽しみください。",
+        "subtitle": "おめでとうございます！ {{productName}} の設定が完了しました。快適で安全なブラウジングをお楽しみください。",
         "nextSteps": {
             "title": "次のステップ (任意)",
             "setDefault": "デフォルトウェブブラウザーに設定",
             "documentation": "ドキュメント"
         },
-        "getStarted": "Floorp に飛び込もう",
+        "getStarted": "{{productName}} に飛び込もう",
         "hint": "より詳細な設定は、右上のメニューボタンの中にある \"設定\" からいつでもアクセスできます。"
     },
     "welcomePage": {
-        "welcome": "Floorp へようこそ！",
-        "description": "Floorp は、プライバシーとセキュリティに配慮した、高速でユーザーフレンドリーなウェブブラウザーです。このガイドでは、 Floorp の主な機能と設定をご紹介します。",
+        "welcome": "{{productName}} へようこそ！",
+        "description": "{{productName}} は、プライバシーとセキュリティに配慮した、高速でユーザーフレンドリーなウェブブラウザーです。このガイドでは、 {{productName}} の主な機能と設定をご紹介します。",
         "readyToStart": "準備ができたら、下のボタンをクリックして進みましょう。",
-        "features": "Floorp の機能",
+        "features": "{{productName}} の機能",
         "privacy": "プライバシー",
         "privacyDesc": "データを保護",
         "speed": "速度",
@@ -60,28 +60,28 @@
         "start": "始めましょう！"
     },
     "localizationPage": {
-        "title": "Floorp はあなたの言語を話します",
+        "title": "{{productName}} はあなたの言語を話します",
         "subtitle": "言語設定を確認し、必要に応じて変更しましょう",
         "languageSettings": "言語の設定",
         "languageChanged": "言語を変更しました！",
         "currentLanguageInfo": "現在の言語情報",
         "systemLanguage": "システムの言語",
-        "floorpLanguage": "Floorp の言語",
+        "{{productName}}Language": "{{productName}} の言語",
         "selectLanguage": "言語を選択",
         "useSystemLanguage": "システムの言語を使用",
         "multilingual": "多言語サポート",
         "chooseLanguage": "幅広い言語から選択できます",
-        "languageChangeNotice": "選択した言語は、 Floorp を再起動する必要なく即座に適用されます。アドオンによっては言語の変更に対応していない場合があります。"
+        "languageChangeNotice": "選択した言語は、 {{productName}} を再起動する必要なく即座に適用されます。アドオンによっては言語の変更に対応していない場合があります。"
     },
     "featuresPage": {
-        "title": "主な Floorp の機能",
-        "subtitle": "Floorp には便利な機能がたくさんあります。その一部をご覧ください！",
+        "title": "主な {{productName}} の機能",
+        "subtitle": "{{productName}} には便利な機能がたくさんあります。その一部をご覧ください！",
         "panelSidebar": {
             "title": "パネルサイドバー",
             "description": "ブラウジング中、右側のサイドバーから便利な機能にアクセス。サイドバーには、ウェブパネル、メモ機能、アドオン、ブックマークなどを配置できます。",
             "features": [
                 "ウェブサイトをサイドバーにピン留め",
-                "ブラウジング中に Floorp Notes で素早くメモを取る",
+                "ブラウジング中に {{productName}} Notes で素早くメモを取る",
                 "コンテナーに対応"
             ]
         },
@@ -117,14 +117,14 @@
     },
     "finishPage": {
         "title": "セットアップ完了！",
-        "subtitle": "おめでとうございます！ Floorp の設定が完了しました。快適で安全なブラウジングをお楽しみください。",
+        "subtitle": "おめでとうございます！ {{productName}} の設定が完了しました。快適で安全なブラウジングをお楽しみください。",
         "nextSteps": "次のステップ (任意)",
         "defaultBrowser": "デフォルトウェブブラウザーに設定",
         "support": "サポート",
         "documentation": "ドキュメント",
-        "getStarted": "Floorp に飛び込もう",
+        "getStarted": "{{productName}} に飛び込もう",
         "hint": "より詳細な設定は、右上のメニューボタンの中にある \"設定\" からいつでもアクセスできます。",
         "resourcesLabel": "リソース",
-        "defaultBrowserSuccess": "Floorp がデフォルトウェブブラウザーに設定されました！"
+        "defaultBrowserSuccess": "{{productName}} がデフォルトウェブブラウザーに設定されました！"
     }
 }

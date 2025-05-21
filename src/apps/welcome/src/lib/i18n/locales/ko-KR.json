@@ -12,11 +12,11 @@
         "next": "다음"
     },
     "customize": {
-        "title": "Floorp 맞춤 설정",
-        "description": "원하는 설정으로 맞춤 설정합니다. 나중에 Floorp 허브 또는 설정 페이지에서 언제든지 변경할 수 있습니다.",
+        "title": "{{productName}} 맞춤 설정",
+        "description": "원하는 설정으로 맞춤 설정합니다. 나중에 {{productName}} 허브 또는 설정 페이지에서 언제든지 변경할 수 있습니다.",
         "appearance": {
             "title": "모양 설정",
-            "description": "원하는 대로 Floorp의 모양을 맞춤 설정할 수 있습니다. 밝거나 어두운 테마를 선택하거나 시스템 설정에 따라 자동으로 전환되도록 설정할 수 있습니다."
+            "description": "원하는 대로 {{productName}}의 모양을 맞춤 설정할 수 있습니다. 밝거나 어두운 테마를 선택하거나 시스템 설정에 따라 자동으로 전환되도록 설정할 수 있습니다."
         },
         "themes": {
             "light": "밝음",
@@ -37,20 +37,20 @@
     },
     "finish": {
         "title": "설정이 완료되었습니다!",
-        "subtitle": "축하합니다! Floorp 설정을 완료했습니다. 빠르고 안전한 인터넷 브라우저 환경을 즐기세요.",
+        "subtitle": "축하합니다! {{productName}} 설정을 완료했습니다. 빠르고 안전한 인터넷 브라우저 환경을 즐기세요.",
         "nextSteps": {
             "title": "다음 단계 (선택적)",
             "setDefault": "기본 브라우저로 설정",
             "documentation": "Documentation"
         },
-        "getStarted": "Floorp 시작하기",
+        "getStarted": "{{productName}} 시작하기",
         "hint": "For more detailed settings, you can customize via the Settings option in the menu button at the top right."
     },
     "welcomePage": {
-        "welcome": "Floorp에 오신 것을 환영합니다!",
-        "description": "Floorp is a fast and user-friendly web browser that emphasizes privacy and security. This guide will introduce you to the main features and settings of Floorp.",
+        "welcome": "{{productName}}에 오신 것을 환영합니다!",
+        "description": "{{productName}} is a fast and user-friendly web browser that emphasizes privacy and security. This guide will introduce you to the main features and settings of {{productName}}.",
         "readyToStart": "When you're ready, click the below button to proceed.",
-        "features": "Floorp Features",
+        "features": "{{productName}} Features",
         "privacy": "Privacy",
         "privacyDesc": "Protects your data",
         "speed": "Speed",
@@ -60,28 +60,28 @@
         "start": "Get Started"
     },
     "localizationPage": {
-        "title": "Floorp speaks your language",
+        "title": "{{productName}} speaks your language",
         "subtitle": "Check language settings and change if needed",
         "languageSettings": "Language Settings",
         "languageChanged": "Language Changed!",
         "currentLanguageInfo": "Current Language Information",
         "systemLanguage": "시스템 언어",
-        "floorpLanguage": "Floorp 언어",
+        "{{productName}}Language": "{{productName}} 언어",
         "selectLanguage": "언어 선택",
         "useSystemLanguage": "Use System Language",
         "multilingual": "Multilingual Support",
         "chooseLanguage": "Choose from a wide range of languages",
-        "languageChangeNotice": "Changing language will apply the new language without restarting Floorp. Some add-ons may not support language changes."
+        "languageChangeNotice": "Changing language will apply the new language without restarting {{productName}}. Some add-ons may not support language changes."
     },
     "featuresPage": {
-        "title": "Main Floorp Features",
-        "subtitle": "Floorp comes with many useful features. Check out the feature overview!",
+        "title": "Main {{productName}} Features",
+        "subtitle": "{{productName}} comes with many useful features. Check out the feature overview!",
         "panelSidebar": {
             "title": "Panel Sidebar",
             "description": "Access convenient features from the sidebar on the right while browsing. You can place web panels, note-taking functions, add-ons, bookmarks, etc. in the sidebar.",
             "features": [
                 "Pin websites to the sidebar",
-                "Quickly take notes with Floorp Notes while browsing",
+                "Quickly take notes with {{productName}} Notes while browsing",
                 "Supports containers"
             ]
         },
@@ -117,14 +117,14 @@
     },
     "finishPage": {
         "title": "Setup Complete!",
-        "subtitle": "Congratulations! You've completed the Floorp setup. You can now enjoy comfortable and secure internet browsing.",
+        "subtitle": "Congratulations! You've completed the {{productName}} setup. You can now enjoy comfortable and secure internet browsing.",
         "nextSteps": "Next Steps (Optional)",
         "defaultBrowser": "Set as Default Browser",
         "support": "Support",
         "documentation": "Documentation",
-        "getStarted": "Get Started with Floorp",
+        "getStarted": "Get Started with {{productName}}",
         "hint": "For more detailed settings, you can customize via the Settings option in the menu button at the top right.",
         "resourcesLabel": "Resources",
-        "defaultBrowserSuccess": "Floorp has been set as your default browser!"
+        "defaultBrowserSuccess": "{{productName}} has been set as your default browser!"
     }
 }

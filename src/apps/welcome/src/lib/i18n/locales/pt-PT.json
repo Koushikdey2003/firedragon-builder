@@ -12,11 +12,11 @@
         "next": "Seguinte"
     },
     "customize": {
-        "title": "Personalizar Floorp",
-        "description": "Personalize com as suas definições preferidas. Pode sempre alterá-las mais tarde a partir do Floorp Hub ou da página de definições.",
+        "title": "Personalizar {{productName}}",
+        "description": "Personalize com as suas definições preferidas. Pode sempre alterá-las mais tarde a partir do {{productName}} Hub ou da página de definições.",
         "appearance": {
             "title": "Definições de aparência",
-            "description": "Pode personalizar o aspeto do Floorp de acordo com as suas preferências. Escolha um tema claro ou escuro, ou faça-o mudar automaticamente com base nas definições do sistema."
+            "description": "Pode personalizar o aspeto do {{productName}} de acordo com as suas preferências. Escolha um tema claro ou escuro, ou faça-o mudar automaticamente com base nas definições do sistema."
         },
         "themes": {
             "light": "Claro",
@@ -37,20 +37,20 @@
     },
     "finish": {
         "title": "Configuração concluída!",
-        "subtitle": "Parabéns! Concluiu a configuração do Floorp. Desfrute de uma experiência de navegação na Internet confortável e segura.",
+        "subtitle": "Parabéns! Concluiu a configuração do {{productName}}. Desfrute de uma experiência de navegação na Internet confortável e segura.",
         "nextSteps": {
             "title": "Próximas etapas (opcional)",
             "setDefault": "Definir como navegador predefinido",
             "documentation": "Documentação"
         },
-        "getStarted": "Começar a utilizar o Floorp",
+        "getStarted": "Começar a utilizar o {{productName}}",
         "hint": "Para obter definições mais detalhadas, pode personalizar através da opção Definições no botão de menu no canto superior direito."
     },
     "welcomePage": {
-        "welcome": "Bem-vindo ao Floorp!",
-        "description": "O Floorp é um navegador Web rápido e fácil de utilizar que privilegia a privacidade e a segurança. Este guia irá apresentar-lhe as principais caraterísticas e definições do Floorp.",
+        "welcome": "Bem-vindo ao {{productName}}!",
+        "description": "O {{productName}} é um navegador Web rápido e fácil de utilizar que privilegia a privacidade e a segurança. Este guia irá apresentar-lhe as principais caraterísticas e definições do {{productName}}.",
         "readyToStart": "Quando estiver pronto, clique no botão abaixo para prosseguir.",
-        "features": "Características do Floorp",
+        "features": "Características do {{productName}}",
         "privacy": "Privacidade",
         "privacyDesc": "Protege os seus dados",
         "speed": "Velocidade",
@@ -60,28 +60,28 @@
         "start": "Vamos começar"
     },
     "localizationPage": {
-        "title": "A Floorp fala a sua língua",
+        "title": "A {{productName}} fala a sua língua",
         "subtitle": "Verifique as definições de idioma e altere se necessário",
         "languageSettings": "Definições de idioma",
         "languageChanged": "Idioma alterado!",
         "currentLanguageInfo": "Informações sobre a língua atual",
         "systemLanguage": "Língua do sistema",
-        "floorpLanguage": "Idioma do Floorp",
+        "{{productName}}Language": "Idioma do {{productName}}",
         "selectLanguage": "Selecionar idioma",
         "useSystemLanguage": "Usar idioma do sistema",
         "multilingual": "Suporte multilingue",
         "chooseLanguage": "Escolha entre uma vasta gama de línguas",
-        "languageChangeNotice": "A alteração do idioma aplicará o novo idioma sem reiniciar o Floorp. Alguns add-ons podem não suportar alterações de idioma."
+        "languageChangeNotice": "A alteração do idioma aplicará o novo idioma sem reiniciar o {{productName}}. Alguns add-ons podem não suportar alterações de idioma."
     },
     "featuresPage": {
-        "title": "Características principais do Floorp",
-        "subtitle": "O Floorp inclui muitas funcionalidades úteis. Veja o resumo das funcionalidades!",
+        "title": "Características principais do {{productName}}",
+        "subtitle": "O {{productName}} inclui muitas funcionalidades úteis. Veja o resumo das funcionalidades!",
         "panelSidebar": {
             "title": "Painel Barra lateral",
             "description": "Aceda a funcionalidades convenientes a partir da barra lateral à direita enquanto navega. Pode colocar painéis Web, funções de tomada de notas, add-ons, marcadores, etc. na barra lateral.",
             "features": [
                 "Fixar sites na barra lateral",
-                "Tome notas rapidamente com o Floorp Notes enquanto navega",
+                "Tome notas rapidamente com o {{productName}} Notes enquanto navega",
                 "Suporta contentores"
             ]
         },
@@ -117,14 +117,14 @@
     },
     "finishPage": {
         "title": "Configuração concluída!",
-        "subtitle": "Parabéns! Concluiu a configuração do Floorp. Agora pode desfrutar de uma navegação confortável e segura na Internet.",
+        "subtitle": "Parabéns! Concluiu a configuração do {{productName}}. Agora pode desfrutar de uma navegação confortável e segura na Internet.",
         "nextSteps": "Próximas etapas (opcional)",
         "defaultBrowser": "Definir como navegador predefinido",
         "support": "Apoio",
         "documentation": "Documentação",
-        "getStarted": "Comece com o Floorp",
+        "getStarted": "Comece com o {{productName}}",
         "hint": "Para obter definições mais detalhadas, pode personalizar através da opção Definições no botão de menu no canto superior direito.",
         "resourcesLabel": "Recursos",
-        "defaultBrowserSuccess": "O Floorp foi definido como o seu navegador predefinido!"
+        "defaultBrowserSuccess": "O {{productName}} foi definido como o seu navegador predefinido!"
     }
 }

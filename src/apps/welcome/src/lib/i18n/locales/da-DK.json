@@ -12,11 +12,11 @@
         "next": "Næste"
     },
     "customize": {
-        "title": "Tilpas Floorp",
-        "description": "Tilpas til dine foretrukne indstillinger. Du kan altid ændre dem senere fra Floorp Hub eller indstillingssiden.",
+        "title": "Tilpas {{productName}}",
+        "description": "Tilpas til dine foretrukne indstillinger. Du kan altid ændre dem senere fra {{productName}} Hub eller indstillingssiden.",
         "appearance": {
             "title": "Indstillinger for udseende",
-            "description": "Du kan tilpasse Floorp's udseende til dine præferencer. Vælg et lys eller mørkt tema, eller skift det automatisk baseret på dine systemindstillinger."
+            "description": "Du kan tilpasse {{productName}}'s udseende til dine præferencer. Vælg et lys eller mørkt tema, eller skift det automatisk baseret på dine systemindstillinger."
         },
         "themes": {
             "light": "Lys",
@@ -37,20 +37,20 @@
     },
     "finish": {
         "title": "Opsætning fuldført!",
-        "subtitle": "Tillykke! Du har fuldført Floorp-opsætningen. Nyd en behagelig og sikker browseroplevelse.",
+        "subtitle": "Tillykke! Du har fuldført {{productName}}-opsætningen. Nyd en behagelig og sikker browseroplevelse.",
         "nextSteps": {
             "title": "Næste trin (valgfrit)",
             "setDefault": "Indstil som standardbrowser",
             "documentation": "Dokumentation"
         },
-        "getStarted": "Kom i gang med Floorp",
+        "getStarted": "Kom i gang med {{productName}}",
         "hint": "For more detailed settings, you can customize via the Settings option in the menu button at the top right."
     },
     "welcomePage": {
-        "welcome": "Velkommen til Floorp!",
-        "description": "Floorp er en hurtig og brugervenlig webbrowser med fokus på privatliv og sikkerhed. Denne guide introducerer dig til de vigtigste funktioner og indstillinger i Floorp.",
+        "welcome": "Velkommen til {{productName}}!",
+        "description": "{{productName}} er en hurtig og brugervenlig webbrowser med fokus på privatliv og sikkerhed. Denne guide introducerer dig til de vigtigste funktioner og indstillinger i {{productName}}.",
         "readyToStart": "Når du er klar, så klik på knappen nedenfor for at fortsætte.",
-        "features": "Floorp-funktioner",
+        "features": "{{productName}}-funktioner",
         "privacy": "Privatliv",
         "privacyDesc": "Beskytter dine data",
         "speed": "Hastighed",
@@ -60,28 +60,28 @@
         "start": "Kom i gang"
     },
     "localizationPage": {
-        "title": "Floorp taler dit sprog",
+        "title": "{{productName}} taler dit sprog",
         "subtitle": "Tjek sprogindstillinger og skift om nødvendigt",
         "languageSettings": "Sprogindstillinger",
         "languageChanged": "Sprog ændret!",
         "currentLanguageInfo": "Aktuelle sprogoplysninger",
         "systemLanguage": "Systemsprog",
-        "floorpLanguage": "Floorp-sprog",
+        "{{productName}}Language": "{{productName}}-sprog",
         "selectLanguage": "Vælg sprog",
         "useSystemLanguage": "Brug systemsprog",
         "multilingual": "Understøttelse af flere sprog",
         "chooseLanguage": "Vælg mellem en bred vifte af sprog",
-        "languageChangeNotice": "Når du skifter sprog, anvendes det nye uden at genstarte Floorp. Nogle tilføjelser understøtter muligvis ikke sprogændringer."
+        "languageChangeNotice": "Når du skifter sprog, anvendes det nye uden at genstarte {{productName}}. Nogle tilføjelser understøtter muligvis ikke sprogændringer."
     },
     "featuresPage": {
-        "title": "Primære Floorp-funktioner",
-        "subtitle": "Floorp leveres med mange nyttige funktioner. Tjek funktionsoversigten!",
+        "title": "Primære {{productName}}-funktioner",
+        "subtitle": "{{productName}} leveres med mange nyttige funktioner. Tjek funktionsoversigten!",
         "panelSidebar": {
             "title": "Sidepanel",
             "description": "Få adgang til praktiske funktioner fra sidepanelet til højre, mens du browser. Du kan placere webpaneler, notefunktioner, tilføjelser, bogmærker m.m. i sidepanelet.",
             "features": [
                 "Fastgør websteder til sidepanelet",
-                "Tag hurtigt noter med Floorp Noter, mens du browser",
+                "Tag hurtigt noter med {{productName}} Noter, mens du browser",
                 "Understøtter beholdere"
             ]
         },
@@ -117,14 +117,14 @@
     },
     "finishPage": {
         "title": "Opsætning fuldført!",
-        "subtitle": "Tillykke! Du har gennemført Floorp-opsætningen. Du kan nu nyde behagelig og sikker internetbrowsing.",
+        "subtitle": "Tillykke! Du har gennemført {{productName}}-opsætningen. Du kan nu nyde behagelig og sikker internetbrowsing.",
         "nextSteps": "Næste trin (valgfrit)",
         "defaultBrowser": "Indstil som standardbrowser",
         "support": "Support",
         "documentation": "Dokumentation",
-        "getStarted": "Kom i gang med Floorp",
+        "getStarted": "Kom i gang med {{productName}}",
         "hint": "Du kan tilpasse mere detaljerede indstillinger via \"Indstillinger\" i menuknappen øverst til højre.",
         "resourcesLabel": "Ressourcer",
-        "defaultBrowserSuccess": "Floorp er blevet indstillet som din standardbrowser!"
+        "defaultBrowserSuccess": "{{productName}} er blevet indstillet som din standardbrowser!"
     }
 }
