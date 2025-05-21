@@ -3,7 +3,7 @@ import Navigation from "../../components/Navigation.tsx";
 import { useTranslation } from "react-i18next";
 import { setDefaultBrowser } from "@/app/finish/dataManager.ts";
 import { useState } from "react";
-import { Check, Sun, Github, Twitter, HelpCircle, ArrowRight } from "lucide-react";
+import { Check, Sun, Gitlab, HelpCircle, ArrowRight } from "lucide-react";
 
 export default function FinishPage() {
     const { t } = useTranslation();
@@ -73,15 +73,11 @@ export default function FinishPage() {
                             <div className="divider text-xs opacity-70 my-1">{t('finishPage.resourcesLabel') || 'リソース'}</div>
 
                             <div className="flex flex-wrap gap-2 justify-center">
-                                <a href="https://github.com/Floorp-Projects/Floorp" target="_blank" className="btn btn-outline btn-sm">
-                                    <Github className="mr-1" size={14} />
+                                <a href="https://gitlab.com/garuda-linux/firedragon/firedragon12" target="_blank" className="btn btn-outline btn-sm">
+                                    <Gitlab className="mr-1" size={14} />
                                     GitHub
                                 </a>
-                                <a href="https://twitter.com/floorp_browser" target="_blank" className="btn btn-outline btn-sm">
-                                    <Twitter className="mr-1" size={14} />
-                                    X（Twitter）
-                                </a>
-                                <a href="https://docs.floorp.app/docs/features/" target="_blank" className="btn btn-outline btn-sm">
+                                <a href="https://forum.garudalinux.org/c/issues-assistance/firedragon-browser-support/47" target="_blank" className="btn btn-outline btn-sm">
                                     <HelpCircle className="mr-1" size={14} />
                                     {t('finishPage.support')}
                                 </a>
