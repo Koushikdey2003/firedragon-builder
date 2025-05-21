@@ -21,7 +21,7 @@ export function initializeI18n(modules: I18nModules, config: I18nConfig) {
     fallbackLng = "en-US",
     debug = false,
     defaultNS = "translations",
-    productName = "Floorp",
+    productName = "FireDragon",
   } = config;
 
   i18next.on("languageChanged", function (lng: string) {
