@@ -12,7 +12,7 @@
   "app": {
     "windows": [
       {
-        "title": "Floorp Installer",
+        "title": "FireDragon Installer",
         "width": 650,
         "height": 450,
         "decorations": false,

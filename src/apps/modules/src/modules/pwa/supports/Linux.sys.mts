@@ -47,7 +47,7 @@ export class LinuxSupport {
     let command = Services.dirsvc.get("XREExeF",Ci.nsIFile).path;
 
     if (FileUtils.File("/.flatpak-info").exists()) {
-      command = "flatpak run one.ablaze.floorp";
+      command = "flatpak run org.garudalinux.floorp";
     }
 
     const desktopFile = LinuxSupport.desktopFile(ssb);

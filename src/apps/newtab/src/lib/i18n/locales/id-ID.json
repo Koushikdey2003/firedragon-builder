@@ -1,5 +1,5 @@
 {
-    "title": "Punca Floorp",
+    "title": "Punca {{productName}}",
     "topSites": {
         "addSite": "Tambahkan situs",
         "addNewSite": "Tambah situs baru",
@@ -21,7 +21,7 @@
         "randomImage": "Gambar Acak",
         "customImage": "Gambar Suaian",
         "folderImages": "Gambar dari Folder",
-        "floorpImages": "Gambar Floorp",
+        "floorpImages": "Gambar {{productName}}",
         "currentImage": "Gambar saat ini:",
         "currentFolder": "Folder saat ini:",
         "selectFolder": "Pilih Folder",

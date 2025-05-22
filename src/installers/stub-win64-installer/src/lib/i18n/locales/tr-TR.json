@@ -5,8 +5,8 @@
             "installComplete": "Yükleme tamamlandı"
         },
         "installer": {
-            "title": "Floorp Yükleyicisi",
-            "description": "Floorp tarayıcısını yükleyin ve gizlilik odaklı, hızlı ve Kişiselleştirilebilir bir tarama deneyimine başlayın.",
+            "title": "{{productName}} Yükleyicisi",
+            "description": "{{productName}} tarayıcısını yükleyin ve gizlilik odaklı, hızlı ve Kişiselleştirilebilir bir tarama deneyimine başlayın.",
             "adminRights": "Yönetici izni ile yükle",
             "adminRightsEnabled": "Yönetici iznine sahip tüm kullanıcılar için yükleyin.",
             "adminRightsDisabled": "Yalnızca mevcut kullanıcı için yükleyin.",
@@ -31,53 +31,53 @@
         },
         "exitConfirmation": {
             "title": "Yükleme iptal edilsin mi?",
-            "message": "Yükleme işleminin iptal edilmesi Floorp'un yüklenmesini engelleyecektir.",
+            "message": "Yükleme işleminin iptal edilmesi {{productName}}'un yüklenmesini engelleyecektir.",
             "cancelButton": "Vazgeç",
             "confirmButton": "Yüklemeyi iptal et"
         },
         "complete": {
             "success": "Yükleme Başarılı",
             "error": "Yükleme Başarısız oldu",
-            "launchCheckbox": "Yükleme bitince Floorp tarayıcısını başlatın",
+            "launchCheckbox": "Yükleme bitince {{productName}} tarayıcısını başlatın",
             "closeButton": "Yükleyiciyi Kapat",
             "countdownMessage": "Yükleyici {{count}} saniye içinde kapanacaktır"
         }
     },
     "slides": {
         "slide1": {
-            "title": "Floorp'a Hoş Geldiniz",
-            "description": "Japonya'da geliştirme ve araştırma odaklı olarak geliştirilen bir web tarayıcısı olan Floorp'un en son sürümüne hoş geldiniz. Bundan sonra tanıtılacak içerik projenin sadece bir parçasıdır."
+            "title": "{{productName}}'a Hoş Geldiniz",
+            "description": "Japonya'da geliştirme ve araştırma odaklı olarak geliştirilen bir web tarayıcısı olan {{productName}}'un en son sürümüne hoş geldiniz. Bundan sonra tanıtılacak içerik projenin sadece bir parçasıdır."
         },
         "slide2": {
             "title": "Düzenli Güncellemeler",
-            "description": "Floorp, topluluk tabanlı bir proje olmasına rağmen sürekli olarak korunmakta ve güncellenmektedir. Web'in herkes için özgürce erişilebilir olması gerektiği ilkesiyle uyumlu güvenli gezinme sunuyoruz."
+            "description": "{{productName}}, topluluk tabanlı bir proje olmasına rağmen sürekli olarak korunmakta ve güncellenmektedir. Web'in herkes için özgürce erişilebilir olması gerektiği ilkesiyle uyumlu güvenli gezinme sunuyoruz."
         },
         "slide3": {
             "title": "En Yeni Özellikler",
-            "description": "Floorp'un en son sürümü Mozilla'nın Firefox'u tarafından geliştirilen en son web özelliklerinden yararlanıyor. Ayrıca herkesin istediği araçları kolayca erişilebilir kılmak için yeniden tasarlandı."
+            "description": "{{productName}}'un en son sürümü Mozilla'nın Firefox'u tarafından geliştirilen en son web özelliklerinden yararlanıyor. Ayrıca herkesin istediği araçları kolayca erişilebilir kılmak için yeniden tasarlandı."
         },
         "slide4": {
             "title": "Gelişmiş Kişiselleştirme",
-            "description": "Varsayılan tarayıcınızdan daha iyi gizlilik sağlamak için çok sayıda kişilelleştirme seçeneği ile donatılmıştır. Floorp tercih ettiğiniz yapılandırmayı gerçekleştirmenizi sağlar."
+            "description": "Varsayılan tarayıcınızdan daha iyi gizlilik sağlamak için çok sayıda kişilelleştirme seçeneği ile donatılmıştır. {{productName}} tercih ettiğiniz yapılandırmayı gerçekleştirmenizi sağlar."
         },
         "slide5": {
             "title": "Senin İçin Savaşıyoruz",
-            "description": "Floorp, zararlı izlemeyi engeller. Web'i hem işlevsellik hem de gizlilik açısından geliştirmek için çalışarak web sitesinin işleyişini ve kullanıcı haklarını dengeliyoruz."
+            "description": "{{productName}}, zararlı izlemeyi engeller. Web'i hem işlevsellik hem de gizlilik açısından geliştirmek için çalışarak web sitesinin işleyişini ve kullanıcı haklarını dengeliyoruz."
         }
     },
     "rust": {
         "success": {
-            "downloaded_dev_mode": "Floorp yükleyici indirildi (geliştirme modu)",
-            "installation_complete": "Floorp başarılı bir şekilde yüklendi."
+            "downloaded_dev_mode": "{{productName}} yükleyici indirildi (geliştirme modu)",
+            "installation_complete": "{{productName}} başarılı bir şekilde yüklendi."
         },
         "errors": {
-            "installer_not_found": "Floorp yükleyicisi alınamadı.",
+            "installer_not_found": "{{productName}} yükleyicisi alınamadı.",
             "download_failed": "İndirme sırasında bir hata oluştu: {{0}}",
             "signature_verification_failed": "Yükleyici imza doğrulaması başarısız oldu. Yürütme güvenlik nedeniyle iptal edildi.",
             "signature_verification_error": "İmza doğrulama sırasında bir hata oluştu: {{0}}",
             "installer_exit_code": "Yükleyici {{0}}kodu ile çıktı.",
             "installer_execution": "Yükleyici çalıştırılırken bir hata oluştu: {{0}}",
-            "browser_not_found": "Floorp tarayıcı bulunamadı. Yükleme başarılı oldu, ancak tarayıcı yürütülebilir dosyası bulunamadı.",
+            "browser_not_found": "{{productName}} tarayıcı bulunamadı. Yükleme başarılı oldu, ancak tarayıcı yürütülebilir dosyası bulunamadı.",
             "browser_launch_failed": "Tarayıcı başlatılamadı: {{0}}",
             "file_not_found": "Dosya bulunamadı: {{0}}",
             "not_a_file": "Yol bir dosya değil: {{0}}",

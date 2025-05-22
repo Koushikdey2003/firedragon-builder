@@ -51,9 +51,9 @@
             "description": "{{productName}} защищает ваши данные и конфиденциальность по умолчанию, но вы также можете управлять этими настройками вручную."
         },
         "ablazeAccount": {
-            "title": "Аккаунт Ablaze (Скоро)",
-            "footerLinkText": "Аккаунт Ablaze",
-            "description": "Используйте учетную запись Mozilla для синхронизации некоторых данных с другими устройствами. Учетная запись Ablaze синхронизирует данные, которые нельзя синхронизировать с учетной записью Mozilla."
+            "title": "Аккаунт Garuda Linux (Скоро)",
+            "footerLinkText": "Аккаунт Garuda Linux",
+            "description": "Используйте учетную запись Mozilla для синхронизации некоторых данных с другими устройствами. Учетная запись Garuda Linux синхронизирует данные, которые нельзя синхронизировать с учетной записью Mozilla."
         },
         "manageExtensions": {
             "title": "Управление расширениями",
@@ -140,7 +140,7 @@
             },
             "newtab": {
                 "title": "New Tab",
-                "disableFloorpStart": "Disable Floorp Start"
+                "disableFloorpStart": "Disable {{productName}} Start"
             },
             "multirowTab": {
                 "title": "Multirow Tab",
@@ -169,7 +169,7 @@
     },
     "accounts": {
         "profileAndAccount": "Профиль и учетная запись",
-        "profileDescription": "Профили содержат информацию, связанную с просмотром веб-страниц, такую как история, закладки, настройки и расширения. Floorp использует этот профиль для сохранения данных.",
+        "profileDescription": "Профили содержат информацию, связанную с просмотром веб-страниц, такую как история, закладки, настройки и расширения. {{productName}} использует этот профиль для сохранения данных.",
         "profileManagement": "Управление профилем",
         "profileManagementDescription": "Профили могут быть созданы и отделены друг от друга, а их данные хранятся в папке профиля.",
         "currentProfileName": "Текущее имя профиля: {{name}}",
@@ -178,8 +178,8 @@
         "openProfileSaveLocation": "Открыть место сохранения профиля",
         "mozillaAccountSyncSettings": "Настройки синхронизации учетной записи Mozilla",
         "syncedTo": "Синхронизировано с {{email}}",
-        "syncFloorpNotesToMozillaAccount": "Синхронизировать заметки Floorp с учетной записью Mozilla (Экспериментально)",
-        "floorpFeatureSyncSettings": "Настройки синхронизации функций Floorp",
+        "syncFloorpNotesToMozillaAccount": "Синхронизировать заметки {{productName}} с учетной записью Mozilla (Экспериментально)",
+        "floorpFeatureSyncSettings": "Настройки синхронизации функций {{productName}}",
         "manageMozillaAccount": "Управление учетной записью Mozilla",
         "manageFirefoxFeatureSync": "Управление синхронизацией функций Firefox",
         "aboutMozillaAccount": "Об учетной записи Mozilla",
@@ -191,7 +191,7 @@
         "releaseNotes": "Примечания к релизу и дополнительная информация",
         "browserVersion": "Версия {{productName}}: {{browserVersion}} | Версия Firefox: {{firefoxVersion}}",
         "isOfficialBuild": "(Официальная сборка)",
-        "browserDescription": "{{productName}} это браузер, разработанный в Японии. Он создан на базе Firefox под названием Ablaze для улучшения работы в Интернете.",
+        "browserDescription": "{{productName}} это браузер, разработанный в Японии. Он создан на базе Firefox под названием Garuda Linux для улучшения работы в Интернете.",
         "browser": "{{productName}}",
         "copyright": "© 2024 {{productName}} Project. Все права защищены.",
         "openSourceLicense": "{{productName}} Это программное обеспечение с открытым исходным кодом, доступное в соответствии с Mozilla Public License 2.0, которое стало возможным благодаря проекту Firefox с открытым исходным кодом и другим программам с открытым исходным кодом.",

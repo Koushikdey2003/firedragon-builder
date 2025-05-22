@@ -118,7 +118,7 @@ export function TopSites() {
                 </label>
                 <input
                   type="text"
-                  placeholder="https://floorp.app"
+                  placeholder="https://firedragon.garudalinux.org/"
                   value={newSite.url}
                   onChange={(e) =>
                     setNewSite({ ...newSite, url: e.target.value })}

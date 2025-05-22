@@ -51,9 +51,9 @@
             "description": "{{productName}} 默认情况下会保护你的数据和隐私，但你也可以手动管理这些设置。"
         },
         "ablazeAccount": {
-            "title": "Ablaze 账户（即将推出）",
-            "footerLinkText": "Ablaze 帐户",
-            "description": "使用 Mozilla 账户与其他设备同步部分数据。Ablaze 账户可同步无法使用 Mozilla 账户同步的数据。"
+            "title": "Garuda Linux 账户（即将推出）",
+            "footerLinkText": "Garuda Linux 帐户",
+            "description": "使用 Mozilla 账户与其他设备同步部分数据。Garuda Linux 账户可同步无法使用 Mozilla 账户同步的数据。"
         },
         "manageExtensions": {
             "title": "管理扩展",
@@ -85,7 +85,7 @@
         "style": "样式",
         "horizontal": "横向",
         "multirow": "多行",
-        "verticalTabIsRemovedFromBrowser": "Floorp 老版本内置垂直标签已从 {{productName}}中移除。请使用 Firefox 自带的垂直标签栏。",
+        "verticalTabIsRemovedFromBrowser": "{{productName}} 老版本内置垂直标签已从 {{productName}}中移除。请使用 Firefox 自带的垂直标签栏。",
         "learnMore": "了解更多",
         "position": "位置",
         "positionDescription": "选择标签栏位置。",
@@ -140,7 +140,7 @@
             },
             "newtab": {
                 "title": "新标签页",
-                "disableFloorpStart": "禁用 Floorp 启动页"
+                "disableFloorpStart": "禁用 {{productName}} 启动页"
             },
             "multirowTab": {
                 "title": "多行标签页",
@@ -169,7 +169,7 @@
     },
     "accounts": {
         "profileAndAccount": "配置和账户",
-        "profileDescription": "Profiles contain browsing-related information such as history, bookmarks, settings, and add-ons. Floorp uses this profile to save data.",
+        "profileDescription": "Profiles contain browsing-related information such as history, bookmarks, settings, and add-ons. {{productName}} uses this profile to save data.",
         "profileManagement": "配置管理",
         "profileManagementDescription": "Profiles can be created and separated from each other, and their data is stored in the profile folder.",
         "currentProfileName": "当前配置名称：{{name}}",
@@ -178,8 +178,8 @@
         "openProfileSaveLocation": "打开配置文件 保存位置",
         "mozillaAccountSyncSettings": "Mozilla 账户同步设置",
         "syncedTo": "同步至 {{email}}",
-        "syncFloorpNotesToMozillaAccount": "Sync Floorp Notes to Mozilla Account (Experimental)",
-        "floorpFeatureSyncSettings": "Floorp Feature Sync Settings",
+        "syncFloorpNotesToMozillaAccount": "Sync {{productName}} Notes to Mozilla Account (Experimental)",
+        "floorpFeatureSyncSettings": "{{productName}} Feature Sync Settings",
         "manageMozillaAccount": "管理 Mozilla 账户",
         "manageFirefoxFeatureSync": "管理火狐功能同步",
         "aboutMozillaAccount": "管理 Mozilla 账户",
@@ -191,7 +191,7 @@
         "releaseNotes": "发布说明和更多信息",
         "browserVersion": "{{productName}} version: {{browserVersion}} | Firefox version: {{firefoxVersion}}",
         "isOfficialBuild": "(Official Build)",
-        "browserDescription": "{{productName}} is a browser developed in Japan. It's built on Firefox under Ablaze to improve the web.",
+        "browserDescription": "{{productName}} is a browser developed in Japan. It's built on Firefox under Garuda Linux to improve the web.",
         "browser": "{{productName}}",
         "copyright": "© 2024 {{productName}} Project. All rights reserved.",
         "openSourceLicense": "{{productName}} is open-source software available under the Mozilla Public License 2.0, made possible by the Firefox open-source project and other open-source software.",

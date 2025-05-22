@@ -197,7 +197,7 @@ export class PanelSidebarAddModal {
         label: texts.url,
         value: window.gBrowser.currentURI.spec,
         required: true,
-        placeholder: "https://floorp.app",
+        placeholder: "https://firedragon.garudalinux.org/",
         when: { id: "type", value: "web" },
         onInput: (value: string) => {
           if (value) {

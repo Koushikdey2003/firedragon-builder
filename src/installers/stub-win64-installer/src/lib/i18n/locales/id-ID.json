@@ -5,8 +5,8 @@
             "installComplete": "Pemasangan selesai"
         },
         "installer": {
-            "title": "Penginstal Floorp",
-            "description": "Pasang peramban Floorp dan mulailah pengalaman menjelajah internet yang mengutamakan privasi, cepat, dan mudah disesuaikan.",
+            "title": "Penginstal {{productName}}",
+            "description": "Pasang peramban {{productName}} dan mulailah pengalaman menjelajah internet yang mengutamakan privasi, cepat, dan mudah disesuaikan.",
             "adminRights": "Pasang dengan hak admin",
             "adminRightsEnabled": "Pasang untuk semua pengguna dengan hak admin.",
             "adminRightsDisabled": "Pasang untuk pengguna ini saja.",
@@ -31,53 +31,53 @@
         },
         "exitConfirmation": {
             "title": "Batalkan Pemasangan?",
-            "message": "Membatalkan pemasangan akan membuat Floorp tidak terpasang.",
+            "message": "Membatalkan pemasangan akan membuat {{productName}} tidak terpasang.",
             "cancelButton": "Batal",
             "confirmButton": "Batalkan Pemasangan"
         },
         "complete": {
             "success": "Pemasangan Berhasil",
             "error": "Pemasangan Gagal",
-            "launchCheckbox": "Luncurkan peramban Floorp setelah pemasangan",
+            "launchCheckbox": "Luncurkan peramban {{productName}} setelah pemasangan",
             "closeButton": "Tutup Penginstal",
             "countdownMessage": "Penginstal akan menutup dalam {{count}} detik"
         }
     },
     "slides": {
         "slide1": {
-            "title": "Selamat Datang di Floorp",
-            "description": "Selamat datang di versi terbaru Floorp, sebuah peramban web yang dikembangkan di Jepang dengan fokus pada pengembangan dan penelitian. Konten yang diperkenalkan selanjutnya hanyalah sebagian dari proyek ini."
+            "title": "Selamat Datang di {{productName}}",
+            "description": "Selamat datang di versi terbaru {{productName}}, sebuah peramban web yang dikembangkan di Jepang dengan fokus pada pengembangan dan penelitian. Konten yang diperkenalkan selanjutnya hanyalah sebagian dari proyek ini."
         },
         "slide2": {
             "title": "Pembaruan Teratur",
-            "description": "Floorp is maintained and updated continuously, even as a community-based project. We deliver safe browsing aligned with the principle that the web should be accessible freely to everyone."
+            "description": "{{productName}} is maintained and updated continuously, even as a community-based project. We deliver safe browsing aligned with the principle that the web should be accessible freely to everyone."
         },
         "slide3": {
             "title": "Fitur-Fitur Terkini",
-            "description": "The latest version of Floorp leverages cutting-edge web features developed by Mozilla's Firefox. It has also been redesigned to make tools everyone desires easily accessible."
+            "description": "The latest version of {{productName}} leverages cutting-edge web features developed by Mozilla's Firefox. It has also been redesigned to make tools everyone desires easily accessible."
         },
         "slide4": {
             "title": "Kustomisasi Tingkat Lanjut",
-            "description": "Equipped with numerous customization options to maintain privacy better than your default browser. Floorp allows you to realize your preferred configuration."
+            "description": "Equipped with numerous customization options to maintain privacy better than your default browser. {{productName}} allows you to realize your preferred configuration."
         },
         "slide5": {
             "title": "Fighting for You",
-            "description": "Floorp blocks harmful tracking. We balance website operation and user rights, working to improve the web both in functionality and privacy."
+            "description": "{{productName}} blocks harmful tracking. We balance website operation and user rights, working to improve the web both in functionality and privacy."
         }
     },
     "rust": {
         "success": {
-            "downloaded_dev_mode": "Penginstal Floorp telah diunduh (mode pengembang)",
-            "installation_complete": "Pemasangan Floorp berhasil."
+            "downloaded_dev_mode": "Penginstal {{productName}} telah diunduh (mode pengembang)",
+            "installation_complete": "Pemasangan {{productName}} berhasil."
         },
         "errors": {
-            "installer_not_found": "Gagal mengambil penginstal Floorp.",
+            "installer_not_found": "Gagal mengambil penginstal {{productName}}.",
             "download_failed": "Terjadi galat saat pengunduhan: {{0}}",
             "signature_verification_failed": "Verifikasi tanda tangan penginstal gagal. Tindakan dibatalkan karena alasan keamanan.",
             "signature_verification_error": "Terjadi galat saat verifikasi tanda tangan: {{0}}",
             "installer_exit_code": "Penginstal keluar dengan kode {{0}}.",
             "installer_execution": "Terjadi galat saat menjalankan penginstal: {{0}}",
-            "browser_not_found": "Peramban Floorp tidak ditemukan. Pemasangan berhasil, tetapi eksekutabel tidak dapat ditemukan.",
+            "browser_not_found": "Peramban {{productName}} tidak ditemukan. Pemasangan berhasil, tetapi eksekutabel tidak dapat ditemukan.",
             "browser_launch_failed": "Gagal meluncurkan peramban: {{0}}",
             "file_not_found": "Berkas tak ditemukan: {{0}}",
             "not_a_file": "Jalur bukan berkas: {{0}}",

@@ -82,7 +82,7 @@ export function Settings(
     try {
       await setSelectedFloorp(imageName);
     } catch (error) {
-      console.error("Failed to select Floorp image:", error);
+      console.error("Failed to select FireDragon image:", error);
     } finally {
       setIsSubmitting(false);
     }

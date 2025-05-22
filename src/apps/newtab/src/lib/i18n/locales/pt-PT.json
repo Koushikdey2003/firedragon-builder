@@ -1,5 +1,5 @@
 {
-    "title": "Início do Floorp",
+    "title": "Início do {{productName}}",
     "topSites": {
         "addSite": "Adicionar site",
         "addNewSite": "Adicionar um novo site",
@@ -21,7 +21,7 @@
         "randomImage": "Imagem aleatória",
         "customImage": "Imagem personalizada",
         "folderImages": "Imagens da pasta",
-        "floorpImages": "Imagens de Floorp",
+        "floorpImages": "Imagens de {{productName}}",
         "currentImage": "Imagem atual:",
         "currentFolder": "Pasta atual:",
         "selectFolder": "Selecionar pasta",

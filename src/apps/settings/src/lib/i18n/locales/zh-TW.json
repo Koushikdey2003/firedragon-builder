@@ -51,9 +51,9 @@
             "description": "{{productName}} 預設會保護您的個資和隱私，但您也可以手動管理這些設定。"
         },
         "ablazeAccount": {
-            "title": "Ablaze 帳戶 (即將推出)",
-            "footerLinkText": "Ablaze 帳戶",
-            "description": "使用 Mozilla 帳戶與其他裝置同步某些資料。而使用 Ablaze 帳戶則可同步 Mozilla 帳戶無法同步的資料。"
+            "title": "Garuda Linux 帳戶 (即將推出)",
+            "footerLinkText": "Garuda Linux 帳戶",
+            "description": "使用 Mozilla 帳戶與其他裝置同步某些資料。而使用 Garuda Linux 帳戶則可同步 Mozilla 帳戶無法同步的資料。"
         },
         "manageExtensions": {
             "title": "擴充套件管理",
@@ -140,7 +140,7 @@
             },
             "newtab": {
                 "title": "新分頁",
-                "disableFloorpStart": "停用 Floorp 起始頁"
+                "disableFloorpStart": "停用 {{productName}} 起始頁"
             },
             "multirowTab": {
                 "title": "多層分頁列",
@@ -169,7 +169,7 @@
     },
     "accounts": {
         "profileAndAccount": "設定檔和帳戶",
-        "profileDescription": "設定檔包含瀏覽相關資訊，例如歷史記錄、書籤、設定和附加元件。Floorp 使用此設定檔儲存資料。",
+        "profileDescription": "設定檔包含瀏覽相關資訊，例如歷史記錄、書籤、設定和附加元件。{{productName}} 使用此設定檔儲存資料。",
         "profileManagement": "設定檔管理",
         "profileManagementDescription": "設定檔可以建立並彼此分隔，其資料儲存在設定檔資料夾中。",
         "currentProfileName": "目前的設定檔名稱： {{name}}",
@@ -178,8 +178,8 @@
         "openProfileSaveLocation": "開啟設定檔儲存位置",
         "mozillaAccountSyncSettings": "Mozilla 帳戶同步設定",
         "syncedTo": "已同步至 {{email}}",
-        "syncFloorpNotesToMozillaAccount": "同步 Floorp 筆記 至 Mozilla 帳戶 (實驗性質)",
-        "floorpFeatureSyncSettings": "Floorp 功能同步設定",
+        "syncFloorpNotesToMozillaAccount": "同步 {{productName}} 筆記 至 Mozilla 帳戶 (實驗性質)",
+        "floorpFeatureSyncSettings": "{{productName}} 功能同步設定",
         "manageMozillaAccount": "管理 Mozilla 帳戶",
         "manageFirefoxFeatureSync": "管理 Firefox 功能同步",
         "aboutMozillaAccount": "關於 Mozilla 帳戶",
@@ -191,7 +191,7 @@
         "releaseNotes": "發佈說明與更多資訊",
         "browserVersion": "{{productName}} 版本： {{browserVersion}} | Firefox 版本： {{firefoxVersion}}",
         "isOfficialBuild": "(公式版本)",
-        "browserDescription": "{{productName}} 是一款於日本誕生的瀏覽器。以 Firefox 為基礎，由 Ablaze 社開發，旨在促進網路發展。",
+        "browserDescription": "{{productName}} 是一款於日本誕生的瀏覽器。以 Firefox 為基礎，由 Garuda Linux 社開發，旨在促進網路發展。",
         "browser": "{{productName}}",
         "copyright": "© 2024 {{productName}} Project。保留所有權利。",
         "openSourceLicense": "{{productName}} 是可在 Mozilla Public License 2.0 下使用的開放原始碼軟體，由 Firefox 開放原始碼專案和其他開放原始碼軟體促成。",

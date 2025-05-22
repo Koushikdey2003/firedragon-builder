@@ -144,7 +144,7 @@ browser[type="content"] > html {
   border: none !important;
 }
 
-.tabbrowser-tab[label="Floorp View"] {
+.tabbrowser-tab[label="FireDragon View"] {
   display: none;
 }
 

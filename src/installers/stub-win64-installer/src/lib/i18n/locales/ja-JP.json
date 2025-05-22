@@ -5,8 +5,8 @@
             "installComplete": "インストールが完了しました"
         },
         "installer": {
-            "title": "Floorp インストーラー",
-            "description": "Floorp ブラウザーをインストールして、プライバシーに配慮した、高速でカスタマイズ可能なブラウジング体験を始めましょう。",
+            "title": "{{productName}} インストーラー",
+            "description": "{{productName}} ブラウザーをインストールして、プライバシーに配慮した、高速でカスタマイズ可能なブラウジング体験を始めましょう。",
             "adminRights": "管理者権限でインストール",
             "adminRightsEnabled": "管理者権限を使用してすべてのユーザーにインストールします。",
             "adminRightsDisabled": "現在のユーザーのみにインストールします。",
@@ -31,53 +31,53 @@
         },
         "exitConfirmation": {
             "title": "インストールをキャンセルしますか？",
-            "message": "インストールをキャンセルすると、 Floorp はインストールされません。",
+            "message": "インストールをキャンセルすると、 {{productName}} はインストールされません。",
             "cancelButton": "キャンセル",
             "confirmButton": "インストールをキャンセル"
         },
         "complete": {
             "success": "インストール成功",
             "error": "インストール失敗",
-            "launchCheckbox": "インストール後、 Floorp ブラウザーを起動する",
+            "launchCheckbox": "インストール後、 {{productName}} ブラウザーを起動する",
             "closeButton": "インストーラーを閉じる",
             "countdownMessage": "{{count}} 秒後にインストーラーを終了します"
         }
     },
     "slides": {
         "slide1": {
-            "title": "Floorp へようこそ！",
-            "description": "日本で生まれた開発・研究志向のウェブブラウザー、Floorp の最新版へようこそ。プロジェクトのほんの一部をご紹介します。"
+            "title": "{{productName}} へようこそ！",
+            "description": "日本で生まれた開発・研究志向のウェブブラウザー、{{productName}} の最新版へようこそ。プロジェクトのほんの一部をご紹介します。"
         },
         "slide2": {
             "title": "定期的な更新",
-            "description": "Floorp はコミュニティベースのプロジェクトとして、継続的にメンテナンスと更新を行っています。ウェブは誰でも自由にアクセスできる場所であるべきだと信じ、安全なブラウジングを提供します。"
+            "description": "{{productName}} はコミュニティベースのプロジェクトとして、継続的にメンテナンスと更新を行っています。ウェブは誰でも自由にアクセスできる場所であるべきだと信じ、安全なブラウジングを提供します。"
         },
         "slide3": {
             "title": "最新の機能",
-            "description": "Floorp の最新バージョンは、Mozilla の Firefox で開発された最先端のウェブ機能を活用しています。加えて、誰もが望むツールに簡単にアクセスできるように再設計されています。"
+            "description": "{{productName}} の最新バージョンは、Mozilla の Firefox で開発された最先端のウェブ機能を活用しています。加えて、誰もが望むツールに簡単にアクセスできるように再設計されています。"
         },
         "slide4": {
             "title": "高度なカスタマイズ",
-            "description": "お使いのブラウザーよりもプライバシーを保護するためのカスタマイズオプションを多数搭載。Floorp はあなたのお好みの設定を実現します。"
+            "description": "お使いのブラウザーよりもプライバシーを保護するためのカスタマイズオプションを多数搭載。{{productName}} はあなたのお好みの設定を実現します。"
         },
         "slide5": {
             "title": "あなたのために戦う",
-            "description": "Floorp は有害なトラッキングをブロックします。ウェブサイトの運営とユーザーの権利のバランスをとり、機能性とプライバシーの両面からウェブの改善に努めています。"
+            "description": "{{productName}} は有害なトラッキングをブロックします。ウェブサイトの運営とユーザーの権利のバランスをとり、機能性とプライバシーの両面からウェブの改善に努めています。"
         }
     },
     "rust": {
         "success": {
-            "downloaded_dev_mode": "Floorp インストーラーがダウンロードされました (開発モード)",
-            "installation_complete": "Floorp は正常にインストールされました。"
+            "downloaded_dev_mode": "{{productName}} インストーラーがダウンロードされました (開発モード)",
+            "installation_complete": "{{productName}} は正常にインストールされました。"
         },
         "errors": {
-            "installer_not_found": "Floorp インストーラーの取得に失敗しました。",
+            "installer_not_found": "{{productName}} インストーラーの取得に失敗しました。",
             "download_failed": "ダウンロード中にエラーが発生しました: {{0}}",
             "signature_verification_failed": "インストーラーの署名の検証に失敗しました。セキュリティ上の理由により実行を中断しました。",
             "signature_verification_error": "署名の検証中にエラーが発生しました: {{0}}",
             "installer_exit_code": "インストーラーはコード {{0}} で終了しました。",
             "installer_execution": "インストーラーの実行中にエラーが発生しました: {{0}}",
-            "browser_not_found": "Floorp ブラウザーが見つかりません。インストールには成功しましたが、ブラウザーの実行ファイルが見つかりません。",
+            "browser_not_found": "{{productName}} ブラウザーが見つかりません。インストールには成功しましたが、ブラウザーの実行ファイルが見つかりません。",
             "browser_launch_failed": "ブラウザーの起動に失敗しました: {{0}}",
             "file_not_found": "ファイルが見つかりません: {{0}}",
             "not_a_file": "パスがファイルではありません: {{0}}",

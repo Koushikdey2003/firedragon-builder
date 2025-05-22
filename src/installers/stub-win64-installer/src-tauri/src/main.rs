@@ -51,7 +51,7 @@ async fn download_and_run_installer(
     };
 
     println!(
-        "[INFO] Downloading Floorp installer from: {}",
+        "[INFO] Downloading FireDragon installer from: {}",
         url
     );
     println!(
@@ -85,7 +85,7 @@ async fn download_and_run_installer(
         }
     }
 
-    println!("[INFO] Running Floorp installer...");
+    println!("[INFO] Running FireDragon installer...");
     match run_installer(&path, use_admin, custom_install_path).await {
         Ok(status) => {
             if status.success {
@@ -102,43 +102,43 @@ async fn download_and_run_installer(
 
 #[tauri::command]
 async fn launch_floorp_browser() -> Result<(), String> {
-    println!("[INFO] Launching Floorp browser");
+    println!("[INFO] Launching FireDragon browser");
 
     let mut possible_paths = Vec::new();
 
     if let Ok(custom_path) = get_saved_install_path() {
         println!("[INFO] Checking saved installation path: {}", custom_path);
-        let custom_exe_path = PathBuf::from(format!("{}\\floorp.exe", custom_path));
+        let custom_exe_path = PathBuf::from(format!("{}\\firedragon.exe", custom_path));
         if custom_exe_path.exists() {
-            println!("[INFO] Found Floorp at custom installation path: {}", custom_exe_path.display());
+            println!("[INFO] Found FireDragon at custom installation path: {}", custom_exe_path.display());
             return launch_browser(&custom_exe_path);
         } else {
-            println!("[WARN] Floorp not found at custom installation path: {}", custom_exe_path.display());
+            println!("[WARN] FireDragon not found at custom installation path: {}", custom_exe_path.display());
         }
     }
 
     if let Ok(local_appdata) = env::var("LOCALAPPDATA") {
-        let user_path = PathBuf::from(format!("{}\\Ablaze Floorp\\floorp.exe", local_appdata));
+        let user_path = PathBuf::from(format!("{}\\Garuda Linux FireDragon\\firedragon.exe", local_appdata));
         possible_paths.push(user_path);
     }
 
     if let Ok(program_files) = env::var("ProgramFiles") {
-        let admin_path = PathBuf::from(format!("{}\\Ablaze Floorp\\floorp.exe", program_files));
+        let admin_path = PathBuf::from(format!("{}\\Garuda Linux FireDragon\\firedragon.exe", program_files));
         possible_paths.push(admin_path);
     }
 
     possible_paths.push(PathBuf::from(
-        "C:\\Program Files\\Ablaze Floorp\\floorp.exe",
+        "C:\\Program Files\\Garuda Linux FireDragon\\firedragon.exe",
     ));
     possible_paths.push(PathBuf::from(
-        "C:\\Program Files (x86)\\Ablaze Floorp\\floorp.exe",
+        "C:\\Program Files (x86)\\Garuda Linux FireDragon\\firedragon.exe",
     ));
 
     let mut floorp_path = None;
     for path in possible_paths {
         if path.exists() {
             println!(
-                "[INFO] Found Floorp browser at: {}",
+                "[INFO] Found FireDragon browser at: {}",
                 path.display()
             );
             floorp_path = Some(path);
@@ -157,11 +157,11 @@ async fn launch_floorp_browser() -> Result<(), String> {
 fn launch_browser(path: &PathBuf) -> Result<(), String> {
     match Command::new(path).spawn() {
         Ok(_) => {
-            println!("[INFO] Successfully launched Floorp browser");
+            println!("[INFO] Successfully launched FireDragon browser");
             Ok(())
         }
         Err(e) => {
-            println!("[ERROR] Failed to launch Floorp browser: {}", e);
+            println!("[ERROR] Failed to launch FireDragon browser: {}", e);
             Err(format!("rust.errors.browser_launch_failed|{}", e))
         }
     }
@@ -173,7 +173,7 @@ fn get_install_path_file() -> PathBuf {
     } else {
         env::temp_dir()
     };
-    app_data_dir.join("Floorp-Installer").join("install_path.txt")
+    app_data_dir.join("FireDragon-Installer").join("install_path.txt")
 }
 
 fn save_install_path(install_path: &str) -> io::Result<()> {
@@ -213,8 +213,8 @@ async fn exit_application() -> Result<(), String> {
 async fn get_latest_installer_url() -> Option<String> {
     let client = Client::new();
     let resp = client
-        .get("https://api.github.com/repos/Floorp-Projects/Floorp/releases/latest")
-        .header("User-Agent", "Floorp-Installer")
+        .get("https://api.github.com/repos/FireDragon-Projects/FireDragon/releases/latest")
+        .header("User-Agent", "FireDragon-Installer")
         .send()
         .await
         .ok()?;
@@ -442,15 +442,15 @@ async fn run_installer(
         custom_path.clone()
     } else if use_admin {
         if let Ok(program_files) = env::var("ProgramFiles") {
-            format!("{}\\Ablaze Floorp", program_files)
+            format!("{}\\Garuda Linux FireDragon", program_files)
         } else {
-            "C:\\Program Files\\Ablaze Floorp".to_string()
+            "C:\\Program Files\\Garuda Linux FireDragon".to_string()
         }
     } else {
         if let Ok(local_appdata) = env::var("LOCALAPPDATA") {
-            format!("{}\\Ablaze Floorp", local_appdata)
+            format!("{}\\Garuda Linux FireDragon", local_appdata)
         } else {
-            "C:\\Program Files\\Ablaze Floorp".to_string()
+            "C:\\Program Files\\Garuda Linux FireDragon".to_string()
         }
     };
 
@@ -597,9 +597,9 @@ async fn run_installer_user_mode(
         let user_install_dir = if let Some(custom_path) = custom_install_path {
             custom_path.to_string()
         } else if let Ok(local_appdata) = env::var("LOCALAPPDATA") {
-            format!("{}\\Ablaze Floorp", local_appdata)
+            format!("{}\\Garuda Linux FireDragon", local_appdata)
         } else {
-            "C:\\Program Files\\Ablaze Floorp".to_string()
+            "C:\\Program Files\\Garuda Linux FireDragon".to_string()
         };
 
         let config_content = format!(
@@ -745,7 +745,7 @@ async fn download_and_install_webview2_runtime() -> Result<bool, String> {
     let notify_script = r#"
     Add-Type -AssemblyName System.Windows.Forms
     $form = New-Object System.Windows.Forms.Form
-    $form.Text = "Floorp Installer | WebView2 Runtime"
+    $form.Text = "FireDragon Installer | WebView2 Runtime"
     $form.Size = New-Object System.Drawing.Size(400, 150)
     $form.StartPosition = "CenterScreen"
     $form.FormBorderStyle = [System.Windows.Forms.FormBorderStyle]::FixedDialog
@@ -755,7 +755,7 @@ async fn download_and_install_webview2_runtime() -> Result<bool, String> {
     $label = New-Object System.Windows.Forms.Label
     $label.Location = New-Object System.Drawing.Point(20, 20)
     $label.Size = New-Object System.Drawing.Size(350, 80)
-    $label.Text = "Floorp Installer is installing Microsoft WebView2 Runtime.`n`nThis is required to display Floorp Installer interface.`n`nPlease wait..."
+    $label.Text = "FireDragon Installer is installing Microsoft WebView2 Runtime.`n`nThis is required to display FireDragon Installer interface.`n`nPlease wait..."
     $label.TextAlign = [System.Drawing.ContentAlignment]::MiddleCenter
     $form.Controls.Add($label)
 
@@ -821,7 +821,7 @@ async fn download_and_install_webview2_runtime() -> Result<bool, String> {
                             let _ = tokio::fs::remove_file(&installer_path).await;
 
                             let close_dialog_script = r#"
-                            Get-Process | Where-Object { $_.MainWindowTitle -eq "Floorp Installer | WebView2 Runtime" } | ForEach-Object { $_.CloseMainWindow() }
+                            Get-Process | Where-Object { $_.MainWindowTitle -eq "FireDragon Installer | WebView2 Runtime" } | ForEach-Object { $_.CloseMainWindow() }
                             "#;
                             let close_script_path = temp_dir.join("close_webview2_notify.ps1");
                             let _ = std::fs::write(&close_script_path, close_dialog_script);
@@ -839,7 +839,7 @@ async fn download_and_install_webview2_runtime() -> Result<bool, String> {
                             println!("[ERROR] WebView2 Runtime installation failed with exit code: {}", code);
                             let _ = tokio::fs::remove_file(&installer_path).await;
                             let close_dialog_script = r#"
-                            Get-Process | Where-Object { $_.MainWindowTitle -eq "Floorp Installer | WebView2 Runtime" } | ForEach-Object { $_.CloseMainWindow() }
+                            Get-Process | Where-Object { $_.MainWindowTitle -eq "FireDragon Installer | WebView2 Runtime" } | ForEach-Object { $_.CloseMainWindow() }
                             "#;
                             let _ = Command::new("powershell.exe")
                                 .arg("-ExecutionPolicy")

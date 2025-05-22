@@ -10,9 +10,9 @@ export interface NotesData {
 }
 
 const DEFAULT_NOTES: NotesData = {
-  titles: ["Floorp Notes へようこそ！"],
+  titles: ["FireDragon Notes へようこそ！"],
   contents: [
-    "Floorp Notes へようこそ！使い方を説明します。\n\nFloorp Notes は、デバイス間で同期できるメモ機能です。 同期を有効にするには、Mozilla アカウントで Floorp にサインインする必要があります。\nFloorp Notes は Floorp に保存され、Firefox Sync を使用してデバイス間で同期されます。 Firefox Sync は、同期の内容を Mozilla アカウントのパスワードで暗号化するため、誰にもその内容を知られることはありません。",
+    "FireDragon Notes へようこそ！使い方を説明します。\n\nFireDragon Notes は、デバイス間で同期できるメモ機能です。 同期を有効にするには、Mozilla アカウントで FireDragon にサインインする必要があります。\nFireDragon Notes は FireDragon に保存され、FireDragon Sync を使用してデバイス間で同期されます。 FireDragon Sync は、同期の内容を Mozilla アカウントのパスワードで暗号化するため、誰にもその内容を知られることはありません。",
   ],
 };
 

@@ -51,9 +51,9 @@
             "description": "{{productName}} melindungi data dan privasi Anda dari awal, tetapi Anda juga dapat mengelola pengaturan ini secara manual."
         },
         "ablazeAccount": {
-            "title": "Akun Ablaze (Segera Hadir)",
-            "footerLinkText": "Akun Ablaze",
-            "description": "Gunakan Akun Mozilla untuk menyinkronkan data dengan perangkat lain. Akun Ablaze dapat menyinkronkan data yang tidak dapat disinkronkan dengan Akun Mozilla."
+            "title": "Akun Garuda Linux (Segera Hadir)",
+            "footerLinkText": "Akun Garuda Linux",
+            "description": "Gunakan Akun Mozilla untuk menyinkronkan data dengan perangkat lain. Akun Garuda Linux dapat menyinkronkan data yang tidak dapat disinkronkan dengan Akun Mozilla."
         },
         "manageExtensions": {
             "title": "Kelola Ekstensi",
@@ -140,7 +140,7 @@
             },
             "newtab": {
                 "title": "Tab Baru",
-                "disableFloorpStart": "Disable Floorp Start"
+                "disableFloorpStart": "Disable {{productName}} Start"
             },
             "multirowTab": {
                 "title": "Tab Multibaris",
@@ -169,7 +169,7 @@
     },
     "accounts": {
         "profileAndAccount": "Profil dan Akun",
-        "profileDescription": "Profil mengandung informasi terkait penelusuran seperti riwayat, markah, pengaturan, dan pengaya. Floorp menggunakan profil ini untuk menyimpan data.",
+        "profileDescription": "Profil mengandung informasi terkait penelusuran seperti riwayat, markah, pengaturan, dan pengaya. {{productName}} menggunakan profil ini untuk menyimpan data.",
         "profileManagement": "Manajemen Profil",
         "profileManagementDescription": "Profil bisa dibuat dan dipisahkan satu sama lain, dan datanya disimpan dalam folder profil.",
         "currentProfileName": "Nama Profil Saat Ini: {{name}}",
@@ -178,8 +178,8 @@
         "openProfileSaveLocation": "Buka Lokasi Penyimpanan Profil",
         "mozillaAccountSyncSettings": "Pengaturan Sinkronisasi Akun Mozilla",
         "syncedTo": "Disinkronkan ke {{email}}",
-        "syncFloorpNotesToMozillaAccount": "Sinkronisasikan Catatan Floorp ke Akun Mozilla (Eksperimental)",
-        "floorpFeatureSyncSettings": "Pengaturan Sinkronisasi Fitur Floorp",
+        "syncFloorpNotesToMozillaAccount": "Sinkronisasikan Catatan {{productName}} ke Akun Mozilla (Eksperimental)",
+        "floorpFeatureSyncSettings": "Pengaturan Sinkronisasi Fitur {{productName}}",
         "manageMozillaAccount": "Kelola Akun Mozilla",
         "manageFirefoxFeatureSync": "Kelola Sinkronisasi Fitur Firefox",
         "aboutMozillaAccount": "Tentang Akun Mozilla",
@@ -191,7 +191,7 @@
         "releaseNotes": "Catatan Rilis dan Informasi Tambahan",
         "browserVersion": "Versi {{productName}}: {{browserVersion}} | Versi Firefox: {{firefoxVersion}}",
         "isOfficialBuild": "(Build Resmi)",
-        "browserDescription": "{{productName}} adalah peramban yang dibuat di Jepang. Peramban ini berdasar Firefos dan dikembangkan oleh Ablaze untuk meningkatkan web.",
+        "browserDescription": "{{productName}} adalah peramban yang dibuat di Jepang. Peramban ini berdasar Firefos dan dikembangkan oleh Garuda Linux untuk meningkatkan web.",
         "browser": "{{productName}}",
         "copyright": "© 2024 {{productName}} Project. Semua hak cipta dilindungi undang-undang.",
         "openSourceLicense": "{{productName}} adalah perangkat lunak sumber terbuka di bawah Lisensi Publik Mozilla 2.0, yang dimungkinkan oleh proyek sumber terbuka Firefox dan perangkat lunak sumber terbuka lainnya.",

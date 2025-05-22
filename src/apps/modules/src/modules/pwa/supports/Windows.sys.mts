@@ -30,7 +30,7 @@ export class WindowsSupport {
   );
 
   private buildGroupId(id: string) {
-    return `ablaze.floorp.ssb.${id}`;
+    return `garudalinux.floorp.ssb.${id}`;
   }
 
   async install(ssb: Manifest) {

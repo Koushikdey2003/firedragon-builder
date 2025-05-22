@@ -1,5 +1,5 @@
 {
-    "title": "Floorp start",
+    "title": "{{productName}} start",
     "topSites": {
         "addSite": "Add site",
         "addNewSite": "Add new site",
@@ -21,7 +21,7 @@
         "randomImage": "Tilfældigt billede",
         "customImage": "Brugerdefineret billede",
         "folderImages": "Billeder fra mappe",
-        "floorpImages": "Floorp-billeder",
+        "floorpImages": "{{productName}}-billeder",
         "currentImage": "Nuværende billede:",
         "currentFolder": "Nuværende mappe:",
         "selectFolder": "Vælg mappe",

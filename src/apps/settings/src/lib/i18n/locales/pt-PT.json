@@ -51,9 +51,9 @@
             "description": "{{productName}} protege os seus dados e a sua privacidade por predefinição, mas também pode gerir estas definições manualmente."
         },
         "ablazeAccount": {
-            "title": "Conta Ablaze (brevemente)",
-            "footerLinkText": "Conta Ablaze",
-            "description": "Utilize uma Conta Mozilla para sincronizar alguns dados com outros dispositivos. A Conta Ablaze sincroniza dados que não podem ser sincronizados com uma Conta Mozilla."
+            "title": "Conta Garuda Linux (brevemente)",
+            "footerLinkText": "Conta Garuda Linux",
+            "description": "Utilize uma Conta Mozilla para sincronizar alguns dados com outros dispositivos. A Conta Garuda Linux sincroniza dados que não podem ser sincronizados com uma Conta Mozilla."
         },
         "manageExtensions": {
             "title": "Gerir Extensões",
@@ -140,7 +140,7 @@
             },
             "newtab": {
                 "title": "Novo separador",
-                "disableFloorpStart": "Desativar início do Floorp"
+                "disableFloorpStart": "Desativar início do {{productName}}"
             },
             "multirowTab": {
                 "title": "Separador de várias linhas",
@@ -169,7 +169,7 @@
     },
     "accounts": {
         "profileAndAccount": "Perfil e conta",
-        "profileDescription": "Os perfis contêm informações relacionadas com a navegação, como o histórico, os marcadores, as definições e os suplementos. O Floorp utiliza este perfil para guardar dados.",
+        "profileDescription": "Os perfis contêm informações relacionadas com a navegação, como o histórico, os marcadores, as definições e os suplementos. O {{productName}} utiliza este perfil para guardar dados.",
         "profileManagement": "Gestão de perfis",
         "profileManagementDescription": "Os perfis podem ser criados e separados uns dos outros, e os seus dados são armazenados na pasta de perfis.",
         "currentProfileName": "Nome do perfil atual: {{name}}",
@@ -178,8 +178,8 @@
         "openProfileSaveLocation": "Abrir localização do perfil guardado",
         "mozillaAccountSyncSettings": "Definições de sincronização da conta Mozilla",
         "syncedTo": "Sincronizado com {{email}}",
-        "syncFloorpNotesToMozillaAccount": "Sincronizar o Floorp Notes com a conta Mozilla (Experimental)",
-        "floorpFeatureSyncSettings": "Definições de sincronização da funcionalidade Floorp",
+        "syncFloorpNotesToMozillaAccount": "Sincronizar o {{productName}} Notes com a conta Mozilla (Experimental)",
+        "floorpFeatureSyncSettings": "Definições de sincronização da funcionalidade {{productName}}",
         "manageMozillaAccount": "Gerir a conta Mozilla",
         "manageFirefoxFeatureSync": "Gerir a sincronização de funcionalidades do Firefox",
         "aboutMozillaAccount": "Sobre a conta Mozilla",
@@ -191,7 +191,7 @@
         "releaseNotes": "Notas de Lançamento e Mais Informações",
         "browserVersion": "{{productName}} versão: {{browserVersion}} | Versão do Firefox: {{firefoxVersion}}",
         "isOfficialBuild": "(Construção Oficial)",
-        "browserDescription": "{{productName}} é um browser desenvolvido no Japão. Foi construído com base no Firefox e no Ablaze para melhorar a Web.",
+        "browserDescription": "{{productName}} é um browser desenvolvido no Japão. Foi construído com base no Firefox e no Garuda Linux para melhorar a Web.",
         "browser": "{{productName}}",
         "copyright": "© 2024 {{productName}} Project. Todos os direitos reservados.",
         "openSourceLicense": "{{productName}} é um software de código aberto disponível sob a Licença Pública Mozilla 2.0, possibilitado pelo projeto de código aberto Firefox e outros softwares de código aberto.",

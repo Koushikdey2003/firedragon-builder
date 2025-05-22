@@ -13,7 +13,7 @@ export function initBeforeSessionStoreInit() {
   ].getService(Ci.nsIHttpProtocolHandler);
   prefs.setStringPref(
     "general.useragent.override",
-    userAgent.replace("Floorp", "Firefox").replace(
+    userAgent.replace("FireDragon", "Firefox").replace(
       /(Firefox\/\d+\.\d+)\..*/,
       "$1",
     ),

@@ -5,8 +5,8 @@
             "installComplete": "Установка завершена"
         },
         "installer": {
-            "title": "Установщик Floorp",
-            "description": "Установить браузер Floorp и начать приватный, быстрый и настраиваемый веб-серфинг.",
+            "title": "Установщик {{productName}}",
+            "description": "Установить браузер {{productName}} и начать приватный, быстрый и настраиваемый веб-серфинг.",
             "adminRights": "Установите с правами администратора",
             "adminRightsEnabled": "Установить для всех пользователей (требуются права администратора).",
             "adminRightsDisabled": "Установить только для текущего пользователя.",
@@ -31,53 +31,53 @@
         },
         "exitConfirmation": {
             "title": "Отменить установку?",
-            "message": "Отмена процесса установки предотвратит установку Floorp.",
+            "message": "Отмена процесса установки предотвратит установку {{productName}}.",
             "cancelButton": "Отменить",
             "confirmButton": "Отменить установку"
         },
         "complete": {
             "success": "Установка завершена успешно",
             "error": "Установка не удалась",
-            "launchCheckbox": "Запустить Floorp после установки",
+            "launchCheckbox": "Запустить {{productName}} после установки",
             "closeButton": "Закрыть установщик",
             "countdownMessage": "Установщик будет закрыт через {{count}} секунд"
         }
     },
     "slides": {
         "slide1": {
-            "title": "Welcome to Floorp",
-            "description": "Welcome to the latest version of Floorp, a web browser developed with a focus on development and research in Japan. The content introduced next is only a part of the project."
+            "title": "Welcome to {{productName}}",
+            "description": "Welcome to the latest version of {{productName}}, a web browser developed with a focus on development and research in Japan. The content introduced next is only a part of the project."
         },
         "slide2": {
             "title": "Regular Updates",
-            "description": "Floorp is maintained and updated continuously, even as a community-based project. We deliver safe browsing aligned with the principle that the web should be accessible freely to everyone."
+            "description": "{{productName}} is maintained and updated continuously, even as a community-based project. We deliver safe browsing aligned with the principle that the web should be accessible freely to everyone."
         },
         "slide3": {
             "title": "Latest Features",
-            "description": "The latest version of Floorp leverages cutting-edge web features developed by Mozilla's Firefox. It has also been redesigned to make tools everyone desires easily accessible."
+            "description": "The latest version of {{productName}} leverages cutting-edge web features developed by Mozilla's Firefox. It has also been redesigned to make tools everyone desires easily accessible."
         },
         "slide4": {
             "title": "Advanced Customization",
-            "description": "Equipped with numerous customization options to maintain privacy better than your default browser. Floorp allows you to realize your preferred configuration."
+            "description": "Equipped with numerous customization options to maintain privacy better than your default browser. {{productName}} allows you to realize your preferred configuration."
         },
         "slide5": {
             "title": "Fighting for You",
-            "description": "Floorp blocks harmful tracking. We balance website operation and user rights, working to improve the web both in functionality and privacy."
+            "description": "{{productName}} blocks harmful tracking. We balance website operation and user rights, working to improve the web both in functionality and privacy."
         }
     },
     "rust": {
         "success": {
-            "downloaded_dev_mode": "Установщик Floorp была загружен (режим разработки)",
-            "installation_complete": "Установка Floorp успешно завершена."
+            "downloaded_dev_mode": "Установщик {{productName}} была загружен (режим разработки)",
+            "installation_complete": "Установка {{productName}} успешно завершена."
         },
         "errors": {
-            "installer_not_found": "Не удалось получить установщик Floorp.",
+            "installer_not_found": "Не удалось получить установщик {{productName}}.",
             "download_failed": "Во время загрузки произошла ошибка: {{0}}",
             "signature_verification_failed": "Проверка подписи установщика не удалась. Выполнение прервано по соображениям безопасности.",
             "signature_verification_error": "При проверке подписи произошла ошибка: {{0}}",
             "installer_exit_code": "Установщик завершился с кодом {{0}}.",
             "installer_execution": "При запуске установщика произошла ошибка: {{0}}",
-            "browser_not_found": "Браузер Floorp не найден. Установка прошла успешно, но исполняемый файл браузера не найден.",
+            "browser_not_found": "Браузер {{productName}} не найден. Установка прошла успешно, но исполняемый файл браузера не найден.",
             "browser_launch_failed": "Не удалось запустить браузер: {{0}}",
             "file_not_found": "Файл не найден: {{0}}",
             "not_a_file": "Путь не является файлом: {{0}}",

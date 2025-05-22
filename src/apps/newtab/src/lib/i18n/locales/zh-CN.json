@@ -1,5 +1,5 @@
 {
-    "title": "Floorp 起始页",
+    "title": "{{productName}} 起始页",
     "topSites": {
         "addSite": "Add site",
         "addNewSite": "Add new site",
@@ -21,7 +21,7 @@
         "randomImage": "随机图像",
         "customImage": "自定义图像",
         "folderImages": "Images from Folder",
-        "floorpImages": "Floorp Images",
+        "floorpImages": "{{productName}} Images",
         "currentImage": "Current image:",
         "currentFolder": "Current folder:",
         "selectFolder": "Select Folder",

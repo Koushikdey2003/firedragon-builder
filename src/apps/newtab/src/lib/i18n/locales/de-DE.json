@@ -1,5 +1,5 @@
 {
-    "title": "Floorp Start",
+    "title": "{{productName}} Start",
     "topSites": {
         "addSite": "Seite hinzufügen",
         "addNewSite": "Neue Seite hinzufügen",
@@ -21,7 +21,7 @@
         "randomImage": "Zufallsbild",
         "customImage": "Benutzerdefiniertes Bild",
         "folderImages": "Bilder aus einem Ordner",
-        "floorpImages": "Floorp Bilder",
+        "floorpImages": "{{productName}} Bilder",
         "currentImage": "Aktuelles Bild:",
         "currentFolder": "Aktueller Ordner:",
         "selectFolder": "Ordner auswählen",

@@ -5,8 +5,8 @@
             "installComplete": "Installation complete"
         },
         "installer": {
-            "title": "Floorp Installer",
-            "description": "Install Floorp browser and start a privacy-focused, fast, and customizable browsing experience.",
+            "title": "{{productName}} Installer",
+            "description": "Install {{productName}} browser and start a privacy-focused, fast, and customizable browsing experience.",
             "adminRights": "Install with admin rights",
             "adminRightsEnabled": "Install for all users with admin rights.",
             "adminRightsDisabled": "仅为当前用户安装。",
@@ -31,53 +31,53 @@
         },
         "exitConfirmation": {
             "title": "Cancel Installation?",
-            "message": "Canceling the installation process will prevent Floorp from being installed.",
+            "message": "Canceling the installation process will prevent {{productName}} from being installed.",
             "cancelButton": "取消",
             "confirmButton": "Cancel Installation"
         },
         "complete": {
             "success": "Installation Successful",
             "error": "Installation Failed",
-            "launchCheckbox": "安装后启动 Floorp 浏览器",
+            "launchCheckbox": "安装后启动 {{productName}} 浏览器",
             "closeButton": "关闭安装程序",
             "countdownMessage": "Installer will close in {{count}} seconds"
         }
     },
     "slides": {
         "slide1": {
-            "title": "Welcome to Floorp",
-            "description": "Welcome to the latest version of Floorp, a web browser developed with a focus on development and research in Japan. The content introduced next is only a part of the project."
+            "title": "Welcome to {{productName}}",
+            "description": "Welcome to the latest version of {{productName}}, a web browser developed with a focus on development and research in Japan. The content introduced next is only a part of the project."
         },
         "slide2": {
             "title": "Regular Updates",
-            "description": "Floorp is maintained and updated continuously, even as a community-based project. We deliver safe browsing aligned with the principle that the web should be accessible freely to everyone."
+            "description": "{{productName}} is maintained and updated continuously, even as a community-based project. We deliver safe browsing aligned with the principle that the web should be accessible freely to everyone."
         },
         "slide3": {
             "title": "Latest Features",
-            "description": "The latest version of Floorp leverages cutting-edge web features developed by Mozilla's Firefox. It has also been redesigned to make tools everyone desires easily accessible."
+            "description": "The latest version of {{productName}} leverages cutting-edge web features developed by Mozilla's Firefox. It has also been redesigned to make tools everyone desires easily accessible."
         },
         "slide4": {
             "title": "Advanced Customization",
-            "description": "Equipped with numerous customization options to maintain privacy better than your default browser. Floorp allows you to realize your preferred configuration."
+            "description": "Equipped with numerous customization options to maintain privacy better than your default browser. {{productName}} allows you to realize your preferred configuration."
         },
         "slide5": {
             "title": "Fighting for You",
-            "description": "Floorp blocks harmful tracking. We balance website operation and user rights, working to improve the web both in functionality and privacy."
+            "description": "{{productName}} blocks harmful tracking. We balance website operation and user rights, working to improve the web both in functionality and privacy."
         }
     },
     "rust": {
         "success": {
-            "downloaded_dev_mode": "Floorp installer has been downloaded (development mode)",
-            "installation_complete": "Floorp installation completed successfully."
+            "downloaded_dev_mode": "{{productName}} installer has been downloaded (development mode)",
+            "installation_complete": "{{productName}} installation completed successfully."
         },
         "errors": {
-            "installer_not_found": "Failed to retrieve Floorp installer.",
+            "installer_not_found": "Failed to retrieve {{productName}} installer.",
             "download_failed": "An error occurred during download: {{0}}",
             "signature_verification_failed": "Installer signature verification failed. Execution aborted for security reasons.",
             "signature_verification_error": "An error occurred during signature verification: {{0}}",
             "installer_exit_code": "安装程序退出，代码为 {{0}}。",
             "installer_execution": "An error occurred while running the installer: {{0}}",
-            "browser_not_found": "Floorp browser not found. Installation was successful, but the browser executable could not be found.",
+            "browser_not_found": "{{productName}} browser not found. Installation was successful, but the browser executable could not be found.",
             "browser_launch_failed": "Failed to launch browser: {{0}}",
             "file_not_found": "找不到文件：{{0}}",
             "not_a_file": "路径不是文件: {{0}}",

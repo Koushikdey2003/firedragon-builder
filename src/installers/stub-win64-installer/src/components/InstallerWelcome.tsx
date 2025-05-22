@@ -15,8 +15,8 @@ const InstallerWelcome: React.FC<InstallerWelcomeProps> = ({ onInstall }) => {
     const modalRef = useRef<HTMLDialogElement>(null);
 
     const defaultInstallPath = useAdmin
-        ? "C:\\Program Files\\Ablaze Floorp"
-        : "C:\\Users\\<USERNAME>\\AppData\\Local\\Ablaze Floorp";
+        ? "C:\\Program Files\\Garuda Linux FireDragon"
+        : "C:\\Users\\<USERNAME>\\AppData\\Local\\Garuda Linux FireDragon";
 
     const handleInstall = () => {
         if (useCustomPath && customPath) {
@@ -72,7 +72,7 @@ const InstallerWelcome: React.FC<InstallerWelcomeProps> = ({ onInstall }) => {
                 <div className="card-body flex flex-col items-center justify-center text-center">
                     <div className="avatar mb-4">
                         <div className="w-24 ring-primary ring-offset-base-100 ring-offset-2">
-                            <img src={installer_png} alt="Floorp Installer" />
+                            <img src={installer_png} alt="FireDragon Installer" />
                         </div>
                     </div>
                     <h1 className="text-3xl font-bold mb-4">{t('app.installer.title')}</h1>

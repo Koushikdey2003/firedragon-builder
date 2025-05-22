@@ -25,7 +25,7 @@ const Slideshow: React.FC<SlideshowProps> = ({
             <div className="fixed top-4 left-4 flex items-center space-x-2 gap-2 z-20">
                 <div className="avatar">
                     <div className="w-8 ring-primary ring-offset-base-100 ring-offset-1">
-                        <img src={installer_png} alt="Floorp Logo" />
+                        <img src={installer_png} alt="FireDragon Logo" />
                     </div>
                 </div>
                 <h3 className="text-lg font-semibold">

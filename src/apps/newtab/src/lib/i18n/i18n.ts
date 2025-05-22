@@ -16,6 +16,6 @@ export default initializeI18n(
   },
   {
     translations,
-    productName: "Floorp",
+    productName: "FireDragon",
   },
 );

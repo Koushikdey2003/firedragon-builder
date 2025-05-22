@@ -1,5 +1,5 @@
 {
-    "title": "Floorp 起始頁面",
+    "title": "{{productName}} 起始頁面",
     "topSites": {
         "addSite": "添加站點",
         "addNewSite": "新增網站",
@@ -21,7 +21,7 @@
         "randomImage": "隨機圖像",
         "customImage": "自訂圖像",
         "folderImages": "資料夾中的圖像",
-        "floorpImages": "Floorp 圖像",
+        "floorpImages": "{{productName}} 圖像",
         "currentImage": "目前的图像:",
         "currentFolder": "目前的資料夾:",
         "selectFolder": "選擇資料夾",

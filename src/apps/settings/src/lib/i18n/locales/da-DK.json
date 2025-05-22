@@ -51,9 +51,9 @@
             "description": "{{productName}} beskytter dine data og dit privatliv som standard, men du kan også justere indstillingerne manuelt."
         },
         "ablazeAccount": {
-            "title": "Ablaze-konto (kommer snart)",
-            "footerLinkText": "Ablaze-konto",
-            "description": "Brug en Mozilla-konto til at synkronisere visse data mellem enheder. Ablaze-kontoen synkroniserer data, som ikke kan synkroniseres med en Mozilla-konto."
+            "title": "Garuda Linux-konto (kommer snart)",
+            "footerLinkText": "Garuda Linux-konto",
+            "description": "Brug en Mozilla-konto til at synkronisere visse data mellem enheder. Garuda Linux-kontoen synkroniserer data, som ikke kan synkroniseres med en Mozilla-konto."
         },
         "manageExtensions": {
             "title": "Administrer udvidelser",
@@ -140,7 +140,7 @@
             },
             "newtab": {
                 "title": "Ny fane",
-                "disableFloorpStart": "Disable Floorp Start"
+                "disableFloorpStart": "Disable {{productName}} Start"
             },
             "multirowTab": {
                 "title": "Multirow Tab",
@@ -169,7 +169,7 @@
     },
     "accounts": {
         "profileAndAccount": "Profil og konto",
-        "profileDescription": "Profiler indeholder browserrelaterede oplysninger som historik, bogmærker, indstillinger og tilføjelser. Floorp bruger denne profil til at gemme data.",
+        "profileDescription": "Profiler indeholder browserrelaterede oplysninger som historik, bogmærker, indstillinger og tilføjelser. {{productName}} bruger denne profil til at gemme data.",
         "profileManagement": "Profilhåndtering",
         "profileManagementDescription": "Profiler kan oprettes og adskilles fra hinanden, og deres data gemmes i profilmappen.",
         "currentProfileName": "Nuværende profilnavn: {{name}}",
@@ -178,8 +178,8 @@
         "openProfileSaveLocation": "Åbn profilens lagringsplacering",
         "mozillaAccountSyncSettings": "Mozilla Account Sync Settings",
         "syncedTo": "Synkroniseret til {{email}}",
-        "syncFloorpNotesToMozillaAccount": "Synkroniser Floorp Noter til Mozilla-konto (eksperimentel)",
-        "floorpFeatureSyncSettings": "Floorp Feature Sync Settings",
+        "syncFloorpNotesToMozillaAccount": "Synkroniser {{productName}} Noter til Mozilla-konto (eksperimentel)",
+        "floorpFeatureSyncSettings": "{{productName}} Feature Sync Settings",
         "manageMozillaAccount": "Administrer Mozilla-konto",
         "manageFirefoxFeatureSync": "Manage Firefox Feature Sync",
         "aboutMozillaAccount": "Om Mozilla-konto",
@@ -191,7 +191,7 @@
         "releaseNotes": "Udgivelsesnoter og flere oplysninger",
         "browserVersion": "{{productName}}-version: {{browserVersion}} | Firefox-version: {{firefoxVersion}}",
         "isOfficialBuild": "(Officiel version)",
-        "browserDescription": "{{productName}} er en browser udviklet i Japan. Den er bygget på Firefox under Ablaze for at forbedre nettet.",
+        "browserDescription": "{{productName}} er en browser udviklet i Japan. Den er bygget på Firefox under Garuda Linux for at forbedre nettet.",
         "browser": "{{productName}}",
         "copyright": "© 2024 {{productName}} Projekt. Alle rettigheder forbeholdes.",
         "openSourceLicense": "{{productName}} er open source-software tilgængelig under Mozilla Public License 2.0, muliggjort af Firefox open source-projekt og anden open source-software.",

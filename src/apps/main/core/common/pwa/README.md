@@ -2,7 +2,7 @@
 
 PWA stands for Progressive Web App, which is a technology that allows web pages available in modern browsers to be used like applications.
 
-## What is PWA on Floorp?
+## What is PWA on FireDragon?
 
 Floorp realizes PWA by refactoring Firefox's code, utilizing the SSB (Site Specific Browser) feature that Firefox provided.
 

@@ -28,7 +28,7 @@ export class NRStartPageParent extends JSWindowActorParent {
 
         folderPicker.init(
           this.browsingContext,
-          "Floorp",
+          "FireDragon",
           mode,
         );
         folderPicker.appendFilters(Ci.nsIFilePicker.filterAll);

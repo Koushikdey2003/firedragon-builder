@@ -1,5 +1,5 @@
 {
-    "title": "Floorp Start",
+    "title": "{{productName}} Start",
     "topSites": {
         "addSite": "サイトを追加",
         "addNewSite": "新規サイトを追加",
@@ -21,7 +21,7 @@
         "randomImage": "ランダム画像",
         "customImage": "カスタム画像",
         "folderImages": "フォルダーの画像",
-        "floorpImages": "Floorp の画像",
+        "floorpImages": "{{productName}} の画像",
         "currentImage": "現在の画像:",
         "currentFolder": "現在のフォルダー:",
         "selectFolder": "フォルダーを選択",

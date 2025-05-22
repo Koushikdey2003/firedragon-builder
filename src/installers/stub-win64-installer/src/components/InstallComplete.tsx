@@ -25,7 +25,7 @@ export default function InstallComplete({ success, message, onReset }: InstallCo
                     await invoke('launch_floorp_browser');
                 } catch (e) {
                     const errorMessage = e as string;
-                    console.error('Failed to launch Floorp browser:', errorMessage);
+                    console.error('Failed to launch FireDragon browser:', errorMessage);
 
                     // エラーメッセージがi18n形式の場合は処理
                     if (errorMessage.includes('|')) {

@@ -1,5 +1,5 @@
 {
-    "title": "Floorp Start",
+    "title": "{{productName}} Start",
     "topSites": {
         "addSite": "Add site",
         "addNewSite": "Add new site",
@@ -21,7 +21,7 @@
         "randomImage": "Rastgele Görsel",
         "customImage": "Özel Görsel",
         "folderImages": "Images from Folder",
-        "floorpImages": "Floorp Images",
+        "floorpImages": "{{productName}} Images",
         "currentImage": "Current image:",
         "currentFolder": "Current folder:",
         "selectFolder": "Select Folder",
