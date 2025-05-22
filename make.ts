@@ -66,7 +66,7 @@ async function source(config: Config) {
     const runtimeTarball = await getFloorpRuntime(config);
     await $`mkdir ${sourceDir}`;
     await $`tar -xf ${runtimeTarball} --strip-components=1 -C ${sourceDir}`;
-    await $`rsync -a --delete --exclude=_dist --exclude=.dist --exclude=.git --exclude=.idea --exclude=node_modules --exclude=*.tar.xz ./ ${sourceDir}/floorp/`;
+    await $`rsync -a --delete --exclude=_dist --exclude=.dist --exclude=.git --exclude=.idea --exclude=node_modules --exclude=*.tar.* ./ ${sourceDir}/floorp/`;
 
     // Copy branding
     await $`cp -r gecko/branding/* ${sourceDir}/browser/branding/`;
@@ -105,7 +105,7 @@ async function build(config: Config) {
     await $`cd ${buildDir}/floorp && deno task build --write-version`;
 
     // Combine mozconfig
-    await $`cat ${buildDir}/floorp/gecko/mozconfig ${buildDir}/floorp/gecko/mozconfig.${arch.mozconfig} > ${buildDir}/mozconfig`;
+    await $`cat ${buildDir}/floorp/gecko/mozconfig ${buildDir}/floorp/gecko/mozconfig.release ${buildDir}/floorp/gecko/mozconfig.${arch.mozconfig} > ${buildDir}/mozconfig`;
 
     // Run release build before
     await $`cd ${buildDir}/floorp && NODE_ENV=production deno task build --release-build-before`;
@@ -171,7 +171,7 @@ async function buildDev(config: Config) {
     const runtimeTarball = await getFloorpRuntime(config);
     await $`mkdir ${buildDevDir}`;
     await $`tar -xf ${runtimeTarball} --strip-components=1 -C ${buildDevDir}`;
-    await $`rsync -a --delete --exclude=_dist --exclude=.dist --exclude=.git --exclude=.idea --exclude=node_modules --exclude=*.tar.xz ./ ${buildDevDir}/floorp/`;
+    await $`rsync -a --delete --exclude=_dist --exclude=.dist --exclude=.git --exclude=.idea --exclude=node_modules --exclude=*.tar.* ./ ${buildDevDir}/floorp/`;
 
     // Copy branding
     await $`cp -r gecko/branding/* ${buildDevDir}/browser/branding/`;
@@ -186,10 +186,10 @@ async function buildDev(config: Config) {
     await applyPatches(buildDevDir, 'patches/{shared,dev}/**/*.patch', `${buildDevDir}/.github/patches/dev/**/*.patch`);
 
     // Combine mozconfig
-    await $`cat ${buildDevDir}/floorp/gecko/mozconfig ${buildDevDir}/floorp/gecko/mozconfig.${arch.mozconfig} > ${buildDevDir}/mozconfig`;
+    await $`cat ${buildDevDir}/floorp/gecko/mozconfig ${buildDevDir}/floorp/gecko/mozconfig.dev ${buildDevDir}/floorp/gecko/mozconfig.${arch.mozconfig} > ${buildDevDir}/mozconfig`;
 
     // Run configure
-    await $`${buildDevDir}/mach configure --enable-chrome-format=flat`;
+    await $`${buildDevDir}/mach configure`;
 
     // Run build
     await $`${buildDevDir}/mach build`;

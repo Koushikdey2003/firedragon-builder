@@ -3,7 +3,6 @@ ac_add_options --with-app-name=firedragon
 ac_add_options --with-branding=browser/branding/@BRANDING@
 ac_add_options --with-firedragon-settings=floorp/settings
 ac_add_options --with-firedragon-theme=@THEME@
-##ac_add_options --with-l10n-base="$PWD/floorp/browser/locales/l10n-central"
 ac_add_options --enable-application=browser
 
 # Shared build options
@@ -25,11 +24,7 @@ export MOZ_TELEMETRY_REPORTING=
 
 # Features
 ac_add_options --disable-crashreporter # (Minimize telemetry)
-ac_add_options --disable-debug
-ac_add_options --disable-debug-js-modules
-ac_add_options --disable-debug-symbols
 ac_add_options --disable-default-browser-agent
-##ac_add_options --disable-gpsd
 ac_add_options --disable-necko-wifi
 ac_add_options --disable-parental-controls # (Disable local/OS MTIM)
 ac_add_options --disable-rust-tests
