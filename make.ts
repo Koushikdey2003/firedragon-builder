@@ -250,10 +250,11 @@ try {
             throw `Unsupported architecture ${argv['arch']}, must be one of [${Object.keys(ARCHITECTURES).join(', ')}].`;
         }
 
+        const { version } = packageJson;
         const basename = `${edition.basename}-v${version}`;
 
         const config: Config = {
-            version: packageJson.version,
+            version,
             runtime: argv.runtime ?? packageJson.runtime,
             tmpDir,
             distDir,
