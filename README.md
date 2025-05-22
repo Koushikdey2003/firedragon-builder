@@ -28,7 +28,7 @@ Output can be found in: `.dist`
 deno task make build
 ```
 
-Output can be found in: `.dist/`
+Output can be found in: `.dist`
 
 ### Build linux x86_64 AppImage
 
