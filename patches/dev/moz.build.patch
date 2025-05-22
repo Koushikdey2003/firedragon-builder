@@ -1,5 +1,5 @@
 diff --git a/moz.build b/moz.build
-index 7df6d1bdf4..74ebbea23f 100644
+index 7df6d1bdf4..54fa8ae58d 100644
 --- a/moz.build
 +++ b/moz.build
 @@ -154,6 +154,7 @@ DIRS += [
@@ -10,10 +10,3 @@ index 7df6d1bdf4..74ebbea23f 100644
  ]
  
  if not CONFIG["JS_STANDALONE"]:
-@@ -229,4 +230,4 @@ include("build/templates.mozbuild")
- 
- DIRS += [
-     "floorp/gecko/pre-build",
--]
-\ No newline at end of file
-+]
