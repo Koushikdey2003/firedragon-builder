@@ -65,7 +65,11 @@ export class WorkspacesService implements WorkspacesDataManagerBase {
   deleteWorkspace(workspaceID: TWorkspaceID): void {
     if (workspacesDataStore.data.size === 1) return;
     const workspace = this.getRawWorkspace(workspaceID);
-    const result = Services.prompt.confirm(window, 'Delete workspace', 'Do you really want to delete this workspace: ' + workspace.name);
+    const result = Services.prompt.confirm(
+      window,
+      i18next.t('workspaces.modal.deleteTitle'),
+      i18next.t('workspaces.modal.deleteText', { name: workspace.name }),
+    );
     if (result) {
       this.tabManagerCtx.removeTabByWorkspaceId(workspaceID);
       setWorkspacesDataStore(
