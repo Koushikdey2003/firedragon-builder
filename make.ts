@@ -186,7 +186,7 @@ async function buildDev(config: Config) {
     await applyPatches(buildDevDir, 'patches/{shared,dev}/**/*.patch', `${buildDevDir}/.github/patches/dev/**/*.patch`);
 
     // Combine mozconfig
-    await $`cat ${buildDevDir}/floorp/gecko/mozconfig{,.dev,${arch.mozconfig}} > ${buildDevDir}/mozconfig`;
+    await $`cat ${buildDevDir}/floorp/gecko/mozconfig{,.dev,.${arch.mozconfig}} > ${buildDevDir}/mozconfig`;
 
     // Run configure
     await $`${buildDevDir}/mach configure`;
