@@ -105,7 +105,7 @@ async function build(config: Config) {
     await $`cd ${buildDir}/floorp && deno task build --write-version`;
 
     // Combine mozconfig
-    await $`cat ${buildDir}/floorp/gecko/mozconfig ${buildDir}/floorp/gecko/mozconfig.release ${buildDir}/floorp/gecko/mozconfig.${arch.mozconfig} > ${buildDir}/mozconfig`;
+    await $`cat ${buildDir}/floorp/gecko/mozconfig{,.release,.${arch.mozconfig}} > ${buildDir}/mozconfig`;
 
     // Run release build before
     await $`cd ${buildDir}/floorp && NODE_ENV=production deno task build --release-build-before`;
@@ -186,7 +186,7 @@ async function buildDev(config: Config) {
     await applyPatches(buildDevDir, 'patches/{shared,dev}/**/*.patch', `${buildDevDir}/.github/patches/dev/**/*.patch`);
 
     // Combine mozconfig
-    await $`cat ${buildDevDir}/floorp/gecko/mozconfig ${buildDevDir}/floorp/gecko/mozconfig.dev ${buildDevDir}/floorp/gecko/mozconfig.${arch.mozconfig} > ${buildDevDir}/mozconfig`;
+    await $`cat ${buildDevDir}/floorp/gecko/mozconfig{,.dev,${arch.mozconfig}} > ${buildDevDir}/mozconfig`;
 
     // Run configure
     await $`${buildDevDir}/mach configure`;

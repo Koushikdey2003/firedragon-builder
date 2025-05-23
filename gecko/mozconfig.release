@@ -1,3 +1,10 @@
+# Features
 ac_add_options --disable-debug
 ac_add_options --disable-debug-js-modules
 ac_add_options --disable-debug-symbols
+
+# Build options
+ac_add_options --enable-release
+ac_add_options --enable-optimize="-O3"
+ac_add_options OPT_LEVEL="3"
+ac_add_options RUSTC_OPT_LEVEL="3"

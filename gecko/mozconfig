@@ -5,9 +5,6 @@ ac_add_options --with-firedragon-settings=floorp/settings
 ac_add_options --with-firedragon-theme=@THEME@
 ac_add_options --enable-application=browser
 
-# Shared build options
-mk_add_options MOZ_OBJDIR="$PWD/obj-artifact-build-output"
-
 # Branding
 ac_add_options --allow-addon-sideload
 ac_add_options --enable-unverified-updates
@@ -43,3 +40,6 @@ ac_add_options --enable-pulseaudio
 ac_add_options --enable-raw
 ac_add_options --enable-sandbox
 ac_add_options --enable-strip
+
+# Build options
+mk_add_options MOZ_OBJDIR="$PWD/obj-artifact-build-output"
