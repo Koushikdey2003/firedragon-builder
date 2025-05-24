@@ -16,7 +16,8 @@ async function applyPatches(target: string, ...patches: string[]): Promise<void>
 
 function parseArgv(argv: string[]) {
     return minimist(argv, {
-        string: ['dist-dir', 'edition', 'arch'],
+        boolean: ['enable-bootstrap'],
+        string: ['dist-dir', 'edition', 'target'],
         unknown(arg) {
             if (arg.startsWith('-')) {
                 throw `Unknown arguments: ${arg}`
@@ -33,8 +34,9 @@ interface Config {
     tmpDir: string;
     distDir: string;
     edition: (typeof EDITIONS)[keyof typeof EDITIONS];
-    basename: string
-    arch: (typeof ARCHITECTURES)[keyof typeof ARCHITECTURES];
+    basename: string;
+    target: (typeof TARGETS)[keyof typeof TARGETS];
+    enableBootstrap: boolean;
 }
 
 async function getFloorpRuntime({ runtime, tmpDir }: Config): Promise<string> {
@@ -57,36 +59,40 @@ async function getFloorpRuntime({ runtime, tmpDir }: Config): Promise<string> {
     return tarball;
 }
 
-async function source(config: Config) {
-    const { tmpDir, distDir, edition, basename } = config;
-
-    const sourceDir = `${tmpDir}/${basename}`;
+async function prepareSource(config: Config, dir: string, patches: 'packaging' | 'dev' = 'packaging'): Promise<void> {
+    const { version, edition } = config;
 
     // Extract floorp runtime and inject this repo
     const runtimeTarball = await getFloorpRuntime(config);
-    await $`mkdir ${sourceDir}`;
-    await $`tar -xf ${runtimeTarball} --strip-components=1 -C ${sourceDir}`;
-    await $`rsync -a --delete --exclude=_dist --exclude=.dist --exclude=.git --exclude=.idea --exclude=node_modules --exclude=*.tar.* ./ ${sourceDir}/floorp/`;
+    await $`mkdir ${dir}`;
+    await $`tar -xf ${runtimeTarball} --strip-components=1 -C ${dir}`;
+    await $`rsync -a --delete --exclude=_dist --exclude=.dist --exclude=.git --exclude=.idea --exclude=node_modules --exclude=*.tar.* ./ ${dir}/floorp/`;
 
     // Copy branding
-    await $`cp -r gecko/branding/* ${sourceDir}/browser/branding/`;
+    await $`cp -r gecko/branding/* ${dir}/browser/branding/`;
 
     // Apply edition in default mozconfig
-    await $`sed -i -e 's/@BRANDING@/${edition.branding}/' -e 's/@THEME@/${edition.theme}/' ${sourceDir}/floorp/gecko/mozconfig`;
+    await $`sed -i -e 's/@BRANDING@/${edition.branding}/' -e 's/@THEME@/${edition.theme}/' ${dir}/floorp/gecko/mozconfig`;
 
     // Set display version
-    await $`echo ${version} > ${sourceDir}/browser/config/version_display.txt`;
+    await $`echo ${version} > ${dir}/browser/config/version_display.txt`;
 
     // Apply patches
-    await applyPatches(sourceDir, 'patches/{shared,packaging}/**/*.patch');
+    await applyPatches(dir, `patches/{shared,${patches}}/**/*.patch`);
+}
+
+async function source(config: Config) {
+    const { tmpDir, distDir, basename } = config;
+
+    await prepareSource(config, `${tmpDir}/${basename}`);
 
     await $`tar --zstd -cf ${distDir}/${basename}.source.tar.zst --exclude=.git -C ${tmpDir} ${basename}`;
 }
 
 async function build(config: Config) {
-    const { tmpDir, distDir, basename, arch } = config;
+    const { tmpDir, distDir, basename, target, enableBootstrap } = config;
 
-    const buildBasename = `${basename}.${arch.buildSuffix}`;
+    const buildBasename = `${basename}.${target.buildSuffix}`;
     const buildDir = `${tmpDir}/${buildBasename}`
 
     const sourceTarball = `${distDir}/${basename}.source.tar.zst`;
@@ -105,13 +111,19 @@ async function build(config: Config) {
     await $`cd ${buildDir}/floorp && deno task build --write-version`;
 
     // Combine mozconfig
-    await $`cat ${buildDir}/floorp/gecko/mozconfig{,.${arch.mozconfig}} > ${buildDir}/mozconfig`;
+    await $`cat ${buildDir}/floorp/gecko/mozconfig{,.${target.mozconfig}} > ${buildDir}/mozconfig`;
 
     // Run release build before
     await $`cd ${buildDir}/floorp && NODE_ENV=production deno task build --release-build-before`;
 
+    if (enableBootstrap) {
+        await $`cd ${buildDir} && ./mach --no-interactive bootstrap --application-choice browser`;
+        const rustup = (await which('rustup', { nothrow: true })) ?? `${os.homedir()}/.cargo/bin/rustup`;
+        await $`${rustup} target add ${target.rustTarget}`;
+    }
+
     // Run configure
-    await $`${buildDir}/mach configure`;
+    await $`${buildDir}/mach configure ${enableBootstrap ? '--enable-bootstrap' : '--disable-bootstrap'} --target=${target.target}`;
 
     // Run build
     await $`${buildDir}/mach build`;
@@ -132,16 +144,26 @@ async function build(config: Config) {
     await $`${buildDir}/mach package`;
 
     // Package output archive
-    await $`tar --zstd -cf ${distDir}/${buildBasename}.tar.zst --exclude=pingsender -C ${objDistDir} firedragon`;
+    if (target.buildOutputFormat === 'tar.zst') {
+        await $`tar --zstd -cf ${distDir}/${buildBasename}.tar.zst --exclude=pingsender -C ${objDistDir} firedragon`;
+    } else if (target.buildOutputFormat === 'zip') {
+        await $`cd ${objDistDir}; zip -r ${distDir}/${buildBasename}.zip firedragon`;
+    } else {
+        throw `Invalid build output format ${target.buildOutputFormat}, must be on of [tar.zst, zip].`;
+    }
 }
 
 async function appimage(config: Config) {
-    const { tmpDir, distDir, basename, arch } = config;
+    const { tmpDir, distDir, basename, target } = config;
 
-    const appimageBasename = `${basename}.${arch.appimageSuffix}`;
+    if (!target.appimageSuffix) {
+        throw `Target ${target.target} does not support appimage build.`;
+    }
+
+    const appimageBasename = `${basename}.${target.appimageSuffix}`;
     const appimageDir = `${tmpDir}/${appimageBasename}`;
 
-    const buildTarball = `${distDir}/${basename}.${arch.buildSuffix}.tar.zst`;
+    const buildTarball = `${distDir}/${basename}.${target.buildSuffix}.tar.zst`;
     if (!await exists(buildTarball)) {
         await build(config);
     }
@@ -162,34 +184,24 @@ async function appimage(config: Config) {
 }
 
 async function buildDev(config: Config) {
-    const { tmpDir, distDir, edition, basename, arch } = config;
+    const { tmpDir, distDir, basename, target, enableBootstrap } = config;
 
-    const buildDevBasename = `${basename}.${arch.buildDevSuffix}`
+    const buildDevBasename = `${basename}.${target.buildDevSuffix}`
     const buildDevDir = `${tmpDir}/${buildDevBasename}`;
 
-    // Extract floorp runtime and inject this repo
-    const runtimeTarball = await getFloorpRuntime(config);
-    await $`mkdir ${buildDevDir}`;
-    await $`tar -xf ${runtimeTarball} --strip-components=1 -C ${buildDevDir}`;
-    await $`rsync -a --delete --exclude=_dist --exclude=.dist --exclude=.git --exclude=.idea --exclude=node_modules --exclude=*.tar.* ./ ${buildDevDir}/floorp/`;
-
-    // Copy branding
-    await $`cp -r gecko/branding/* ${buildDevDir}/browser/branding/`;
-
-    // Apply edition in default mozconfig
-    await $`sed -i -e 's/@BRANDING@/${edition.branding}/' -e 's/@THEME@/${edition.theme}/' ${buildDevDir}/floorp/gecko/mozconfig`;
-
-    // Set display version
-    await $`echo ${version} > ${buildDevDir}/browser/config/version_display.txt`;
-
-    // Apply patches
-    await applyPatches(buildDevDir, 'patches/{shared,dev}/**/*.patch', `${buildDevDir}/.github/patches/dev/**/*.patch`);
+    await prepareSource(config, buildDevDir, 'dev');
 
     // Combine mozconfig
-    await $`cat ${buildDevDir}/floorp/gecko/mozconfig{,.${arch.mozconfig}} > ${buildDevDir}/mozconfig`;
+    await $`cat ${buildDevDir}/floorp/gecko/mozconfig{,.${target.mozconfig}} > ${buildDevDir}/mozconfig`;
+
+    if (enableBootstrap) {
+        await $`cd ${buildDevDir} && ./mach --no-interactive bootstrap --application-choice browser`;
+        const rustup = which('rustup', { nothrow: true }) ?? '~/.cargo/bin/rustup';
+        await $`${rustup} target add ${target.rustTarget}`;
+    }
 
     // Run configure
-    await $`${buildDevDir}/mach configure --enable-chrome-format=flat --enable-firedragon-debug`;
+    await $`${buildDevDir}/mach configure ${enableBootstrap ? '--enable-bootstrap' : '--disable-bootstrap'} --target=${target.target} --enable-chrome-format=flat --enable-firedragon-debug`;
 
     // Run build
     await $`${buildDevDir}/mach build`;
@@ -204,7 +216,13 @@ async function buildDev(config: Config) {
     await $`${buildDevDir}/mach package`;
 
     // Package output archive
-    await $`tar --zstd -cf ${distDir}/${buildDevBasename}.tar.zst --exclude=pingsender -C ${objDistDir} firedragon`;
+    if (target.buildOutputFormat === 'tar.zst') {
+        await $`tar --zstd -cf ${distDir}/${buildDevBasename}.tar.zst --exclude=pingsender -C ${objDistDir} firedragon`;
+    } else if (target.buildOutputFormat === 'zip') {
+        await $`cd ${objDistDir}; zip -r ${distDir}/${buildDevBasename}.zip firedragon`;
+    } else {
+        throw `Invalid build output format ${target.buildOutputFormat}, must be on of [tar.zst, zip].`;
+    }
 }
 
 const EDITIONS = {
@@ -219,12 +237,51 @@ const EDITIONS = {
         basename: 'firedragon-catppuccin',
     },
 };
-const ARCHITECTURES = {
-    'linux-x86_64': {
-        mozconfig: 'linux-x86_64',
-        buildSuffix: 'linux-x86_64',
-        appimageSuffix: 'appimage-x86_64',
-        buildDevSuffix: 'linux-x86_64.dev',
+const TARGETS = {
+    'linux-x64': {
+        mozconfig: 'linux-x64',
+        target: 'x86_64-pc-linux-gnu',
+        rustTarget: 'x86_64-unknown-linux-gnu',
+        buildSuffix: 'linux-x64',
+        buildOutputFormat: 'tar.zst',
+        appimageSuffix: 'appimage-x64',
+        buildDevSuffix: 'linux-x64.dev',
+    },
+    'linux-aarch64': {
+        mozconfig: 'linux-aarch64',
+        target: 'aarch64-linux-gnu',
+        rustTarget: 'aarch64-unknown-linux-gnu',
+        buildSuffix: 'linux-aarch64',
+        buildOutputFormat: 'tar.zst',
+        appimageSuffix: 'appimage-aarch64',
+        buildDevSuffix: 'linux-aarch64.dev',
+    },
+    'windows-x64': {
+        mozconfig: 'windows-x64',
+        target: 'x86_64-pc-windows-msvc',
+        rustTarget: 'x86_64-pc-windows-msvc',
+        buildSuffix: 'windows-x64',
+        buildOutputFormat: 'zip',
+        appimageSuffix: null,
+        buildDevSuffix: 'windows-x64.dev',
+    },
+    'macos-x64': {
+        mozconfig: 'macos-x64',
+        target: 'x86_64-apple-darwin',
+        rustTarget: 'x86_64-apple-darwin',
+        buildSuffix: 'macos-x64',
+        buildOutputFormat: 'tar.zst',
+        appimageSuffix: null,
+        buildDevSuffix: 'macos-x64.dev',
+    },
+    'macos-aarch64': {
+        mozconfig: 'macos-aarch64',
+        target: 'aarch64-apple-darwin',
+        rustTarget: 'aarch64-apple-darwin',
+        buildSuffix: 'macos-aarch64',
+        buildOutputFormat: 'tar.zst',
+        appimageSuffix: null,
+        buildDevSuffix: 'macos-aarch64.dev',
     },
 };
 
@@ -241,13 +298,13 @@ try {
         }
 
         const edition = EDITIONS[(argv['edition'] ?? 'dr640nized') as keyof typeof EDITIONS];
-        const arch = ARCHITECTURES[(argv['arch'] ?? 'linux-x86_64') as keyof typeof ARCHITECTURES];
-
         if (!edition) {
             throw `Unsupported edition ${argv['edition']}, must be one of [${Object.keys(EDITIONS).join(', ')}].`;
         }
-        if (!arch) {
-            throw `Unsupported architecture ${argv['arch']}, must be one of [${Object.keys(ARCHITECTURES).join(', ')}].`;
+
+        const target = TARGETS[(argv['target'] ?? `${process.platform}-${process.arch}`) as keyof typeof TARGETS];
+        if (!target){
+            throw `Unsupported target ${argv['target']}, must be one of [${Object.keys(TARGETS).join(', ')}].`;
         }
 
         const { version } = packageJson;
@@ -260,7 +317,8 @@ try {
             distDir,
             edition,
             basename,
-            arch,
+            target,
+            enableBootstrap: argv['enable-bootstrap'],
         };
 
         for (const command of argv._) {
