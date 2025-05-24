@@ -39,3 +39,17 @@ def firedragon_theme(value):
 
 set_config("FIREDRAGON_THEME", firedragon_theme)
 set_define("FIREDRAGON_THEME", firedragon_theme)
+
+option(
+    "--enable-firedragon-debug",
+    nargs=0,
+    help="FireDragon Debug",
+)
+
+@depends("--enable-firedragon-debug")
+def firedragon_theme(value):
+    if value:
+        return True
+
+set_config("FIREDRAGON_DEBUG", True, when=firedragon_theme)
+set_define("FIREDRAGON_DEBUG", True, when=firedragon_theme)

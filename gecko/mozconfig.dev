@@ -1,7 +1,0 @@
-# Features
-ac_add_options --enable-debug
-ac_add_options --enable-debug-js-modules
-ac_add_options --enable-debug-symbols
-
-# Build options
-ac_add_options --enable-chrome-format=flat
