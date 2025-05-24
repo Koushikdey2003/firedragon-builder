@@ -15,7 +15,7 @@ source:
   image: denoland/deno:ubuntu
   before_script:
     - apt-get update
-    - apt-get install -y curl
+    - apt-get install -y curl rsync zstd
     - deno install --allow-scripts --frozen
   script:
     - deno task make --edition=$EDITION source
@@ -39,7 +39,7 @@ build:
   image: denoland/deno:ubuntu
   before_script:
     - apt-get update
-    - apt-get install -y python3-pip msitools
+    - apt-get install -y zstd python3-pip msitools
     - deno install --allow-scripts --frozen
   script:
     - deno task make --edition=$EDITION --target=$PLATFORM-$ARCH --enable-bootstrap build
@@ -61,6 +61,8 @@ appimage:
     APPIMAGE_EXTRACT_AND_RUN: 1
   image: denoland/deno:ubuntu
   before_script:
+    - apt-get update
+    - apt-get install -y zstd
     - deno install --allow-scripts --frozen
   script:
     - deno task make --edition=$EDITION --target=$PLATFORM-$ARCH appimage
@@ -82,7 +84,7 @@ build-dev:
   image: denoland/deno:ubuntu
   before_script:
     - apt-get update
-    - apt-get install -y python3-pip msitools
+    - apt-get install -y curl rsync zstd python3-pip msitools
     - deno install --allow-scripts --frozen
   script:
     - deno task make --edition=$EDITION --target=$PLATFORM-$ARCH --enable-bootstrap build-dev
