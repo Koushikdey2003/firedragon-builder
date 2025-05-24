@@ -14,6 +14,8 @@ source:
       - EDITION: [dr640nized, catppuccin]
   image: denoland/deno:ubuntu
   before_script:
+    - apt-get update
+    - apt-get install -y curl
     - deno install --allow-scripts --frozen
   script:
     - deno task make --edition=$EDITION source
@@ -36,7 +38,8 @@ build:
         ARCH: x64
   image: denoland/deno:ubuntu
   before_script:
-    - apt install -y python3-pip msitools
+    - apt-get update
+    - apt-get install -y python3-pip msitools
     - deno install --allow-scripts --frozen
   script:
     - deno task make --edition=$EDITION --target=$PLATFORM-$ARCH --enable-bootstrap build
@@ -78,7 +81,8 @@ build-dev:
         ARCH: x64
   image: denoland/deno:ubuntu
   before_script:
-    - apt install -y python3-pip msitools
+    - apt-get update
+    - apt-get install -y python3-pip msitools
     - deno install --allow-scripts --frozen
   script:
     - deno task make --edition=$EDITION --target=$PLATFORM-$ARCH --enable-bootstrap build-dev
@@ -100,8 +104,6 @@ publish:
   rules:
     - if: $CI_COMMIT_TAG
   image: registry.gitlab.com/stefanwimmer128/archlinux-chaotic-paru-user:latest
-  before_script:
-    - paru -Syu --noconfirm
   script:
     - 'curl --header "JOB-TOKEN: $CI_JOB_TOKEN" --upload-file ".dist/firedragon-$CI_COMMIT_TAG.source.tar.zst" "$CI_API_V4_URL/projects/$CI_PROJECT_ID/packages/generic/firedragon/${CI_COMMIT_TAG##v}/firedragon-$CI_COMMIT_TAG.source.tar.zst"'
     - 'curl --header "JOB-TOKEN: $CI_JOB_TOKEN" --upload-file ".dist/firedragon-$CI_COMMIT_TAG.linux-x64.tar.zst" "$CI_API_V4_URL/projects/$CI_PROJECT_ID/packages/generic/firedragon/${CI_COMMIT_TAG##v}/firedragon-$CI_COMMIT_TAG.linux-x64.tar.zst"'
