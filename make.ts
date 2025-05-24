@@ -196,7 +196,7 @@ async function buildDev(config: Config) {
 
     if (enableBootstrap) {
         await $`cd ${buildDevDir} && ./mach --no-interactive bootstrap --application-choice browser`;
-        const rustup = which('rustup', { nothrow: true }) ?? '~/.cargo/bin/rustup';
+        const rustup = (await which('rustup', { nothrow: true })) ?? '~/.cargo/bin/rustup';
         await $`${rustup} target add ${target.rustTarget}`;
     }
 
