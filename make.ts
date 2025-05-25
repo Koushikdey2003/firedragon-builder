@@ -369,8 +369,10 @@ const TARGETS = {
 
 let tmpDir;
 try {
-    tmpDir = tmpdir();
+    tmpDir = process.env.TMP_DIR ?? tmpdir();
     echo(`Using temporary directory: ${tmpDir}`);
+
+    await $`mkdir -p ${tmpDir}`;
 
     let argv = parseArgv(process.argv.slice(4));
     while (true) {
@@ -436,5 +438,7 @@ try {
         argv = parseArgv(argv['--']);
     }
 } finally {
-    await $`rm -rf ${tmpDir}`;
+    if (!process.env.TMP_DIR) {
+        await $`rm -rf ${tmpDir}`;
+    }
 }
