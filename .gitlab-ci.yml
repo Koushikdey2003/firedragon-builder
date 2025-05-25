@@ -119,6 +119,8 @@ build-dev:
 darwin-universal:
   stage: darwin-universal
   needs:
+    - job: source
+      artifacts: true
     - job: build
       artifacts: true
     - job: build-dev
