@@ -150,9 +150,11 @@ async function build(config: Config) {
     if (target.buildOutputFormat === 'tar.zst') {
         await $`tar --zstd -cf ${distDir}/${buildBasename}.tar.zst -C ${objDistDir} firedragon`;
     } else if (target.buildOutputFormat === 'exe') {
-        await $`${buildDir}/mach repackage installer -o ${distDir}/${buildBasename}.exe --package-name firedragon --package ${objDistDir}/firedragon-139.0.en-US.win64.zip --tag ${buildDir}/browser/installer/windows/app.tag --setupexe ${buildDir}/obj-artifact-build-output/browser/installer/windows/instgen/setup.exe --sfx-stub ${buildDir}/other-licenses/7zstub/firefox/7zSD.Win32.sfx`;
+        const zipPath = `${objDistDir}/${buildBasename}.zip`;
+        await $`cd ${objDistDir} && zip -r ${zipPath} firedragon`;
+        await $`${buildDir}/mach repackage installer -o ${distDir}/${buildBasename}.exe --package-name firedragon --package ${zipPath} --tag ${buildDir}/browser/installer/windows/app.tag --setupexe ${buildDir}/obj-artifact-build-output/browser/installer/windows/instgen/setup.exe --sfx-stub ${buildDir}/other-licenses/7zstub/firefox/7zSD.Win32.sfx`;
     } else {
-        throw `Invalid build output format ${target.buildOutputFormat}, must be on of [tar.zst, zip].`;
+        throw `Invalid build output format ${target.buildOutputFormat}, must be on of [tar.zst, exe].`;
     }
 }
 
