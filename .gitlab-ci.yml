@@ -86,7 +86,9 @@ appimage:
 
 build-dev:
   stage: build-dev
-  needs: []
+  needs:
+    - job: moz_build_date
+      artifacts: true
   parallel:
     matrix:
       - EDITION: [dr640nized, catppuccin]
