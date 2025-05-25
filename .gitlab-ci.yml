@@ -1,6 +1,6 @@
 stages:
-  - moz_build_date
   - source
+  - prepare
   - build
   - appimage
   - build-dev
@@ -25,23 +25,27 @@ source:
     paths:
       - .dist/*.source.tar.zst
 
-moz_build_date:
-  stage: moz_build_date
+prepare:
+  stage: prepare
   needs: []
-  image: registry.gitlab.com/stefanwimmer128/archlinux-chaotic-paru-user:latest
+  image: denoland/deno:ubuntu
+  before_script:
+    - apt-get update
+    - deno install --allow-scripts --frozen
   script:
-    - mkdir -p .dist
-    - date -d "$CI_PIPELINE_CREATED_AT" +%Y%m%d%H%M%S > .dist/moz_build_date
+    - deno task build --write-version
+    - date -d "$CI_PIPELINE_CREATED_AT" +%Y%m%d%H%M%S > _dist/moz_build_date
   artifacts:
     paths:
-      - .dist/moz_build_date
+      - _dist/buildid2
+      - _dist/moz_build_date
 
 build:
   stage: build
   needs:
     - job: source
       artifacts: true
-    - job: moz_build_date
+    - job: prepare
       artifacts: true
   parallel:
     matrix:
@@ -57,7 +61,7 @@ build:
     - apt-get install -y zstd patch rsync python3-pip msitools p7zip-full zip
     - deno install --allow-scripts --frozen
   script:
-    - MOZ_BUILD_DATE=$(cat .dist/moz_build_date) deno task make --edition=$EDITION --target=$PLATFORM-$ARCH --enable-bootstrap build
+    - deno task make --edition=$EDITION --target=$PLATFORM-$ARCH --enable-bootstrap --with-buildid2=_dist/buildid2 --with-moz-build-date=_dist/moz_build_date build
   artifacts:
     paths:
       - .dist/*.$PLATFORM-$ARCH.*
@@ -88,7 +92,7 @@ appimage:
 build-dev:
   stage: build-dev
   needs:
-    - job: moz_build_date
+    - job: prepare
       artifacts: true
   parallel:
     matrix:
@@ -104,7 +108,7 @@ build-dev:
     - apt-get install -y curl rsync patch zstd python3-pip msitools p7zip-full zip
     - deno install --allow-scripts --frozen
   script:
-    - MOZ_BUILD_DATE=$(cat .dist/moz_build_date) deno task make --edition=$EDITION --target=$PLATFORM-$ARCH --enable-bootstrap build-dev
+    - deno task make --edition=$EDITION --target=$PLATFORM-$ARCH --enable-bootstrap-with-buildid2=_dist/buildid2 --with-moz-build-date=_dist/moz_build_date build-dev
   artifacts:
     paths:
       - .dist/*.$PLATFORM-$ARCH.dev.*
