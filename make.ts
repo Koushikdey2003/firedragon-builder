@@ -17,7 +17,7 @@ async function applyPatches(target: string, ...patches: string[]): Promise<void>
 function parseArgv(argv: string[]) {
     return minimist(argv, {
         boolean: ['enable-bootstrap'],
-        string: ['dist-dir', 'edition', 'target'],
+        string: ['dist-dir', 'edition', 'target', 'with-buildid2', 'with-moz-build-date'],
         unknown(arg) {
             if (arg.startsWith('-')) {
                 throw `Unknown arguments: ${arg}`
@@ -37,6 +37,8 @@ interface Config {
     basename: string;
     target: (typeof TARGETS)[keyof typeof TARGETS];
     enableBootstrap: boolean;
+    withBuildID2: string | null;
+    withMozBuildDate: string | null;
 }
 
 async function getFloorpRuntime({ runtime, tmpDir }: Config): Promise<string> {
@@ -90,7 +92,7 @@ async function source(config: Config) {
 }
 
 async function build(config: Config) {
-    const { tmpDir, distDir, basename, target, enableBootstrap } = config;
+    const { tmpDir, distDir, basename, target, enableBootstrap, withBuildID2, withMozBuildDate } = config;
 
     const buildBasename = `${basename}.${target.buildSuffix}`;
     const buildDir = `${tmpDir}/${buildBasename}`
@@ -107,11 +109,21 @@ async function build(config: Config) {
     // Install deno dependencies
     await $`cd ${buildDir}/floorp && deno install --allow-scripts --frozen`;
 
-    // Call --write-version only to generate buildid2 file
-    await $`cd ${buildDir}/floorp && deno task build --write-version`;
-
     // Combine mozconfig
     await $`cat ${buildDir}/floorp/gecko/mozconfig{,.${target.mozconfig}} > ${buildDir}/mozconfig`;
+
+    // Ensure buildid2 exists
+    if (withBuildID2) {
+        $`mkdir -p ${buildDir}/floorp/_dist`;
+        $`cat ${withBuildID2} > ${buildDir}/floorp/_dist/buildid2`;
+    } else if (!await exists(`${buildDir}/floorp/_dist/buildid2`)) {
+        await $`cd ${buildDir}/floorp && deno task build --write-version`;
+    }
+
+    // Potentially set MOZ_BUILD_DATE
+    if (withMozBuildDate) {
+        $`echo -e 'export MOZ_BUILD_DATE=${withMozBuildDate}' >> ${buildDir}/mozconfig`;
+    }
 
     // Run release build before
     await $`cd ${buildDir}/floorp && NODE_ENV=production deno task build --release-build-before`;
@@ -189,7 +201,7 @@ async function appimage(config: Config) {
 }
 
 async function buildDev(config: Config) {
-    const { tmpDir, distDir, basename, target, enableBootstrap } = config;
+    const { tmpDir, distDir, basename, target, enableBootstrap, withBuildID2, withMozBuildDate } = config;
 
     const buildDevBasename = `${basename}.${target.buildDevSuffix}`
     const buildDevDir = `${tmpDir}/${buildDevBasename}`;
@@ -198,6 +210,19 @@ async function buildDev(config: Config) {
 
     // Combine mozconfig
     await $`cat ${buildDevDir}/floorp/gecko/mozconfig{,.${target.mozconfig}} > ${buildDevDir}/mozconfig`;
+
+    // Ensure buildid2 exists
+    if (withBuildID2) {
+        $`mkdir -p ${buildDevDir}/floorp/_dist`;
+        $`cat ${withBuildID2} > ${buildDevDir}/floorp/_dist/buildid2`;
+    } else if (!await exists(`${buildDevDir}/floorp/_dist/buildid2`)) {
+        await $`cd ${buildDevDir}/floorp && deno task build --write-version`;
+    }
+
+    // Potentially set MOZ_BUILD_DATE
+    if (withMozBuildDate) {
+        $`echo -e 'export MOZ_BUILD_DATE=${withMozBuildDate}' >> ${buildDevDir}/mozconfig`;
+    }
 
     if (enableBootstrap) {
         await $`cd ${buildDevDir} && ./mach --no-interactive bootstrap --application-choice browser`;
@@ -260,7 +285,6 @@ async function darwinUniversal(config: Config, outSuffix: string, x64Suffix: str
 
     if (enableBootstrap) {
         await $`cd ${outDir} && ./mach --no-interactive bootstrap --application-choice browser`;
-        await $`echo -e 'ac_add_options --enable-bootstrap' > mozconfig`;
     }
 
     // Extract x64 tarball
@@ -377,6 +401,8 @@ try {
             basename,
             target,
             enableBootstrap: argv['enable-bootstrap'] ?? false,
+            withBuildID2: argv['with-buildid2'] ?? null,
+            withMozBuildDate: argv['with-moz-build-date'] ?? null,
         };
 
         for (const command of argv._) {
