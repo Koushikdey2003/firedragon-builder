@@ -224,12 +224,12 @@ async function buildDev(config: Config) {
     await $`rm -f ${objDistDir}/firedragon/pingsender*`;
 
     // Package output archive
-    if (target.buildOutputFormat === 'tar.zst') {
+    if (target.buildDevOutputFormat === 'tar.zst') {
         await $`tar --zstd -cf ${distDir}/${buildDevBasename}.tar.zst -C ${objDistDir} firedragon`;
-    } else if (target.buildOutputFormat === 'zip') {
+    } else if (target.buildDevOutputFormat === 'zip') {
         await $`cd ${objDistDir} && zip -r ${distDir}/${buildDevBasename}.zip firedragon`;
     } else {
-        throw `Invalid build output format ${target.buildOutputFormat}, must be on of [tar.zst, zip].`;
+        throw `Invalid build output format ${target.buildDevOutputFormat}, must be on of [tar.zst, zip].`;
     }
 }
 
