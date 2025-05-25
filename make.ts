@@ -122,7 +122,7 @@ async function build(config: Config) {
 
     // Potentially set MOZ_BUILD_DATE
     if (withMozBuildDate) {
-        await $`echo -e "export MOZ_BUILD_DATE=$(cat ${withMozBuildDate})" >> ${buildDev}/mozconfig`;
+        await $`echo -e "export MOZ_BUILD_DATE=$(cat ${withMozBuildDate})" >> ${buildDir}/mozconfig`;
     }
 
     // Run release build before
