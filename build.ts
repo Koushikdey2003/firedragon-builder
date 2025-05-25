@@ -56,11 +56,7 @@ const getBinArchive = () => {
     return `${brandingBaseName}.windows-x64.dev.zip`;
   }
   if (platform === 'darwin') {
-    if (arch === 'x64') {
-      return `${brandingBaseName}.macos-x64.dev.tar.zst`;
-    } else {
-      return `${brandingBaseName}.maxos-aarch64.dev.tar.zst`;
-    }
+    return `${brandingBaseName}.darwin-universal.dev.tar.dmg`;
   }
   throw new Error("Unsupported platform/architecture");
 };

@@ -143,11 +143,14 @@ async function build(config: Config) {
     // Run package
     await $`${buildDir}/mach package`;
 
+    // Remove pingsender
+    await $`rm -f ${objDistDir}/firedragon/pingsender*`;
+
     // Package output archive
     if (target.buildOutputFormat === 'tar.zst') {
-        await $`tar --zstd -cf ${distDir}/${buildBasename}.tar.zst --exclude=pingsender -C ${objDistDir} firedragon`;
-    } else if (target.buildOutputFormat === 'zip') {
-        await $`cd ${objDistDir} && zip -r ${distDir}/${buildBasename}.zip firedragon`;
+        await $`tar --zstd -cf ${distDir}/${buildBasename}.tar.zst -C ${objDistDir} firedragon`;
+    } else if (target.buildOutputFormat === 'exe') {
+        await $`${buildDir}/mach repackage installer -o ${distDir}/${buildBasename}.exe --package-name firedragon --package ${objDistDir}/firedragon-139.0.en-US.win64.zip --tag ${buildDir}/browser/installer/windows/app.tag --setupexe ${buildDir}/obj-artifact-build-output/browser/installer/windows/instgen/setup.exe --sfx-stub ${buildDir}/other-licenses/7zstub/firefox/7zSD.Win32.sfx`;
     } else {
         throw `Invalid build output format ${target.buildOutputFormat}, must be on of [tar.zst, zip].`;
     }
@@ -215,14 +218,62 @@ async function buildDev(config: Config) {
     // Run package
     await $`${buildDevDir}/mach package`;
 
+    // Remove pingsender
+    await $`rm -f ${objDistDir}/firedragon/pingsender*`;
+
     // Package output archive
     if (target.buildOutputFormat === 'tar.zst') {
-        await $`tar --zstd -cf ${distDir}/${buildDevBasename}.tar.zst --exclude=pingsender -C ${objDistDir} firedragon`;
+        await $`tar --zstd -cf ${distDir}/${buildDevBasename}.tar.zst -C ${objDistDir} firedragon`;
     } else if (target.buildOutputFormat === 'zip') {
         await $`cd ${objDistDir} && zip -r ${distDir}/${buildDevBasename}.zip firedragon`;
     } else {
         throw `Invalid build output format ${target.buildOutputFormat}, must be on of [tar.zst, zip].`;
     }
+}
+
+async function darwinUniversal(config: Config, outSuffix: string, x64Suffix: string, aarch64Suffix: string) {
+    const { tmpDir, distDir, basename, enableBootstrap } = config;
+
+    const x64Tarball = `${distDir}/${basename}.${x64Suffix}.tar.zst`;
+    if (!await exists(x64Tarball)) {
+        throw `x64-Tarball ${x64Tarball} not found.`;
+    }
+
+    const aarch64Tarball = `${distDir}/${basename}.${aarch64Suffix}.tar.zst`;
+    if (!await exists(aarch64Tarball)) {
+        throw `aarch64-Tarball ${aarch64Tarball} not found.`;
+    }
+
+    const sourceTarball = `${distDir}/${basename}.source.tar.zst`;
+    if (!await exists(sourceTarball)) {
+        await source(config);
+    }
+
+    const outBasename = `${basename}.${outSuffix}`;
+    const outDir = `${tmpDir}/${outBasename}`;
+
+    // Extract source
+    await $`mkdir ${outDir}`;
+    await $`tar -xf ${sourceTarball} --strip-components=1 -C ${outDir}`;
+
+    if (enableBootstrap) {
+        await $`cd ${outDir} && ./mach --no-interactive bootstrap --application-choice browser`;
+        await $`echo -e 'ac_add_options --enable-bootstrap' > mozconfig`;
+    }
+
+    // Extract x64 tarball
+    await $`mkdir -p ${outDir}/obj-x86_64-apple-darwin/dist`;
+    await $`tar -xf ${x64Tarball} -C ${outDir}/obj-x86_64-apple-darwin/dist`;
+
+    // Extract aarch64 tarball
+    await $`mkdir -p ${outDir}/obj-aarch64-apple-darwin/dist`;
+    await $`tar -xf ${aarch64Tarball} -C ${outDir}/obj-aarch64-apple-darwin/dist`;
+
+    // Integration
+    await $`${outDir}/mach python ${outDir}/toolkit/mozapps/installer/unify.py ${outDir}/obj-x86_64-apple-darwin/dist/firedragon/FireDragon.app ${outDir}/obj-aarch64-apple-darwin/dist/firedragon/FireDragon.app`
+
+    // Create DMG
+    await $`${outDir}/mach python -m mozbuild.action.make_dmg ${outDir}/obj-x86_64-apple-darwin/dist/floorp ${distDir}/${outBasename}.dmg`;
 }
 
 const EDITIONS = {
@@ -244,6 +295,7 @@ const TARGETS = {
         rustTarget: 'x86_64-unknown-linux-gnu',
         buildSuffix: 'linux-x64',
         buildOutputFormat: 'tar.zst',
+        buildDevOutputFormat: 'tar.zst',
         appimageSuffix: 'appimage-x64',
         buildDevSuffix: 'linux-x64.dev',
     },
@@ -253,6 +305,7 @@ const TARGETS = {
         rustTarget: 'aarch64-unknown-linux-gnu',
         buildSuffix: 'linux-aarch64',
         buildOutputFormat: 'tar.zst',
+        buildDevOutputFormat: 'tar.zst',
         appimageSuffix: 'appimage-aarch64',
         buildDevSuffix: 'linux-aarch64.dev',
     },
@@ -261,27 +314,30 @@ const TARGETS = {
         target: 'x86_64-pc-windows-msvc',
         rustTarget: 'x86_64-pc-windows-msvc',
         buildSuffix: 'windows-x64',
-        buildOutputFormat: 'zip',
+        buildOutputFormat: 'exe',
+        buildDevOutputFormat: 'zip',
         appimageSuffix: null,
         buildDevSuffix: 'windows-x64.dev',
     },
-    'macos-x64': {
-        mozconfig: 'macos-x64',
+    'darwin-x64': {
+        mozconfig: 'darwin-x64',
         target: 'x86_64-apple-darwin',
         rustTarget: 'x86_64-apple-darwin',
-        buildSuffix: 'macos-x64',
+        buildSuffix: 'darwin-x64',
         buildOutputFormat: 'tar.zst',
+        buildDevOutputFormat: 'tar.zst',
         appimageSuffix: null,
-        buildDevSuffix: 'macos-x64.dev',
+        buildDevSuffix: 'darwin-x64.dev',
     },
-    'macos-aarch64': {
-        mozconfig: 'macos-aarch64',
+    'darwin-aarch64': {
+        mozconfig: 'darwin-aarch64',
         target: 'aarch64-apple-darwin',
         rustTarget: 'aarch64-apple-darwin',
-        buildSuffix: 'macos-aarch64',
+        buildSuffix: 'darwin-aarch64',
         buildOutputFormat: 'tar.zst',
+        buildDevOutputFormat: 'tar.zst',
         appimageSuffix: null,
-        buildDevSuffix: 'macos-aarch64.dev',
+        buildDevSuffix: 'darwin-aarch64.dev',
     },
 };
 
@@ -318,25 +374,31 @@ try {
             edition,
             basename,
             target,
-            enableBootstrap: argv['enable-bootstrap'],
+            enableBootstrap: argv['enable-bootstrap'] ?? false,
         };
 
         for (const command of argv._) {
             switch (command) {
-                case "source":
+                case 'source':
                     await source(config);
                     break;
-                case "build":
+                case 'build':
                     await build(config);
                     break;
-                case "build-dev":
+                case 'build-dev':
                     await buildDev(config);
                     break;
-                case "appimage":
+                case 'appimage':
                     await appimage(config);
                     break;
+                case 'darwin-universal':
+                    await darwinUniversal(config, 'darwin-universal', TARGETS['darwin-x64'].buildSuffix, TARGETS['darwin-aarch64'].buildSuffix);
+                    break;
+                case 'darwin-universal-dev':
+                    await darwinUniversal(config, 'darwin-universal.dev', TARGETS['darwin-x64'].buildDevSuffix, TARGETS['darwin-aarch64'].buildDevSuffix);
+                    break;
                 default:
-                    throw `Unsupported command ${command}, must be one of [source, build, appimage, build-dev]`;
+                    throw `Unsupported command ${command}, must be one of [source, build, appimage, darwin-universal, build-dev, darwin-universal-dev]`;
             }
         }
 
@@ -346,5 +408,5 @@ try {
         argv = parseArgv(argv['--']);
     }
 } finally {
-    await $`rm -rf ${tmpDir}`;
+    //await $`rm -rf ${tmpDir}`;
 }

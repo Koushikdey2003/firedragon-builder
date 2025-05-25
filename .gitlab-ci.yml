@@ -1,8 +1,10 @@
 stages:
+  - moz_build_date
   - source
   - build
   - appimage
   - build-dev
+  - darwin-universal
   - publish
   - release
 
@@ -23,15 +25,27 @@ source:
     paths:
       - .dist/*.source.tar.zst
 
+moz_build_date:
+  stage: moz_build_date
+  needs: []
+  image: registry.gitlab.com/stefanwimmer128/archlinux-chaotic-paru-user:latest
+  script:
+    - date -d "$CI_PIPELINE_CREATED_AT" +%Y%m%d%H%M%S > .dist/moz_build_date
+  artifacts:
+    paths:
+      - .dist/moz_build_date
+
 build:
   stage: build
   needs:
     - job: source
       artifacts: true
+    - job: moz_build_date
+      artifacts: true
   parallel:
     matrix:
       - EDITION: [dr640nized, catppuccin]
-        PLATFORM: [linux, macos]
+        PLATFORM: [linux, darwin]
         ARCH: [x64, aarch64]
       - EDITION: [dr640nized, catppuccin]
         PLATFORM: windows
@@ -42,7 +56,7 @@ build:
     - apt-get install -y zstd patch rsync python3-pip msitools
     - deno install --allow-scripts --frozen
   script:
-    - deno task make --edition=$EDITION --target=$PLATFORM-$ARCH --enable-bootstrap build
+    - MOZ_BUILD_DATE=$(cat .dist/moz_build_date) deno task make --edition=$EDITION --target=$PLATFORM-$ARCH --enable-bootstrap build
   artifacts:
     paths:
       - .dist/*.$PLATFORM-$ARCH.*
@@ -76,7 +90,7 @@ build-dev:
   parallel:
     matrix:
       - EDITION: [dr640nized, catppuccin]
-        PLATFORM: [linux, macos]
+        PLATFORM: [linux, darwin]
         ARCH: [x64, aarch64]
       - EDITION: [dr640nized, catppuccin]
         PLATFORM: windows
@@ -87,10 +101,32 @@ build-dev:
     - apt-get install -y curl rsync patch zstd python3-pip msitools
     - deno install --allow-scripts --frozen
   script:
-    - deno task make --edition=$EDITION --target=$PLATFORM-$ARCH --enable-bootstrap build-dev
+    - MOZ_BUILD_DATE=$(cat .dist/moz_build_date) deno task make --edition=$EDITION --target=$PLATFORM-$ARCH --enable-bootstrap build-dev
   artifacts:
     paths:
       - .dist/*.$PLATFORM-$ARCH.dev.*
+
+darwin-universal:
+  stage: darwin-universal
+  needs:
+    - job: build
+      artifacts: true
+    - job: build-dev
+      artifacts: true
+  parallel:
+    matrix:
+      - EDITION: [dr640nized, catppuccin]
+        TYPE: ['', -dev]
+  image: denoland/deno:ubuntu
+  before_script:
+    - apt-get update
+    - apt-get install -y zstd
+    - deno install --allow-scripts --frozen
+  script:
+    - deno task make --edition=$EDITION darwin-universal$TYPE
+  artifacts:
+    paths:
+      - .dist/*.darwin-universal.*
 
 publish:
   stage: publish
@@ -110,29 +146,25 @@ publish:
     - 'curl --header "JOB-TOKEN: $CI_JOB_TOKEN" --upload-file ".dist/firedragon-$CI_COMMIT_TAG.source.tar.zst" "$CI_API_V4_URL/projects/$CI_PROJECT_ID/packages/generic/firedragon/${CI_COMMIT_TAG##v}/firedragon-$CI_COMMIT_TAG.source.tar.zst"'
     - 'curl --header "JOB-TOKEN: $CI_JOB_TOKEN" --upload-file ".dist/firedragon-$CI_COMMIT_TAG.linux-x64.tar.zst" "$CI_API_V4_URL/projects/$CI_PROJECT_ID/packages/generic/firedragon/${CI_COMMIT_TAG##v}/firedragon-$CI_COMMIT_TAG.linux-x64.tar.zst"'
     - 'curl --header "JOB-TOKEN: $CI_JOB_TOKEN" --upload-file ".dist/firedragon-$CI_COMMIT_TAG.linux-aarch64.tar.zst" "$CI_API_V4_URL/projects/$CI_PROJECT_ID/packages/generic/firedragon/${CI_COMMIT_TAG##v}/firedragon-$CI_COMMIT_TAG.linux-aarch64.tar.zst"'
-    - 'curl --header "JOB-TOKEN: $CI_JOB_TOKEN" --upload-file ".dist/firedragon-$CI_COMMIT_TAG.windows-x64.zip" "$CI_API_V4_URL/projects/$CI_PROJECT_ID/packages/generic/firedragon/${CI_COMMIT_TAG##v}/firedragon-$CI_COMMIT_TAG.windows-x64.zip"'
-    - 'curl --header "JOB-TOKEN: $CI_JOB_TOKEN" --upload-file ".dist/firedragon-$CI_COMMIT_TAG.macos-x64.tar.zst" "$CI_API_V4_URL/projects/$CI_PROJECT_ID/packages/generic/firedragon/${CI_COMMIT_TAG##v}/firedragon-$CI_COMMIT_TAG.macos-x64.tar.zst"'
-    - 'curl --header "JOB-TOKEN: $CI_JOB_TOKEN" --upload-file ".dist/firedragon-$CI_COMMIT_TAG.macos-aarch64.tar.zst" "$CI_API_V4_URL/projects/$CI_PROJECT_ID/packages/generic/firedragon/${CI_COMMIT_TAG##v}/firedragon-$CI_COMMIT_TAG.macos-aarch64.tar.zst"'
+    - 'curl --header "JOB-TOKEN: $CI_JOB_TOKEN" --upload-file ".dist/firedragon-$CI_COMMIT_TAG.windows-x64.exe" "$CI_API_V4_URL/projects/$CI_PROJECT_ID/packages/generic/firedragon/${CI_COMMIT_TAG##v}/firedragon-$CI_COMMIT_TAG.windows-x64.exe"'
     - 'curl --header "JOB-TOKEN: $CI_JOB_TOKEN" --upload-file ".dist/firedragon-$CI_COMMIT_TAG.appimage-x64.AppImage" "$CI_API_V4_URL/projects/$CI_PROJECT_ID/packages/generic/firedragon/${CI_COMMIT_TAG##v}/firedragon-$CI_COMMIT_TAG.appimage-x64.AppImage"'
     - 'curl --header "JOB-TOKEN: $CI_JOB_TOKEN" --upload-file ".dist/firedragon-$CI_COMMIT_TAG.appimage-aarch64.AppImage" "$CI_API_V4_URL/projects/$CI_PROJECT_ID/packages/generic/firedragon/${CI_COMMIT_TAG##v}/firedragon-$CI_COMMIT_TAG.appimage-aarch64.AppImage"'
+    - 'curl --header "JOB-TOKEN: $CI_JOB_TOKEN" --upload-file ".dist/firedragon-$CI_COMMIT_TAG.darwin-universal.dmg" "$CI_API_V4_URL/projects/$CI_PROJECT_ID/packages/generic/firedragon/${CI_COMMIT_TAG##v}/firedragon-$CI_COMMIT_TAG.darwin-universal.dmg"'
     - 'curl --header "JOB-TOKEN: $CI_JOB_TOKEN" --upload-file ".dist/firedragon-$CI_COMMIT_TAG.linux-x64.dev.tar.zst" "$CI_API_V4_URL/projects/$CI_PROJECT_ID/packages/generic/firedragon/${CI_COMMIT_TAG##v}/firedragon-$CI_COMMIT_TAG.linux-x64.dev.tar.zst"'
     - 'curl --header "JOB-TOKEN: $CI_JOB_TOKEN" --upload-file ".dist/firedragon-$CI_COMMIT_TAG.linux-aarch64.dev.tar.zst" "$CI_API_V4_URL/projects/$CI_PROJECT_ID/packages/generic/firedragon/${CI_COMMIT_TAG##v}/firedragon-$CI_COMMIT_TAG.linux-aarch64.dev.tar.zst"'
     - 'curl --header "JOB-TOKEN: $CI_JOB_TOKEN" --upload-file ".dist/firedragon-$CI_COMMIT_TAG.windows-x64.dev.zip" "$CI_API_V4_URL/projects/$CI_PROJECT_ID/packages/generic/firedragon/${CI_COMMIT_TAG##v}/firedragon-$CI_COMMIT_TAG.windows-x64.dev.zip"'
-    - 'curl --header "JOB-TOKEN: $CI_JOB_TOKEN" --upload-file ".dist/firedragon-$CI_COMMIT_TAG.macos-x64.dev.tar.zst" "$CI_API_V4_URL/projects/$CI_PROJECT_ID/packages/generic/firedragon/${CI_COMMIT_TAG##v}/firedragon-$CI_COMMIT_TAG.macos-x64.dev.tar.zst"'
-    - 'curl --header "JOB-TOKEN: $CI_JOB_TOKEN" --upload-file ".dist/firedragon-$CI_COMMIT_TAG.macos-aarch64.dev.tar.zst" "$CI_API_V4_URL/projects/$CI_PROJECT_ID/packages/generic/firedragon/${CI_COMMIT_TAG##v}/firedragon-$CI_COMMIT_TAG.macos-aarch64.dev.tar.zst"'
+    - 'curl --header "JOB-TOKEN: $CI_JOB_TOKEN" --upload-file ".dist/firedragon-$CI_COMMIT_TAG.darwin-universal.dev.dmg" "$CI_API_V4_URL/projects/$CI_PROJECT_ID/packages/generic/firedragon/${CI_COMMIT_TAG##v}/firedragon-$CI_COMMIT_TAG.darwin-universal.dev.dmg"'
     - 'curl --header "JOB-TOKEN: $CI_JOB_TOKEN" --upload-file ".dist/firedragon-catppuccin-$CI_COMMIT_TAG.source.tar.zst" "$CI_API_V4_URL/projects/$CI_PROJECT_ID/packages/generic/firedragon-catppuccin/${CI_COMMIT_TAG##v}/firedragon-catppuccin-$CI_COMMIT_TAG.source.tar.zst"'
     - 'curl --header "JOB-TOKEN: $CI_JOB_TOKEN" --upload-file ".dist/firedragon-catppuccin-$CI_COMMIT_TAG.linux-x64.tar.zst" "$CI_API_V4_URL/projects/$CI_PROJECT_ID/packages/generic/firedragon-catppuccin/${CI_COMMIT_TAG##v}/firedragon-catppuccin-$CI_COMMIT_TAG.linux-x64.tar.zst"'
     - 'curl --header "JOB-TOKEN: $CI_JOB_TOKEN" --upload-file ".dist/firedragon-catppuccin-$CI_COMMIT_TAG.linux-aarch64.tar.zst" "$CI_API_V4_URL/projects/$CI_PROJECT_ID/packages/generic/firedragon-catppuccin/${CI_COMMIT_TAG##v}/firedragon-catppuccin-$CI_COMMIT_TAG.linux-aarch64.tar.zst"'
-    - 'curl --header "JOB-TOKEN: $CI_JOB_TOKEN" --upload-file ".dist/firedragon-catppuccin-$CI_COMMIT_TAG.windows-x64.zip" "$CI_API_V4_URL/projects/$CI_PROJECT_ID/packages/generic/firedragon-catppuccin/${CI_COMMIT_TAG##v}/firedragon-catppuccin-$CI_COMMIT_TAG.windows-x64.zip"'
-    - 'curl --header "JOB-TOKEN: $CI_JOB_TOKEN" --upload-file ".dist/firedragon-catppuccin-$CI_COMMIT_TAG.macos-x64.tar.zst" "$CI_API_V4_URL/projects/$CI_PROJECT_ID/packages/generic/firedragon-catppuccin/${CI_COMMIT_TAG##v}/firedragon-catppuccin-$CI_COMMIT_TAG.macos-x64.tar.zst"'
-    - 'curl --header "JOB-TOKEN: $CI_JOB_TOKEN" --upload-file ".dist/firedragon-catppuccin-$CI_COMMIT_TAG.macos-aarch64.tar.zst" "$CI_API_V4_URL/projects/$CI_PROJECT_ID/packages/generic/firedragon-catppuccin/${CI_COMMIT_TAG##v}/firedragon-catppuccin-$CI_COMMIT_TAG.macos-aarch64.tar.zst"'
+    - 'curl --header "JOB-TOKEN: $CI_JOB_TOKEN" --upload-file ".dist/firedragon-catppuccin-$CI_COMMIT_TAG.windows-x64.exe" "$CI_API_V4_URL/projects/$CI_PROJECT_ID/packages/generic/firedragon-catppuccin/${CI_COMMIT_TAG##v}/firedragon-catppuccin-$CI_COMMIT_TAG.windows-x64.exe"'
     - 'curl --header "JOB-TOKEN: $CI_JOB_TOKEN" --upload-file ".dist/firedragon-catppuccin-$CI_COMMIT_TAG.appimage-x64.AppImage" "$CI_API_V4_URL/projects/$CI_PROJECT_ID/packages/generic/firedragon-catppuccin/${CI_COMMIT_TAG##v}/firedragon-catppuccin-$CI_COMMIT_TAG.appimage-x64.AppImage"'
     - 'curl --header "JOB-TOKEN: $CI_JOB_TOKEN" --upload-file ".dist/firedragon-catppuccin-$CI_COMMIT_TAG.appimage-aarch64.AppImage" "$CI_API_V4_URL/projects/$CI_PROJECT_ID/packages/generic/firedragon-catppuccin/${CI_COMMIT_TAG##v}/firedragon-catppuccin-$CI_COMMIT_TAG.appimage-aarch64.AppImage"'
+    - 'curl --header "JOB-TOKEN: $CI_JOB_TOKEN" --upload-file ".dist/firedragon-catppuccin-$CI_COMMIT_TAG.darwin-universal.dmg" "$CI_API_V4_URL/projects/$CI_PROJECT_ID/packages/generic/firedragon-catppuccin/${CI_COMMIT_TAG##v}/firedragon-catppuccin-$CI_COMMIT_TAG.darwin-universal.dmg"'
     - 'curl --header "JOB-TOKEN: $CI_JOB_TOKEN" --upload-file ".dist/firedragon-catppuccin-$CI_COMMIT_TAG.linux-x64.dev.tar.zst" "$CI_API_V4_URL/projects/$CI_PROJECT_ID/packages/generic/firedragon-catppuccin/${CI_COMMIT_TAG##v}/firedragon-catppuccin-$CI_COMMIT_TAG.linux-x64.dev.tar.zst"'
     - 'curl --header "JOB-TOKEN: $CI_JOB_TOKEN" --upload-file ".dist/firedragon-catppuccin-$CI_COMMIT_TAG.linux-aarch64.dev.tar.zst" "$CI_API_V4_URL/projects/$CI_PROJECT_ID/packages/generic/firedragon-catppuccin/${CI_COMMIT_TAG##v}/firedragon-catppuccin-$CI_COMMIT_TAG.linux-aarch64.dev.tar.zst"'
-    - 'curl --header "JOB-TOKEN: $CI_JOB_TOKEN" --upload-file ".dist/firedragon-catppuccin-$CI_COMMIT_TAG.windows-x64.zip" "$CI_API_V4_URL/projects/$CI_PROJECT_ID/packages/generic/firedragon-catppuccin/${CI_COMMIT_TAG##v}/firedragon-catppuccin-$CI_COMMIT_TAG.windows-x64.zip"'
-    - 'curl --header "JOB-TOKEN: $CI_JOB_TOKEN" --upload-file ".dist/firedragon-catppuccin-$CI_COMMIT_TAG.macos-x64.dev.tar.zst" "$CI_API_V4_URL/projects/$CI_PROJECT_ID/packages/generic/firedragon-catppuccin/${CI_COMMIT_TAG##v}/firedragon-catppuccin-$CI_COMMIT_TAG.macos-x64.dev.tar.zst"'
-    - 'curl --header "JOB-TOKEN: $CI_JOB_TOKEN" --upload-file ".dist/firedragon-catppuccin-$CI_COMMIT_TAG.macos-aarch64.dev.tar.zst" "$CI_API_V4_URL/projects/$CI_PROJECT_ID/packages/generic/firedragon-catppuccin/${CI_COMMIT_TAG##v}/firedragon-catppuccin-$CI_COMMIT_TAG.macos-aarch64.dev.tar.zst"'
+    - 'curl --header "JOB-TOKEN: $CI_JOB_TOKEN" --upload-file ".dist/firedragon-catppuccin-$CI_COMMIT_TAG.windows-x64.exe" "$CI_API_V4_URL/projects/$CI_PROJECT_ID/packages/generic/firedragon-catppuccin/${CI_COMMIT_TAG##v}/firedragon-catppuccin-$CI_COMMIT_TAG.windows-x64.exe"'
+    - 'curl --header "JOB-TOKEN: $CI_JOB_TOKEN" --upload-file ".dist/firedragon-catppuccin-$CI_COMMIT_TAG.darwin-universal.dev.dmg" "$CI_API_V4_URL/projects/$CI_PROJECT_ID/packages/generic/firedragon-catppuccin/${CI_COMMIT_TAG##v}/firedragon-catppuccin-$CI_COMMIT_TAG.darwin-universal.dev.dmg"'
 
 release:
   stage: release
@@ -150,26 +182,22 @@ release:
         --assets-link "{\"name\":\"firedragon-$CI_COMMIT_TAG.source.tar.zst\",\"filepath\":\"/firedragon-$CI_COMMIT_TAG.source.tar.zst\",\"url\":\"$CI_API_V4_URL/projects/$CI_PROJECT_ID/packages/generic/firedragon/${CI_COMMIT_TAG##v}/firedragon-$CI_COMMIT_TAG.source.tar.zst\",\"link_type\":\"package\"}" \
         --assets-link "{\"name\":\"firedragon-$CI_COMMIT_TAG.linux-x64.tar.zst\",\"filepath\":\"/firedragon-$CI_COMMIT_TAG.linux-x64.tar.zst\",\"url\":\"$CI_API_V4_URL/projects/$CI_PROJECT_ID/packages/generic/firedragon/${CI_COMMIT_TAG##v}/firedragon-$CI_COMMIT_TAG.linux-x64.tar.zst\",\"link_type\":\"package\"}" \
         --assets-link "{\"name\":\"firedragon-$CI_COMMIT_TAG.linux-aarch64.tar.zst\",\"filepath\":\"/firedragon-$CI_COMMIT_TAG.linux-aarch64.tar.zst\",\"url\":\"$CI_API_V4_URL/projects/$CI_PROJECT_ID/packages/generic/firedragon/${CI_COMMIT_TAG##v}/firedragon-$CI_COMMIT_TAG.linux-aarch64.tar.zst\",\"link_type\":\"package\"}" \
-        --assets-link "{\"name\":\"firedragon-$CI_COMMIT_TAG.windows-x64.zip\",\"filepath\":\"/firedragon-$CI_COMMIT_TAG.windows-x64.zip\",\"url\":\"$CI_API_V4_URL/projects/$CI_PROJECT_ID/packages/generic/firedragon/${CI_COMMIT_TAG##v}/firedragon-$CI_COMMIT_TAG.windows-x64.zip\",\"link_type\":\"package\"}" \
-        --assets-link "{\"name\":\"firedragon-$CI_COMMIT_TAG.macos-x64.tar.zst\",\"filepath\":\"/firedragon-$CI_COMMIT_TAG.macos-x64.tar.zst\",\"url\":\"$CI_API_V4_URL/projects/$CI_PROJECT_ID/packages/generic/firedragon/${CI_COMMIT_TAG##v}/firedragon-$CI_COMMIT_TAG.macos-x64.tar.zst\",\"link_type\":\"package\"}" \
-        --assets-link "{\"name\":\"firedragon-$CI_COMMIT_TAG.macos-aarch64.tar.zst\",\"filepath\":\"/firedragon-$CI_COMMIT_TAG.macos-aarch64.tar.zst\",\"url\":\"$CI_API_V4_URL/projects/$CI_PROJECT_ID/packages/generic/firedragon/${CI_COMMIT_TAG##v}/firedragon-$CI_COMMIT_TAG.macos-aarch64.tar.zst\",\"link_type\":\"package\"}" \
+        --assets-link "{\"name\":\"firedragon-$CI_COMMIT_TAG.windows-x64.exe\",\"filepath\":\"/firedragon-$CI_COMMIT_TAG.windows-x64.exe\",\"url\":\"$CI_API_V4_URL/projects/$CI_PROJECT_ID/packages/generic/firedragon/${CI_COMMIT_TAG##v}/firedragon-$CI_COMMIT_TAG.windows-x64.exe\",\"link_type\":\"package\"}" \
         --assets-link "{\"name\":\"firedragon-$CI_COMMIT_TAG.appimage-x64.AppImage\",\"filepath\":\"/firedragon-$CI_COMMIT_TAG.appimage-x64.AppImage\",\"url\":\"$CI_API_V4_URL/projects/$CI_PROJECT_ID/packages/generic/firedragon/${CI_COMMIT_TAG##v}/firedragon-$CI_COMMIT_TAG.appimage-x64.AppImage\",\"link_type\":\"package\"}" \
         --assets-link "{\"name\":\"firedragon-$CI_COMMIT_TAG.appimage-aarch64.AppImage\",\"filepath\":\"/firedragon-$CI_COMMIT_TAG.appimage-aarch64.AppImage\",\"url\":\"$CI_API_V4_URL/projects/$CI_PROJECT_ID/packages/generic/firedragon/${CI_COMMIT_TAG##v}/firedragon-$CI_COMMIT_TAG.appimage-aarch64.AppImage\",\"link_type\":\"package\"}" \
+        --assets-link "{\"name\":\"firedragon-$CI_COMMIT_TAG.darwin-universal.dmg\",\"filepath\":\"/firedragon-$CI_COMMIT_TAG.darwin-universal.dmg\",\"url\":\"$CI_API_V4_URL/projects/$CI_PROJECT_ID/packages/generic/firedragon/${CI_COMMIT_TAG##v}/firedragon-$CI_COMMIT_TAG.darwin-universal.dmg\",\"link_type\":\"package\"}" \
         --assets-link "{\"name\":\"firedragon-$CI_COMMIT_TAG.linux-x64.dev.tar.zst\",\"filepath\":\"/firedragon-$CI_COMMIT_TAG.linux-x64.dev.tar.zst\",\"url\":\"$CI_API_V4_URL/projects/$CI_PROJECT_ID/packages/generic/firedragon/${CI_COMMIT_TAG##v}/firedragon-$CI_COMMIT_TAG.linux-x64.dev.tar.zst\",\"link_type\":\"package\"}" \
         --assets-link "{\"name\":\"firedragon-$CI_COMMIT_TAG.linux-aarch64.dev.tar.zst\",\"filepath\":\"/firedragon-$CI_COMMIT_TAG.linux-aarch64.dev.tar.zst\",\"url\":\"$CI_API_V4_URL/projects/$CI_PROJECT_ID/packages/generic/firedragon/${CI_COMMIT_TAG##v}/firedragon-$CI_COMMIT_TAG.linux-aarch64.dev.tar.zst\",\"link_type\":\"package\"}" \
-        --assets-link "{\"name\":\"firedragon-$CI_COMMIT_TAG.windows-x64.zip\",\"filepath\":\"/firedragon-$CI_COMMIT_TAG.windows-x64.zip\",\"url\":\"$CI_API_V4_URL/projects/$CI_PROJECT_ID/packages/generic/firedragon/${CI_COMMIT_TAG##v}/firedragon-$CI_COMMIT_TAG.windows-x64.zip\",\"link_type\":\"package\"}" \
-        --assets-link "{\"name\":\"firedragon-$CI_COMMIT_TAG.macos-x64.dev.tar.zst\",\"filepath\":\"/firedragon-$CI_COMMIT_TAG.macos-x64.dev.tar.zst\",\"url\":\"$CI_API_V4_URL/projects/$CI_PROJECT_ID/packages/generic/firedragon/${CI_COMMIT_TAG##v}/firedragon-$CI_COMMIT_TAG.macos-x64.dev.tar.zst\",\"link_type\":\"package\"}" \
-        --assets-link "{\"name\":\"firedragon-$CI_COMMIT_TAG.macos-aarch64.dev.tar.zst\",\"filepath\":\"/firedragon-$CI_COMMIT_TAG.macos-aarch64.dev.tar.zst\",\"url\":\"$CI_API_V4_URL/projects/$CI_PROJECT_ID/packages/generic/firedragon/${CI_COMMIT_TAG##v}/firedragon-$CI_COMMIT_TAG.macos-aarch64.dev.tar.zst\",\"link_type\":\"package\"}" \
+        --assets-link "{\"name\":\"firedragon-$CI_COMMIT_TAG.windows-x64.exe\",\"filepath\":\"/firedragon-$CI_COMMIT_TAG.windows-x64.exe\",\"url\":\"$CI_API_V4_URL/projects/$CI_PROJECT_ID/packages/generic/firedragon/${CI_COMMIT_TAG##v}/firedragon-$CI_COMMIT_TAG.windows-x64.exe\",\"link_type\":\"package\"}" \
+        --assets-link "{\"name\":\"firedragon-$CI_COMMIT_TAG.darwin-universal.dev.dmg\",\"filepath\":\"/firedragon-$CI_COMMIT_TAG.darwin-universal.dev.dmg\",\"url\":\"$CI_API_V4_URL/projects/$CI_PROJECT_ID/packages/generic/firedragon/${CI_COMMIT_TAG##v}/firedragon-$CI_COMMIT_TAG.darwin-universal.dev.dmg\",\"link_type\":\"package\"}" \
         --assets-link "{\"name\":\"firedragon-catppuccin-$CI_COMMIT_TAG.source.tar.zst\",\"filepath\":\"/firedragon-catppuccin-$CI_COMMIT_TAG.source.tar.zst\",\"url\":\"$CI_API_V4_URL/projects/$CI_PROJECT_ID/packages/generic/firedragon-catppuccin/${CI_COMMIT_TAG##v}/firedragon-catppuccin-$CI_COMMIT_TAG.source.tar.zst\",\"link_type\":\"package\"}" \
         --assets-link "{\"name\":\"firedragon-catppuccin-$CI_COMMIT_TAG.linux-x64.tar.zst\",\"filepath\":\"/firedragon-catppuccin-$CI_COMMIT_TAG.linux-x64.tar.zst\",\"url\":\"$CI_API_V4_URL/projects/$CI_PROJECT_ID/packages/generic/firedragon-catppuccin/${CI_COMMIT_TAG##v}/firedragon-catppuccin-$CI_COMMIT_TAG.linux-x64.tar.zst\",\"link_type\":\"package\"}" \
         --assets-link "{\"name\":\"firedragon-catppuccin-$CI_COMMIT_TAG.linux-aarch64.tar.zst\",\"filepath\":\"/firedragon-catppuccin-$CI_COMMIT_TAG.linux-aarch64.tar.zst\",\"url\":\"$CI_API_V4_URL/projects/$CI_PROJECT_ID/packages/generic/firedragon-catppuccin/${CI_COMMIT_TAG##v}/firedragon-catppuccin-$CI_COMMIT_TAG.linux-aarch64.tar.zst\",\"link_type\":\"package\"}" \
-        --assets-link "{\"name\":\"firedragon-catppuccin-$CI_COMMIT_TAG.windows-x64.zip\",\"filepath\":\"/firedragon-catppuccin-$CI_COMMIT_TAG.windows-x64.zip\",\"url\":\"$CI_API_V4_URL/projects/$CI_PROJECT_ID/packages/generic/firedragon-catppuccin/${CI_COMMIT_TAG##v}/firedragon-catppuccin-$CI_COMMIT_TAG.windows-x64.zip\",\"link_type\":\"package\"}" \
-        --assets-link "{\"name\":\"firedragon-catppuccin-$CI_COMMIT_TAG.macos-x64.tar.zst\",\"filepath\":\"/firedragon-catppuccin-$CI_COMMIT_TAG.macos-x64.tar.zst\",\"url\":\"$CI_API_V4_URL/projects/$CI_PROJECT_ID/packages/generic/firedragon-catppuccin/${CI_COMMIT_TAG##v}/firedragon-catppuccin-$CI_COMMIT_TAG.macos-x64.tar.zst\",\"link_type\":\"package\"}" \
-        --assets-link "{\"name\":\"firedragon-catppuccin-$CI_COMMIT_TAG.macos-aarch64.tar.zst\",\"filepath\":\"/firedragon-catppuccin-$CI_COMMIT_TAG.macos-aarch64.tar.zst\",\"url\":\"$CI_API_V4_URL/projects/$CI_PROJECT_ID/packages/generic/firedragon-catppuccin/${CI_COMMIT_TAG##v}/firedragon-catppuccin-$CI_COMMIT_TAG.macos-aarch64.tar.zst\",\"link_type\":\"package\"}" \
+        --assets-link "{\"name\":\"firedragon-catppuccin-$CI_COMMIT_TAG.windows-x64.exe\",\"filepath\":\"/firedragon-catppuccin-$CI_COMMIT_TAG.windows-x64.exe\",\"url\":\"$CI_API_V4_URL/projects/$CI_PROJECT_ID/packages/generic/firedragon-catppuccin/${CI_COMMIT_TAG##v}/firedragon-catppuccin-$CI_COMMIT_TAG.windows-x64.exe\",\"link_type\":\"package\"}" \
         --assets-link "{\"name\":\"firedragon-catppuccin-$CI_COMMIT_TAG.appimage-x64.AppImage\",\"filepath\":\"/firedragon-catppuccin-$CI_COMMIT_TAG.appimage-x64.AppImage\",\"url\":\"$CI_API_V4_URL/projects/$CI_PROJECT_ID/packages/generic/firedragon-catppuccin/${CI_COMMIT_TAG##v}/firedragon-catppuccin-$CI_COMMIT_TAG.appimage-x64.AppImage\",\"link_type\":\"package\"}" \
         --assets-link "{\"name\":\"firedragon-catppuccin-$CI_COMMIT_TAG.appimage-aarch64.AppImage\",\"filepath\":\"/firedragon-catppuccin-$CI_COMMIT_TAG.appimage-aarch64.AppImage\",\"url\":\"$CI_API_V4_URL/projects/$CI_PROJECT_ID/packages/generic/firedragon-catppuccin/${CI_COMMIT_TAG##v}/firedragon-catppuccin-$CI_COMMIT_TAG.appimage-aarch64.AppImage\",\"link_type\":\"package\"}" \
+        --assets-link "{\"name\":\"firedragon-catppuccin-$CI_COMMIT_TAG.darwin-universal.dmg\",\"filepath\":\"/firedragon-catppuccin-$CI_COMMIT_TAG.darwin-universal.dmg\",\"url\":\"$CI_API_V4_URL/projects/$CI_PROJECT_ID/packages/generic/firedragon-catppuccin/${CI_COMMIT_TAG##v}/firedragon-catppuccin-$CI_COMMIT_TAG.darwin-universal.dmg\",\"link_type\":\"package\"}" \
         --assets-link "{\"name\":\"firedragon-catppuccin-$CI_COMMIT_TAG.linux-x64.dev.tar.zst\",\"filepath\":\"/firedragon-catppuccin-$CI_COMMIT_TAG.linux-x64.dev.tar.zst\",\"url\":\"$CI_API_V4_URL/projects/$CI_PROJECT_ID/packages/generic/firedragon-catppuccin/${CI_COMMIT_TAG##v}/firedragon-catppuccin-$CI_COMMIT_TAG.linux-x64.dev.tar.zst\",\"link_type\":\"package\"}" \
         --assets-link "{\"name\":\"firedragon-catppuccin-$CI_COMMIT_TAG.linux-aarch64.dev.tar.zst\",\"filepath\":\"/firedragon-catppuccin-$CI_COMMIT_TAG.linux-aarch64.dev.tar.zst\",\"url\":\"$CI_API_V4_URL/projects/$CI_PROJECT_ID/packages/generic/firedragon-catppuccin/${CI_COMMIT_TAG##v}/firedragon-catppuccin-$CI_COMMIT_TAG.linux-aarch64.dev.tar.zst\",\"link_type\":\"package\"}" \
         --assets-link "{\"name\":\"firedragon-catppuccin-$CI_COMMIT_TAG.windows-x64.dev.tar.zst\",\"filepath\":\"/firedragon-catppuccin-$CI_COMMIT_TAG.windows-x64.dev.tar.zst\",\"url\":\"$CI_API_V4_URL/projects/$CI_PROJECT_ID/packages/generic/firedragon-catppuccin/${CI_COMMIT_TAG##v}/firedragon-catppuccin-$CI_COMMIT_TAG.windows-x64.dev.tar.zst\",\"link_type\":\"package\"}" \
-        --assets-link "{\"name\":\"firedragon-catppuccin-$CI_COMMIT_TAG.linux-x64.dev.tar.zst\",\"filepath\":\"/firedragon-catppuccin-$CI_COMMIT_TAG.macos-x64.dev.tar.zst\",\"url\":\"$CI_API_V4_URL/projects/$CI_PROJECT_ID/packages/generic/firedragon-catppuccin/${CI_COMMIT_TAG##v}/firedragon-catppuccin-$CI_COMMIT_TAG.macos-x64.dev.tar.zst\",\"link_type\":\"package\"}" \
-        --assets-link "{\"name\":\"firedragon-catppuccin-$CI_COMMIT_TAG.macos-aarch64.dev.tar.zst\",\"filepath\":\"/firedragon-catppuccin-$CI_COMMIT_TAG.macos-aarch64.dev.tar.zst\",\"url\":\"$CI_API_V4_URL/projects/$CI_PROJECT_ID/packages/generic/firedragon-catppuccin/${CI_COMMIT_TAG##v}/firedragon-catppuccin-$CI_COMMIT_TAG.macos-aarch64.dev.tar.zst\",\"link_type\":\"package\"}"
+        --assets-link "{\"name\":\"firedragon-catppuccin-$CI_COMMIT_TAG.darwin-universal.dev.dmg\",\"filepath\":\"/firedragon-catppuccin-$CI_COMMIT_TAG.darwin-universal.dev.dmg\",\"url\":\"$CI_API_V4_URL/projects/$CI_PROJECT_ID/packages/generic/firedragon-catppuccin/${CI_COMMIT_TAG##v}/firedragon-catppuccin-$CI_COMMIT_TAG.darwin-universal.dev.dmg\",\"link_type\":\"package\"}"
