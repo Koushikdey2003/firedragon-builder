@@ -114,15 +114,15 @@ async function build(config: Config) {
 
     // Ensure buildid2 exists
     if (withBuildID2) {
-        $`mkdir -p ${buildDir}/floorp/_dist`;
-        $`cat ${withBuildID2} > ${buildDir}/floorp/_dist/buildid2`;
+        await $`mkdir -p ${buildDir}/floorp/_dist`;
+        await $`cat ${withBuildID2} > ${buildDir}/floorp/_dist/buildid2`;
     } else if (!await exists(`${buildDir}/floorp/_dist/buildid2`)) {
         await $`cd ${buildDir}/floorp && deno task build --write-version`;
     }
 
     // Potentially set MOZ_BUILD_DATE
     if (withMozBuildDate) {
-        $`echo -e 'export MOZ_BUILD_DATE=${withMozBuildDate}' >> ${buildDir}/mozconfig`;
+        await $`echo -e 'export MOZ_BUILD_DATE=${withMozBuildDate}' >> ${buildDir}/mozconfig`;
     }
 
     // Run release build before
@@ -213,15 +213,15 @@ async function buildDev(config: Config) {
 
     // Ensure buildid2 exists
     if (withBuildID2) {
-        $`mkdir -p ${buildDevDir}/floorp/_dist`;
-        $`cat ${withBuildID2} > ${buildDevDir}/floorp/_dist/buildid2`;
+        await $`mkdir -p ${buildDevDir}/floorp/_dist`;
+        await $`cat ${withBuildID2} > ${buildDevDir}/floorp/_dist/buildid2`;
     } else if (!await exists(`${buildDevDir}/floorp/_dist/buildid2`)) {
         await $`cd ${buildDevDir}/floorp && deno task build --write-version`;
     }
 
     // Potentially set MOZ_BUILD_DATE
     if (withMozBuildDate) {
-        $`echo -e 'export MOZ_BUILD_DATE=${withMozBuildDate}' >> ${buildDevDir}/mozconfig`;
+        await $`echo -e 'export MOZ_BUILD_DATE=${withMozBuildDate}' >> ${buildDevDir}/mozconfig`;
     }
 
     if (enableBootstrap) {
