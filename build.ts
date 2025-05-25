@@ -43,8 +43,24 @@ const isExists = async (path: string) => {
 };
 
 const getBinArchive = () => {
-  if (process.platform === "linux" && process.arch === "x64") {
-    return `${brandingBaseName}.linux-x86_64.dev.tar.zst`;
+  const platform = process.platform, arch = process.arch;
+  if (platform === 'linux') {
+    if (arch === 'x64') {
+      return `${brandingBaseName}.linux-x64.dev.tar.zst`;
+    }
+    if (arch === 'arm64') {
+      return `${brandingBaseName}.linux-aarch64.dev.tar.zst`;
+    }
+  }
+  if (platform === 'win32' && arch === 'x64') {
+    return `${brandingBaseName}.windows-x64.dev.zip`;
+  }
+  if (platform === 'darwin') {
+    if (arch === 'x64') {
+      return `${brandingBaseName}.macos-x64.dev.tar.zst`;
+    } else {
+      return `${brandingBaseName}.maxos-aarch64.dev.tar.zst`;
+    }
   }
   throw new Error("Unsupported platform/architecture");
 };
