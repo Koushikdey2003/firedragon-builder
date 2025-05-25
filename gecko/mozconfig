@@ -22,7 +22,6 @@ export MOZ_TELEMETRY_REPORTING=
 # Features
 ac_add_options --disable-crashreporter # (Minimize telemetry)
 ac_add_options --disable-default-browser-agent
-ac_add_options --disable-necko-wifi
 ac_add_options --disable-parental-controls # (Disable local/OS MTIM)
 ac_add_options --disable-debug
 ac_add_options --disable-debug-js-modules
