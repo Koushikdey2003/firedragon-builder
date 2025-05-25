@@ -108,7 +108,7 @@ build-dev:
     - apt-get install -y curl rsync patch zstd python3-pip msitools p7zip-full zip
     - deno install --allow-scripts --frozen
   script:
-    - deno task make --edition=$EDITION --target=$PLATFORM-$ARCH --enable-bootstrap-with-buildid2=_dist/buildid2 --with-moz-build-date=_dist/moz_build_date build-dev
+    - deno task make --edition=$EDITION --target=$PLATFORM-$ARCH --enable-bootstrap --with-buildid2=_dist/buildid2 --with-moz-build-date=_dist/moz_build_date build-dev
   artifacts:
     paths:
       - .dist/*.$PLATFORM-$ARCH.dev.*
