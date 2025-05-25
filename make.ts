@@ -147,7 +147,7 @@ async function build(config: Config) {
     if (target.buildOutputFormat === 'tar.zst') {
         await $`tar --zstd -cf ${distDir}/${buildBasename}.tar.zst --exclude=pingsender -C ${objDistDir} firedragon`;
     } else if (target.buildOutputFormat === 'zip') {
-        await $`cd ${objDistDir}; zip -r ${distDir}/${buildBasename}.zip firedragon`;
+        await $`cd ${objDistDir} && zip -r ${distDir}/${buildBasename}.zip firedragon`;
     } else {
         throw `Invalid build output format ${target.buildOutputFormat}, must be on of [tar.zst, zip].`;
     }
@@ -219,7 +219,7 @@ async function buildDev(config: Config) {
     if (target.buildOutputFormat === 'tar.zst') {
         await $`tar --zstd -cf ${distDir}/${buildDevBasename}.tar.zst --exclude=pingsender -C ${objDistDir} firedragon`;
     } else if (target.buildOutputFormat === 'zip') {
-        await $`cd ${objDistDir}; zip -r ${distDir}/${buildDevBasename}.zip firedragon`;
+        await $`cd ${objDistDir} && zip -r ${distDir}/${buildDevBasename}.zip firedragon`;
     } else {
         throw `Invalid build output format ${target.buildOutputFormat}, must be on of [tar.zst, zip].`;
     }
