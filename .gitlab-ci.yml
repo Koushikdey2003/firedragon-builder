@@ -119,14 +119,14 @@ darwin-universal:
   parallel:
     matrix:
       - EDITION: [dr640nized, catppuccin]
-        TYPE: ['', -dev]
+        TARGET: [darwin-universal, darwin-universal-dev]
   image: denoland/deno:ubuntu
   before_script:
     - apt-get update
     - apt-get install -y zstd
     - deno install --allow-scripts --frozen
   script:
-    - deno task make --edition=$EDITION darwin-universal$TYPE
+    - deno task make --edition=$EDITION $TARGET
   artifacts:
     paths:
       - .dist/*.darwin-universal.*
