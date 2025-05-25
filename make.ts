@@ -410,5 +410,5 @@ try {
         argv = parseArgv(argv['--']);
     }
 } finally {
-    //await $`rm -rf ${tmpDir}`;
+    await $`rm -rf ${tmpDir}`;
 }
