@@ -30,6 +30,7 @@ moz_build_date:
   needs: []
   image: registry.gitlab.com/stefanwimmer128/archlinux-chaotic-paru-user:latest
   script:
+    - mkdir -p .dist
     - date -d "$CI_PIPELINE_CREATED_AT" +%Y%m%d%H%M%S > .dist/moz_build_date
   artifacts:
     paths:
