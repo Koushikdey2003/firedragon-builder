@@ -1,13 +1,9 @@
 /// <reference types="zx/globals" />
 
 import { access } from 'node:fs/promises';
+import { resolve } from 'node:path';
 import process from 'node:process';
-import { URL, fileURLToPath } from 'node:url';
 import packageJson from './package.json' with { type: 'json' };
-
-function r(path: string): string {
-    return fileURLToPath(new URL(path, import.meta.url));
-}
 
 function exists(path: string): Promise<boolean> {
     return access(path).then(() => true).catch(() => false);
@@ -168,7 +164,7 @@ async function build(config: Config) {
         await $`tar --zstd -cf ${distDir}/${buildBasename}.tar.zst -C ${objDistDir} firedragon`;
     } else if (target.buildOutputFormat === 'exe') {
         const zipPath = `${objDistDir}/${buildBasename}.zip`;
-        await $`cd ${objDistDir} && zip -r ${r(zipPath)} firedragon`;
+        await $`cd ${objDistDir} && zip -r ${resolve(zipPath)} firedragon`;
         await $`${buildDir}/mach repackage installer -o ${distDir}/${buildBasename}.exe --package-name firedragon --package ${zipPath} --tag ${buildDir}/browser/installer/windows/app.tag --setupexe ${buildDir}/obj-artifact-build-output/browser/installer/windows/instgen/setup.exe --sfx-stub ${buildDir}/other-licenses/7zstub/firefox/7zSD.Win32.sfx`;
     } else {
         throw `Invalid build output format ${target.buildOutputFormat}, must be on of [tar.zst, exe].`;
