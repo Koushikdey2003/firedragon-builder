@@ -123,7 +123,9 @@ async function build(config: Config) {
 
     // Potentially set MOZ_BUILD_DATE
     if (withMozBuildDate) {
-        await $`echo -e "export MOZ_BUILD_DATE=$(cat ${withMozBuildDate})" >> ${buildDir}/mozconfig`;
+        const moz_build_date = await Deno.readTextFile(withMozBuildDate);
+        echo(`With MOZ_BUILD_DATE=${moz_build_date}`);
+        Deno.env.set('MOZ_BUILD_DATE', moz_build_date);
     }
 
     // Run release build before
@@ -222,7 +224,9 @@ async function buildDev(config: Config) {
 
     // Potentially set MOZ_BUILD_DATE
     if (withMozBuildDate) {
-        await $`echo -e "export MOZ_BUILD_DATE=$(cat ${withMozBuildDate})" >> ${buildDevDir}/mozconfig`;
+        const moz_build_date = await Deno.readTextFile(withMozBuildDate);
+        echo(`With MOZ_BUILD_DATE=${moz_build_date}`);
+        Deno.env.set('MOZ_BUILD_DATE', moz_build_date);
     }
 
     if (enableBootstrap) {
