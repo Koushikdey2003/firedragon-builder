@@ -36,8 +36,8 @@ prepare:
     - apt-get update
     - deno install --allow-scripts --frozen
   script:
-    - date -d "$CI_PIPELINE_CREATED_AT" +%Y%m%d%H%M%S > _dist/moz_build_date
     - deno task build --write-version
+    - date -d "$CI_PIPELINE_CREATED_AT" +%Y%m%d%H%M%S > _dist/moz_build_date
   artifacts:
     paths:
       - _dist/moz_build_date
