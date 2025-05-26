@@ -84,6 +84,44 @@ async function prepareSource(config: Config, dir: string, patches: 'packaging' |
     await applyPatches(dir, `patches/{shared,${patches}}/**/*.patch`);
 }
 
+async function packageBuild(config: Config, buildBasename: string, buildDir: string, ...patches: string[]) {
+    const { distDir, target } = config;
+
+    const objDistDir = `${buildDir}/obj-artifact-build-output/dist`;
+
+    // Resolve symlinks (https://www.spinics.net/lists/git/msg391750.html)
+    await $`rsync -aL ${objDistDir}/bin/ ${objDistDir}/tmp__bin/`;
+    await $`rm -rf ${objDistDir}/bin`;
+    await $`mv ${objDistDir}/tmp__bin ${objDistDir}/bin`;
+
+    // Apply patches
+    await applyPatches(`${objDistDir}/bin`, ...patches);
+
+    // Remove references to build directory
+    for (const file of await $`rg -Fl ${buildDir} ${objDistDir}/bin || true`.lines()) {
+        await $`sed -i 's#${buildDir}##g' ${file}`;
+    }
+
+    // Run package
+    await $`${buildDir}/mach package`;
+
+    // Remove pingsender
+    await $`rm -f ${objDistDir}/firedragon/pingsender*`;
+
+    // Package output archive
+    if (target.buildOutputFormat === 'tar.zst') {
+        await $`tar --zstd -cf ${distDir}/${buildBasename}.tar.zst -C ${objDistDir} firedragon`;
+    } else if (target.buildOutputFormat === 'exe') {
+        const zipPath = `${objDistDir}/${buildBasename}.zip`;
+        await $`cd ${objDistDir} && zip -r ${zipPath} firedragon`;
+        await $`${buildDir}/mach repackage installer -o ${distDir}/${buildBasename}.exe --package-name firedragon --package ${zipPath} --tag ${buildDir}/browser/installer/windows/app.tag --setupexe ${buildDir}/obj-artifact-build-output/browser/installer/windows/instgen/setup.exe --sfx-stub ${buildDir}/other-licenses/7zstub/firefox/7zSD.Win32.sfx`;
+    } else if (target.buildDevOutputFormat === 'zip') {
+        await $`cd ${objDistDir} && zip -r ${resolve(distDir)}/${buildBasename}.zip firedragon`;
+    } else {
+        throw `Invalid build output format ${target.buildOutputFormat}, must be on of [tar.zst, exe, zip].`;
+    }
+}
+
 async function source(config: Config) {
     const { tmpDir, distDir, basename } = config;
 
@@ -146,31 +184,7 @@ async function build(config: Config) {
     // Run release build after
     await $`cd ${buildDir}/floorp && deno task build --release-build-after`;
 
-    // https://www.spinics.net/lists/git/msg391750.html
-    const objDistDir = `${buildDir}/obj-artifact-build-output/dist`;
-    await $`rsync -aL ${objDistDir}/bin/ ${objDistDir}/tmp__bin/`;
-    await $`rm -rf ${objDistDir}/bin`;
-    await $`mv ${objDistDir}/tmp__bin ${objDistDir}/bin`;
-
-    // Apply patches
-    await applyPatches(`${objDistDir}/bin`, 'scripts/git-patches/patches/*.patch');
-
-    // Run package
-    await $`${buildDir}/mach package`;
-
-    // Remove pingsender
-    await $`rm -f ${objDistDir}/firedragon/pingsender*`;
-
-    // Package output archive
-    if (target.buildOutputFormat === 'tar.zst') {
-        await $`tar --zstd -cf ${distDir}/${buildBasename}.tar.zst -C ${objDistDir} firedragon`;
-    } else if (target.buildOutputFormat === 'exe') {
-        const zipPath = `${objDistDir}/${buildBasename}.zip`;
-        await $`cd ${objDistDir} && zip -r ${resolve(zipPath)} firedragon`;
-        await $`${buildDir}/mach repackage installer -o ${distDir}/${buildBasename}.exe --package-name firedragon --package ${zipPath} --tag ${buildDir}/browser/installer/windows/app.tag --setupexe ${buildDir}/obj-artifact-build-output/browser/installer/windows/instgen/setup.exe --sfx-stub ${buildDir}/other-licenses/7zstub/firefox/7zSD.Win32.sfx`;
-    } else {
-        throw `Invalid build output format ${target.buildOutputFormat}, must be on of [tar.zst, exe].`;
-    }
+    await packageBuild(config, buildBasename, buildDir, 'scripts/git-patches/patches/*.patch');
 }
 
 async function appimage(config: Config) {
@@ -204,7 +218,7 @@ async function appimage(config: Config) {
 }
 
 async function buildDev(config: Config) {
-    const { tmpDir, distDir, basename, target, enableBootstrap, withMozBuildDate, withBuildID2 } = config;
+    const { tmpDir, basename, target, enableBootstrap, withMozBuildDate, withBuildID2 } = config;
 
     const buildDevBasename = `${basename}.${target.buildDevSuffix}`
     const buildDevDir = `${tmpDir}/${buildDevBasename}`;
@@ -241,26 +255,7 @@ async function buildDev(config: Config) {
     // Run build
     await $`${buildDevDir}/mach build`;
 
-    // https://www.spinics.net/lists/git/msg391750.html
-    const objDistDir = `${buildDevDir}/obj-artifact-build-output/dist`;
-    await $`rsync -aL ${objDistDir}/bin/ ${objDistDir}/tmp__bin/`;
-    await $`rm -rf ${objDistDir}/bin`;
-    await $`mv ${objDistDir}/tmp__bin ${objDistDir}/bin`;
-
-    // Run package
-    await $`${buildDevDir}/mach package`;
-
-    // Remove pingsender
-    await $`rm -f ${objDistDir}/firedragon/pingsender*`;
-
-    // Package output archive
-    if (target.buildDevOutputFormat === 'tar.zst') {
-        await $`tar --zstd -cf ${distDir}/${buildDevBasename}.tar.zst -C ${objDistDir} firedragon`;
-    } else if (target.buildDevOutputFormat === 'zip') {
-        await $`cd ${objDistDir} && zip -r ${distDir}/${buildDevBasename}.zip firedragon`;
-    } else {
-        throw `Invalid build output format ${target.buildDevOutputFormat}, must be on of [tar.zst, zip].`;
-    }
+    await packageBuild(config, buildDevBasename, buildDevDir);
 }
 
 async function darwinUniversal(config: Config, outSuffix: string, x64Suffix: string, aarch64Suffix: string) {
@@ -384,7 +379,7 @@ const TARGETS = {
 
 let tmpDir;
 try {
-    tmpDir = process.env.TMP_DIR ?? tmpdir();
+    tmpDir = tmpdir();
     echo(`Using temporary directory: ${tmpDir}`);
 
     await $`mkdir -p ${tmpDir}`;
@@ -453,7 +448,5 @@ try {
         argv = parseArgv(argv['--']);
     }
 } finally {
-    if (!process.env.TMP_DIR) {
-        await $`rm -rf ${tmpDir}`;
-    }
+    await $`rm -rf ${tmpDir}`;
 }
