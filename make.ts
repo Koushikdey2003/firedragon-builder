@@ -38,8 +38,8 @@ interface Config {
     basename: string;
     target: (typeof TARGETS)[keyof typeof TARGETS];
     enableBootstrap: boolean;
-    withBuildID2: string | null;
     withMozBuildDate: string | null;
+    withBuildID2: string | null;
 }
 
 async function getFloorpRuntime({ runtime, tmpDir }: Config): Promise<string> {
@@ -93,7 +93,7 @@ async function source(config: Config) {
 }
 
 async function build(config: Config) {
-    const { tmpDir, distDir, basename, target, enableBootstrap, withBuildID2, withMozBuildDate } = config;
+    const { tmpDir, distDir, basename, target, enableBootstrap, withMozBuildDate, withBuildID2 } = config;
 
     const buildBasename = `${basename}.${target.buildSuffix}`;
     const buildDir = `${tmpDir}/${buildBasename}`
@@ -113,19 +113,19 @@ async function build(config: Config) {
     // Combine mozconfig
     await $`cat ${buildDir}/floorp/gecko/mozconfig{,.${target.mozconfig}} > ${buildDir}/mozconfig`;
 
+    // Potentially set MOZ_BUILD_DATE
+    if (withMozBuildDate) {
+        const moz_build_date = (await Deno.readTextFile(withMozBuildDate)).trim();
+        echo(`With MOZ_BUILD_DATE=${moz_build_date}`);
+        Deno.env.set('MOZ_BUILD_DATE', moz_build_date);
+    }
+
     // Ensure buildid2 exists
     if (withBuildID2) {
         await $`mkdir -p ${buildDir}/floorp/_dist`;
         await $`cat ${withBuildID2} > ${buildDir}/floorp/_dist/buildid2`;
     } else if (!await exists(`${buildDir}/floorp/_dist/buildid2`)) {
         await $`cd ${buildDir}/floorp && deno task build --write-version`;
-    }
-
-    // Potentially set MOZ_BUILD_DATE
-    if (withMozBuildDate) {
-        const moz_build_date = await Deno.readTextFile(withMozBuildDate);
-        echo(`With MOZ_BUILD_DATE=${moz_build_date}`);
-        Deno.env.set('MOZ_BUILD_DATE', moz_build_date);
     }
 
     // Run release build before
@@ -204,7 +204,7 @@ async function appimage(config: Config) {
 }
 
 async function buildDev(config: Config) {
-    const { tmpDir, distDir, basename, target, enableBootstrap, withBuildID2, withMozBuildDate } = config;
+    const { tmpDir, distDir, basename, target, enableBootstrap, withMozBuildDate, withBuildID2 } = config;
 
     const buildDevBasename = `${basename}.${target.buildDevSuffix}`
     const buildDevDir = `${tmpDir}/${buildDevBasename}`;
@@ -214,19 +214,19 @@ async function buildDev(config: Config) {
     // Combine mozconfig
     await $`cat ${buildDevDir}/floorp/gecko/mozconfig{,.${target.mozconfig}} > ${buildDevDir}/mozconfig`;
 
+    // Potentially set MOZ_BUILD_DATE
+    if (withMozBuildDate) {
+        const moz_build_date = (await Deno.readTextFile(withMozBuildDate)).trim();
+        echo(`With MOZ_BUILD_DATE=${moz_build_date}`);
+        Deno.env.set('MOZ_BUILD_DATE', moz_build_date);
+    }
+
     // Ensure buildid2 exists
     if (withBuildID2) {
         await $`mkdir -p ${buildDevDir}/floorp/_dist`;
         await $`cat ${withBuildID2} > ${buildDevDir}/floorp/_dist/buildid2`;
     } else if (!await exists(`${buildDevDir}/floorp/_dist/buildid2`)) {
         await $`cd ${buildDevDir}/floorp && deno task build --write-version`;
-    }
-
-    // Potentially set MOZ_BUILD_DATE
-    if (withMozBuildDate) {
-        const moz_build_date = await Deno.readTextFile(withMozBuildDate);
-        echo(`With MOZ_BUILD_DATE=${moz_build_date}`);
-        Deno.env.set('MOZ_BUILD_DATE', moz_build_date);
     }
 
     if (enableBootstrap) {
@@ -408,8 +408,8 @@ try {
             basename,
             target,
             enableBootstrap: argv['enable-bootstrap'] ?? false,
-            withBuildID2: argv['with-buildid2'] ?? null,
             withMozBuildDate: argv['with-moz-build-date'] ?? null,
+            withBuildID2: argv['with-buildid2'] ?? null,
         };
 
         for (const command of argv._) {
