@@ -84,7 +84,7 @@ appimage:
   image: denoland/deno:ubuntu
   before_script:
     - apt-get update
-    - apt-get install -y curl zstd
+    - apt-get install -y curl zstd file
     - deno install --allow-scripts --frozen
   script:
     - deno task make --edition=$EDITION --target=$PLATFORM-$ARCH appimage
