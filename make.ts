@@ -350,6 +350,16 @@ const TARGETS = {
         appimageSuffix: null,
         buildDevSuffix: 'windows-x64.dev',
     },
+    'windows-aarch64': {
+        mozconfig: 'windows-aarch64',
+        target: 'aarch64-pc-windows-msvc',
+        rustTarget: 'aarch64-pc-windows-msvc',
+        buildSuffix: 'windows-aarch64',
+        buildOutputFormat: 'exe',
+        buildDevOutputFormat: 'zip',
+        appimageSuffix: null,
+        buildDevSuffix: 'windows-aarch64.dev',
+    },
     'darwin-x64': {
         mozconfig: 'darwin-x64',
         target: 'x86_64-apple-darwin',
