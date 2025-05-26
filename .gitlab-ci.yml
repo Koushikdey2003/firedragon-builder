@@ -58,7 +58,7 @@ build:
   image: denoland/deno:ubuntu
   before_script:
     - apt-get update
-    - apt-get install -y zstd patch rsync python3-pip msitools p7zip-full zip
+    - apt-get install -y zstd patch rsync python3-pip msitools p7zip-full zip ripgrep
     - deno install --allow-scripts --frozen
   script:
     - deno task make --edition=$EDITION --target=$PLATFORM-$ARCH --enable-bootstrap --with-moz-build-date=_dist/moz_build_date --with-buildid2=_dist/buildid2 build
@@ -102,7 +102,7 @@ build-dev:
   image: denoland/deno:ubuntu
   before_script:
     - apt-get update
-    - apt-get install -y curl rsync patch zstd python3-pip msitools p7zip-full zip
+    - apt-get install -y curl rsync patch zstd python3-pip msitools p7zip-full zip ripgrep
     - deno install --allow-scripts --frozen
   script:
     - deno task make --edition=$EDITION --target=$PLATFORM-$ARCH --enable-bootstrap --with-moz-build-date=_dist/moz_build_date --with-buildid2=_dist/buildid2 build-dev
