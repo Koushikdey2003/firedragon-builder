@@ -127,6 +127,8 @@ async function packageBuild(config: Config, outputFormat: string, buildBasename:
         await $`${buildDir}/mach repackage installer -o ${distDir}/${buildBasename}.exe --package-name firedragon --package ${zipPath} --tag ${buildDir}/browser/installer/windows/app.tag --setupexe ${buildDir}/obj-artifact-build-output/browser/installer/windows/instgen/setup.exe --sfx-stub ${buildDir}/other-licenses/7zstub/firefox/7zSD.Win32.sfx`;
     } else if (outputFormat === 'zip') {
         await $`cd ${objDistDir} && zip -r ${resolve(distDir)}/${buildBasename}.zip firedragon`;
+    } else if (outputFormat === 'dmg') {
+        await $`${buildDir}/mach python -m mozbuild.action.make_dmg ${objDistDir}/firedragon ${distDir}/${buildBasename}.dmg`;
     } else {
         throw `Invalid build output format ${outputFormat}, must be on of [tar.zst, exe, zip].`;
     }
