@@ -4,7 +4,7 @@ import process from 'node:process';
 import packageJson from "./package.json" with { type: "json" };
 import { readFile, writeFile } from "node:fs/promises";
 
-const { version } = packageJson;
+const version = `v${packageJson.version}`;
 
 async function updateMetainfo(file: string) {
     const date = new Date();
