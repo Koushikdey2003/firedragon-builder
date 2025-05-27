@@ -84,21 +84,23 @@ async function prepareSource(config: Config, dir: string, patches: 'packaging' |
     await applyPatches(dir, `patches/{shared,${patches}}/**/*.patch`);
 }
 
-async function packageBuild(config: Config, buildBasename: string, buildDir: string, ...patches: string[]) {
+async function packageBuild(config: Config, outputFormat: string, buildBasename: string, buildDir: string, ...patches: string[]) {
     const { distDir, target } = config;
 
     const objDistDir = `${buildDir}/obj-artifact-build-output/dist`;
+    const objDistBinDir = `${objDistDir}/${target.objDistBinPath}`;
 
     // Resolve symlinks (https://www.spinics.net/lists/git/msg391750.html)
-    await $`rsync -aL ${objDistDir}/bin/ ${objDistDir}/tmp__bin/`;
-    await $`rm -rf ${objDistDir}/bin`;
-    await $`mv ${objDistDir}/tmp__bin ${objDistDir}/bin`;
+    const objDistBinTmpDir = tmpdir();
+    await $`rsync -aL ${objDistBinDir}/ ${objDistBinTmpDir}/`;
+    await $`rm -rf ${objDistBinDir}`;
+    await $`mv ${objDistBinTmpDir} ${objDistBinDir}`;
 
     // Apply patches
-    await applyPatches(`${objDistDir}/bin`, ...patches);
+    await applyPatches(`${objDistBinDir}`, ...patches);
 
     // Remove references to build directory
-    for (const file of await $`rg -Fl ${buildDir} ${objDistDir}/bin || true`.lines()) {
+    for (const file of await $`rg -Fl ${buildDir} ${objDistBinDir} || true`.lines()) {
         await $`sed -i 's#${buildDir}##g' ${file}`;
     }
 
@@ -106,19 +108,21 @@ async function packageBuild(config: Config, buildBasename: string, buildDir: str
     await $`${buildDir}/mach package`;
 
     // Remove pingsender
-    await $`rm -f ${objDistDir}/firedragon/pingsender*`;
+    for (const pingsender of await glob(`${objDistDir}/firedragon{,/FireDragon.app/Contents/MacOS}/pingsender{,.exe}`)) {
+        await $`rm -f ${pingsender}`;
+    }
 
     // Package output archive
-    if (target.buildOutputFormat === 'tar.zst') {
+    if (outputFormat === 'tar.zst') {
         await $`tar --zstd -cf ${distDir}/${buildBasename}.tar.zst -C ${objDistDir} firedragon`;
-    } else if (target.buildOutputFormat === 'exe') {
+    } else if (outputFormat === 'exe') {
         const zipPath = `${objDistDir}/${buildBasename}.zip`;
         await $`cd ${objDistDir} && zip -r ${zipPath} firedragon`;
         await $`${buildDir}/mach repackage installer -o ${distDir}/${buildBasename}.exe --package-name firedragon --package ${zipPath} --tag ${buildDir}/browser/installer/windows/app.tag --setupexe ${buildDir}/obj-artifact-build-output/browser/installer/windows/instgen/setup.exe --sfx-stub ${buildDir}/other-licenses/7zstub/firefox/7zSD.Win32.sfx`;
-    } else if (target.buildDevOutputFormat === 'zip') {
+    } else if (outputFormat === 'zip') {
         await $`cd ${objDistDir} && zip -r ${resolve(distDir)}/${buildBasename}.zip firedragon`;
     } else {
-        throw `Invalid build output format ${target.buildOutputFormat}, must be on of [tar.zst, exe, zip].`;
+        throw `Invalid build output format ${outputFormat}, must be on of [tar.zst, exe, zip].`;
     }
 }
 
@@ -184,7 +188,7 @@ async function build(config: Config) {
     // Run release build after
     await $`cd ${buildDir}/floorp && deno task build --release-build-after`;
 
-    await packageBuild(config, buildBasename, buildDir, 'scripts/git-patches/patches/*.patch');
+    await packageBuild(config, target.buildOutputFormat, buildBasename, buildDir, 'scripts/git-patches/patches/*.patch');
 }
 
 async function appimage(config: Config) {
@@ -255,7 +259,7 @@ async function buildDev(config: Config) {
     // Run build
     await $`${buildDevDir}/mach build`;
 
-    await packageBuild(config, buildDevBasename, buildDevDir);
+    await packageBuild(config, target.buildDevOutputFormat, buildDevBasename, buildDevDir);
 }
 
 async function darwinUniversal(config: Config, outSuffix: string, x64Suffix: string, aarch64Suffix: string) {
@@ -319,6 +323,7 @@ const TARGETS = {
         mozconfig: 'linux-x64',
         target: 'x86_64-pc-linux-gnu',
         rustTarget: 'x86_64-unknown-linux-gnu',
+        objDistBinPath: 'bin',
         buildSuffix: 'linux-x64',
         buildOutputFormat: 'tar.zst',
         buildDevOutputFormat: 'tar.zst',
@@ -329,6 +334,7 @@ const TARGETS = {
         mozconfig: 'linux-aarch64',
         target: 'aarch64-linux-gnu',
         rustTarget: 'aarch64-unknown-linux-gnu',
+        objDistBinPath: 'bin',
         buildSuffix: 'linux-aarch64',
         buildOutputFormat: 'tar.zst',
         buildDevOutputFormat: 'tar.zst',
@@ -339,6 +345,7 @@ const TARGETS = {
         mozconfig: 'windows-x64',
         target: 'x86_64-pc-windows-msvc',
         rustTarget: 'x86_64-pc-windows-msvc',
+        objDistBinPath: 'bin',
         buildSuffix: 'windows-x64',
         buildOutputFormat: 'exe',
         buildDevOutputFormat: 'zip',
@@ -349,6 +356,7 @@ const TARGETS = {
         mozconfig: 'windows-aarch64',
         target: 'aarch64-pc-windows-msvc',
         rustTarget: 'aarch64-pc-windows-msvc',
+        objDistBinPath: 'bin',
         buildSuffix: 'windows-aarch64',
         buildOutputFormat: 'exe',
         buildDevOutputFormat: 'zip',
@@ -359,6 +367,7 @@ const TARGETS = {
         mozconfig: 'darwin-x64',
         target: 'x86_64-apple-darwin',
         rustTarget: 'x86_64-apple-darwin',
+        objDistBinPath: 'FireDragon.app/Contents/Resources',
         buildSuffix: 'darwin-x64',
         buildOutputFormat: 'tar.zst',
         buildDevOutputFormat: 'tar.zst',
@@ -369,6 +378,7 @@ const TARGETS = {
         mozconfig: 'darwin-aarch64',
         target: 'aarch64-apple-darwin',
         rustTarget: 'aarch64-apple-darwin',
+        objDistBinPath: 'FireDragon.app/Contents/Resources',
         buildSuffix: 'darwin-aarch64',
         buildOutputFormat: 'tar.zst',
         buildDevOutputFormat: 'tar.zst',
