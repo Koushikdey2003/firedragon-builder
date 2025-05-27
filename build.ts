@@ -49,7 +49,7 @@ const getBinArchive = () => {
       return `${brandingBaseName}.linux-${arch}.dev.tar.zst`;
     }
     if (platform === 'win32') {
-      return `${brandingBaseName}.windows-${arch}.dev.zip`;
+      return `${brandingBaseName}.win32-${arch}.dev.zip`;
     }
     if (platform === 'darwin') {
       return `${brandingBaseName}.darwin-${arch}.dev.dmg`;

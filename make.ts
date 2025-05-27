@@ -16,7 +16,7 @@ async function exists(path: string): Promise<boolean> {
 
 async function applyPatches(target: string, ...patches: string[]): Promise<void> {
     for (const patch of await glob(patches)) {
-        await $`patch -Nsp1 -d ${target} -i ${path.resolve(patch)}`;
+        await $`patch -Nsp1 -d ${target} -i ${resolve(patch)}`;
     }
 }
 
@@ -298,38 +298,38 @@ const TARGETS = {
         appimageSuffix: 'appimage-x64',
         buildDevSuffix: 'linux-x64.dev',
     },
-    'linux-aarch64': {
-        mozconfig: 'linux-aarch64',
+    'linux-arm64': {
+        mozconfig: 'linux-arm64',
         target: 'aarch64-linux-gnu',
         rustTarget: 'aarch64-unknown-linux-gnu',
         objDistBinPath: 'bin',
-        buildSuffix: 'linux-aarch64',
+        buildSuffix: 'linux-arm64',
         buildOutputFormat: 'tar.zst',
         buildDevOutputFormat: 'tar.zst',
-        appimageSuffix: 'appimage-aarch64',
-        buildDevSuffix: 'linux-aarch64.dev',
+        appimageSuffix: 'appimage-arm64',
+        buildDevSuffix: 'linux-arm64.dev',
     },
-    'windows-x64': {
-        mozconfig: 'windows-x64',
+    'win32-x64': {
+        mozconfig: 'win32-x64',
         target: 'x86_64-pc-windows-msvc',
         rustTarget: 'x86_64-pc-windows-msvc',
         objDistBinPath: 'bin',
-        buildSuffix: 'windows-x64',
+        buildSuffix: 'win32-x64',
         buildOutputFormat: 'exe',
         buildDevOutputFormat: 'zip',
         appimageSuffix: null,
-        buildDevSuffix: 'windows-x64.dev',
+        buildDevSuffix: 'win32-x64.dev',
     },
-    'windows-aarch64': {
-        mozconfig: 'windows-aarch64',
+    'win32-arm64': {
+        mozconfig: 'win32-arm64',
         target: 'aarch64-pc-windows-msvc',
         rustTarget: 'aarch64-pc-windows-msvc',
         objDistBinPath: 'bin',
-        buildSuffix: 'windows-aarch64',
+        buildSuffix: 'win32-arm64',
         buildOutputFormat: 'exe',
         buildDevOutputFormat: 'zip',
         appimageSuffix: null,
-        buildDevSuffix: 'windows-aarch64.dev',
+        buildDevSuffix: 'win32-arm64.dev',
     },
     'darwin-x64': {
         mozconfig: 'darwin-x64',
@@ -342,16 +342,16 @@ const TARGETS = {
         appimageSuffix: null,
         buildDevSuffix: 'darwin-x64.dev',
     },
-    'darwin-aarch64': {
-        mozconfig: 'darwin-aarch64',
+    'darwin-arm64': {
+        mozconfig: 'darwin-arm64',
         target: 'aarch64-apple-darwin',
         rustTarget: 'aarch64-apple-darwin',
         objDistBinPath: 'FireDragon.app/Contents/Resources',
-        buildSuffix: 'darwin-aarch64',
+        buildSuffix: 'darwin-arm64',
         buildOutputFormat: 'dmg',
         buildDevOutputFormat: 'dmg',
         appimageSuffix: null,
-        buildDevSuffix: 'darwin-aarch64.dev',
+        buildDevSuffix: 'darwin-arm64.dev',
     },
 };
 
