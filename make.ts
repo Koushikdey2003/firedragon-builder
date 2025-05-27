@@ -5,8 +5,13 @@ import { resolve } from 'node:path';
 import process from 'node:process';
 import packageJson from './package.json' with { type: 'json' };
 
-function exists(path: string): Promise<boolean> {
-    return access(path).then(() => true).catch(() => false);
+async function exists(path: string): Promise<boolean> {
+    try {
+      await access(path);
+      return true;
+    } catch {
+      return false;
+    }
 }
 
 async function applyPatches(target: string, ...patches: string[]): Promise<void> {
