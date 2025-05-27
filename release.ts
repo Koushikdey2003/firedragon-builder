@@ -10,7 +10,7 @@ async function updateMetainfo(file: string) {
     const date = new Date();
     const release = `
     <release version="${version}" date="${date.getFullYear()}-${date.getMonth().toString().padStart(2, '0')}-${date.getDay().toString().padStart(2, '0')}">
-      <url type="details">https://gitlab.com/garuda-linux/firedragon/builder/-/releases/${version}</url>
+      <url type="details">https://gitlab.com/garuda-linux/firedragon12/builder/-/releases/${version}</url>
       <description />
     </release>`;
 
