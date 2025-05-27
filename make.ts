@@ -18,7 +18,7 @@ async function applyPatches(target: string, ...patches: string[]): Promise<void>
 function parseArgv(argv: string[]) {
     return minimist(argv, {
         boolean: ['enable-bootstrap'],
-        string: ['dist-dir', 'edition', 'target', 'with-buildid2', 'with-moz-build-date'],
+        string: ['dist-dir', 'edition', 'target', 'with-buildid2', 'with-moz-build-date', 'with-dist'],
         unknown(arg) {
             if (arg.startsWith('-')) {
                 throw `Unknown arguments: ${arg}`
@@ -40,6 +40,7 @@ interface Config {
     enableBootstrap: boolean;
     withMozBuildDate: string | null;
     withBuildID2: string | null;
+    withDist: string | null;
 }
 
 async function getFloorpRuntime({ runtime, tmpDir }: Config): Promise<string> {
@@ -135,7 +136,7 @@ async function source(config: Config) {
 }
 
 async function build(config: Config) {
-    const { tmpDir, distDir, basename, target, enableBootstrap, withMozBuildDate, withBuildID2 } = config;
+    const { tmpDir, distDir, basename, target, enableBootstrap, withMozBuildDate, withBuildID2, withDist } = config;
 
     const buildBasename = `${basename}.${target.buildSuffix}`;
     const buildDir = `${tmpDir}/${buildBasename}`
@@ -170,8 +171,12 @@ async function build(config: Config) {
         await $`cd ${buildDir}/floorp && deno task build --write-version`;
     }
 
-    // Run release build before
-    await $`cd ${buildDir}/floorp && NODE_ENV=production deno task build --release-build-before`;
+    // Use provided dist or run release build before
+    if (withDist) {
+        await $`cp -r ${withDist}/noraneko ${buildDir}/floorp/_dist/noraneko`;
+    } else {
+        await $`cd ${buildDir}/floorp && NODE_ENV=production deno task build --release-build-before`;
+    }
 
     if (enableBootstrap) {
         await $`cd ${buildDir} && ./mach --no-interactive bootstrap --application-choice browser`;
@@ -425,6 +430,7 @@ try {
             enableBootstrap: argv['enable-bootstrap'] ?? false,
             withMozBuildDate: argv['with-moz-build-date'] ?? null,
             withBuildID2: argv['with-buildid2'] ?? null,
+            withDist: argv['with-dist'] ?? null,
         };
 
         for (const command of argv._) {
