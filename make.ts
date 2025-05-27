@@ -274,50 +274,6 @@ async function buildDev(config: Config) {
     await packageBuild(config, target.buildDevOutputFormat, buildDevBasename, buildDevDir);
 }
 
-async function darwinUniversal(config: Config, outSuffix: string, x64Suffix: string, aarch64Suffix: string) {
-    const { tmpDir, distDir, basename, enableBootstrap } = config;
-
-    const x64Tarball = `${distDir}/${basename}.${x64Suffix}.tar.zst`;
-    if (!await exists(x64Tarball)) {
-        throw `x64-Tarball ${x64Tarball} not found.`;
-    }
-
-    const aarch64Tarball = `${distDir}/${basename}.${aarch64Suffix}.tar.zst`;
-    if (!await exists(aarch64Tarball)) {
-        throw `aarch64-Tarball ${aarch64Tarball} not found.`;
-    }
-
-    const sourceTarball = `${distDir}/${basename}.source.tar.zst`;
-    if (!await exists(sourceTarball)) {
-        await source(config);
-    }
-
-    const outBasename = `${basename}.${outSuffix}`;
-    const outDir = `${tmpDir}/${outBasename}`;
-
-    // Extract source
-    await $`mkdir ${outDir}`;
-    await $`tar -xf ${sourceTarball} --strip-components=1 -C ${outDir}`;
-
-    if (enableBootstrap) {
-        await $`cd ${outDir} && ./mach --no-interactive bootstrap --application-choice browser`;
-    }
-
-    // Extract x64 tarball
-    await $`mkdir -p ${outDir}/obj-x86_64-apple-darwin/dist`;
-    await $`tar -xf ${x64Tarball} -C ${outDir}/obj-x86_64-apple-darwin/dist`;
-
-    // Extract aarch64 tarball
-    await $`mkdir -p ${outDir}/obj-aarch64-apple-darwin/dist`;
-    await $`tar -xf ${aarch64Tarball} -C ${outDir}/obj-aarch64-apple-darwin/dist`;
-
-    // Integration
-    await $`${outDir}/mach python ${outDir}/toolkit/mozapps/installer/unify.py ${outDir}/obj-x86_64-apple-darwin/dist/firedragon/FireDragon.app ${outDir}/obj-aarch64-apple-darwin/dist/firedragon/FireDragon.app`
-
-    // Create DMG
-    await $`${outDir}/mach python -m mozbuild.action.make_dmg ${outDir}/obj-x86_64-apple-darwin/dist/floorp ${distDir}/${outBasename}.dmg`;
-}
-
 const EDITIONS = {
     dr640nized: {
         branding: 'firedragon',
@@ -454,14 +410,8 @@ try {
                 case 'appimage':
                     await appimage(config);
                     break;
-                case 'darwin-universal':
-                    await darwinUniversal(config, 'darwin-universal', TARGETS['darwin-x64'].buildSuffix, TARGETS['darwin-aarch64'].buildSuffix);
-                    break;
-                case 'darwin-universal-dev':
-                    await darwinUniversal(config, 'darwin-universal.dev', TARGETS['darwin-x64'].buildDevSuffix, TARGETS['darwin-aarch64'].buildDevSuffix);
-                    break;
                 default:
-                    throw `Unsupported command ${command}, must be one of [source, build, appimage, darwin-universal, build-dev, darwin-universal-dev]`;
+                    throw `Unsupported command ${command}, must be one of [source, build, appimage, build-dev]`;
             }
         }
 
