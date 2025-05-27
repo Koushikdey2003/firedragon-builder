@@ -37,11 +37,11 @@ prepare:
     - deno install --allow-scripts --frozen
   script:
     - deno task build --write-version
+    - deno task build --release-build-before
     - date -d "$CI_PIPELINE_CREATED_AT" +%Y%m%d%H%M%S > _dist/moz_build_date
   artifacts:
     paths:
-      - _dist/moz_build_date
-      - _dist/buildid2
+      - _dist
 
 build:
   stage: build
@@ -61,7 +61,7 @@ build:
     - apt-get install -y zstd patch rsync python3-pip msitools p7zip-full zip ripgrep
     - deno install --allow-scripts --frozen
   script:
-    - deno task make --edition=$EDITION --target=$PLATFORM-$ARCH --enable-bootstrap --with-moz-build-date=_dist/moz_build_date --with-buildid2=_dist/buildid2 build
+    - deno task make --edition=$EDITION --target=$PLATFORM-$ARCH --enable-bootstrap --with-moz-build-date=_dist/moz_build_date --with-buildid2=_dist/buildid2 --with-dist=_dist build
   artifacts:
     paths:
       - .dist/*.$PLATFORM-$ARCH.*
