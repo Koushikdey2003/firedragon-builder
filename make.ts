@@ -374,7 +374,7 @@ try {
             throw `Unsupported edition ${argv['edition']}, must be one of [${Object.keys(EDITIONS).join(', ')}].`;
         }
 
-        const target = TARGETS[argv['target'] as keyof typeof TARGETS];
+        const target = TARGETS[(argv['target'] ?? `${process.platform}-${process.arch}`) as keyof typeof TARGETS];
         if (!target){
             throw `Unsupported target ${argv['target']}, must be one of [${Object.keys(TARGETS).join(', ')}].`;
         }
