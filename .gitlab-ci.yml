@@ -7,9 +7,6 @@ stages:
   - publish
   - release
 
-variables:
-  TMP_DIR: /tmp/firedragon
-
 source:
   stage: source
   needs: []
