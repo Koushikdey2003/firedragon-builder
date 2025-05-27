@@ -33,6 +33,7 @@ prepare:
   image: denoland/deno:ubuntu
   before_script:
     - apt-get update
+    - apt-get install -y rsync
     - deno install --allow-scripts --frozen
   script:
     - deno task build --write-version
