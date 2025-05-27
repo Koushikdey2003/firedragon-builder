@@ -38,6 +38,11 @@ prepare:
     - deno task build --write-version
     - deno task build --release-build-before
     - date -d "$CI_PIPELINE_CREATED_AT" +%Y%m%d%H%M%S > _dist/moz_build_date
+  after_script:
+    - mkdir tmp_dist
+    - rsync -aL _dist/ tmp_dist/
+    - rm -rf _dist
+    - mv tmp_dist _dist
   artifacts:
     paths:
       - _dist
