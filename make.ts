@@ -177,16 +177,16 @@ async function source(config: Config) {
 
     await prepareSource(config, `${tmpDir}/${basename}`);
 
-    await $`tar --zstd -cf ${distDir}/${basename}.source.tar.zst --exclude=.git -C ${tmpDir} ${basename}`;
+    await $`tar --zstd -cf ${distDir}/${basename}.tar.zst --exclude=.git -C ${tmpDir} ${basename}`;
 }
 
 async function build(config: Config) {
     const { tmpDir, distDir, basename, target, withDist } = config;
 
-    const buildBasename = `${basename}.${target.buildSuffix}`;
+    const buildBasename = `${basename}-${target.buildSuffix}`;
     const buildDir = `${tmpDir}/${buildBasename}`
 
-    const sourceTarball = `${distDir}/${basename}.source.tar.zst`;
+    const sourceTarball = `${distDir}/${basename}.tar.zst`;
     if (!await exists(sourceTarball)) {
         await source(config);
     }
@@ -222,10 +222,10 @@ async function appimage(config: Config) {
         throw `Target ${target.target} does not support appimage build.`;
     }
 
-    const appimageBasename = `${basename}.${target.appimageSuffix}`;
+    const appimageBasename = `${basename}-${target.appimageSuffix}`;
     const appimageDir = `${tmpDir}/${appimageBasename}`;
 
-    const buildTarball = `${distDir}/${basename}.${target.buildSuffix}.tar.zst`;
+    const buildTarball = `${distDir}/${basename}-${target.buildSuffix}.tar.zst`;
     if (!await exists(buildTarball)) {
         await build(config);
     }
@@ -253,7 +253,7 @@ async function appimage(config: Config) {
 async function buildDev(config: Config) {
     const { tmpDir, basename, target } = config;
 
-    const buildDevBasename = `${basename}.${target.buildDevSuffix}`
+    const buildDevBasename = `${basename}-${target.buildSuffix}-dev`
     const buildDevDir = `${tmpDir}/${buildDevBasename}`;
 
     await prepareSource(config, buildDevDir, 'dev');
@@ -287,7 +287,6 @@ const TARGETS = {
         buildOutputFormat: 'tar.zst',
         buildDevOutputFormat: 'tar.zst',
         appimageSuffix: 'appimage-x64',
-        buildDevSuffix: 'linux-x64.dev',
     },
     'linux-arm64': {
         mozconfig: 'linux-arm64',
@@ -298,7 +297,6 @@ const TARGETS = {
         buildOutputFormat: 'tar.zst',
         buildDevOutputFormat: 'tar.zst',
         appimageSuffix: 'appimage-arm64',
-        buildDevSuffix: 'linux-arm64.dev',
     },
     'win32-x64': {
         mozconfig: 'win32-x64',
@@ -309,7 +307,6 @@ const TARGETS = {
         buildOutputFormat: 'exe',
         buildDevOutputFormat: 'zip',
         appimageSuffix: null,
-        buildDevSuffix: 'win32-x64.dev',
     },
     'win32-arm64': {
         mozconfig: 'win32-arm64',
@@ -320,7 +317,6 @@ const TARGETS = {
         buildOutputFormat: 'exe',
         buildDevOutputFormat: 'zip',
         appimageSuffix: null,
-        buildDevSuffix: 'win32-arm64.dev',
     },
     'darwin-x64': {
         mozconfig: 'darwin-x64',
@@ -331,7 +327,6 @@ const TARGETS = {
         buildOutputFormat: 'dmg',
         buildDevOutputFormat: 'dmg',
         appimageSuffix: null,
-        buildDevSuffix: 'darwin-x64.dev',
     },
     'darwin-arm64': {
         mozconfig: 'darwin-arm64',
@@ -342,7 +337,6 @@ const TARGETS = {
         buildOutputFormat: 'dmg',
         buildDevOutputFormat: 'dmg',
         appimageSuffix: null,
-        buildDevSuffix: 'darwin-arm64.dev',
     },
 };
 
