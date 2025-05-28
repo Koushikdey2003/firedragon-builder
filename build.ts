@@ -10,7 +10,7 @@ import { applyPatches } from "./scripts/git-patches/git-patches-manager.ts";
 import { initializeBinGit } from "./scripts/git-patches/git-patches-manager.ts";
 import { genVersion } from "./scripts/launchDev/writeVersion.ts";
 import { writeBuildid2 } from "./scripts/update/buildid2.ts";
-import { $, type ProcessPromise } from "zx";
+import { $, fetch, type ProcessPromise } from "zx";
 import { usePwsh } from "zx";
 import chalk from "chalk";
 import process from "node:process";
@@ -44,16 +44,13 @@ const isExists = async (path: string) => {
 
 const getBinArchive = () => {
   const platform = process.platform, arch = process.arch;
-  if (arch === 'x64' || arch === 'arm64') {
-    if (platform === 'linux') {
-      return `${brandingBaseName}.linux-${arch}.dev.tar.zst`;
-    }
-    if (platform === 'win32') {
-      return `${brandingBaseName}.win32-${arch}.dev.zip`;
-    }
-    if (platform === 'darwin') {
-      return `${brandingBaseName}.darwin-${arch}.dev.dmg`;
-    }
+  const ext = {
+    linux: 'tar.zst',
+    win32: 'zip',
+    darwin: 'dmg',
+  };
+  if (platform in ext && (arch === 'x64' || arch === 'arm64')) {
+    return `${brandingBaseName}-${platform}-${arch}-dev.${ext[platform as keyof typeof ext]}`
   }
   throw new Error("Unsupported platform/architecture");
 };
@@ -161,36 +158,7 @@ async function decompressBin() {
 }
 
 async function downloadBinArchive() {
-  const fileName = await getBinArchive();
-  let originUrl = (await $`git remote get-url origin`).stdout.trim();
-  if (originUrl.endsWith("/")) {
-    originUrl = originUrl.slice(0, -1);
-  }
-  const originDownloadUrl =
-    `${originUrl}-runtime/releases/latest/download/${fileName}`;
-  console.log(`Downloading from origin: ${originDownloadUrl}`);
-  try {
-    await $`curl -L --fail --progress-bar -o ${binArchive} ${originDownloadUrl}`;
-    console.log("Download complete from origin!");
-  } catch (error: unknown) {
-    console.error(
-      "Origin download failed, falling back to upstream:",
-      (error as { stderr: string }).stderr,
-    );
-    const upstreamUrl =
-      `https://github.com/Floorp-Projects/Floorp-runtime/releases/latest/download/${fileName}`;
-    console.log(`Downloading from upstream: ${upstreamUrl}`);
-    try {
-      await $`curl -L --fail --progress-bar -o ${binArchive} ${upstreamUrl}`;
-      console.log("Download complete from upstream!");
-    } catch (error2: unknown) {
-      console.error(
-        "Upstream download failed:",
-        (error2 as { stderr: string }).stderr,
-      );
-      throw (error2 as { stderr: string }).stderr;
-    }
-  }
+  await $`curl -L --fail --progress-bar -o ${binArchive} https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/permalink/latest/downloads/${binArchive}`;
   await decompressBin();
 }
 
