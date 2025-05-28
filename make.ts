@@ -90,6 +90,44 @@ async function prepareSource(config: Config, dir: string, patches: 'packaging' |
     await applyPatches(dir, `patches/{shared,${patches}}/**/*.patch`);
 }
 
+async function prepareBuild(config: Config, buildDir: string) {
+    const { withBuildID2 } = config;
+
+    // Ensure buildid2 exists
+    if (withBuildID2) {
+        await $`mkdir -p ${buildDir}/floorp/_dist`;
+        await $`cat ${withBuildID2} > ${buildDir}/floorp/_dist/buildid2`;
+    } else if (!await exists(`${buildDir}/floorp/_dist/buildid2`)) {
+        await $`cd ${buildDir}/floorp && deno task build --write-version`;
+    }
+}
+
+async function doBuild(config: Config, buildDir: string) {
+    const { target, enableBootstrap, withMozBuildDate } = config;
+
+    // Combine mozconfig
+    await $`cat ${buildDir}/floorp/gecko/mozconfig{,.${target.mozconfig}} > ${buildDir}/mozconfig`;
+
+    // Potentially set MOZ_BUILD_DATE
+    if (withMozBuildDate) {
+        const moz_build_date = (await Deno.readTextFile(withMozBuildDate)).trim();
+        Deno.env.set('MOZ_BUILD_DATE', moz_build_date);
+    }
+
+    // Potentially run bootstrap
+    if (enableBootstrap) {
+        await $`cd ${buildDir} && ./mach --no-interactive bootstrap --application-choice browser`;
+        const rustup = (await which('rustup', { nothrow: true })) ?? `${os.homedir()}/.cargo/bin/rustup`;
+        await $`${rustup} target add ${target.rustTarget}`;
+    }
+
+    // Run configure
+    await $`${buildDir}/mach configure ${enableBootstrap ? '--enable-bootstrap' : '--disable-bootstrap'} --target=${target.target}`;
+
+    // Run build
+    await $`${buildDir}/mach build`;
+}
+
 async function packageBuild(config: Config, outputFormat: string, buildBasename: string, buildDir: string, ...patches: string[]) {
     const { distDir, target } = config;
 
@@ -143,7 +181,7 @@ async function source(config: Config) {
 }
 
 async function build(config: Config) {
-    const { tmpDir, distDir, basename, target, enableBootstrap, withMozBuildDate, withBuildID2, withDist } = config;
+    const { tmpDir, distDir, basename, target, withDist } = config;
 
     const buildBasename = `${basename}.${target.buildSuffix}`;
     const buildDir = `${tmpDir}/${buildBasename}`
@@ -160,23 +198,7 @@ async function build(config: Config) {
     // Install deno dependencies
     await $`cd ${buildDir}/floorp && deno install --allow-scripts --frozen`;
 
-    // Combine mozconfig
-    await $`cat ${buildDir}/floorp/gecko/mozconfig{,.${target.mozconfig}} > ${buildDir}/mozconfig`;
-
-    // Potentially set MOZ_BUILD_DATE
-    if (withMozBuildDate) {
-        const moz_build_date = (await Deno.readTextFile(withMozBuildDate)).trim();
-        echo(`With MOZ_BUILD_DATE=${moz_build_date}`);
-        Deno.env.set('MOZ_BUILD_DATE', moz_build_date);
-    }
-
-    // Ensure buildid2 exists
-    if (withBuildID2) {
-        await $`mkdir -p ${buildDir}/floorp/_dist`;
-        await $`cat ${withBuildID2} > ${buildDir}/floorp/_dist/buildid2`;
-    } else if (!await exists(`${buildDir}/floorp/_dist/buildid2`)) {
-        await $`cd ${buildDir}/floorp && deno task build --write-version`;
-    }
+    await prepareBuild(config, buildDir);
 
     // Use provided dist or run release build before
     if (withDist) {
@@ -185,17 +207,7 @@ async function build(config: Config) {
         await $`cd ${buildDir}/floorp && NODE_ENV=production deno task build --release-build-before`;
     }
 
-    if (enableBootstrap) {
-        await $`cd ${buildDir} && ./mach --no-interactive bootstrap --application-choice browser`;
-        const rustup = (await which('rustup', { nothrow: true })) ?? `${os.homedir()}/.cargo/bin/rustup`;
-        await $`${rustup} target add ${target.rustTarget}`;
-    }
-
-    // Run configure
-    await $`${buildDir}/mach configure ${enableBootstrap ? '--enable-bootstrap' : '--disable-bootstrap'} --target=${target.target}`;
-
-    // Run build
-    await $`${buildDir}/mach build`;
+    await doBuild(config, buildDir);
 
     // Run release build after
     await $`cd ${buildDir}/floorp && deno task build --release-build-after`;
@@ -218,58 +230,37 @@ async function appimage(config: Config) {
         await build(config);
     }
 
+    // Extract binary tarball
     await $`mkdir ${appimageDir}`;
     await $`tar -xf ${buildTarball} --strip-components=1 -C ${appimageDir}`;
 
+    // Copy desktop and logo
     await $`sed 's#/usr/lib/firedragon/firedragon#firedragon#' assets/firedragon.desktop > ${appimageDir}/firedragon.desktop`;
     await $`cp ${appimageDir}/browser/chrome/icons/default/default128.png ${appimageDir}/firedragon.png`;
 
+    // Copy AppRun and make executable
     await $`cp assets/AppRun ${appimageDir}/AppRun`;
     await $`chmod a+x ${appimageDir}/AppRun`;
 
+    // Download appimagetool and make executable
     await $`curl -L https://github.com/AppImage/appimagetool/releases/download/continuous/appimagetool-x86_64.AppImage -o ${tmpDir}/appimagetool-x86_64.AppImage`;
     await $`chmod a+x ${tmpDir}/appimagetool-x86_64.AppImage`;
 
+    // Make AppImage
     await $`${tmpDir}/appimagetool-x86_64.AppImage ${appimageDir} ${distDir}/${appimageBasename}.AppImage`;
 }
 
 async function buildDev(config: Config) {
-    const { tmpDir, basename, target, enableBootstrap, withMozBuildDate, withBuildID2 } = config;
+    const { tmpDir, basename, target } = config;
 
     const buildDevBasename = `${basename}.${target.buildDevSuffix}`
     const buildDevDir = `${tmpDir}/${buildDevBasename}`;
 
     await prepareSource(config, buildDevDir, 'dev');
 
-    // Combine mozconfig
-    await $`cat ${buildDevDir}/floorp/gecko/mozconfig{,.${target.mozconfig}} > ${buildDevDir}/mozconfig`;
+    await prepareBuild(config, buildDevDir);
 
-    // Potentially set MOZ_BUILD_DATE
-    if (withMozBuildDate) {
-        const moz_build_date = (await Deno.readTextFile(withMozBuildDate)).trim();
-        echo(`With MOZ_BUILD_DATE=${moz_build_date}`);
-        Deno.env.set('MOZ_BUILD_DATE', moz_build_date);
-    }
-
-    // Ensure buildid2 exists
-    if (withBuildID2) {
-        await $`mkdir -p ${buildDevDir}/floorp/_dist`;
-        await $`cat ${withBuildID2} > ${buildDevDir}/floorp/_dist/buildid2`;
-    } else if (!await exists(`${buildDevDir}/floorp/_dist/buildid2`)) {
-        await $`cd ${buildDevDir}/floorp && deno task build --write-version`;
-    }
-
-    if (enableBootstrap) {
-        await $`cd ${buildDevDir} && ./mach --no-interactive bootstrap --application-choice browser`;
-        const rustup = (await which('rustup', { nothrow: true })) ?? `${os.homedir()}/.cargo/bin/rustup`;
-        await $`${rustup} target add ${target.rustTarget}`;
-    }
-
-    // Run configure
-    await $`${buildDevDir}/mach configure ${enableBootstrap ? '--enable-bootstrap' : '--disable-bootstrap'} --target=${target.target} --enable-chrome-format=flat --enable-firedragon-debug`;
-
-    // Run build
-    await $`${buildDevDir}/mach build`;
+    await doBuild(config, buildDevDir);
 
     await packageBuild(config, target.buildDevOutputFormat, buildDevBasename, buildDevDir);
 }
