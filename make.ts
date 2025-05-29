@@ -292,7 +292,7 @@ async function buildDev(config: Config) {
 
     await prepareBuild(config, buildDevDir);
 
-    await acAddOptions(buildDevDir, '--enable-chrome-format=flat');
+    await acAddOptions(buildDevDir, '--enable-firedragon-debug', '--enable-chrome-format=flat');
 
     await doBuild(config, buildDevDir);
 
