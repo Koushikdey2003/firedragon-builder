@@ -34,6 +34,12 @@ function parseArgv(argv: string[]) {
     });
 }
 
+async function acAddOptions(buildDir: string, ...options: string[]) {
+    for (const option of options) {
+        await $`echo -e 'ac_add_options ${option}' >> ${buildDir}/mozconfig`;
+    }
+}
+
 interface Config {
     version: string;
     runtime: string;
@@ -48,7 +54,9 @@ interface Config {
     withDist: string | null;
 }
 
-async function getFloorpRuntime({ runtime, tmpDir }: Config): Promise<string> {
+async function getFloorpRuntime(config: Config): Promise<string> {
+    const { runtime, tmpDir } = config;
+
     const response = await fetch(`https://api.github.com/repos/Floorp-Projects/Floorp-runtime/releases/${runtime}`);
     if (!response.ok) {
         throw `Invalid runtime release: ${runtime}`;
@@ -68,7 +76,7 @@ async function getFloorpRuntime({ runtime, tmpDir }: Config): Promise<string> {
     return tarball;
 }
 
-async function prepareSource(config: Config, dir: string, patches: 'packaging' | 'dev' = 'packaging'): Promise<void> {
+async function prepareSource(config: Config, dir: string): Promise<void> {
     const { version, edition } = config;
 
     // Extract floorp runtime and inject this repo
@@ -86,12 +94,14 @@ async function prepareSource(config: Config, dir: string, patches: 'packaging' |
     // Set display version
     await $`echo ${version} > ${dir}/browser/config/version_display.txt`;
 
-    // Apply patches
-    await applyPatches(dir, `patches/{shared,${patches}}/**/*.patch`);
+    await applyPatches(dir, `patches/**/*.patch`);
 }
 
 async function prepareBuild(config: Config, buildDir: string) {
-    const { withBuildID2 } = config;
+    const { target, withBuildID2 } = config;
+
+    // Install deno dependencies
+    await $`cd ${buildDir}/floorp && deno install --allow-scripts --frozen`;
 
     // Ensure buildid2 exists
     if (withBuildID2) {
@@ -100,13 +110,13 @@ async function prepareBuild(config: Config, buildDir: string) {
     } else if (!await exists(`${buildDir}/floorp/_dist/buildid2`)) {
         await $`cd ${buildDir}/floorp && deno task build --write-version`;
     }
+
+    // Combine mozconfig
+    await $`cat ${buildDir}/floorp/gecko/mozconfig{,.${target.mozconfig}} > ${buildDir}/mozconfig`;
 }
 
 async function doBuild(config: Config, buildDir: string) {
     const { target, enableBootstrap, withMozBuildDate } = config;
-
-    // Combine mozconfig
-    await $`cat ${buildDir}/floorp/gecko/mozconfig{,.${target.mozconfig}} > ${buildDir}/mozconfig`;
 
     // Potentially set MOZ_BUILD_DATE
     if (withMozBuildDate) {
@@ -119,29 +129,47 @@ async function doBuild(config: Config, buildDir: string) {
         await $`cd ${buildDir} && ./mach --no-interactive bootstrap --application-choice browser`;
         const rustup = (await which('rustup', { nothrow: true })) ?? `${os.homedir()}/.cargo/bin/rustup`;
         await $`${rustup} target add ${target.rustTarget}`;
+        await acAddOptions(buildDir, '--enable-bootstrap');
+    } else {
+        await acAddOptions(buildDir, '--disable-bootstrap');
     }
 
+    // Set target
+    await acAddOptions(buildDir, `--target=${target.target}`);
+
     // Run configure
-    await $`${buildDir}/mach configure ${enableBootstrap ? '--enable-bootstrap' : '--disable-bootstrap'} --target=${target.target}`;
+    await $`${buildDir}/mach configure`;
 
     // Run build
     await $`${buildDir}/mach build`;
 }
 
-async function packageBuild(config: Config, outputFormat: string, buildBasename: string, buildDir: string, ...patches: string[]) {
-    const { distDir, target } = config;
+function getCommonBuildDirs(config: Config, buildDir: string): { objDistDir: string, objDistBinDir: string } {
+    const { target } = config;
 
     const objDistDir = `${buildDir}/obj-artifact-build-output/dist`;
     const objDistBinDir = `${objDistDir}/${target.objDistBinPath}`;
+
+    return {
+        objDistDir,
+        objDistBinDir,
+    };
+}
+
+async function cloneObjDistBin(config: Config, buildDir: string) {
+    const { objDistBinDir } = getCommonBuildDirs(config, buildDir);
 
     // Resolve symlinks (https://www.spinics.net/lists/git/msg391750.html)
     const objDistBinTmpDir = tmpdir();
     await $`rsync -aL ${objDistBinDir}/ ${objDistBinTmpDir}/`;
     await $`rm -rf ${objDistBinDir}`;
     await $`mv ${objDistBinTmpDir} ${objDistBinDir}`;
+}
 
-    // Apply patches
-    await applyPatches(`${objDistBinDir}`, ...patches);
+async function packageBuild(config: Config, outputFormat: string, buildBasename: string, buildDir: string) {
+    const { distDir } = config;
+
+    const { objDistDir, objDistBinDir } = getCommonBuildDirs(config, buildDir);
 
     // Remove references to build directory
     for (const file of await $`rg -Fl ${buildDir} ${objDistBinDir} || true`.lines()) {
@@ -195,9 +223,6 @@ async function build(config: Config) {
     await $`mkdir ${buildDir}`;
     await $`tar -xf ${sourceTarball} --strip-components=1 -C ${buildDir}`;
 
-    // Install deno dependencies
-    await $`cd ${buildDir}/floorp && deno install --allow-scripts --frozen`;
-
     await prepareBuild(config, buildDir);
 
     // Use provided dist or run release build before
@@ -207,12 +232,19 @@ async function build(config: Config) {
         await $`cd ${buildDir}/floorp && NODE_ENV=production deno task build --release-build-before`;
     }
 
+    // Set noraneko dist
+    await acAddOptions(buildDir, '--with-noraneko-dist=floorp/_dist/noraneko');
+
     await doBuild(config, buildDir);
 
     // Run release build after
     await $`cd ${buildDir}/floorp && deno task build --release-build-after`;
 
-    await packageBuild(config, target.buildOutputFormat, buildBasename, buildDir, 'scripts/git-patches/patches/*.patch');
+    await cloneObjDistBin(config, buildDir);
+
+    await applyPatches(`${getCommonBuildDirs(config, buildDir).objDistBinDir}`, 'scripts/git-patches/patches/*.patch');
+
+    await packageBuild(config, target.buildOutputFormat, buildBasename, buildDir);
 }
 
 async function appimage(config: Config) {
@@ -256,11 +288,13 @@ async function buildDev(config: Config) {
     const buildDevBasename = `${basename}-${target.buildSuffix}-dev`
     const buildDevDir = `${tmpDir}/${buildDevBasename}`;
 
-    await prepareSource(config, buildDevDir, 'dev');
+    await prepareSource(config, buildDevDir);
 
     await prepareBuild(config, buildDevDir);
 
     await doBuild(config, buildDevDir);
+
+    await cloneObjDistBin(config, buildDevDir);
 
     await packageBuild(config, target.buildDevOutputFormat, buildDevBasename, buildDevDir);
 }

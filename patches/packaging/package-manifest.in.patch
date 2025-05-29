@@ -1,24 +1,26 @@
 diff --git a/browser/installer/package-manifest.in b/browser/installer/package-manifest.in
-index 8e02ea6ca2..71fd5da3d3 100644
+index d069529341..0ff88901cb 100644
 --- a/browser/installer/package-manifest.in
 +++ b/browser/installer/package-manifest.in
-@@ -196,6 +196,11 @@
+@@ -193,6 +193,13 @@
  @RESPATH@/chrome/remote.manifest
  #endif
  
 +; [Noraneko Files]
++#ifdef NORANEKO_DIST
 +@RESPATH@/chrome/noraneko.manifest
 +@RESPATH@/chrome/noraneko@JAREXT@
++#endif
 +@RESPATH@/browser/buildid2
 +
  ; [Extensions]
  @RESPATH@/components/extensions-toolkit.manifest
  @RESPATH@/browser/components/extensions-browser.manifest
-@@ -266,6 +271,13 @@
+@@ -263,6 +270,13 @@
  ; Remote Settings JSON dumps
  @RESPATH@/browser/defaults/settings
  
-+; FireDragon settings
++; [FireDragon Settings]
 +#ifdef FIREDRAGON_SETTINGS
 +@RESPATH@/defaults/pref/local-settings.js
 +@RESPATH@/distribution/policies.json
