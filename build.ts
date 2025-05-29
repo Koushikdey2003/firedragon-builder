@@ -399,14 +399,6 @@ async function release(mode: "before" | "after") {
       binPath = `${baseDir}/bin`;
     }
     injectXHTML(binPath);
-    let buildid2: string | null = null;
-    try {
-      await fs.access("_dist/buildid2");
-      buildid2 = await fs.readFile("_dist/buildid2", { encoding: "utf-8" });
-    } catch {
-      console.warn("buildid2 not found");
-    }
-    await writeBuildid2(`${binPath}/browser`, buildid2 ?? "");
   }
 }
 

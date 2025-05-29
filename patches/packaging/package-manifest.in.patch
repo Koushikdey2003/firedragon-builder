@@ -1,8 +1,8 @@
 diff --git a/browser/installer/package-manifest.in b/browser/installer/package-manifest.in
-index d069529341..0ff88901cb 100644
+index d069529341..6dbffec89c 100644
 --- a/browser/installer/package-manifest.in
 +++ b/browser/installer/package-manifest.in
-@@ -193,6 +193,13 @@
+@@ -193,6 +193,15 @@
  @RESPATH@/chrome/remote.manifest
  #endif
  
@@ -11,12 +11,14 @@ index d069529341..0ff88901cb 100644
 +@RESPATH@/chrome/noraneko.manifest
 +@RESPATH@/chrome/noraneko@JAREXT@
 +#endif
++#ifdef NORANEKO_BUILDID2
 +@RESPATH@/browser/buildid2
++#endif
 +
  ; [Extensions]
  @RESPATH@/components/extensions-toolkit.manifest
  @RESPATH@/browser/components/extensions-browser.manifest
-@@ -263,6 +270,13 @@
+@@ -263,6 +272,13 @@
  ; Remote Settings JSON dumps
  @RESPATH@/browser/defaults/settings
  

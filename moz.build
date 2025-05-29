@@ -1,3 +1,8 @@
+if CONFIG["NORANEKO_BUILDID2"]:
+    FINAL_TARGET_FILES.browser += [
+        "/%s" % CONFIG["NORANEKO_BUILDID2"]
+    ]
+
 if CONFIG["NORANEKO_DIST"]:
     DIRS += [
         "/%s/content" % CONFIG["NORANEKO_DIST"],
