@@ -6,6 +6,7 @@ import { BackgroundProvider } from "./contexts/BackgroundContext.tsx";
 import { ComponentsProvider } from "./contexts/ComponentsContext.tsx";
 import { Settings } from "./components/Settings/index.tsx";
 import { SettingsButton } from "./components/SettingsButton/index.tsx";
+import { Logo } from "./components/Logo/index.tsx";
 import { SearchBar } from "./components/SearchBar/index.tsx";
 import "./globals.css";
 import { useComponents } from "./contexts/ComponentsContext.tsx";
@@ -30,6 +31,7 @@ function NewTabContent() {
 
         <div className="w-full flex justify-center px-4">
           <div className="w-full max-w-full sm:max-w-md md:max-w-lg lg:max-w-xl mt-8 md:mt-16">
+            {components.logo && <Logo />}
             {components.searchBar && <SearchBar />}
           </div>
         </div>
