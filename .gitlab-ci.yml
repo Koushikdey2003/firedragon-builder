@@ -13,7 +13,7 @@ source:
   parallel:
     matrix:
       - EDITION: [dr640nized, catppuccin]
-  image: denoland/deno:ubuntu
+  image: denoland/deno:ubuntu-2.2.9
   before_script:
     - apt-get update
     - apt-get install -y curl rsync patch zstd
@@ -27,7 +27,7 @@ source:
 prepare:
   stage: prepare
   needs: []
-  image: denoland/deno:ubuntu
+  image: denoland/deno:ubuntu-2.2.9
   before_script:
     - apt-get update
     - apt-get install -y rsync
@@ -57,7 +57,7 @@ build:
       - EDITION: [dr640nized, catppuccin]
         PLATFORM: [linux, darwin, win32]
         ARCH: [x64, arm64]
-  image: denoland/deno:ubuntu
+  image: denoland/deno:ubuntu-2.2.9
   before_script:
     - apt-get update
     - apt-get install -y zstd patch rsync python3-pip msitools p7zip-full zip ripgrep
@@ -80,7 +80,7 @@ appimage:
         ARCH: [x64, arm64]
   variables:
     APPIMAGE_EXTRACT_AND_RUN: 1
-  image: denoland/deno:ubuntu
+  image: denoland/deno:ubuntu-2.2.9
   before_script:
     - apt-get update
     - apt-get install -y curl zstd file
@@ -101,7 +101,7 @@ build-dev:
       - EDITION: [dr640nized, catppuccin]
         PLATFORM: [linux, darwin, win32]
         ARCH: [x64, arm64]
-  image: denoland/deno:ubuntu
+  image: denoland/deno:ubuntu-2.2.9
   before_script:
     - apt-get update
     - apt-get install -y curl rsync patch zstd python3-pip msitools p7zip-full zip ripgrep
