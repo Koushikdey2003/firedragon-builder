@@ -1,30 +1,31 @@
-import { defineConfig, PluginOption } from "vite";
-import tsconfigPaths from "vite-tsconfig-paths";
-import react from "@vitejs/plugin-react-swc";
-import tailwindcss from "@tailwindcss/vite";
-import { generateJarManifest } from "../common/scripts/gen_jarmanifest.ts";
-import { join } from "node:path";
-import { dirname } from "node:path";
+/// <reference types="vitest" />
 
-export default defineConfig({
+import { defineConfig } from 'vite';
+import analog from '@analogjs/platform';
+import tailwindcss from '@tailwindcss/vite';
+import {generateJarManifest} from "../common/scripts/gen_jarmanifest.ts";
+
+// https://vitejs.dev/config/
+export default defineConfig(({ mode }) => ({
+  build: {
+    outDir: "_dist",
+    target: ['es2020'],
+  },
+  resolve: {
+    mainFields: ['module'],
+  },
   server: {
     port: 5186,
     strictPort: true,
   },
-  css: {
-    postcss: import.meta.dirname,
-  },
-  build: {
-    outDir: "_dist",
-  },
-  resolve: {
-    alias: {
-      "@/": join(dirname(import.meta.url), "src"),
-    },
-  },
   plugins: [
-    tsconfigPaths() as PluginOption,
-    react(),
+    analog({
+      ssr: false,
+      static: true,
+      prerender: {
+        routes: [],
+      },
+    }),
     tailwindcss(),
     {
       name: "gen_jarmn",
@@ -49,4 +50,4 @@ export default defineConfig({
       },
     },
   ],
-});
+}));

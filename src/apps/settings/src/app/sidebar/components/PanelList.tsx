@@ -49,7 +49,7 @@ import {
   CardContent,
   CardHeader,
   CardTitle,
-} from "../../../../../newtab/src/components/common/card.tsx";
+} from "../../../../../common/components/card.tsx";
 
 const SortablePanel = ({
   panel,
