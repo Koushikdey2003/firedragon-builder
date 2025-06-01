@@ -31,8 +31,6 @@ source:
       - EDITION: [dr640nized, catppuccin]
   image: $CI_IMAGE
   before_script:
-    - apt-get update
-    - apt-get install -y curl rsync patch zstd
     - deno install --allow-scripts --frozen
   script:
     - deno task make --edition=$EDITION source
@@ -47,8 +45,6 @@ prepare:
       artifacts: false
   image: $CI_IMAGE
   before_script:
-    - apt-get update
-    - apt-get install -y rsync
     - deno install --allow-scripts --frozen
   script:
     - deno task build --write-version
@@ -79,8 +75,6 @@ build:
         ARCH: [x64, arm64]
   image: $CI_IMAGE
   before_script:
-    - apt-get update
-    - apt-get install -y zstd patch rsync python3-pip msitools p7zip-full zip ripgrep
     - deno install --allow-scripts --frozen
   script:
     - deno task make --edition=$EDITION --target=$PLATFORM-$ARCH --enable-bootstrap --with-moz-build-date=_dist/moz_build_date --with-buildid2=_dist/buildid2 --with-dist=_dist build
@@ -104,8 +98,6 @@ appimage:
     APPIMAGE_EXTRACT_AND_RUN: 1
   image: $CI_IMAGE
   before_script:
-    - apt-get update
-    - apt-get install -y curl zstd file
     - deno install --allow-scripts --frozen
   script:
     - deno task make --edition=$EDITION --target=$PLATFORM-$ARCH appimage
@@ -127,8 +119,6 @@ build-dev:
         ARCH: [x64, arm64]
   image: $CI_IMAGE
   before_script:
-    - apt-get update
-    - apt-get install -y curl rsync patch zstd python3-pip msitools p7zip-full zip ripgrep
     - deno install --allow-scripts --frozen
   script:
     - deno task make --edition=$EDITION --target=$PLATFORM-$ARCH --enable-bootstrap --with-moz-build-date=_dist/moz_build_date --with-buildid2=_dist/buildid2 build-dev
