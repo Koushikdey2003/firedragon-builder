@@ -9,7 +9,7 @@ const version = `v${packageJson.version}`;
 async function updateMetainfo(file: string) {
     const date = new Date();
     const release = `
-    <release version="${version}" date="${date.getFullYear()}-${date.getMonth().toString().padStart(2, '0')}-${date.getDate().toString().padStart(2, '0')}">
+    <release version="${version}" date="${date.getFullYear()}-${(date.getMonth() + 1).toString().padStart(2, '0')}-${date.getDate().toString().padStart(2, '0')}">
       <url type="details">https://gitlab.com/garuda-linux/firedragon12/builder/-/releases/${version}</url>
       <description />
     </release>`;
