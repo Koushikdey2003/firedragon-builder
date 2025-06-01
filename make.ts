@@ -167,7 +167,7 @@ async function cloneObjDistBin(config: Config, buildDir: string) {
 }
 
 async function packageBuild(config: Config, outputFormat: string, buildBasename: string, buildDir: string) {
-    const { distDir } = config;
+    const { distDir, edition } = config;
 
     const { objDistDir, objDistBinDir } = getCommonBuildDirs(config, buildDir);
 
@@ -194,7 +194,7 @@ async function packageBuild(config: Config, outputFormat: string, buildBasename:
     } else if (outputFormat === 'zip') {
         await $`cd ${objDistDir} && zip -r ${resolve(distDir)}/${buildBasename}.zip firedragon`;
     } else if (outputFormat === 'dmg') {
-        await $`${buildDir}/mach python -m mozbuild.action.make_dmg ${objDistDir}/firedragon ${distDir}/${buildBasename}.dmg`;
+        await $`${buildDir}/mach python -m mozbuild.action.make_dmg --dsstore ${edition.mac.dsstore} --background ${edition.mac.background} --icon ${edition.mac.icon} --volume-name ${edition.mac.volumeName} ${objDistDir}/firedragon ${distDir}/${buildBasename}.dmg`;
     } else {
         throw `Invalid build output format ${outputFormat}, must be on of [tar.zst, exe, zip].`;
     }
@@ -306,11 +306,23 @@ const EDITIONS = {
         branding: 'firedragon',
         theme: 'sweet-dark',
         basename: 'firedragon',
+        mac: {
+            dsstore: 'gecko/branding/firedragon/dsstore',
+            background: 'gecko/branding/firedragon/background.png',
+            icon: 'gecko/branding/firedragon/disk.icns',
+            volumeName: 'FireDragon',
+        },
     },
     catppuccin: {
         branding: 'firedragon-catppuccin',
         theme: 'catppuccin-mocha-mauve',
         basename: 'firedragon-catppuccin',
+        mac: {
+            dsstore: 'gecko/branding/firedragon-catppuccin/dsstore',
+            background: 'gecko/branding/firedragon-catppuccin/background.png',
+            icon: 'gecko/branding/firedragon-catppuccin/disk.icns',
+            volumeName: 'FireDragon',
+        },
     },
 };
 const TARGETS = {
