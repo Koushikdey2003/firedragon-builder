@@ -1,5 +1,24 @@
 # FireDragon ChangeLog
 
+## [FireDragon v12.0.0-beta.2](https://gitlab.com/garuda-linux/firedragon/builder/-/releases/v12.0.0-beta.2) — 2025-06-05 — [`v12.0.0-beta.1`…`v12.0.0-beta.2`](https://gitlab.com/garuda-linux/firedragon/builder/-/compare/v12.0.0-beta.1...v12.0.0-beta.2)
+
+### 🚀 Features
+
+- Add getPath function export to autoconfig prefcalls — [`b38d969e…`](https://gitlab.com/garuda-linux/firedragon/builder/-/commit/b38d969e2828e9c5ca4c67aae3d0b1483ec29e62)
+
+### 🐛 Bug Fixes
+
+- Use OS specific directory for firedragon.overrides.cfg — [`9e59908f…`](https://gitlab.com/garuda-linux/firedragon/builder/-/commit/9e59908fa5e3b01ab08e775fb79fdc424f1125c9)
+
+### 🚜 Refactor
+
+- *(make)* Simplify dmg package command with static parameters — [`f45a5217…`](https://gitlab.com/garuda-linux/firedragon/builder/-/commit/f45a52172b32d30e14c5dc9e169b97dce689aa5f)
+
+### ⚙️ Miscellaneous Tasks
+
+- Fix direct_asset_path for release assets — [`421651ec…`](https://gitlab.com/garuda-linux/firedragon/builder/-/commit/421651ec747fa4672efa40a9f10d1b83522245bb)
+- Use release ci config instead of calling release-cli — [`73668686…`](https://gitlab.com/garuda-linux/firedragon/builder/-/commit/736686861e8e269ffc67682a074a2b2758e5d618)
+
 ## [FireDragon v12.0.0-beta.1](https://gitlab.com/garuda-linux/firedragon/builder/-/releases/v12.0.0-beta.1) — 2025-06-01
 
 ### 🚀 Features
