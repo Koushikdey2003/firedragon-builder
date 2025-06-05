@@ -1,0 +1,28 @@
+diff --git a/defaults/autoconfig/prefcalls.js b/defaults/autoconfig/prefcalls.js
+index fcd0554..3d0aac7 100755
+--- ./defaults/autoconfig/prefcalls.js
++++ ./defaults/autoconfig/prefcalls.js
+@@ -196,6 +196,15 @@ function getenv(name) {
+   return undefined;
+ }
+ 
++function getPath(prop) {
++  try {
++    return Services.dirsvc.get(prop, Ci.nsIFile).path;
++  } catch (e) {
++    displayError('getPath', e);
++  }
++  return undefined;
++}
++
+ var APIs = {
+   pref,
+   defaultPref,
+@@ -208,6 +217,7 @@ var APIs = {
+   getLDAPValue,
+   displayError,
+   getenv,
++  getPath,
+ };
+ 
+ for (let [defineAs, func] of Object.entries(APIs)) {
