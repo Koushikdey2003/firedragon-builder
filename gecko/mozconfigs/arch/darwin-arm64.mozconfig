@@ -1,0 +1,4 @@
+. "$topsrcdir/floorp/gecko/mozconfigs/arch/darwin.mozconfig"
+
+# Build options
+ac_add_options --target=aarch64-apple-darwin

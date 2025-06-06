@@ -34,9 +34,15 @@ function parseArgv(argv: string[]) {
     });
 }
 
+async function combineMozconfigs(buildDir: string, ...mozconfigs: string[]) {
+    for (const mozconfig of mozconfigs) {
+        await $`echo -e '. "$topsrcdir"/'${mozconfig} >> ${buildDir}/mozconfig`;
+    }
+}
+
 async function acAddOptions(buildDir: string, ...options: string[]) {
     for (const option of options) {
-        await $`echo -e 'ac_add_options ${option}' >> ${buildDir}/mozconfig`;
+        await $`echo -e 'ac_add_options '${option} >> ${buildDir}/mozconfig`;
     }
 }
 
@@ -45,6 +51,7 @@ interface Config {
     runtime: string;
     tmpDir: string;
     distDir: string;
+    sourceBasename: string;
     edition: (typeof EDITIONS)[keyof typeof EDITIONS];
     basename: string;
     target: (typeof TARGETS)[keyof typeof TARGETS];
@@ -77,7 +84,7 @@ async function getFloorpRuntime(config: Config): Promise<string> {
 }
 
 async function prepareSource(config: Config, dir: string): Promise<void> {
-    const { version, edition } = config;
+    const { version } = config;
 
     // Extract floorp runtime and inject this repo
     const runtimeTarball = await getFloorpRuntime(config);
@@ -88,17 +95,27 @@ async function prepareSource(config: Config, dir: string): Promise<void> {
     // Copy branding
     await $`cp -r gecko/branding/* ${dir}/browser/branding/`;
 
-    // Apply edition in default mozconfig
-    await $`sed -i -e 's/@BRANDING@/${edition.branding}/' -e 's/@THEME@/${edition.theme}/' ${dir}/floorp/gecko/mozconfig`;
-
     // Set display version
     await $`echo ${version} > ${dir}/browser/config/version_display.txt`;
 
     await applyPatches(dir, `patches/**/*.patch`);
 }
 
+async function extractSource(config: Config, buildDir: string): Promise<void> {
+    const { distDir, sourceBasename } = config;
+
+    const sourceTarball = `${distDir}/${sourceBasename}.tar.zst`;
+    if (!await exists(sourceTarball)) {
+        await source(config);
+    }
+
+    // Extract source
+    await $`mkdir ${buildDir}`;
+    await $`tar -xf ${sourceTarball} --strip-components=1 -C ${buildDir}`;
+}
+
 async function prepareBuild(config: Config, buildDir: string) {
-    const { target, withBuildID2 } = config;
+    const { edition, target, withBuildID2 } = config;
 
     // Install deno dependencies
     await $`cd ${buildDir}/floorp && deno install --allow-scripts --frozen`;
@@ -111,8 +128,8 @@ async function prepareBuild(config: Config, buildDir: string) {
         await $`cd ${buildDir}/floorp && deno task build --write-buildid2`;
     }
 
-    // Combine mozconfig
-    await $`cat ${buildDir}/floorp/gecko/mozconfig{,.${target.mozconfig}} > ${buildDir}/mozconfig`;
+    // Combine mozconfigs
+    await combineMozconfigs(buildDir, edition.mozconfig, target.mozconfig);
 }
 
 async function doBuild(config: Config, buildDir: string) {
@@ -133,9 +150,6 @@ async function doBuild(config: Config, buildDir: string) {
     } else {
         await acAddOptions(buildDir, '--disable-bootstrap');
     }
-
-    // Set target
-    await acAddOptions(buildDir, `--target=${target.target}`);
 
     // Run configure
     await $`${buildDir}/mach configure`;
@@ -201,27 +215,20 @@ async function packageBuild(config: Config, outputFormat: string, buildBasename:
 }
 
 async function source(config: Config) {
-    const { tmpDir, distDir, basename } = config;
+    const { tmpDir, distDir, sourceBasename } = config;
 
-    await prepareSource(config, `${tmpDir}/${basename}`);
+    await prepareSource(config, `${tmpDir}/${sourceBasename}`);
 
-    await $`tar --zstd -cf ${distDir}/${basename}.tar.zst --exclude=.git -C ${tmpDir} ${basename}`;
+    await $`tar --zstd -cf ${distDir}/${sourceBasename}.tar.zst --exclude=.git -C ${tmpDir} ${sourceBasename}`;
 }
 
 async function build(config: Config) {
-    const { tmpDir, distDir, basename, target, withDist } = config;
+    const { tmpDir, basename, target, withDist } = config;
 
     const buildBasename = `${basename}-${target.buildSuffix}`;
     const buildDir = `${tmpDir}/${buildBasename}`
 
-    const sourceTarball = `${distDir}/${basename}.tar.zst`;
-    if (!await exists(sourceTarball)) {
-        await source(config);
-    }
-
-    // Extract source
-    await $`mkdir ${buildDir}`;
-    await $`tar -xf ${sourceTarball} --strip-components=1 -C ${buildDir}`;
+    await extractSource(config, buildDir);
 
     await prepareBuild(config, buildDir);
 
@@ -251,7 +258,7 @@ async function appimage(config: Config) {
     const { tmpDir, distDir, basename, target } = config;
 
     if (!target.appimageSuffix) {
-        throw `Target ${target.target} does not support appimage build.`;
+        throw `Target does not support appimage build.`;
     }
 
     const appimageBasename = `${basename}-${target.appimageSuffix}`;
@@ -288,7 +295,7 @@ async function buildDev(config: Config) {
     const buildDevBasename = `${basename}-${target.buildSuffix}-dev`
     const buildDevDir = `${tmpDir}/${buildDevBasename}`;
 
-    await prepareSource(config, buildDevDir);
+    await extractSource(config, buildDevDir);
 
     await prepareBuild(config, buildDevDir);
 
@@ -301,22 +308,23 @@ async function buildDev(config: Config) {
     await packageBuild(config, target.buildDevOutputFormat, buildDevBasename, buildDevDir);
 }
 
+const SOURCE_BASENAME = 'firedragon-source';
 const EDITIONS = {
     dr640nized: {
+        mozconfig: 'floorp/gecko/mozconfigs/edition/firedragon-dr460nized.mozconfig',
         branding: 'firedragon',
-        theme: 'sweet-dark',
         basename: 'firedragon',
     },
     catppuccin: {
-        branding: 'firedragon-catppuccin',
-        theme: 'catppuccin-mocha-mauve',
+        mozconfig: 'floorp/gecko/mozconfigs/edition/firedragon-catppuccin.mozconfig',
+        branding: 'firedraong-catppuccin',
         basename: 'firedragon-catppuccin',
     },
 };
 const TARGETS = {
     'linux-x64': {
-        mozconfig: 'linux-x64',
-        target: 'x86_64-pc-linux-gnu',
+        mozconfig: 'floorp/gecko/mozconfigs/arch/linux-x64.mozconfig',
+        target: '',
         rustTarget: 'x86_64-unknown-linux-gnu',
         objDistBinPath: 'bin',
         buildSuffix: 'linux-x64',
@@ -325,7 +333,7 @@ const TARGETS = {
         appimageSuffix: 'appimage-x64',
     },
     'linux-arm64': {
-        mozconfig: 'linux-arm64',
+        mozconfig: 'floorp/gecko/mozconfigs/arch/linux-arm64.mozconfig',
         target: 'aarch64-linux-gnu',
         rustTarget: 'aarch64-unknown-linux-gnu',
         objDistBinPath: 'bin',
@@ -335,7 +343,7 @@ const TARGETS = {
         appimageSuffix: 'appimage-arm64',
     },
     'win32-x64': {
-        mozconfig: 'win32-x64',
+        mozconfig: 'floorp/gecko/mozconfigs/arch/win32-x64.mozconfig',
         target: 'x86_64-pc-windows-msvc',
         rustTarget: 'x86_64-pc-windows-msvc',
         objDistBinPath: 'bin',
@@ -345,7 +353,7 @@ const TARGETS = {
         appimageSuffix: null,
     },
     'win32-arm64': {
-        mozconfig: 'win32-arm64',
+        mozconfig: 'floorp/gecko/mozconfigs/arch/win32-arm64.mozconfig',
         target: 'aarch64-pc-windows-msvc',
         rustTarget: 'aarch64-pc-windows-msvc',
         objDistBinPath: 'bin',
@@ -355,7 +363,7 @@ const TARGETS = {
         appimageSuffix: null,
     },
     'darwin-x64': {
-        mozconfig: 'darwin-x64',
+        mozconfig: 'floorp/gecko/mozconfigs/arch/darwin-x64.mozconfig',
         target: 'x86_64-apple-darwin',
         rustTarget: 'x86_64-apple-darwin',
         objDistBinPath: 'FireDragon.app/Contents/Resources',
@@ -365,7 +373,7 @@ const TARGETS = {
         appimageSuffix: null,
     },
     'darwin-arm64': {
-        mozconfig: 'darwin-arm64',
+        mozconfig: 'floorp/gecko/mozconfigs/arch/darwin-arm64.mozconfig',
         target: 'aarch64-apple-darwin',
         rustTarget: 'aarch64-apple-darwin',
         objDistBinPath: 'FireDragon.app/Contents/Resources',
@@ -401,6 +409,7 @@ try {
         }
 
         const { version } = packageJson;
+        const sourceBasename = `${SOURCE_BASENAME}-v${version}`;
         const basename = `${edition.basename}-v${version}`;
 
         const config: Config = {
@@ -408,6 +417,7 @@ try {
             runtime: argv.runtime ?? packageJson.runtime,
             tmpDir,
             distDir,
+            sourceBasename,
             edition,
             basename,
             target,

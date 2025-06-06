@@ -1,8 +1,6 @@
 ac_add_options --with-app-basename=FireDragon
 ac_add_options --with-app-name=firedragon
-ac_add_options --with-branding=browser/branding/@BRANDING@
 ac_add_options --with-firedragon-settings=floorp/settings
-ac_add_options --with-firedragon-theme=@THEME@
 ac_add_options --with-noraneko-buildid2=floorp/_dist/buildid2
 ac_add_options --enable-application=browser
 

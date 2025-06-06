@@ -1,0 +1,4 @@
+. "$topsrcdir/floorp/gecko/mozconfigs/edition/firedragon.mozconfig"
+
+ac_add_options --with-branding=browser/branding/firedragon
+ac_add_options --with-firedragon-theme=sweet-dark
