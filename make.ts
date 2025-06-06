@@ -7,10 +7,10 @@ import packageJson from './package.json' with { type: 'json' };
 
 async function exists(path: string): Promise<boolean> {
     try {
-      await access(path);
-      return true;
+        await access(path);
+        return true;
     } catch {
-      return false;
+        return false;
     }
 }
 
@@ -51,6 +51,8 @@ interface Config {
     runtime: string;
     tmpDir: string;
     distDir: string;
+    appName: string;
+    appBasename: string;
     sourceBasename: string;
     edition: (typeof EDITIONS)[keyof typeof EDITIONS];
     basename: string;
@@ -181,7 +183,7 @@ async function cloneObjDistBin(config: Config, buildDir: string) {
 }
 
 async function packageBuild(config: Config, outputFormat: string, buildBasename: string, buildDir: string) {
-    const { distDir, edition } = config;
+    const { distDir, appName, appBasename, edition } = config;
 
     const { objDistDir, objDistBinDir } = getCommonBuildDirs(config, buildDir);
 
@@ -194,21 +196,21 @@ async function packageBuild(config: Config, outputFormat: string, buildBasename:
     await $`${buildDir}/mach package`;
 
     // Remove pingsender
-    for (const pingsender of await glob(`${objDistDir}/firedragon{,/FireDragon.app/Contents/MacOS}/pingsender{,.exe}`)) {
+    for (const pingsender of await glob(`${objDistDir}/${appName}{,/${appBasename}.app/Contents/MacOS}/pingsender{,.exe}`)) {
         await $`rm -f ${pingsender}`;
     }
 
     // Package output archive
     if (outputFormat === 'tar.zst') {
-        await $`tar --zstd -cf ${distDir}/${buildBasename}.tar.zst -C ${objDistDir} firedragon`;
+        await $`tar --zstd -cf ${distDir}/${buildBasename}.tar.zst -C ${objDistDir} ${appName}`;
     } else if (outputFormat === 'exe') {
         const zipPath = `${objDistDir}/${buildBasename}.zip`;
-        await $`cd ${objDistDir} && zip -r ${zipPath} firedragon`;
-        await $`${buildDir}/mach repackage installer -o ${distDir}/${buildBasename}.exe --package-name firedragon --package ${zipPath} --tag ${buildDir}/browser/installer/windows/app.tag --setupexe ${buildDir}/obj-artifact-build-output/browser/installer/windows/instgen/setup.exe --sfx-stub ${buildDir}/other-licenses/7zstub/firefox/7zSD.Win32.sfx`;
+        await $`cd ${objDistDir} && zip -r ${zipPath} ${appName}`;
+        await $`${buildDir}/mach repackage installer -o ${distDir}/${buildBasename}.exe --package-name ${appName} --package ${zipPath} --tag ${buildDir}/browser/installer/windows/app.tag --setupexe ${buildDir}/obj-artifact-build-output/browser/installer/windows/instgen/setup.exe --sfx-stub ${buildDir}/other-licenses/7zstub/firefox/7zSD.Win32.sfx`;
     } else if (outputFormat === 'zip') {
-        await $`cd ${objDistDir} && zip -r ${resolve(distDir)}/${buildBasename}.zip firedragon`;
+        await $`cd ${objDistDir} && zip -r ${resolve(distDir)}/${buildBasename}.zip ${appName}`;
     } else if (outputFormat === 'dmg') {
-        await $`${buildDir}/mach python -m mozbuild.action.make_dmg --dsstore ${buildDir}/browser/branding/${edition.branding}/dsstore --background ${buildDir}/browser/branding/${edition.branding}/background.png --icon ${buildDir}/browser/branding/${edition.branding}/disk.icns --volume-name FireDragon ${objDistDir}/firedragon ${distDir}/${buildBasename}.dmg`;
+        await $`${buildDir}/mach python -m mozbuild.action.make_dmg --dsstore ${buildDir}/browser/branding/${edition.branding}/dsstore --background ${buildDir}/browser/branding/${edition.branding}/background.png --icon ${buildDir}/browser/branding/${edition.branding}/disk.icns --volume-name ${appBasename} ${objDistDir}/${appName} ${distDir}/${buildBasename}.dmg`;
     } else {
         throw `Invalid build output format ${outputFormat}, must be on of [tar.zst, exe, zip].`;
     }
@@ -255,7 +257,7 @@ async function build(config: Config) {
 }
 
 async function appimage(config: Config) {
-    const { tmpDir, distDir, basename, target } = config;
+    const { tmpDir, distDir, appName, basename, target } = config;
 
     if (!target.appimageSuffix) {
         throw `Target does not support appimage build.`;
@@ -274,8 +276,8 @@ async function appimage(config: Config) {
     await $`tar -xf ${buildTarball} --strip-components=1 -C ${appimageDir}`;
 
     // Copy desktop and logo
-    await $`sed 's#/usr/lib/firedragon/firedragon#firedragon#' assets/firedragon.desktop > ${appimageDir}/firedragon.desktop`;
-    await $`cp ${appimageDir}/browser/chrome/icons/default/default128.png ${appimageDir}/firedragon.png`;
+    await $`sed 's#/usr/lib/${appName}/${appName}#${appName}#' assets/${appName}.desktop > ${appimageDir}/${appName}.desktop`;
+    await $`cp ${appimageDir}/browser/chrome/icons/default/default128.png ${appimageDir}/${appName}.png`;
 
     // Copy AppRun and make executable
     await $`cp assets/AppRun ${appimageDir}/AppRun`;
@@ -308,17 +310,18 @@ async function buildDev(config: Config) {
     await packageBuild(config, target.buildDevOutputFormat, buildDevBasename, buildDevDir);
 }
 
-const SOURCE_BASENAME = 'firedragon-source';
+const APP_NAME = 'firedragon';
+const APP_BASENAME = 'FireDragon';
 const EDITIONS = {
     dr640nized: {
         mozconfig: 'floorp/gecko/mozconfigs/edition/firedragon-dr460nized.mozconfig',
         branding: 'firedragon',
-        basename: 'firedragon',
+        basename: APP_NAME,
     },
     catppuccin: {
         mozconfig: 'floorp/gecko/mozconfigs/edition/firedragon-catppuccin.mozconfig',
         branding: 'firedragon-catppuccin',
-        basename: 'firedragon-catppuccin',
+        basename: `${APP_NAME}-catppuccin`,
     },
 };
 const TARGETS = {
@@ -409,7 +412,7 @@ try {
         }
 
         const { version } = packageJson;
-        const sourceBasename = `${SOURCE_BASENAME}-v${version}`;
+        const sourceBasename = `${APP_NAME}-source-v${version}`;
         const basename = `${edition.basename}-v${version}`;
 
         const config: Config = {
@@ -417,6 +420,8 @@ try {
             runtime: argv.runtime ?? packageJson.runtime,
             tmpDir,
             distDir,
+            appName: APP_NAME,
+            appBasename: APP_BASENAME,
             sourceBasename,
             edition,
             basename,
