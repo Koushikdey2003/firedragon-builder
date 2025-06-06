@@ -1,6 +1,6 @@
 {
   "name": "noraneko-bin",
-  "version": "12.0.0-beta.2",
+  "version": "12.0.0-beta.3",
   "runtime": "tags/passed-20250604224819",
   "description": "",
   "main": "index.js",
