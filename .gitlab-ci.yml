@@ -30,7 +30,7 @@ source:
   before_script:
     - deno install --allow-scripts --frozen
   script:
-    - deno task make --edition=$EDITION source
+    - deno task make source
   artifacts:
     paths:
       - .dist/*.tar.zst
