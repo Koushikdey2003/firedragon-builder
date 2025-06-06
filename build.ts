@@ -9,7 +9,7 @@ import { savePrefsForProfile } from "./scripts/launchDev/savePrefs.ts";
 import { applyPatches } from "./scripts/git-patches/git-patches-manager.ts";
 import { initializeBinGit } from "./scripts/git-patches/git-patches-manager.ts";
 import { genVersion } from "./scripts/launchDev/writeVersion.ts";
-import { writeBuildid2 } from "./scripts/update/buildid2.ts";
+import { genBuildid2 } from "./scripts/update/buildid2.ts";
 import { $, fetch, type ProcessPromise } from "zx";
 import { usePwsh } from "zx";
 import chalk from "chalk";
@@ -428,5 +428,7 @@ if (Deno.args[0]) {
     case "--write-version":
       await genVersion();
       break;
+    case "--write-buildid2":
+      await genBuildid2();
   }
 }
