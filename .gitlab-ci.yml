@@ -47,7 +47,7 @@ prepare:
   before_script:
     - deno install --allow-scripts --frozen
   script:
-    - deno task build --write-version
+    - deno task build --write-buildid2
     - deno task build --release-build-before
     - date -d "$CI_PIPELINE_CREATED_AT" +%Y%m%d%H%M%S > _dist/moz_build_date
   after_script:
