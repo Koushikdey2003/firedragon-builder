@@ -317,7 +317,7 @@ const EDITIONS = {
     },
     catppuccin: {
         mozconfig: 'floorp/gecko/mozconfigs/edition/firedragon-catppuccin.mozconfig',
-        branding: 'firedraong-catppuccin',
+        branding: 'firedragon-catppuccin',
         basename: 'firedragon-catppuccin',
     },
 };
