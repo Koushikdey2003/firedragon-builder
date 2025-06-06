@@ -1,34 +1,5 @@
 # FireDragon ChangeLog
 
-## [FireDragon v12.0.0-beta.3](https://gitlab.com/garuda-linux/firedragon/builder/-/releases/v12.0.0-beta.3) — 2025-06-06 — [`v12.0.0-beta.2`…`v12.0.0-beta.3`](https://gitlab.com/garuda-linux/firedragon/builder/-/compare/v12.0.0-beta.2...v12.0.0-beta.3)
-
-### 🚀 Features
-
-- *(build)* Add --write-buildid2 to only write buildid2 — [`3d23c84e…`](https://gitlab.com/garuda-linux/firedragon/builder/-/commit/3d23c84edd06619e328f5e29c409343fc3fef6b7)
-
-### 🐛 Bug Fixes
-
-- Use regexp for global replacement of backslash in overrides url — [`914de191…`](https://gitlab.com/garuda-linux/firedragon/builder/-/commit/914de1919cf476d887d2a55660edfc7824d554b0)
-- Replace string floorp in PWA linux filepaths — [`44ad9112…`](https://gitlab.com/garuda-linux/firedragon/builder/-/commit/44ad9112355c5bb9ba7bbb48ffe2eb4b15583dfa)
-- *(make)* Use --write-buildid2 instead of --write-version — [`16a97fc1…`](https://gitlab.com/garuda-linux/firedragon/builder/-/commit/16a97fc11092b2f63c531f3ffb59a8cf60ccd76a)
-
-### 🚜 Refactor
-
-- *(make)* Reorganize mozconfigs and use unify source archive — [`dc3af04a…`](https://gitlab.com/garuda-linux/firedragon/builder/-/commit/dc3af04a4ffb4a0083d152e67a935964ddaaac51)
-
-### ⚙️ Miscellaneous Tasks
-
-- Reverse assets links to sort them correctly on release page — [`e4b909cf…`](https://gitlab.com/garuda-linux/firedragon/builder/-/commit/e4b909cf525ed283b7d192c6d97580fec55f199b)
-- Sort dev builds after normal builds on release page — [`26247302…`](https://gitlab.com/garuda-linux/firedragon/builder/-/commit/2624730293316b426af03b15619fbea1c17eebc6)
-- Use --write-buildid2 instead of --write-version — [`31aa61b0…`](https://gitlab.com/garuda-linux/firedragon/builder/-/commit/31aa61b06fca51ed1da608afcd31147cc8344d91)
-- Update CI for unified source archive — [`3f6eeef9…`](https://gitlab.com/garuda-linux/firedragon/builder/-/commit/3f6eeef9ef598b4a21d2b3011a1be2e34306da43)
-- Remove edition parameter from source job — [`5bdee3d5…`](https://gitlab.com/garuda-linux/firedragon/builder/-/commit/5bdee3d55d2d8340419f22fd6293641132a225d0)
-
-### ◀️ Revert
-
-- Ci: Use release ci config instead of calling release-cli — [`d1b7cac2…`](https://gitlab.com/garuda-linux/firedragon/builder/-/commit/d1b7cac2c70738ec1c1d9baa14f8ed51862243bc)
-- Release: v12.0.0-beta.3 — [`170b5e55…`](https://gitlab.com/garuda-linux/firedragon/builder/-/commit/170b5e55e9090291b87dbebaf3418d586720a5fd)
-
 ## [FireDragon v12.0.0-beta.2](https://gitlab.com/garuda-linux/firedragon/builder/-/releases/v12.0.0-beta.2) — 2025-06-05 — [`v12.0.0-beta.1`…`v12.0.0-beta.2`](https://gitlab.com/garuda-linux/firedragon/builder/-/compare/v12.0.0-beta.1...v12.0.0-beta.2)
 
 ### 🚀 Features
