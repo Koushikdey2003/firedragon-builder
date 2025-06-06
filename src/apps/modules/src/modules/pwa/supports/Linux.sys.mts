@@ -19,7 +19,7 @@ export class LinuxSupport {
 
   private static iconFile = (ssb: Manifest) => {
     return new LinuxSupport.nsIFile(
-      PathUtils.join(this.iconDir, `floorp-${ssb.name.toLowerCase()}.png`),
+      PathUtils.join(this.iconDir, `firedragon-${ssb.name.toLowerCase()}.png`),
     );
   }
 
@@ -28,7 +28,7 @@ export class LinuxSupport {
   private static desktopFile = (ssb: Manifest) => {
     return new LinuxSupport.nsIFile(PathUtils.join(
       this.applicationDir,
-      `floorp-${ssb.name.toLowerCase()}.desktop`,
+      `firedragon-${ssb.name.toLowerCase()}.desktop`,
     ));
   }
 
@@ -47,7 +47,7 @@ export class LinuxSupport {
     let command = Services.dirsvc.get("XREExeF",Ci.nsIFile).path;
 
     if (FileUtils.File("/.flatpak-info").exists()) {
-      command = "flatpak run org.garudalinux.floorp";
+      command = "flatpak run org.garudalinux.firedragon";
     }
 
     const desktopFile = LinuxSupport.desktopFile(ssb);
