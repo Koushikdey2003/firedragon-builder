@@ -108,7 +108,7 @@ async function prepareBuild(config: Config, buildDir: string) {
         await $`mkdir -p ${buildDir}/floorp/_dist`;
         await $`cat ${withBuildID2} > ${buildDir}/floorp/_dist/buildid2`;
     } else if (!await exists(`${buildDir}/floorp/_dist/buildid2`)) {
-        await $`cd ${buildDir}/floorp && deno task build --write-version`;
+        await $`cd ${buildDir}/floorp && deno task build --write-buildid2`;
     }
 
     // Combine mozconfig
