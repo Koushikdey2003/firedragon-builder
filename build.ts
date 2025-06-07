@@ -76,7 +76,7 @@ async function decompressBin() {
     console.log(`decompressing ${binArchive}`);
     if (!(await isExists(binArchive))) {
       console.log(
-        `${binArchive} not found. We will download ${await getBinArchive()} from GitHub latest release.`,
+        `${binArchive} not found. We will download ${await getBinArchive()} from latest release.`,
       );
       await downloadBinArchive();
       return;
