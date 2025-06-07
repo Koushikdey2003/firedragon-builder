@@ -221,7 +221,7 @@ async function source(config: Config) {
 
     await prepareSource(config, `${tmpDir}/${sourceBasename}`);
 
-    await $`tar --zstd -cf ${distDir}/${sourceBasename}.tar.zst --exclude=.git -C ${tmpDir} ${sourceBasename}`;
+    await $`tar --zstd -cf ${distDir}/${sourceBasename}.tar.zst -C ${tmpDir} ${sourceBasename}`;
 }
 
 async function build(config: Config) {
