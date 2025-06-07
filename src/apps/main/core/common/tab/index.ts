@@ -8,6 +8,7 @@ import { TabOpenPosition } from "./openPosition";
 import { TabSizeSpecification } from "./sizeSpecification";
 import { TabDoubleClickClose } from "./doubleClickClose";
 import { TabPinnedTabCustomization } from "./pinnedTabCustomization";
+import { TabMoveToWindow } from "./moveToWindow";
 import { noraComponent, NoraComponentBase } from "@core/utils/base";
 
 @noraComponent(import.meta.hot)
@@ -18,5 +19,6 @@ export default class Tab extends NoraComponentBase {
     new TabSizeSpecification();
     new TabDoubleClickClose();
     new TabPinnedTabCustomization();
+    new TabMoveToWindow();
   }
 }

@@ -232,5 +232,10 @@
         "editor_path_not_found": "Editor Path Not Found",
         "set_pref_description": "Please set the editor path",
         "please_enter_filename": "Please enter a filename"
+    },
+    "tab": {
+        "moveToWindow": {
+            "label": "Move Tab to another Window"
+        }
     }
 }
