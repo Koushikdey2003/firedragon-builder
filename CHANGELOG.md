@@ -1,5 +1,25 @@
 # FireDragon ChangeLog
 
+## [FireDragon v12.0.0-beta.5](https://gitlab.com/garuda-linux/firedragon/builder/-/releases/v12.0.0-beta.5) — 2025-06-08 — [`v12.0.0-beta.4`…`v12.0.0-beta.5`](https://gitlab.com/garuda-linux/firedragon/builder/-/compare/v12.0.0-beta.4...v12.0.0-beta.5)
+
+### 🚀 Features
+
+- *(os)* Update demo for latest version of Floorp 12 — [`841fc0df…`](https://gitlab.com/garuda-linux/firedragon/builder/-/commit/841fc0df49a0ab7112404ebf85b1cdfc2e13f5b4)
+- *(browser-action)* ウィジェット削除トラッカーを追加し、ツールバーウィジェットの管理を改善 — [`0b541227…`](https://gitlab.com/garuda-linux/firedragon/builder/-/commit/0b541227cbd9be8daca819e1c04c37d3b074101b)
+- *(qr-code)* Add QRCode Generator — [`eedbf707…`](https://gitlab.com/garuda-linux/firedragon/builder/-/commit/eedbf7073fdb431d361ad6b10defaa9038996f3d)
+- *(split-view)* スプリットビューのクラス管理を改善し、アクティブ状態の管理を強化 — [`5be95d0b…`](https://gitlab.com/garuda-linux/firedragon/builder/-/commit/5be95d0b2c249486fd0ff898efd538b0e369b2c7)
+- *(toolbar)* ワークスペースデータの変更を監視し、ボタンの更新を強化 — [`d6a5a193…`](https://gitlab.com/garuda-linux/firedragon/builder/-/commit/d6a5a193e241137b9ba3bee6b996a9a80620889b)
+- *(settings)* Enable auto update when compiled with update support — [`06bd4c05…`](https://gitlab.com/garuda-linux/firedragon/builder/-/commit/06bd4c059dabd99be04f7c4b67f3de15f48a2fae)
+- *(make)* Add detailsURL to update.xml — [`db676302…`](https://gitlab.com/garuda-linux/firedragon/builder/-/commit/db6763026218f920a08d64d4132ca7dcc0434a4e)
+
+### 🐛 Bug Fixes
+
+- *(userjs-parser)* User_prefのスキップ条件を追加し、QRコードマネージャーから不要なコメントを削除 — [`de7c4d8b…`](https://gitlab.com/garuda-linux/firedragon/builder/-/commit/de7c4d8bf33f0b26347354d33e2da58ea14c9e26)
+- *(TopSites)* アイコンの配置を中央揃えに修正 — [`a19a0dea…`](https://gitlab.com/garuda-linux/firedragon/builder/-/commit/a19a0dea08c61b58d57e46b0d6aa1c7701fa519e)
+- *(split-view)* 固定タブのクローズ時に固定データをリセットする処理を追加 — [`54350617…`](https://gitlab.com/garuda-linux/firedragon/builder/-/commit/543506177c63882553bab1af3765b846208d59f8)
+- *(tab-scroll)* タブのスクロール設定を修正し、逆方向の設定をラップ設定に変更 — [`b4047927…`](https://gitlab.com/garuda-linux/firedragon/builder/-/commit/b4047927e906a4185afd23cd6b272e40f46fa483)
+- *(settings)* Point default update details url to releases page — [`7288f40d…`](https://gitlab.com/garuda-linux/firedragon/builder/-/commit/7288f40d936de919aab3d086905346d05bb071c3)
+
 ## [FireDragon v12.0.0-beta.4](https://gitlab.com/garuda-linux/firedragon/builder/-/releases/v12.0.0-beta.4) — 2025-06-08 — [`v12.0.0-beta.3`…`v12.0.0-beta.4`](https://gitlab.com/garuda-linux/firedragon/builder/-/compare/v12.0.0-beta.3...v12.0.0-beta.4)
 
 ### 🚀 Features
