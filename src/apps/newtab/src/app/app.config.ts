@@ -7,7 +7,7 @@ import {
   provideExperimentalZonelessChangeDetection,
 } from "@angular/core";
 import { provideAnimationsAsync } from "@angular/platform-browser/animations/async";
-import { provideRouter } from "@angular/router";
+import { provideRouter, withHashLocation } from "@angular/router";
 import { provideGarudaNG } from "@garudalinux/core";
 import { APP_CONFIG } from "../environments/app-config.token";
 import { environment } from "../environments/environment.dev";
@@ -31,7 +31,7 @@ export const appConfig: ApplicationConfig = {
         inputStyle: "outlined",
       },
     ),
-    provideRouter(routes),
+    provideRouter(routes, withHashLocation()),
     provideExperimentalZonelessChangeDetection(),
     provideHttpClient(),
     provideAppInitializer(async () => {
