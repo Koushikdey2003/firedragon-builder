@@ -23,8 +23,8 @@ def noraneko_buildid2(value):
     if value:
         return value[0]
 
-set_config("NORANEKO_BUILDID2", noraneko_buildid2)
-set_define("NORANEKO_BUILDID2", noraneko_buildid2)
+set_config("NORANEKO_BUILDID2", noraneko_buildid2, when=noraneko_buildid2)
+set_define("NORANEKO_BUILDID2", noraneko_buildid2, when=noraneko_buildid2)
 
 option(
     "--with-noraneko-dist",
@@ -37,8 +37,8 @@ def noraneko_dist(value):
     if value:
         return value[0]
 
-set_config("NORANEKO_DIST", noraneko_dist)
-set_define("NORANEKO_DIST", noraneko_dist)
+set_config("NORANEKO_DIST", noraneko_dist, when=noraneko_dist)
+set_define("NORANEKO_DIST", noraneko_dist, when=noraneko_dist)
 
 option(
     "--with-firedragon-settings",
@@ -51,8 +51,8 @@ def firedragon_settings(value):
     if value:
         return value[0]
 
-set_config("FIREDRAGON_SETTINGS", firedragon_settings)
-set_define("FIREDRAGON_SETTINGS", firedragon_settings)
+set_config("FIREDRAGON_SETTINGS", firedragon_settings, when=firedragon_settings)
+set_define("FIREDRAGON_SETTINGS", firedragon_settings, when=firedragon_settings)
 
 option(
     "--with-firedragon-theme",
@@ -65,8 +65,8 @@ def firedragon_theme(value):
     if value:
         return value[0]
 
-set_config("FIREDRAGON_THEME", firedragon_theme)
-set_define("FIREDRAGON_THEME", firedragon_theme)
+set_config("FIREDRAGON_THEME", firedragon_theme, when=firedragon_theme)
+set_define("FIREDRAGON_THEME", firedragon_theme, when=firedragon_theme)
 
 option(
     "--enable-firedragon-debug",
@@ -75,7 +75,7 @@ option(
 )
 
 @depends("--enable-firedragon-debug")
-def firedragon_theme(value):
+def firedragon_debug(value):
     if value:
         return True
 
