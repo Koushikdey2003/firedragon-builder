@@ -85,9 +85,11 @@
     "npm:postcss@^8.5.1": "8.5.3",
     "npm:postcss@^8.5.3": "8.5.3",
     "npm:puppeteer-core@^24.1.1": "24.8.2_devtools-protocol@0.0.1439962",
+    "npm:qr-code-styling@^1.9.2": "1.9.2",
     "npm:react-dom@19": "19.1.0_react@19.1.0",
     "npm:react-hook-form@^7.54.2": "7.56.4_react@19.1.0",
     "npm:react-i18next@^15.4.1": "15.5.1_i18next@24.2.3__typescript@5.8.3_react@19.1.0_typescript@5.8.3",
+    "npm:react-markdown@^10.1.0": "10.1.0_@types+react@19.1.4_react@19.1.0",
     "npm:react-refresh@0.16": "0.16.0",
     "npm:react-router-dom@^7.1.5": "7.6.0_react@19.1.0_react-dom@19.1.0__react@19.1.0",
     "npm:react-simple-wysiwyg@^3.2.2": "3.2.2_react@19.1.0",
@@ -2066,7 +2068,7 @@
         "@uiw/copy-to-clipboard",
         "react",
         "react-dom",
-        "react-markdown",
+        "react-markdown@9.0.3_@types+react@19.1.4_react@19.1.0",
         "rehype-attr",
         "rehype-autolink-headings",
         "rehype-ignore",
@@ -5157,6 +5159,15 @@
     "qjobs@1.2.0": {
       "integrity": "sha512-8YOJEHtxpySA3fFDyCRxA+UUV+fA+rTWnuWvylOK/NCjhY+b4ocCtmu8TtsWb+mYeU+GCHf/S66KZF/AsteKHg=="
     },
+    "qr-code-styling@1.9.2": {
+      "integrity": "sha512-RgJaZJ1/RrXJ6N0j7a+pdw3zMBmzZU4VN2dtAZf8ZggCfRB5stEQ3IoDNGaNhYY3nnZKYlYSLl5YkfWN5dPutg==",
+      "dependencies": [
+        "qrcode-generator"
+      ]
+    },
+    "qrcode-generator@1.4.4": {
+      "integrity": "sha512-HM7yY8O2ilqhmULxGMpcHSF1EhJJ9yBj8gvDEuZ6M+KGJ0YY2hKpnXvRD+hZPLrDVck3ExIGhmPtSdcjC+guuw=="
+    },
     "qs@6.13.0": {
       "integrity": "sha512-+38qI9SOr8tfZ4QmJNplMUxqjbe7LKvvZgWdExBOmd+egZTtjLB67Gu0HRX3u/XOq7UU2Nx6nsjvS16Z9uwfpg==",
       "dependencies": [
@@ -5219,6 +5230,24 @@
     },
     "react-is@18.3.1": {
       "integrity": "sha512-/LLMVyas0ljjAtoYiPqYiL8VWXzUUdThrmU5+n20DZv+a+ClRoevUzw5JxU+Ieh5/c87ytoTBV9G1FiKfNJdmg=="
+    },
+    "react-markdown@10.1.0_@types+react@19.1.4_react@19.1.0": {
+      "integrity": "sha512-qKxVopLT/TyA6BX3Ue5NwabOsAzm0Q7kAPwq6L+wWDwisYs7R8vZ0nRXqq6rkueboxpkjvLGU9fWifiX/ZZFxQ==",
+      "dependencies": [
+        "@types/hast@3.0.4",
+        "@types/mdast",
+        "@types/react",
+        "devlop",
+        "hast-util-to-jsx-runtime",
+        "html-url-attributes",
+        "mdast-util-to-hast",
+        "react",
+        "remark-parse",
+        "remark-rehype",
+        "unified",
+        "unist-util-visit",
+        "vfile"
+      ]
     },
     "react-markdown@9.0.3_@types+react@19.1.4_react@19.1.0": {
       "integrity": "sha512-Yk7Z94dbgYTOrdk41Z74GoKA7rThnsbbqBTRYuxoe08qvfQ9tJVhmAKw6BJS/ZORG7kTy/s1QvYzSuaoBA1qfw==",
@@ -6678,6 +6707,7 @@
         "npm:oxlint@~0.15.9",
         "npm:pathe@^2.0.2",
         "npm:puppeteer-core@^24.1.1",
+        "npm:qr-code-styling@^1.9.2",
         "npm:rolldown@^1.0.0-beta.9",
         "npm:solid-element@^1.9.1",
         "npm:solid-styled-jsx@~0.27.1",
@@ -6863,6 +6893,42 @@
             "npm:react-refresh@0.16",
             "npm:react-router-dom@^7.1.5",
             "npm:react-simple-wysiwyg@^3.2.2",
+            "npm:react@19",
+            "npm:recharts@^2.15.1",
+            "npm:tailwind-merge@^3.0.1",
+            "npm:tailwindcss@4",
+            "npm:vite-tsconfig-paths@^5.1.4",
+            "npm:vite@^6.0.11",
+            "npm:zod@^3.24.2"
+          ]
+        }
+      },
+      "src/apps/os": {
+        "packageJson": {
+          "dependencies": [
+            "npm:@icons-pack/react-simple-icons@^11.2.0",
+            "npm:@tailwindcss/vite@^4.0.6",
+            "npm:@types/react-dom@19",
+            "npm:@types/react@19",
+            "npm:@vitejs/plugin-react-swc@^3.7.2",
+            "npm:autoprefixer@^10.4.20",
+            "npm:birpc@^2.2.0",
+            "npm:clsx@^2.1.1",
+            "npm:cmdk@^1.0.4",
+            "npm:daisyui@5",
+            "npm:floating-ui@^5.2.8",
+            "npm:framer-motion@^12.4.10",
+            "npm:i18next-browser-languagedetector@^8.0.3",
+            "npm:i18next@^24.2.2",
+            "npm:lucide-react@0.475",
+            "npm:next-themes@~0.4.4",
+            "npm:postcss@^8.5.1",
+            "npm:react-dom@19",
+            "npm:react-hook-form@^7.54.2",
+            "npm:react-i18next@^15.4.1",
+            "npm:react-markdown@^10.1.0",
+            "npm:react-refresh@0.16",
+            "npm:react-router-dom@^7.1.5",
             "npm:react@19",
             "npm:recharts@^2.15.1",
             "npm:tailwind-merge@^3.0.1",
