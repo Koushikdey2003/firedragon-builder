@@ -146,8 +146,6 @@ async function doBuild(config: Config, buildDir: string) {
     // Potentially run bootstrap
     if (enableBootstrap) {
         await $`cd ${buildDir} && ./mach --no-interactive bootstrap --application-choice browser`;
-        const rustup = (await which('rustup', { nothrow: true })) ?? `${os.homedir()}/.cargo/bin/rustup`;
-        await $`${rustup} target add ${target.rustTarget}`;
         await acAddOptions(buildDir, '--enable-bootstrap');
     } else {
         await acAddOptions(buildDir, '--disable-bootstrap');
@@ -327,8 +325,6 @@ const EDITIONS = {
 const TARGETS = {
     'linux-x64': {
         mozconfig: 'floorp/gecko/mozconfigs/arch/linux-x64.mozconfig',
-        target: '',
-        rustTarget: 'x86_64-unknown-linux-gnu',
         objDistBinPath: 'bin',
         buildSuffix: 'linux-x64',
         buildOutputFormat: 'tar.zst',
@@ -337,8 +333,6 @@ const TARGETS = {
     },
     'linux-arm64': {
         mozconfig: 'floorp/gecko/mozconfigs/arch/linux-arm64.mozconfig',
-        target: 'aarch64-linux-gnu',
-        rustTarget: 'aarch64-unknown-linux-gnu',
         objDistBinPath: 'bin',
         buildSuffix: 'linux-arm64',
         buildOutputFormat: 'tar.zst',
@@ -347,8 +341,6 @@ const TARGETS = {
     },
     'win32-x64': {
         mozconfig: 'floorp/gecko/mozconfigs/arch/win32-x64.mozconfig',
-        target: 'x86_64-pc-windows-msvc',
-        rustTarget: 'x86_64-pc-windows-msvc',
         objDistBinPath: 'bin',
         buildSuffix: 'win32-x64',
         buildOutputFormat: 'exe',
@@ -357,8 +349,6 @@ const TARGETS = {
     },
     'win32-arm64': {
         mozconfig: 'floorp/gecko/mozconfigs/arch/win32-arm64.mozconfig',
-        target: 'aarch64-pc-windows-msvc',
-        rustTarget: 'aarch64-pc-windows-msvc',
         objDistBinPath: 'bin',
         buildSuffix: 'win32-arm64',
         buildOutputFormat: 'exe',
@@ -367,8 +357,6 @@ const TARGETS = {
     },
     'darwin-x64': {
         mozconfig: 'floorp/gecko/mozconfigs/arch/darwin-x64.mozconfig',
-        target: 'x86_64-apple-darwin',
-        rustTarget: 'x86_64-apple-darwin',
         objDistBinPath: 'FireDragon.app/Contents/Resources',
         buildSuffix: 'darwin-x64',
         buildOutputFormat: 'dmg',
@@ -377,8 +365,6 @@ const TARGETS = {
     },
     'darwin-arm64': {
         mozconfig: 'floorp/gecko/mozconfigs/arch/darwin-arm64.mozconfig',
-        target: 'aarch64-apple-darwin',
-        rustTarget: 'aarch64-apple-darwin',
         objDistBinPath: 'FireDragon.app/Contents/Resources',
         buildSuffix: 'darwin-arm64',
         buildOutputFormat: 'dmg',
