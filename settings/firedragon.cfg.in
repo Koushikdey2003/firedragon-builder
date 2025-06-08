@@ -542,9 +542,13 @@ lockPref("extensions.webcompat-reporter.newIssueEndpoint", "");
 /** [CATEGORY] BUILT-IN FEATURES */
 
 /** [SECTION] UPDATER
- * Since we do not bake auto-updates in the browser it does not make sense at the moment.
+ * Enable auto update if compiled with update support, otherwise lock out.
  */
+#ifdef FIREDRAGON_UPDATE
+defaultPref("app.update.auto", true);
+#else
 lockPref("app.update.auto", false);
+#endif
 
 /** [SECTION] SYNC
  * This functionality is disabled by default but it can be activated in one click.
