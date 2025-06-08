@@ -232,16 +232,16 @@ async function createUpdate(config: Config, buildBasename: string, buildDir: str
 
     const { objDistDir, objDistBinDir } = getCommonBuildDirs(config, buildDir);
 
-    await $`MAR=${objDistDir}/host/bin/mar MOZ_PRODUCT_VERSION=${version} MAR_CHANNEL_ID=release ${buildDir}/tools/update-packaging/make_full_update.sh ${distDir}/${buildBasename}.mar ${objDistDir}/${target.updatePath}`;
+    const appVersion = (await $`cat ${buildDir}/browser/config/version.txt`).lines()[0];
+
+    await $`MAR=${objDistDir}/host/bin/mar MOZ_PRODUCT_VERSION=${appVersion} MAR_CHANNEL_ID=release ${buildDir}/tools/update-packaging/make_full_update.sh ${distDir}/${buildBasename}.mar ${objDistDir}/${target.updatePath}`;
 
     const [
-        appVersion,
         buildID,
         buildID2,
         hashValue,
         size,
     ] = await Promise.all([
-        (async () => (await $`cat ${buildDir}/browser/config/version.txt`).lines()[0])(),
         (async () => (await $`awk -F '=' '/BuildID/ {print $2}' ${objDistBinDir}/application.ini`).lines()[0])(),
         (async () => (await $`cat ${objDistBinDir}/browser/buildid2`).lines()[0])(),
         (async () => (await $`sha512sum ${distDir}/${buildBasename}.mar | cut -c 1-128`).lines()[0])(),
