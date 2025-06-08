@@ -1,0 +1,10 @@
+<div class="mb-5 md:mb-0 md:px-10">
+    <app-search></app-search>
+    @if (configService.settings().jokesEnabled) {
+        <app-jokes></app-jokes>
+    }
+    <app-links></app-links>
+    @if (configService.settings().defaultLinks) {
+        <app-contact-links></app-contact-links>
+    }
+</div>

@@ -1,18 +1,17 @@
 /// <reference types="vitest" />
-
-import { defineConfig } from 'vite';
-import analog from '@analogjs/platform';
-import tailwindcss from '@tailwindcss/vite';
-import {generateJarManifest} from "../common/scripts/gen_jarmanifest.ts";
+import { defineConfig } from "vite";
+import analog from "@analogjs/platform";
+import tailwindcss from "@tailwindcss/vite";
+import { generateJarManifest } from "../common/scripts/gen_jarmanifest.ts";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
   build: {
     outDir: "_dist",
-    target: ['es2020'],
+    target: ["es2020"],
   },
   resolve: {
-    mainFields: ['module'],
+    mainFields: ["module"],
   },
   server: {
     port: 5186,

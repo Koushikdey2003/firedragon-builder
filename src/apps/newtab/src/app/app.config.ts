@@ -1,21 +1,60 @@
-import { provideHttpClient, withFetch } from "@angular/common/http";
+import { provideHttpClient } from "@angular/common/http";
 import {
-    ApplicationConfig,
-    //  provideBrowserGlobalErrorListeners,
-    provideZoneChangeDetection,
+  type ApplicationConfig,
+  inject,
+  isDevMode,
+  provideAppInitializer,
+  provideExperimentalZonelessChangeDetection,
 } from "@angular/core";
-import {
-    provideClientHydration,
-    withEventReplay,
-} from "@angular/platform-browser";
+import { provideAnimationsAsync } from "@angular/platform-browser/animations/async";
+import { provideRouter } from "@angular/router";
+import { provideGarudaNG } from "@garudalinux/core";
+import { APP_CONFIG } from "../environments/app-config.token";
+import { environment } from "../environments/environment.dev";
+import { routes } from "./app.routes";
+import { TranslocoHttpLoader } from "./transloco-loader";
+import { provideTransloco, provideTranslocoLoader } from "@jsverse/transloco";
+import { ConfigService } from "../config/config.service";
 
 export const appConfig: ApplicationConfig = {
-    providers: [
-        //    provideBrowserGlobalErrorListeners(),
-        provideZoneChangeDetection({ eventCoalescing: true }),
-        provideHttpClient(
-            withFetch(),
-        ),
-        provideClientHydration(withEventReplay()),
-    ],
+  providers: [
+    provideAnimationsAsync(),
+    provideGarudaNG(
+      { font: "InterVariable" },
+      {
+        theme: {
+          options: {
+            darkModeSelector: ".p-dark",
+          },
+        },
+        ripple: true,
+        inputStyle: "outlined",
+      },
+    ),
+    provideRouter(routes),
+    provideExperimentalZonelessChangeDetection(),
+    provideHttpClient(),
+    provideAppInitializer(async () => {
+      const configService = inject(ConfigService);
+      while (!configService.initialized()) {
+        await new Promise<void>((resolve) => {
+          setTimeout(() => resolve(), 0);
+        });
+      }
+    }),
+    provideTransloco({
+      config: {
+        availableLangs: environment.availableLanguages,
+        defaultLang: environment.defaultLanguage,
+        fallbackLang: environment.defaultLanguage,
+        missingHandler: {
+          useFallbackTranslation: true,
+        },
+        prodMode: !isDevMode(),
+        reRenderOnLangChange: true,
+      },
+    }),
+    provideTranslocoLoader(TranslocoHttpLoader),
+    { provide: APP_CONFIG, useValue: environment },
+  ],
 };
