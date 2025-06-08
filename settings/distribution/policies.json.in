@@ -2,7 +2,9 @@
 {
   "__COMMENT__ More Information": "https://github.com/mozilla/policy-templates/blob/master/README.md",
   "policies": {
+#ifndef FIREDRAGON_UPDATE
     "DisableAppUpdate": true,
+#endif
     "DisableDeveloperTools": false,
     "DisableFeedbackCommands": true,
     "DisableFirefoxStudies": true,
