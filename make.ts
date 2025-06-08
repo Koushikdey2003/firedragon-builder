@@ -48,12 +48,13 @@ async function acAddOptions(buildDir: string, ...options: string[]) {
 }
 
 interface Config {
+    appName: string;
+    appBasename: string;
+    repoUrl: string;
     version: string;
     runtime: string;
     tmpDir: string;
     distDir: string;
-    appName: string;
-    appBasename: string;
     sourceBasename: string;
     edition: (typeof EDITIONS)[keyof typeof EDITIONS];
     basename: string;
@@ -137,7 +138,7 @@ async function prepareBuild(config: Config, buildDir: string) {
 }
 
 async function doBuild(config: Config, buildDir: string) {
-    const { target, enableBootstrap, withMozBuildDate } = config;
+    const { enableBootstrap, withMozBuildDate } = config;
 
     // Potentially set MOZ_BUILD_DATE
     if (withMozBuildDate) {
@@ -183,7 +184,7 @@ async function cloneObjDistBin(config: Config, buildDir: string) {
 }
 
 async function packageBuild(config: Config, outputFormat: string, buildBasename: string, buildDir: string) {
-    const { distDir, appName, appBasename, edition } = config;
+    const { appName, appBasename, distDir, edition } = config;
 
     const { objDistDir, objDistBinDir } = getCommonBuildDirs(config, buildDir);
 
@@ -216,10 +217,14 @@ async function packageBuild(config: Config, outputFormat: string, buildBasename:
     }
 }
 
-function getUpdateUrl(config: Config, ext: 'mar' | 'update.xml'): string {
-    const { edition, target } = config;
+function getUpdateUrls(config: Config) {
+    const { repoUrl, version, edition, target } = config;
 
-    return `https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/permalink/latest/downloads/${edition.basename}-${target.buildSuffix}.${ext}`;
+    return {
+        updateXml: `${repoUrl}/-/releases/permalink/latest/downloads/${edition.basename}-${target.buildSuffix}.update.xml`,
+        mar: `${repoUrl}/-/releases/v${version}/downloads/${edition.basename}-${target.buildSuffix}.mar`,
+        details: `${repoUrl}/-/releases/v${version}`,
+    };
 }
 
 async function createUpdate(config: Config, buildBasename: string, buildDir: string) {
@@ -243,6 +248,8 @@ async function createUpdate(config: Config, buildBasename: string, buildDir: str
         (async () => (await $`stat -c '%s' ${distDir}/${buildBasename}.mar`).lines()[0])(),
     ]);
 
+    const { mar, details } = getUpdateUrls(config);
+
     const update = {
         _declaration: {
             _attributes: {
@@ -260,13 +267,13 @@ async function createUpdate(config: Config, buildBasename: string, buildDir: str
                     buildID: buildID,
                     appVersion2: version,
                     buildID2: buildID2,
-                    detailsURL: `https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v${version}`,
+                    detailsURL: details,
                 },
                 patch: [
                     {
                         _attributes: {
                             type: "complete",
-                            URL: getUpdateUrl(config, 'mar'),
+                            URL: mar,
                             hashFunction: 'sha512',
                             hashValue: hashValue,
                             size: size,
@@ -309,7 +316,7 @@ async function build(config: Config) {
     await acAddOptions(buildDir, '--with-noraneko-dist=floorp/_dist/noraneko');
 
     if (enableUpdate) {
-        await acAddOptions(buildDir, `--with-firedragon-update=${getUpdateUrl(config, 'update.xml')}`);
+        await acAddOptions(buildDir, `--with-firedragon-update=${getUpdateUrls(config).updateXml}`);
     } else {
         await acAddOptions(buildDir, '--disable-updater');
     }
@@ -331,7 +338,7 @@ async function build(config: Config) {
 }
 
 async function appimage(config: Config) {
-    const { tmpDir, distDir, appName, basename, target } = config;
+    const { appName, tmpDir, distDir, basename, target } = config;
 
     if (!target.appimageSuffix) {
         throw `Target does not support appimage build.`;
@@ -386,6 +393,7 @@ async function buildDev(config: Config) {
 
 const APP_NAME = 'firedragon';
 const APP_BASENAME = 'FireDragon';
+const REPO_URL = 'https://gitlab.com/garuda-linux/firedragon/firedragon12';
 const EDITIONS = {
     dr640nized: {
         mozconfig: 'floorp/gecko/mozconfigs/edition/firedragon-dr460nized.mozconfig',
@@ -484,12 +492,13 @@ try {
         const basename = `${edition.basename}-v${version}`;
 
         const config: Config = {
+            appName: APP_NAME,
+            appBasename: APP_BASENAME,
+            repoUrl: REPO_URL,
             version,
             runtime: argv.runtime ?? packageJson.runtime,
             tmpDir,
             distDir,
-            appName: APP_NAME,
-            appBasename: APP_BASENAME,
             sourceBasename,
             edition,
             basename,
