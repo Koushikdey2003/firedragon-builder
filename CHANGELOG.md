@@ -1,5 +1,32 @@
 # FireDragon ChangeLog
 
+## [FireDragon v12.0.0-beta.4](https://gitlab.com/garuda-linux/firedragon/builder/-/releases/v12.0.0-beta.4) — 2025-06-08 — [`v12.0.0-beta.3`…`v12.0.0-beta.4`](https://gitlab.com/garuda-linux/firedragon/builder/-/compare/v12.0.0-beta.3...v12.0.0-beta.4)
+
+### 🚀 Features
+
+- *(make)* Make app name & basename configurable — [`1b063e0c…`](https://gitlab.com/garuda-linux/firedragon/builder/-/commit/1b063e0c986a546c9841518723b5dc66558cdf33)
+- Add option to move tab to another window — [`6d19ef07…`](https://gitlab.com/garuda-linux/firedragon/builder/-/commit/6d19ef079f117e6d7b000a259535c3ca1555a3df)
+- Add option to enable in-app update — [`69519c6c…`](https://gitlab.com/garuda-linux/firedragon/builder/-/commit/69519c6c6e085f8b4ecba4ddd6c58c023260cf85)
+
+### 🐛 Bug Fixes
+
+- *(make)* Remove obsolete exclusion on source tar — [`c6fcb1f2…`](https://gitlab.com/garuda-linux/firedragon/builder/-/commit/c6fcb1f233ff31d83e7d03b1e0c1d75e360f904a)
+- *(build)* Remove string "GitHub" from bin download message — [`77625b4c…`](https://gitlab.com/garuda-linux/firedragon/builder/-/commit/77625b4ce99ee199e4ef2891eaa692f534bede84)
+- Add btp to strict mode as default comment — [`163d1516…`](https://gitlab.com/garuda-linux/firedragon/builder/-/commit/163d151629dcc44b535b3be13c9f03cb648b9616)
+- Fix moz.configure — [`a0a4c9d7…`](https://gitlab.com/garuda-linux/firedragon/builder/-/commit/a0a4c9d72357998ccbde6e34d1e6e87da1a8160c)
+- *(make)* Add -e to echo version — [`56874c6c…`](https://gitlab.com/garuda-linux/firedragon/builder/-/commit/56874c6ccc58d333179363bd3ec07e2ea02374bd)
+- *(make)* Use APP_BASENAME const in objDistBinPath for darwin targets — [`963ac73d…`](https://gitlab.com/garuda-linux/firedragon/builder/-/commit/963ac73d9ff3227d31d5805c8a3860860fc388b1)
+- *(make)* Use nothrow instead of calling true as fallback command — [`e317562a…`](https://gitlab.com/garuda-linux/firedragon/builder/-/commit/e317562afb27523cb60070a79c8eb585f4de78b3)
+
+### 🚜 Refactor
+
+- *(settings)* Use GeneratedFile in moz.build instead of Makefile.in for preprocessing — [`a79a57b1…`](https://gitlab.com/garuda-linux/firedragon/builder/-/commit/a79a57b156feccb663e7eb477f281a6eb059241a)
+
+### ⚙️ Miscellaneous Tasks
+
+- Refactor ci dockerfile to inject deno into latest ubuntu and install rustup with all required toolchains — [`40b2bf22…`](https://gitlab.com/garuda-linux/firedragon/builder/-/commit/40b2bf227fac281aa25c549a87adef11b254d1ed)
+- Add in-app update functionality — [`6ba063ca…`](https://gitlab.com/garuda-linux/firedragon/builder/-/commit/6ba063ca18a8d3eabf6275c368d271f419b7dff6)
+
 ## [FireDragon v12.0.0-beta.3](https://gitlab.com/garuda-linux/firedragon/builder/-/releases/v12.0.0-beta.3) — 2025-06-06 — [`v12.0.0-beta.2`…`v12.0.0-beta.3`](https://gitlab.com/garuda-linux/firedragon/builder/-/compare/v12.0.0-beta.2...v12.0.0-beta.3)
 
 ### 🚀 Features
