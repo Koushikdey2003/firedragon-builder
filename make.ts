@@ -357,7 +357,7 @@ const TARGETS = {
     },
     'darwin-x64': {
         mozconfig: 'floorp/gecko/mozconfigs/arch/darwin-x64.mozconfig',
-        objDistBinPath: 'FireDragon.app/Contents/Resources',
+        objDistBinPath: `${APP_BASENAME}.app/Contents/Resources`,
         buildSuffix: 'darwin-x64',
         buildOutputFormat: 'dmg',
         buildDevOutputFormat: 'dmg',
@@ -365,7 +365,7 @@ const TARGETS = {
     },
     'darwin-arm64': {
         mozconfig: 'floorp/gecko/mozconfigs/arch/darwin-arm64.mozconfig',
-        objDistBinPath: 'FireDragon.app/Contents/Resources',
+        objDistBinPath: `${APP_BASENAME}.app/Contents/Resources`,
         buildSuffix: 'darwin-arm64',
         buildOutputFormat: 'dmg',
         buildDevOutputFormat: 'dmg',
