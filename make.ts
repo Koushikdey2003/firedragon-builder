@@ -98,7 +98,7 @@ async function prepareSource(config: Config, dir: string): Promise<void> {
     await $`cp -r gecko/branding/* ${dir}/browser/branding/`;
 
     // Set display version
-    await $`echo ${version} > ${dir}/browser/config/version_display.txt`;
+    await $`echo -e ${version} > ${dir}/browser/config/version_display.txt`;
 
     await applyPatches(dir, `patches/**/*.patch`);
 }
