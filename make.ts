@@ -260,6 +260,7 @@ async function createUpdate(config: Config, buildBasename: string, buildDir: str
                     buildID: buildID,
                     appVersion2: version,
                     buildID2: buildID2,
+                    detailsURL: `https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v${version}`,
                 },
                 patch: [
                     {
