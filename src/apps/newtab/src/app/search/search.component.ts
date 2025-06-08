@@ -48,7 +48,7 @@ export class SearchComponent {
     } else if (this.configService.settings().logo === 'none') {
       return this.configService.settings().logo;
     } else {
-      return '/src/public/assets/logos/firedragon.png';
+      return 'chrome://branding/content/about-logo.png';
     }
   });
 

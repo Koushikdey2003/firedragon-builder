@@ -391,7 +391,7 @@ export const logos: LogoList = [
       { label: 'Blue Metal', value: '/src/public/assets/logos/blue-metal.png' },
       { label: 'Blue', value: '/src/public/assets/logos/blue.png' },
       { label: 'Dr460nized', value: '/src/public/assets/logos/dr460nized.png' },
-      { label: 'FireDragon', value: '/src/public/assets/logos/firedragon.png' },
+      { label: 'FireDragon', value: 'chrome://branding/content/about-logo.png' },
       { label: 'Green', value: '/src/public/assets/logos/green.png' },
       { label: 'Maroon Lavender', value: '/src/public/assets/logos/maroon-lavender.png' },
       { label: 'Metal', value: '/src/public/assets/logos/metal.png' },

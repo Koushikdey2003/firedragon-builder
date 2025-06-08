@@ -49,7 +49,7 @@ export class ConfigService {
     jokesEnabled: true,
     language: "en",
     languageChanged: false,
-    logo: "/src/public/assets/logos/firedragon.png",
+    logo: "chrome://branding/content/about-logo.png",
     logoUrl: "",
     searchEngineName: "",
     searchEngineUrl: "",

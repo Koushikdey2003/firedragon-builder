@@ -183,7 +183,7 @@ export class LinksEditorComponent {
       );
     } else {
       this.link().id = this.createId();
-      if (!this.link().icon) this.link().icon = '/src/public/assets/logos/firedragon.png';
+      if (!this.link().icon) this.link().icon = 'chrome://branding/content/about-logo.png';
       this.customLinks.update((links) => [...links, this.link()]);
       this.messageToastService.success(
         this.translocoService.translate('settings.success'),

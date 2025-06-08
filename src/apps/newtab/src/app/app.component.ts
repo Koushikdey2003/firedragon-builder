@@ -42,7 +42,7 @@ export class AppComponent implements OnInit {
     if (this.configService.settings().logo === 'none') {
       return this.configService.settings().logo;
     }
-    return '/src/public/assets/logos/firedragon.png';
+    return 'chrome://branding/content/about-logo.png';
   });
 
   private readonly el = inject(ElementRef);
