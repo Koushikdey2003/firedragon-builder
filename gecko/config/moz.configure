@@ -79,5 +79,21 @@ def firedragon_debug(value):
     if value:
         return True
 
-set_config("FIREDRAGON_DEBUG", True, when=firedragon_theme)
-set_define("FIREDRAGON_DEBUG", True, when=firedragon_theme)
+set_config("FIREDRAGON_DEBUG", True, when=firedragon_debug)
+set_define("FIREDRAGON_DEBUG", True, when=firedragon_debug)
+
+option(
+    "--with-firedragon-update",
+    nargs=1,
+    help="FireDragon Update",
+)
+
+@depends("--with-firedragon-update")
+def firedragon_update(value):
+    if value:
+        return value[0]
+
+set_config("FIREDRAGON_UPDATE", firedragon_update, when=firedragon_update)
+set_define("FIREDRAGON_UPDATE", firedragon_update, when=firedragon_update)
+
+imply_option('--enable-updater', True, when=firedragon_update, reason="Imply --enable-updater when --with-firedragon-update is used to supply update URL")

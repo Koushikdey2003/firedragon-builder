@@ -3,6 +3,7 @@
 import { access } from 'node:fs/promises';
 import { resolve } from 'node:path';
 import process from 'node:process';
+import { json2xml } from "npm:xml-js";
 import packageJson from './package.json' with { type: 'json' };
 
 async function exists(path: string): Promise<boolean> {
@@ -22,7 +23,7 @@ async function applyPatches(target: string, ...patches: string[]): Promise<void>
 
 function parseArgv(argv: string[]) {
     return minimist(argv, {
-        boolean: ['enable-bootstrap'],
+        boolean: ['enable-bootstrap', 'enable-update'],
         string: ['dist-dir', 'edition', 'target', 'with-buildid2', 'with-moz-build-date', 'with-dist'],
         unknown(arg) {
             if (arg.startsWith('-')) {
@@ -58,6 +59,7 @@ interface Config {
     basename: string;
     target: (typeof TARGETS)[keyof typeof TARGETS];
     enableBootstrap: boolean;
+    enableUpdate: boolean;
     withMozBuildDate: string | null;
     withBuildID2: string | null;
     withDist: string | null;
@@ -214,6 +216,69 @@ async function packageBuild(config: Config, outputFormat: string, buildBasename:
     }
 }
 
+function getUpdateUrl(config: Config, ext: 'mar' | 'update.xml'): string {
+    const { edition, target } = config;
+
+    return `https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/permalink/latest/downloads/${edition.basename}-${target.buildSuffix}.${ext}`;
+}
+
+async function createUpdate(config: Config, buildBasename: string, buildDir: string) {
+    const { version, distDir, target } = config;
+
+    const { objDistDir, objDistBinDir } = getCommonBuildDirs(config, buildDir);
+
+    await $`MAR=${objDistDir}/host/bin/mar MOZ_PRODUCT_VERSION=${version} MAR_CHANNEL_ID=release ${buildDir}/tools/update-packaging/make_full_update.sh ${distDir}/${buildBasename}.mar ${objDistDir}/${target.updatePath}`;
+
+    const [
+        appVersion,
+        buildID,
+        buildID2,
+        hashValue,
+        size,
+    ] = await Promise.all([
+        (async () => (await $`cat ${buildDir}/browser/config/version.txt`).lines()[0])(),
+        (async () => (await $`awk -F '=' '/BuildID/ {print $2}' ${objDistBinDir}/application.ini`).lines()[0])(),
+        (async () => (await $`cat ${objDistBinDir}/browser/buildid2`).lines()[0])(),
+        (async () => (await $`sha512sum ${distDir}/${buildBasename}.mar | cut -c 1-128`).lines()[0])(),
+        (async () => (await $`stat -c '%s' ${distDir}/${buildBasename}.mar`).lines()[0])(),
+    ]);
+
+    const update = {
+        _declaration: {
+            _attributes: {
+                version: "1.0",
+                encoding: "UTF-8",
+            },
+        },
+        updates: {
+            update: {
+                _attributes: {
+                    type: 'minor',
+                    displayVersion: version,
+                    appVersion: appVersion,
+                    platformVersion: appVersion,
+                    buildID: buildID,
+                    appVersion2: version,
+                    buildID2: buildID2,
+                },
+                patch: [
+                    {
+                        _attributes: {
+                            type: "complete",
+                            URL: getUpdateUrl(config, 'mar'),
+                            hashFunction: 'sha512',
+                            hashValue: hashValue,
+                            size: size,
+                        },
+                    },
+                ],
+            },
+        },
+    };
+
+    await $`echo -e ${json2xml(JSON.stringify(update), { "compact": true, spaces: 4 })} > ${distDir}/${buildBasename}.update.xml`;
+}
+
 async function source(config: Config) {
     const { tmpDir, distDir, sourceBasename } = config;
 
@@ -223,7 +288,7 @@ async function source(config: Config) {
 }
 
 async function build(config: Config) {
-    const { tmpDir, basename, target, withDist } = config;
+    const { tmpDir, basename, target, enableUpdate, withDist } = config;
 
     const buildBasename = `${basename}-${target.buildSuffix}`;
     const buildDir = `${tmpDir}/${buildBasename}`
@@ -242,6 +307,12 @@ async function build(config: Config) {
     // Set noraneko dist
     await acAddOptions(buildDir, '--with-noraneko-dist=floorp/_dist/noraneko');
 
+    if (enableUpdate) {
+        await acAddOptions(buildDir, `--with-firedragon-update=${getUpdateUrl(config, 'update.xml')}`);
+    } else {
+        await acAddOptions(buildDir, '--disable-updater');
+    }
+
     await doBuild(config, buildDir);
 
     // Run release build after
@@ -252,6 +323,10 @@ async function build(config: Config) {
     await applyPatches(`${getCommonBuildDirs(config, buildDir).objDistBinDir}`, 'scripts/git-patches/patches/*.patch');
 
     await packageBuild(config, target.buildOutputFormat, buildBasename, buildDir);
+
+    if (enableUpdate) {
+        await createUpdate(config, buildBasename, buildDir);
+    }
 }
 
 async function appimage(config: Config) {
@@ -330,6 +405,7 @@ const TARGETS = {
         buildOutputFormat: 'tar.zst',
         buildDevOutputFormat: 'tar.zst',
         appimageSuffix: 'appimage-x64',
+        updatePath: APP_NAME,
     },
     'linux-arm64': {
         mozconfig: 'floorp/gecko/mozconfigs/arch/linux-arm64.mozconfig',
@@ -338,6 +414,7 @@ const TARGETS = {
         buildOutputFormat: 'tar.zst',
         buildDevOutputFormat: 'tar.zst',
         appimageSuffix: 'appimage-arm64',
+        updatePath: APP_NAME,
     },
     'win32-x64': {
         mozconfig: 'floorp/gecko/mozconfigs/arch/win32-x64.mozconfig',
@@ -346,6 +423,7 @@ const TARGETS = {
         buildOutputFormat: 'exe',
         buildDevOutputFormat: 'zip',
         appimageSuffix: null,
+        updatePath: APP_NAME,
     },
     'win32-arm64': {
         mozconfig: 'floorp/gecko/mozconfigs/arch/win32-arm64.mozconfig',
@@ -354,6 +432,7 @@ const TARGETS = {
         buildOutputFormat: 'exe',
         buildDevOutputFormat: 'zip',
         appimageSuffix: null,
+        updatePath: APP_NAME,
     },
     'darwin-x64': {
         mozconfig: 'floorp/gecko/mozconfigs/arch/darwin-x64.mozconfig',
@@ -362,6 +441,7 @@ const TARGETS = {
         buildOutputFormat: 'dmg',
         buildDevOutputFormat: 'dmg',
         appimageSuffix: null,
+        updatePath: `${APP_NAME}/${APP_BASENAME}.app`,
     },
     'darwin-arm64': {
         mozconfig: 'floorp/gecko/mozconfigs/arch/darwin-arm64.mozconfig',
@@ -370,6 +450,7 @@ const TARGETS = {
         buildOutputFormat: 'dmg',
         buildDevOutputFormat: 'dmg',
         appimageSuffix: null,
+        updatePath: `${APP_NAME}/${APP_BASENAME}.app`,
     },
 };
 
@@ -413,6 +494,7 @@ try {
             basename,
             target,
             enableBootstrap: argv['enable-bootstrap'] ?? false,
+            enableUpdate: argv['enable-update'] ?? false,
             withMozBuildDate: argv['with-moz-build-date'] ?? null,
             withBuildID2: argv['with-buildid2'] ?? null,
             withDist: argv['with-dist'] ?? null,
