@@ -1,5 +1,24 @@
 # FireDragon ChangeLog
 
+## [FireDragon v12.0.0-beta.6](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v12.0.0-beta.6) — 2025-06-09 — [`v12.0.0-beta.5`…`v12.0.0-beta.6`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/compare/v12.0.0-beta.5...v12.0.0-beta.6)
+
+### 🚀 Features
+
+- *(make)* Add option to set custom zstd compression args — [`c13d7799…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/c13d77998a24aadd7983763cbe2d372e44f4d54c)
+
+### 🐛 Bug Fixes
+
+- Fix repository in changelog — [`280c27eb…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/280c27ebb750e8fda694077ee2049e32501c16ff)
+- Make manual update url point to releases page — [`5cff48c1…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/5cff48c19ec55eb39653a9ce576b0ba1c9d6838c)
+
+### 🚜 Refactor
+
+- Use firedragon as source subdirectory instead of floorp — [`2168d1a8…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/2168d1a86d318fdfdbbdfc32210fa3f6d282c974)
+
+### ⚙️ Miscellaneous Tasks
+
+- Use ultra 20 zstd compression for source archive — [`152850e5…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/152850e5be4e3e71c146efb5fc73a535447386ad)
+
 ## [FireDragon v12.0.0-beta.5](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v12.0.0-beta.5) — 2025-06-08 — [`v12.0.0-beta.4`…`v12.0.0-beta.5`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/compare/v12.0.0-beta.4...v12.0.0-beta.5)
 
 ### 🚀 Features
