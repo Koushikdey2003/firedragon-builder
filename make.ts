@@ -24,7 +24,7 @@ async function applyPatches(target: string, ...patches: string[]): Promise<void>
 function parseArgv(argv: string[]) {
     return minimist(argv, {
         boolean: ['enable-bootstrap', 'enable-update'],
-        string: ['dist-dir', 'edition', 'target', 'with-buildid2', 'with-moz-build-date', 'with-dist', 'with-zstd-args'],
+        string: ['dist-dir', 'edition', 'target', 'with-buildid2', 'with-moz-build-date', 'with-dist'],
         unknown(arg) {
             if (arg.startsWith('-')) {
                 throw `Unknown arguments: ${arg}`
@@ -65,7 +65,6 @@ interface Config {
     withMozBuildDate: string | null;
     withBuildID2: string | null;
     withDist: string | null;
-    zstdCommand: string;
 }
 
 async function getFloorpRuntime(config: Config): Promise<string> {
@@ -187,7 +186,7 @@ async function cloneObjDistBin(config: Config, buildDir: string) {
 }
 
 async function packageBuild(config: Config, outputFormat: string, buildBasename: string, buildDir: string) {
-    const { appName, appBasename, distDir, edition, zstdCommand } = config;
+    const { appName, appBasename, distDir, edition } = config;
 
     const { objDistDir, objDistBinDir } = getCommonBuildDirs(config, buildDir);
 
@@ -206,7 +205,7 @@ async function packageBuild(config: Config, outputFormat: string, buildBasename:
 
     // Package output archive
     if (outputFormat === 'tar.zst') {
-        await $`tar -I ${zstdCommand} -cf ${distDir}/${buildBasename}.tar.zst -C ${objDistDir} ${appName}`;
+        await $`tar --zstd -cf ${distDir}/${buildBasename}.tar.zst -C ${objDistDir} ${appName}`;
     } else if (outputFormat === 'exe') {
         const zipPath = `${objDistDir}/${buildBasename}.zip`;
         await $`cd ${objDistDir} && zip -r ${zipPath} ${appName}`;
@@ -291,11 +290,11 @@ async function createUpdate(config: Config, buildBasename: string, buildDir: str
 }
 
 async function source(config: Config) {
-    const { tmpDir, distDir, sourceBasename, zstdCommand } = config;
+    const { tmpDir, distDir, sourceBasename } = config;
 
     await prepareSource(config, `${tmpDir}/${sourceBasename}`);
 
-    await $`tar -I ${zstdCommand} -cf ${distDir}/${sourceBasename}.tar.zst -C ${tmpDir} ${sourceBasename}`;
+    await $`tar --zstd -cf ${distDir}/${sourceBasename}.tar.zst -C ${tmpDir} ${sourceBasename}`;
 }
 
 async function build(config: Config) {
@@ -513,7 +512,6 @@ try {
             withMozBuildDate: argv['with-moz-build-date'] ?? null,
             withBuildID2: argv['with-buildid2'] ?? null,
             withDist: argv['with-dist'] ?? null,
-            zstdCommand: `zstd -c ${argv['with-zstd-args'] ?? '-T0'}`,
         };
 
         for (const command of argv._) {
