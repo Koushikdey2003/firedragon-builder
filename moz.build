@@ -1,3 +1,5 @@
+DIRS += ["gecko/pre-build"]
+
 if CONFIG["NORANEKO_BUILDID2"]:
     FINAL_TARGET_FILES.browser += [
         "/%s" % CONFIG["NORANEKO_BUILDID2"]

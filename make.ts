@@ -51,6 +51,7 @@ interface Config {
     appName: string;
     appBasename: string;
     repoUrl: string;
+    sourcePath: string;
     version: string;
     runtime: string;
     tmpDir: string;
@@ -89,13 +90,14 @@ async function getFloorpRuntime(config: Config): Promise<string> {
 }
 
 async function prepareSource(config: Config, dir: string): Promise<void> {
-    const { version } = config;
+    const { sourcePath, version } = config;
 
     // Extract floorp runtime and inject this repo
     const runtimeTarball = await getFloorpRuntime(config);
     await $`mkdir ${dir}`;
     await $`tar -xf ${runtimeTarball} --strip-components=1 -C ${dir}`;
-    await $`rsync -a --delete --exclude=_dist --exclude=.dist --exclude=.git --exclude=.idea --exclude=node_modules --exclude=*.tar.* ./ ${dir}/floorp/`;
+    await $`rm -d ${dir}/floorp`;
+    await $`rsync -a --delete --exclude=_dist --exclude=.dist --exclude=.git --exclude=.idea --exclude=node_modules --exclude=*.tar.* ./ ${dir}/${sourcePath}/`;
 
     // Copy branding
     await $`cp -r gecko/branding/* ${dir}/browser/branding/`;
@@ -120,17 +122,17 @@ async function extractSource(config: Config, buildDir: string): Promise<void> {
 }
 
 async function prepareBuild(config: Config, buildDir: string) {
-    const { edition, target, withBuildID2 } = config;
+    const { sourcePath, edition, target, withBuildID2 } = config;
 
     // Install deno dependencies
-    await $`cd ${buildDir}/floorp && deno install --allow-scripts --frozen`;
+    await $`cd ${buildDir}/${sourcePath} && deno install --allow-scripts --frozen`;
 
     // Ensure buildid2 exists
     if (withBuildID2) {
-        await $`mkdir -p ${buildDir}/floorp/_dist`;
-        await $`cat ${withBuildID2} > ${buildDir}/floorp/_dist/buildid2`;
-    } else if (!await exists(`${buildDir}/floorp/_dist/buildid2`)) {
-        await $`cd ${buildDir}/floorp && deno task build --write-buildid2`;
+        await $`mkdir -p ${buildDir}/${sourcePath}/_dist`;
+        await $`cat ${withBuildID2} > ${buildDir}/${sourcePath}/_dist/buildid2`;
+    } else if (!await exists(`${buildDir}/${sourcePath}/_dist/buildid2`)) {
+        await $`cd ${buildDir}/${sourcePath} && deno task build --write-buildid2`;
     }
 
     // Combine mozconfigs
@@ -296,7 +298,7 @@ async function source(config: Config) {
 }
 
 async function build(config: Config) {
-    const { tmpDir, basename, target, enableUpdate, withDist } = config;
+    const { sourcePath, tmpDir, basename, target, enableUpdate, withDist } = config;
 
     const buildBasename = `${basename}-${target.buildSuffix}`;
     const buildDir = `${tmpDir}/${buildBasename}`
@@ -307,13 +309,13 @@ async function build(config: Config) {
 
     // Use provided dist or run release build before
     if (withDist) {
-        await $`cp -r ${withDist}/noraneko ${buildDir}/floorp/_dist/noraneko`;
+        await $`cp -r ${withDist}/noraneko ${buildDir}/${sourcePath}/_dist/noraneko`;
     } else {
-        await $`cd ${buildDir}/floorp && NODE_ENV=production deno task build --release-build-before`;
+        await $`cd ${buildDir}/${sourcePath} && NODE_ENV=production deno task build --release-build-before`;
     }
 
     // Set noraneko dist
-    await acAddOptions(buildDir, '--with-noraneko-dist=floorp/_dist/noraneko');
+    await acAddOptions(buildDir, `--with-noraneko-dist=${sourcePath}/_dist/noraneko`);
 
     if (enableUpdate) {
         await acAddOptions(buildDir, `--with-firedragon-update=${getUpdateUrls(config).updateXml}`);
@@ -324,7 +326,7 @@ async function build(config: Config) {
     await doBuild(config, buildDir);
 
     // Run release build after
-    await $`cd ${buildDir}/floorp && deno task build --release-build-after`;
+    await $`cd ${buildDir}/${sourcePath} && deno task build --release-build-after`;
 
     await cloneObjDistBin(config, buildDir);
 
@@ -394,21 +396,22 @@ async function buildDev(config: Config) {
 const APP_NAME = 'firedragon';
 const APP_BASENAME = 'FireDragon';
 const REPO_URL = 'https://gitlab.com/garuda-linux/firedragon/firedragon12';
+const SOURCE_PATH = 'firedragon';
 const EDITIONS = {
     dr640nized: {
-        mozconfig: 'floorp/gecko/mozconfigs/edition/firedragon-dr460nized.mozconfig',
+        mozconfig: `${SOURCE_PATH}/gecko/mozconfigs/edition/firedragon-dr460nized.mozconfig`,
         branding: 'firedragon',
         basename: APP_NAME,
     },
     catppuccin: {
-        mozconfig: 'floorp/gecko/mozconfigs/edition/firedragon-catppuccin.mozconfig',
+        mozconfig: `${SOURCE_PATH}/gecko/mozconfigs/edition/firedragon-catppuccin.mozconfig`,
         branding: 'firedragon-catppuccin',
         basename: `${APP_NAME}-catppuccin`,
     },
 };
 const TARGETS = {
     'linux-x64': {
-        mozconfig: 'floorp/gecko/mozconfigs/arch/linux-x64.mozconfig',
+        mozconfig: `${SOURCE_PATH}/gecko/mozconfigs/arch/linux-x64.mozconfig`,
         objDistBinPath: 'bin',
         buildSuffix: 'linux-x64',
         buildOutputFormat: 'tar.zst',
@@ -417,7 +420,7 @@ const TARGETS = {
         updatePath: APP_NAME,
     },
     'linux-arm64': {
-        mozconfig: 'floorp/gecko/mozconfigs/arch/linux-arm64.mozconfig',
+        mozconfig: `${SOURCE_PATH}/gecko/mozconfigs/arch/linux-arm64.mozconfig`,
         objDistBinPath: 'bin',
         buildSuffix: 'linux-arm64',
         buildOutputFormat: 'tar.zst',
@@ -426,7 +429,7 @@ const TARGETS = {
         updatePath: APP_NAME,
     },
     'win32-x64': {
-        mozconfig: 'floorp/gecko/mozconfigs/arch/win32-x64.mozconfig',
+        mozconfig: `${SOURCE_PATH}/gecko/mozconfigs/arch/win32-x64.mozconfig`,
         objDistBinPath: 'bin',
         buildSuffix: 'win32-x64',
         buildOutputFormat: 'exe',
@@ -435,7 +438,7 @@ const TARGETS = {
         updatePath: APP_NAME,
     },
     'win32-arm64': {
-        mozconfig: 'floorp/gecko/mozconfigs/arch/win32-arm64.mozconfig',
+        mozconfig: `${SOURCE_PATH}/gecko/mozconfigs/arch/win32-arm64.mozconfig`,
         objDistBinPath: 'bin',
         buildSuffix: 'win32-arm64',
         buildOutputFormat: 'exe',
@@ -444,7 +447,7 @@ const TARGETS = {
         updatePath: APP_NAME,
     },
     'darwin-x64': {
-        mozconfig: 'floorp/gecko/mozconfigs/arch/darwin-x64.mozconfig',
+        mozconfig: `${SOURCE_PATH}/gecko/mozconfigs/arch/darwin-x64.mozconfig`,
         objDistBinPath: `${APP_BASENAME}.app/Contents/Resources`,
         buildSuffix: 'darwin-x64',
         buildOutputFormat: 'dmg',
@@ -453,7 +456,7 @@ const TARGETS = {
         updatePath: `${APP_NAME}/${APP_BASENAME}.app`,
     },
     'darwin-arm64': {
-        mozconfig: 'floorp/gecko/mozconfigs/arch/darwin-arm64.mozconfig',
+        mozconfig: `${SOURCE_PATH}/gecko/mozconfigs/arch/darwin-arm64.mozconfig`,
         objDistBinPath: `${APP_BASENAME}.app/Contents/Resources`,
         buildSuffix: 'darwin-arm64',
         buildOutputFormat: 'dmg',
@@ -495,6 +498,7 @@ try {
             appName: APP_NAME,
             appBasename: APP_BASENAME,
             repoUrl: REPO_URL,
+            sourcePath: SOURCE_PATH,
             version,
             runtime: argv.runtime ?? packageJson.runtime,
             tmpDir,

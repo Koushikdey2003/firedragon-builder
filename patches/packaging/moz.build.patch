@@ -1,12 +1,12 @@
 diff --git a/moz.build b/moz.build
-index 37e12e4c99..4ee3ec1af0 100644
+index 310e4a4668..dabd3cf6a7 100644
 --- a/moz.build
 +++ b/moz.build
-@@ -154,6 +154,7 @@ DIRS += [
+@@ -151,6 +151,7 @@ DIRS += [
      "python",
      "testing",
      "third_party/python",
-+    "floorp"
++    "firedragon"
  ]
-
+ 
  if not CONFIG["JS_STANDALONE"]:
