@@ -3,7 +3,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { For } from "solid-js";
+import { For, Show } from "solid-js";
 import { panelSidebarData } from "../data/data";
 import { PanelSidebarButton } from "./sidebar-panel-button";
 import { showPanelSidebarAddModal } from "./panel-sidebar-modal";
@@ -34,15 +34,17 @@ export function SidebarSelectbox(props: { ctx: CPanelSidebar }) {
             window.BrowserAddonUI.openAddonsMgr("addons://list/extension")}
           id="panel-sidebar-addons-icon"
         />
-        <xul:toolbarbutton
-          class="panel-sidebar-panel"
-          data-l10n-id="sidebar-passwords-button"
-          onCommand={() =>
-            window.LoginHelper.openPasswordManager(window, {
-              entryPoint: "mainmenu",
-            })}
-          id="panel-sidebar-passwords-icon"
-        />
+        <Show when={!Services.prefs.getBoolPref("firedragon.hidePasswdmgr", false)}>
+          <xul:toolbarbutton
+            class="panel-sidebar-panel"
+            data-l10n-id="sidebar-passwords-button"
+            onCommand={() =>
+              window.LoginHelper.openPasswordManager(window, {
+                entryPoint: "mainmenu",
+              })}
+            id="panel-sidebar-passwords-icon"
+          />
+        </Show>
         <xul:toolbarbutton
           class="panel-sidebar-panel"
           data-l10n-id="sidebar-preferences-button"
