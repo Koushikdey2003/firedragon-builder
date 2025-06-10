@@ -43,16 +43,16 @@ const isExists = async (path: string) => {
 };
 
 const getBinArchive = () => {
-  const platform = process.platform, arch = process.arch;
+  const target = getTarget();
   const ext = {
-    linux: 'tar.zst',
-    win32: 'zip',
-    darwin: 'dmg',
+    'linux-x64': 'tar.zst',
+    'linux-arm64': 'tar.zst',
+    'win32-x64': 'zip',
+    'win32-arm64': 'zip',
+    'darwin-x64': 'dmg',
+    'darwin-arm64': 'dmg',
   };
-  if (platform in ext && (arch === 'x64' || arch === 'arm64')) {
-    return `${brandingBaseName}-${platform}-${arch}-dev.${ext[platform as keyof typeof ext]}`
-  }
-  throw new Error("Unsupported platform/architecture");
+  return `${brandingBaseName}-${target}-dev.${ext[target as keyof typeof ext]}`
 };
 
 const binArchive = await getBinArchive();
@@ -414,6 +414,14 @@ async function release(mode: "before" | "after") {
   }
 }
 
+function getTarget() {
+  const target =`${process.platform}-${process.arch}`;
+  if (/^(linux|win32|darwin)-(x64|arm64)$/.test(target)) {
+    return target;
+  }
+  throw `Unsupported target: ${target}`;
+}
+
 if (Deno.args[0]) {
   switch (Deno.args[0]) {
     case "--run":
@@ -442,5 +450,9 @@ if (Deno.args[0]) {
       break;
     case "--write-buildid2":
       await genBuildid2();
+      break;
+    case "--get-target":
+      console.log(getTarget());
+      break;
   }
 }
