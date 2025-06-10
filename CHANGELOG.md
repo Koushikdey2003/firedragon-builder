@@ -1,5 +1,29 @@
 # FireDragon ChangeLog
 
+## [FireDragon v12.0.0-beta.7](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v12.0.0-beta.7) — 2025-06-10 — [`v12.0.0-beta.6`…`v12.0.0-beta.7`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/compare/v12.0.0-beta.6...v12.0.0-beta.7)
+
+### 🚀 Features
+
+- *(build)* Add --get-target — [`585a4121…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/585a41212987d8b0ed8ea9cbf00f3a0fe664b0dd)
+
+### 🐛 Bug Fixes
+
+- *(make)* Add "target" to excluded folders when copying this repo into firefox source — [`184a8c4e…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/184a8c4e729e11cd873bed31639977cd0b33184d)
+
+### 🚜 Refactor
+
+- Rename mozconfigs/arch to mozconfigs/target — [`6b829f0d…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/6b829f0dd95c1279064899f597b4476c130fcf50)
+
+### ⚙️ Miscellaneous Tasks
+
+- Add git as dependency — [`2fa097a2…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/2fa097a212dd9b3065dfdf164c6cea99df64afde)
+- Set APPIMAGE_EXTRACT_AND_RUN=1 environment variable in dockerfile — [`595b349e…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/595b349e33c871453a317b396f715df398b26096)
+
+### ◀️ Revert
+
+- Ci: Use ultra 20 zstd compression for source archive — [`312e5e9d…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/312e5e9d718a359dcce237b6f02b3d79c647db6d)
+- Feat(make): Add option to set custom zstd compression args — [`6730a337…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/6730a3372f389964e4b78bdac95da77c03879620)
+
 ## [FireDragon v12.0.0-beta.6](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v12.0.0-beta.6) — 2025-06-09 — [`v12.0.0-beta.5`…`v12.0.0-beta.6`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/compare/v12.0.0-beta.5...v12.0.0-beta.6)
 
 ### 🚀 Features
