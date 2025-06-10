@@ -328,10 +328,6 @@ async function build(config: Config) {
     // Run release build after
     await $`cd ${buildDir}/${sourcePath} && deno task build --release-build-after`;
 
-    await cloneObjDistBin(config, buildDir);
-
-    await applyPatches(`${getCommonBuildDirs(config, buildDir).objDistBinDir}`, 'scripts/git-patches/patches/*.patch');
-
     await packageBuild(config, target.buildOutputFormat, buildBasename, buildDir);
 
     if (enableUpdate) {

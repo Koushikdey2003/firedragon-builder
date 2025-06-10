@@ -10,7 +10,7 @@ import { applyPatches } from "./scripts/git-patches/git-patches-manager.ts";
 import { initializeBinGit } from "./scripts/git-patches/git-patches-manager.ts";
 import { genVersion } from "./scripts/launchDev/writeVersion.ts";
 import { genBuildid2 } from "./scripts/update/buildid2.ts";
-import { $, fetch, type ProcessPromise } from "zx";
+import { $, tmpdir, type ProcessPromise } from "zx";
 import { usePwsh } from "zx";
 import chalk from "chalk";
 import process from "node:process";
@@ -398,7 +398,19 @@ async function release(mode: "before" | "after") {
       console.warn("Error reading output directory:", error);
       binPath = `${baseDir}/bin`;
     }
-    injectXHTML(binPath);
+
+    // Resolve symlinks (https://www.spinics.net/lists/git/msg391750.html)
+    const tmpBinPath = tmpdir();
+    try {
+      await $`rsync -aL ${binPath}/ ${tmpBinPath}/`;
+      await $`rm -rf ${binPath}`;
+      await $`mv ${tmpBinPath} ${binPath}`;
+    } catch {
+      await $`rm -rf ${tmpBinPath}`;
+    }
+
+    await injectXHTML(binPath);
+    await applyPatches(binPath);
   }
 }
 
