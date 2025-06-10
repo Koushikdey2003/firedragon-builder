@@ -90,19 +90,19 @@ export function checkPatchIsNeeded() {
   return false;
 }
 
-export async function applyPatches(binDir = getBinDir()) {
+export async function applyPatches(binDir = getBinDir(), patchesTmp = PATCHES_TMP) {
   if (!checkPatchIsNeeded()) {
     console.log(`[git-patches] No patches needed to apply`);
     return;
   }
   let reverse_is_aborted = false;
   try {
-    await fs.access(PATCHES_TMP);
+    await fs.access(patchesTmp);
     // Already the bin is patched
     // Need reverse patch
-    const reverse_patches = await fs.readdir(PATCHES_TMP);
+    const reverse_patches = await fs.readdir(patchesTmp);
     for (const patch of reverse_patches) {
-      const patchPath = path.join(PATCHES_TMP, patch);
+      const patchPath = path.join(patchesTmp, patch);
       try {
         await $`patch -Rsp1 -d ${binDir} -i ${path.resolve(patchPath)}`;
       } catch (e) {
@@ -112,14 +112,14 @@ export async function applyPatches(binDir = getBinDir()) {
       }
     }
     if (!reverse_is_aborted) {
-      await fs.rm(PATCHES_TMP, { "recursive": true });
+      await fs.rm(patchesTmp, { "recursive": true });
     }
   } catch {}
   if (reverse_is_aborted) {
     throw new Error("[git-patches] Reverse Patch Failed: aborted");
   }
   const patches = await fs.readdir(PATCHES_DIR);
-  await fs.mkdir(PATCHES_TMP, { "recursive": true });
+  await fs.mkdir(patchesTmp, { "recursive": true });
   let aborted = false;
   for (const patch of patches) {
     if (!patch.endsWith(".patch")) continue;
@@ -128,7 +128,7 @@ export async function applyPatches(binDir = getBinDir()) {
     console.log(`Applying patch: ${patchPath}`);
     try {
       await $`patch -Nsp1 -d ${binDir} -i ${path.resolve(patchPath)}`;
-      await fs.cp(patchPath, PATCHES_TMP + "/" + patch);
+      await fs.cp(patchPath, patchesTmp + "/" + patch);
     } catch (e) {
       console.warn(`[git-patches] Failed to apply patch: ${patchPath}`);
       console.warn(e);

@@ -410,7 +410,7 @@ async function release(mode: "before" | "after") {
     }
 
     await injectXHTML(binPath);
-    await applyPatches(binPath);
+    await applyPatches(binPath, `${baseDir}/applied_patches`);
   }
 }
 
