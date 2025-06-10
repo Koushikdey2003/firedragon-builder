@@ -97,7 +97,7 @@ async function prepareSource(config: Config, dir: string): Promise<void> {
     await $`mkdir ${dir}`;
     await $`tar -xf ${runtimeTarball} --strip-components=1 -C ${dir}`;
     await $`rm -d ${dir}/floorp`;
-    await $`rsync -a --delete --exclude=.dist --exclude=.git --exclude=.idea --exclude=_dist --exclude=node_modules --exclude=target --exclude=*.tar.* ./ ${dir}/${sourcePath}/`;
+    await $`rsync -a --delete --exclude=/.dist --exclude=/.git --exclude=/.idea --exclude=/target --exclude=_dist --exclude=node_modules --exclude=*.tar.* ./ ${dir}/${sourcePath}/`;
 
     // Copy branding
     await $`cp -r gecko/branding/* ${dir}/browser/branding/`;
@@ -411,7 +411,7 @@ const EDITIONS = {
 };
 const TARGETS = {
     'linux-x64': {
-        mozconfig: `${SOURCE_PATH}/gecko/mozconfigs/arch/linux-x64.mozconfig`,
+        mozconfig: `${SOURCE_PATH}/gecko/mozconfigs/target/linux-x64.mozconfig`,
         objDistBinPath: 'bin',
         buildSuffix: 'linux-x64',
         buildOutputFormat: 'tar.zst',
@@ -420,7 +420,7 @@ const TARGETS = {
         updatePath: APP_NAME,
     },
     'linux-arm64': {
-        mozconfig: `${SOURCE_PATH}/gecko/mozconfigs/arch/linux-arm64.mozconfig`,
+        mozconfig: `${SOURCE_PATH}/gecko/mozconfigs/target/linux-arm64.mozconfig`,
         objDistBinPath: 'bin',
         buildSuffix: 'linux-arm64',
         buildOutputFormat: 'tar.zst',
@@ -429,7 +429,7 @@ const TARGETS = {
         updatePath: APP_NAME,
     },
     'win32-x64': {
-        mozconfig: `${SOURCE_PATH}/gecko/mozconfigs/arch/win32-x64.mozconfig`,
+        mozconfig: `${SOURCE_PATH}/gecko/mozconfigs/target/win32-x64.mozconfig`,
         objDistBinPath: 'bin',
         buildSuffix: 'win32-x64',
         buildOutputFormat: 'exe',
@@ -438,7 +438,7 @@ const TARGETS = {
         updatePath: APP_NAME,
     },
     'win32-arm64': {
-        mozconfig: `${SOURCE_PATH}/gecko/mozconfigs/arch/win32-arm64.mozconfig`,
+        mozconfig: `${SOURCE_PATH}/gecko/mozconfigs/target/win32-arm64.mozconfig`,
         objDistBinPath: 'bin',
         buildSuffix: 'win32-arm64',
         buildOutputFormat: 'exe',
@@ -447,7 +447,7 @@ const TARGETS = {
         updatePath: APP_NAME,
     },
     'darwin-x64': {
-        mozconfig: `${SOURCE_PATH}/gecko/mozconfigs/arch/darwin-x64.mozconfig`,
+        mozconfig: `${SOURCE_PATH}/gecko/mozconfigs/target/darwin-x64.mozconfig`,
         objDistBinPath: `${APP_BASENAME}.app/Contents/Resources`,
         buildSuffix: 'darwin-x64',
         buildOutputFormat: 'dmg',
@@ -456,7 +456,7 @@ const TARGETS = {
         updatePath: `${APP_NAME}/${APP_BASENAME}.app`,
     },
     'darwin-arm64': {
-        mozconfig: `${SOURCE_PATH}/gecko/mozconfigs/arch/darwin-arm64.mozconfig`,
+        mozconfig: `${SOURCE_PATH}/gecko/mozconfigs/target/darwin-arm64.mozconfig`,
         objDistBinPath: `${APP_BASENAME}.app/Contents/Resources`,
         buildSuffix: 'darwin-arm64',
         buildOutputFormat: 'dmg',

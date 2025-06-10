@@ -1,4 +1,4 @@
-. "$topsrcdir/firedragon/gecko/mozconfigs/arch/linux.mozconfig"
+. "$topsrcdir/firedragon/gecko/mozconfigs/target/linux.mozconfig"
 
 # Features
 ac_add_options --enable-eme=widevine

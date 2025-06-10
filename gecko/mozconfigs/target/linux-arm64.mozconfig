@@ -1,0 +1,4 @@
+. "$topsrcdir/firedragon/gecko/mozconfigs/target/linux.mozconfig"
+
+# Build options
+ac_add_options --target=aarch64-linux-gnu

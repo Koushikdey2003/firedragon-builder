@@ -1,4 +1,0 @@
-. "$topsrcdir/firedragon/gecko/mozconfigs/arch/darwin.mozconfig"
-
-# Build options
-ac_add_options --target=x86_64-apple-darwin

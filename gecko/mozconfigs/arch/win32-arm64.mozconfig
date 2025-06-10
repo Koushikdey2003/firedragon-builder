@@ -1,4 +1,0 @@
-. "$topsrcdir/firedragon/gecko/mozconfigs/arch/win32.mozconfig"
-
-# Build options
-ac_add_options --target=aarch64-pc-windows-msvc

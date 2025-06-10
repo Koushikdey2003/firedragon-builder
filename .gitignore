@@ -10,7 +10,7 @@
 
 .idea/
 
-target/
+/target/
 
 /.dist/
 
