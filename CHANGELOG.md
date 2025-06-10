@@ -1,5 +1,13 @@
 # FireDragon ChangeLog
 
+## [FireDragon v12.0.0-beta.8](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v12.0.0-beta.8) — 2025-06-10 — [`v12.0.0-beta.7`…`v12.0.0-beta.8`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/compare/v12.0.0-beta.7...v12.0.0-beta.8)
+
+### 🐛 Bug Fixes
+
+- *(git-patches)* Migrate git-apply to patch command — [`52531bb1…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/52531bb16827ae793d2a12c030df005b6d34c0b9)
+- Hide password manager in sidebar as well based on setting — [`b1ed9ce8…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/b1ed9ce810c415302e17d1bccd071ba62e135ce1)
+- Keep track of applied patches in obj dist dir when running --release-build-after — [`c952870c…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/c952870c06b321f75b7fdd64d9f374a6a4764848)
+
 ## [FireDragon v12.0.0-beta.7](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v12.0.0-beta.7) — 2025-06-10 — [`v12.0.0-beta.6`…`v12.0.0-beta.7`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/compare/v12.0.0-beta.6...v12.0.0-beta.7)
 
 ### 🚀 Features
