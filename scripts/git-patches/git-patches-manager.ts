@@ -104,7 +104,7 @@ export async function applyPatches(binDir = getBinDir()) {
     for (const patch of reverse_patches) {
       const patchPath = path.join(PATCHES_TMP, patch);
       try {
-        await $`git apply -R --reject --whitespace=fix --unsafe-paths --directory ${binDir} ./${patchPath}`;
+        await $`patch -Rsp1 -d ${binDir} -i ${path.resolve(patchPath)}`;
       } catch (e) {
         console.warn(`[git-patches] Failed to reverse patch: ${patchPath}`);
         console.warn(e);
@@ -127,7 +127,7 @@ export async function applyPatches(binDir = getBinDir()) {
     const patchPath = path.join(PATCHES_DIR, patch);
     console.log(`Applying patch: ${patchPath}`);
     try {
-      await $`git apply --reject --whitespace=fix --unsafe-paths --directory ${binDir} ./${patchPath}`;
+      await $`patch -Nsp1 -d ${binDir} -i ${path.resolve(patchPath)}`;
       await fs.cp(patchPath, PATCHES_TMP + "/" + patch);
     } catch (e) {
       console.warn(`[git-patches] Failed to apply patch: ${patchPath}`);
