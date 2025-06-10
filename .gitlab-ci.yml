@@ -91,8 +91,6 @@ appimage:
       - EDITION: [dr640nized, catppuccin]
         PLATFORM: linux
         ARCH: [x64, arm64]
-  variables:
-    APPIMAGE_EXTRACT_AND_RUN: 1
   image: $CI_IMAGE
   before_script:
     - deno install --allow-scripts --frozen

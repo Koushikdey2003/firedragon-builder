@@ -20,3 +20,6 @@ RUN rustup target add aarch64-apple-darwin
 
 # Install deno
 COPY --from=deno /deno /usr/bin/deno
+
+# Allow running appimage inside container
+ENV APPIMAGE_EXTRACT_AND_RUN=1
