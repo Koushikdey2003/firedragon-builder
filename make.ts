@@ -1,7 +1,7 @@
 /// <reference types="zx/globals" />
 
 import { access } from 'node:fs/promises';
-import { resolve } from 'node:path';
+import { isAbsolute, resolve } from 'node:path';
 import process from 'node:process';
 import { json2xml } from "npm:xml-js";
 import packageJson from './package.json' with { type: 'json' };
@@ -24,7 +24,7 @@ async function applyPatches(target: string, ...patches: string[]): Promise<void>
 function parseArgv(argv: string[]) {
     return minimist(argv, {
         boolean: ['enable-bootstrap', 'enable-update'],
-        string: ['dist-dir', 'edition', 'target', 'with-buildid2', 'with-moz-build-date', 'with-dist'],
+        string: ['dist-dir', 'edition', 'target', 'with-buildid2', 'with-moz-build-date', 'with-dist', 'with-mozconfig'],
         unknown(arg) {
             if (arg.startsWith('-')) {
                 throw `Unknown arguments: ${arg}`
@@ -37,7 +37,8 @@ function parseArgv(argv: string[]) {
 
 async function combineMozconfigs(buildDir: string, ...mozconfigs: string[]) {
     for (const mozconfig of mozconfigs) {
-        await $`echo -e '. "$topsrcdir"/'${mozconfig} >> ${buildDir}/mozconfig`;
+        const path = isAbsolute(mozconfig) ? mozconfig : `$topsrcdir/${mozconfig}`;
+        await $`echo -e '. "'${path}'"' >> ${buildDir}/mozconfig`;
     }
 }
 
@@ -65,6 +66,7 @@ interface Config {
     withMozBuildDate: string | null;
     withBuildID2: string | null;
     withDist: string | null;
+    withMozconfig: string | null;
 }
 
 async function getFloorpRuntime(config: Config): Promise<string> {
@@ -122,7 +124,7 @@ async function extractSource(config: Config, buildDir: string): Promise<void> {
 }
 
 async function prepareBuild(config: Config, buildDir: string) {
-    const { sourcePath, edition, target, withBuildID2 } = config;
+    const { sourcePath, edition, target, withBuildID2, withMozconfig } = config;
 
     // Install deno dependencies
     await $`cd ${buildDir}/${sourcePath} && deno install --allow-scripts --frozen`;
@@ -137,6 +139,9 @@ async function prepareBuild(config: Config, buildDir: string) {
 
     // Combine mozconfigs
     await combineMozconfigs(buildDir, edition.mozconfig, target.mozconfig);
+    if (withMozconfig) {
+        await combineMozconfigs(buildDir, resolve(withMozconfig))
+    }
 }
 
 async function doBuild(config: Config, buildDir: string) {
@@ -508,6 +513,7 @@ try {
             withMozBuildDate: argv['with-moz-build-date'] ?? null,
             withBuildID2: argv['with-buildid2'] ?? null,
             withDist: argv['with-dist'] ?? null,
+            withMozconfig: argv['with-mozconfig'] ?? null,
         };
 
         for (const command of argv._) {
