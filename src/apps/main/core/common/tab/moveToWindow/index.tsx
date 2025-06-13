@@ -50,8 +50,11 @@ export class TabMoveToWindow {
         });
 
         document?.getElementById('tabContextMenu')?.addEventListener('popupshowing', () => {
-            document.getElementById('context_MoveTabToWindow')!.hidden =
-                !Services.prefs.getBoolPref('browser.tabs.moveToWindow', false) || this.getAvailableWindows().length === 0;
+            const menuItem = document.getElementById('context_MoveTabToWindow')!;
+            menuItem.hidden = !Services.prefs.getBoolPref('browser.tabs.moveToWindow', true);
+            if (!menuItem.hidden) {
+                menuItem.disabled = this.getAvailableWindows().length === 0;
+            }
         });
     }
 
