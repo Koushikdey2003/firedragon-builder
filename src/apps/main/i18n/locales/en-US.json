@@ -66,7 +66,7 @@
             "manage": "Manage Workspaces"
         },
         "menu": {
-            "moveTabToAnotherWorkspace": "Move Tab to Another Workspace"
+            "moveTabToAnotherWorkspace": "Move Tab to another Workspace"
         },
         "error": {
             "invalidWorkspaceID": "Not valid ID for Workspaces (maybe order is not updated)"
