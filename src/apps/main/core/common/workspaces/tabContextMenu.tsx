@@ -31,6 +31,11 @@ export class WorkspacesTabContextMenu {
     addI18nObserver(() => {
       this.updateContextMenu();
     });
+
+    document?.getElementById('tabContextMenu')?.addEventListener('popupshowing', () => {
+      document.getElementById('context_MoveTabToOtherWorkspace')!.disabled =
+          this.getAvailableWorkspaces().length === 0;
+    });
   }
 
   private updateContextMenu() {
@@ -94,15 +99,16 @@ export class WorkspacesTabContextMenu {
     }
 
     //create context menu
-    const tabWorkspaceId = this.ctx.tabManagerCtx.getWorkspaceIdFromAttribute(
-      window.TabContextMenu.contextTab,
-    );
-
-    const excludeHasTabWorkspaceIdWorkspaces = workspacesDataStore.order.filter(
-      (w) => w !== tabWorkspaceId,
-    );
-
     const parentElem = document?.getElementById("WorkspacesTabContextMenu");
-    render(() => this.menuItem(excludeHasTabWorkspaceIdWorkspaces), parentElem);
+    render(() => this.menuItem(this.getAvailableWorkspaces()), parentElem);
+  }
+
+  public getAvailableWorkspaces() {
+    const tabWorkspaceId = this.ctx.tabManagerCtx.getWorkspaceIdFromAttribute(
+        window.TabContextMenu.contextTab,
+    );
+    return workspacesDataStore.order.filter(
+        (w) => w !== tabWorkspaceId,
+    );
   }
 }
