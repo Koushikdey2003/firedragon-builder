@@ -1,21 +1,29 @@
-import { ChangeDetectionStrategy, Component, effect, inject, signal, untracked, ViewChild } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { Toolbar } from 'primeng/toolbar';
-import { Button } from 'primeng/button';
-import { type Table, TableModule } from 'primeng/table';
-import type { MenuBarItems, MenuBarLink } from '../types';
-import { ConfigService } from '../../config/config.service';
-import { ConfirmationService } from 'primeng/api';
-import { MessageToastService } from '@garudalinux/core';
-import { TranslocoDirective, TranslocoService } from '@jsverse/transloco';
-import { IconField } from 'primeng/iconfield';
-import { InputIcon } from 'primeng/inputicon';
-import { InputText } from 'primeng/inputtext';
-import { Dialog } from 'primeng/dialog';
-import { FormsModule } from '@angular/forms';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  effect,
+  inject,
+  signal,
+  untracked,
+  ViewChild,
+} from "@angular/core";
+import { CommonModule } from "@angular/common";
+import { Toolbar } from "primeng/toolbar";
+import { Button } from "primeng/button";
+import { type Table, TableModule } from "primeng/table";
+import type { MenuBarItems, MenuBarLink } from "../types";
+import { ConfigService } from "../../config/config.service";
+import { ConfirmationService } from "primeng/api";
+import { MessageToastService } from "@garudalinux/core";
+import { TranslocoDirective, TranslocoService } from "@jsverse/transloco";
+import { IconField } from "primeng/iconfield";
+import { InputIcon } from "primeng/inputicon";
+import { InputText } from "primeng/inputtext";
+import { Dialog } from "primeng/dialog";
+import { FormsModule } from "@angular/forms";
 
 @Component({
-  selector: 'app-menu-editor',
+  selector: "app-menu-editor",
   imports: [
     CommonModule,
     Toolbar,
@@ -28,12 +36,13 @@ import { FormsModule } from '@angular/forms';
     Dialog,
     FormsModule,
   ],
-  templateUrl: './menu-editor.component.html',
-  styleUrl: './menu-editor.component.css',
+  templateUrl: "./menu-editor.component.html",
+  styleUrl: "./menu-editor.component.css",
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MenuEditorComponent {
-  @ViewChild('linkTable') linkTable!: Table;
+  @ViewChild("linkTable")
+  linkTable!: Table;
 
   menuLinks = signal<MenuBarItems>([]);
   link = signal<MenuBarLink>({} as MenuBarLink);
@@ -52,17 +61,18 @@ export class MenuEditorComponent {
       this.menuLinks.set(this.configService.settings().customMenuLinks);
     });
     effect(() => {
-      const currentSettings: MenuBarItems = untracked(this.configService.settings).customMenuLinks;
+      const currentSettings: MenuBarItems =
+        untracked(this.configService.settings).customMenuLinks;
       const newSettings: MenuBarItems = this.menuLinks();
 
       if (currentSettings.length !== newSettings.length) {
-        this.configService.updateConfig('customMenuLinks', newSettings);
+        this.configService.updateConfig("customMenuLinks", newSettings);
         return;
       }
 
       for (const i in newSettings) {
         if (currentSettings[i].id !== newSettings[i].id) {
-          this.configService.updateConfig('customMenuLinks', newSettings);
+          this.configService.updateConfig("customMenuLinks", newSettings);
           break;
         }
       }
@@ -92,20 +102,20 @@ export class MenuEditorComponent {
    */
   deleteSelectedLinks() {
     this.confirmationService.confirm({
-      message: this.translocoService.translate('settings.confirmDelete'),
-      header: this.translocoService.translate('settings.confirm'),
-      icon: 'pi pi-exclamation-triangle',
+      message: this.translocoService.translate("settings.confirmDelete"),
+      header: this.translocoService.translate("settings.confirm"),
+      icon: "pi pi-exclamation-triangle",
       accept: () => {
         this.menuLinks.update((links: MenuBarItems) =>
           links.filter((val: MenuBarLink) => {
-            if (val.routerLink === '/settings') return true;
+            if (val.routerLink === "/settings") return true;
             return !this.selectedLinks()?.includes(val);
-          }),
+          })
         );
         this.selectedLinks.set(null);
         this.messageToastService.success(
-          this.translocoService.translate('settings.success'),
-          this.translocoService.translate('settings.linksDeleted'),
+          this.translocoService.translate("settings.success"),
+          this.translocoService.translate("settings.linksDeleted"),
         );
       },
     });
@@ -125,15 +135,19 @@ export class MenuEditorComponent {
    */
   deleteLink(link: MenuBarLink) {
     this.confirmationService.confirm({
-      message: `${this.translocoService.translate('settings.confirmDeleteLink')} ${link.label} ?`,
-      header: this.translocoService.translate('settings.confirmHeader'),
-      icon: 'pi pi-exclamation-triangle',
+      message: `${
+        this.translocoService.translate("settings.confirmDeleteLink")
+      } ${link.label} ?`,
+      header: this.translocoService.translate("settings.confirmHeader"),
+      icon: "pi pi-exclamation-triangle",
       accept: () => {
-        this.menuLinks.update((links) => links.filter((val) => val.id !== link.id));
+        this.menuLinks.update((links) =>
+          links.filter((val) => val.id !== link.id)
+        );
         this.link.set({} as MenuBarLink);
         this.messageToastService.success(
-          this.translocoService.translate('settings.success'),
-          this.translocoService.translate('settings.linkDeleted'),
+          this.translocoService.translate("settings.success"),
+          this.translocoService.translate("settings.linkDeleted"),
         );
       },
     });
@@ -160,8 +174,9 @@ export class MenuEditorComponent {
    * @returns A random string of 5 characters
    */
   createId(): string {
-    let id = '';
-    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    let id = "";
+    const chars =
+      "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
     for (let i = 0; i < 5; i++) {
       id += chars.charAt(Math.floor(Math.random() * chars.length));
     }
@@ -181,16 +196,16 @@ export class MenuEditorComponent {
         return [...links];
       });
       this.messageToastService.success(
-        this.translocoService.translate('settings.success'),
-        this.translocoService.translate('settings.linkUpdated'),
+        this.translocoService.translate("settings.success"),
+        this.translocoService.translate("settings.linkUpdated"),
       );
     } else {
       link.id = this.createId();
-      if (!link.icon) link.icon = 'pi pi-heart';
+      if (!link.icon) link.icon = "pi pi-heart";
       this.menuLinks.update((links: MenuBarItems) => [...links, link]);
       this.messageToastService.success(
-        this.translocoService.translate('settings.success'),
-        this.translocoService.translate('settings.linkCreated'),
+        this.translocoService.translate("settings.success"),
+        this.translocoService.translate("settings.linkCreated"),
       );
     }
     this.linkDialog.set(false);
@@ -203,6 +218,6 @@ export class MenuEditorComponent {
    */
   onRowReorder() {
     const newLinks: MenuBarItems = [...this.menuLinks()];
-    this.configService.updateConfig('customMenuLinks', newLinks);
+    this.configService.updateConfig("customMenuLinks", newLinks);
   }
 }

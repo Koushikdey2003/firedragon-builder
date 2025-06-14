@@ -7,9 +7,9 @@ import {
   Renderer2,
   signal,
   type WritableSignal,
-} from '@angular/core';
-import { CommonModule, DOCUMENT } from '@angular/common';
-import type { LogoList, WallpaperList } from '../types';
+} from "@angular/core";
+import { CommonModule, DOCUMENT } from "@angular/common";
+import type { LogoList, WallpaperList } from "../types";
 import {
   type AutocompleteProvider,
   autocompleteProviders,
@@ -19,31 +19,31 @@ import {
   searchEngineMappings,
   type Wallpaper,
   wallpapers,
-} from '../../config';
-import { Checkbox } from 'primeng/checkbox';
-import { FormsModule } from '@angular/forms';
-import { Select } from 'primeng/select';
-import { InputText } from 'primeng/inputtext';
-import type { AppSettings } from '../../config/interfaces';
-import { ConfigService } from '../../config/config.service';
-import { TranslocoDirective, TranslocoService } from '@jsverse/transloco';
-import { TitleComponent } from '../title/title.component';
-import { Button } from 'primeng/button';
-import { ConfirmDialog } from 'primeng/confirmdialog';
-import { ConfirmationService, MessageService } from 'primeng/api';
-import { TableModule } from 'primeng/table';
-import { Panel } from 'primeng/panel';
-import { type FileSelectEvent, FileUpload } from 'primeng/fileupload';
-import { MessageToastService } from '@garudalinux/core';
-import { MenuEditorComponent } from '../menu-editor/menu-editor.component';
-import { type AvailableJokeSources, jokeSources } from '../jokes/jokes';
-import { type AppTheme, themes } from '../theme';
-import { LinksEditorComponent } from '../links-editor/links-editor.component';
-import { LangPipe } from '../lang/lang.pipe';
-import { InputNumber } from 'primeng/inputnumber';
+} from "../../config";
+import { Checkbox } from "primeng/checkbox";
+import { FormsModule } from "@angular/forms";
+import { Select } from "primeng/select";
+import { InputText } from "primeng/inputtext";
+import type { AppSettings } from "../../config/interfaces";
+import { ConfigService } from "../../config/config.service";
+import { TranslocoDirective, TranslocoService } from "@jsverse/transloco";
+import { TitleComponent } from "../title/title.component";
+import { Button } from "primeng/button";
+import { ConfirmDialog } from "primeng/confirmdialog";
+import { ConfirmationService, MessageService } from "primeng/api";
+import { TableModule } from "primeng/table";
+import { Panel } from "primeng/panel";
+import { type FileSelectEvent, FileUpload } from "primeng/fileupload";
+import { MessageToastService } from "@garudalinux/core";
+import { MenuEditorComponent } from "../menu-editor/menu-editor.component";
+import { type AvailableJokeSources, jokeSources } from "../jokes/jokes";
+import { type AppTheme, themes } from "../theme";
+import { LinksEditorComponent } from "../links-editor/links-editor.component";
+import { LangPipe } from "../lang/lang.pipe";
+import { InputNumber } from "primeng/inputnumber";
 
 @Component({
-  selector: 'app-settings',
+  selector: "app-settings",
   imports: [
     CommonModule,
     Checkbox,
@@ -61,49 +61,53 @@ import { InputNumber } from 'primeng/inputnumber';
     MenuEditorComponent,
     LinksEditorComponent,
   ],
-  templateUrl: './settings.component.html',
-  styleUrl: './settings.component.css',
+  templateUrl: "./settings.component.html",
+  styleUrl: "./settings.component.css",
   providers: [MessageService, ConfirmationService, LangPipe],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SettingsComponent {
-  activeJoke = signal<AvailableJokeSources>('dev-excuses');
-  activeSearchEngine = signal<SearchEngine>('searxng-privau');
-  activeTheme = signal<AppTheme>('Catppuccin Mocha/Latte Aura');
-  autocompleteProvider = signal<AutocompleteProvider>('');
+  activeJoke = signal<AvailableJokeSources>("dev-excuses");
+  activeSearchEngine = signal<SearchEngine>("searxng-privau");
+  activeTheme = signal<AppTheme>("Catppuccin Mocha/Latte Aura");
+  autocompleteProvider = signal<AutocompleteProvider>("");
   autoGridCols = signal<boolean>(true);
   avatarEnabled = signal<boolean>(true);
-  avatarUrl = signal<string>('');
+  avatarUrl = signal<string>("");
   blurBackground = signal<number>(0);
   blurStrength = signal<number>(4);
-  corsProxy = signal<string>('');
-  customTitle = signal<string>('');
+  corsProxy = signal<string>("");
+  customTitle = signal<string>("");
   defaultLinks = signal<boolean>(true);
   darkMode = signal<boolean>(true);
-  fitWallpaper = signal<string>('cover');
+  fitWallpaper = signal<string>("cover");
   gridCols = signal<number>(3);
   jokesEnabled = signal<boolean>(true);
-  language = signal<string>('en');
-  logo = signal<string>('default');
-  logoUrl = signal<string>('');
-  searchEngineName = signal<string>('');
-  searchEngineUrl = signal<string>('');
+  language = signal<string>("en");
+  logo = signal<string>("default");
+  logoUrl = signal<string>("");
+  searchEngineName = signal<string>("");
+  searchEngineUrl = signal<string>("");
   showNews = signal<boolean>(true);
-  username = signal<string>('');
-  wallpaper = signal<Wallpaper>('');
-  wallpaperUrl = signal<string>('');
-  welcomeText = signal<string>('');
+  username = signal<string>("");
+  wallpaper = signal<Wallpaper>("");
+  wallpaperUrl = signal<string>("");
+  welcomeText = signal<string>("");
 
   protected readonly availableLanguages: {
     name: string;
     prettyName: string;
   }[] = [];
   protected readonly availableThemes: string[] = Object.keys(themes).sort();
-  protected readonly autocompleteProviders: SearchEngineList = autocompleteProviders;
+  protected readonly autocompleteProviders: SearchEngineList =
+    autocompleteProviders;
   protected readonly configService = inject(ConfigService);
-  protected readonly jokeSources = jokeSources.sort((a, b) => a.name.localeCompare(b.name));
+  protected readonly jokeSources = jokeSources.sort((a, b) =>
+    a.name.localeCompare(b.name)
+  );
   protected readonly logos: LogoList = logos;
-  protected readonly searchEngineMappings: SearchEngineList = searchEngineMappings;
+  protected readonly searchEngineMappings: SearchEngineList =
+    searchEngineMappings;
   protected readonly wallpapers: WallpaperList = wallpapers;
 
   private readonly confirmationService = inject(ConfirmationService);
@@ -150,10 +154,16 @@ export class SettingsComponent {
    */
   downloadSettings() {
     const settings: AppSettings = this.configService.settings();
-    const dataStr: string = 'data:text/json;charset=utf-8,' + encodeURIComponent(JSON.stringify(settings));
-    const downloadAnchorNode: HTMLAnchorElement = this.document.createElement('a');
-    downloadAnchorNode.setAttribute('href', dataStr);
-    downloadAnchorNode.setAttribute('download', `settings-${new Date().toISOString().split('T')[0]}.json`);
+    const dataStr: string = "data:text/json;charset=utf-8," +
+      encodeURIComponent(JSON.stringify(settings));
+    const downloadAnchorNode: HTMLAnchorElement = this.document.createElement(
+      "a",
+    );
+    downloadAnchorNode.setAttribute("href", dataStr);
+    downloadAnchorNode.setAttribute(
+      "download",
+      `settings-${new Date().toISOString().split("T")[0]}.json`,
+    );
     this.document.body.appendChild(downloadAnchorNode);
     downloadAnchorNode.click();
     downloadAnchorNode.remove();
@@ -165,14 +175,18 @@ export class SettingsComponent {
    */
   restoreSettings($event: FileSelectEvent) {
     this.confirmationService.confirm({
-      message: this.translocoService.translate('settings.confirmRestore'),
-      header: this.translocoService.translate('settings.confirmHeader'),
-      icon: 'pi pi-exclamation-triangle',
+      message: this.translocoService.translate("settings.confirmRestore"),
+      header: this.translocoService.translate("settings.confirmHeader"),
+      icon: "pi pi-exclamation-triangle",
       accept: async () => {
-        await this.configService.restoreSettings($event.currentFiles[0], this.renderer, this.el);
+        await this.configService.restoreSettings(
+          $event.currentFiles[0],
+          this.renderer,
+          this.el,
+        );
         this.messageToastService.success(
-          this.translocoService.translate('settings.success'),
-          this.translocoService.translate('settings.settingsRestored'),
+          this.translocoService.translate("settings.success"),
+          this.translocoService.translate("settings.settingsRestored"),
         );
       },
     });
@@ -183,14 +197,14 @@ export class SettingsComponent {
    */
   resetSettings() {
     this.confirmationService.confirm({
-      message: this.translocoService.translate('settings.confirmReset'),
-      header: this.translocoService.translate('settings.confirmHeader'),
-      icon: 'pi pi-exclamation-triangle',
+      message: this.translocoService.translate("settings.confirmReset"),
+      header: this.translocoService.translate("settings.confirmHeader"),
+      icon: "pi pi-exclamation-triangle",
       accept: () => {
         this.configService.resetSettings(this.renderer, this.el);
         this.messageToastService.success(
-          this.translocoService.translate('settings.success'),
-          this.translocoService.translate('settings.settingsReset'),
+          this.translocoService.translate("settings.success"),
+          this.translocoService.translate("settings.settingsReset"),
         );
       },
     });

@@ -1,21 +1,29 @@
-import { ChangeDetectionStrategy, Component, effect, inject, signal, untracked, ViewChild } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { Toolbar } from 'primeng/toolbar';
-import { Button } from 'primeng/button';
-import { type Table, TableModule } from 'primeng/table';
-import type { ServiceLink, ServiceLinks } from '../types';
-import { ConfigService } from '../../config/config.service';
-import { ConfirmationService } from 'primeng/api';
-import { MessageToastService } from '@garudalinux/core';
-import { TranslocoDirective, TranslocoService } from '@jsverse/transloco';
-import { IconField } from 'primeng/iconfield';
-import { InputIcon } from 'primeng/inputicon';
-import { InputText } from 'primeng/inputtext';
-import { Dialog } from 'primeng/dialog';
-import { FormsModule } from '@angular/forms';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  effect,
+  inject,
+  signal,
+  untracked,
+  ViewChild,
+} from "@angular/core";
+import { CommonModule } from "@angular/common";
+import { Toolbar } from "primeng/toolbar";
+import { Button } from "primeng/button";
+import { type Table, TableModule } from "primeng/table";
+import type { ServiceLink, ServiceLinks } from "../types";
+import { ConfigService } from "../../config/config.service";
+import { ConfirmationService } from "primeng/api";
+import { MessageToastService } from "@garudalinux/core";
+import { TranslocoDirective, TranslocoService } from "@jsverse/transloco";
+import { IconField } from "primeng/iconfield";
+import { InputIcon } from "primeng/inputicon";
+import { InputText } from "primeng/inputtext";
+import { Dialog } from "primeng/dialog";
+import { FormsModule } from "@angular/forms";
 
 @Component({
-  selector: 'app-links-editor',
+  selector: "app-links-editor",
   imports: [
     CommonModule,
     Toolbar,
@@ -28,12 +36,13 @@ import { FormsModule } from '@angular/forms';
     Dialog,
     FormsModule,
   ],
-  templateUrl: './links-editor.component.html',
-  styleUrl: './links-editor.component.css',
+  templateUrl: "./links-editor.component.html",
+  styleUrl: "./links-editor.component.css",
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LinksEditorComponent {
-  @ViewChild('linkTable') linkTable!: Table;
+  @ViewChild("linkTable")
+  linkTable!: Table;
 
   customLinks = signal<ServiceLinks>([]);
   link = signal<ServiceLink>({} as ServiceLink);
@@ -52,17 +61,18 @@ export class LinksEditorComponent {
       this.customLinks.set(this.configService.settings().customLinks);
     });
     effect(() => {
-      const currentSettings: ServiceLinks = untracked(this.configService.settings).customLinks;
+      const currentSettings: ServiceLinks =
+        untracked(this.configService.settings).customLinks;
       const newSettings: ServiceLinks = this.customLinks();
 
       if (currentSettings.length !== newSettings.length) {
-        this.configService.updateConfig('customLinks', newSettings);
+        this.configService.updateConfig("customLinks", newSettings);
         return;
       }
 
       for (const i in newSettings) {
         if (currentSettings[i].id !== newSettings[i].id) {
-          this.configService.updateConfig('customLinks', newSettings);
+          this.configService.updateConfig("customLinks", newSettings);
           break;
         }
       }
@@ -92,15 +102,17 @@ export class LinksEditorComponent {
    */
   deleteSelectedLinks() {
     this.confirmationService.confirm({
-      message: this.translocoService.translate('settings.confirmDelete'),
-      header: this.translocoService.translate('settings.confirm'),
-      icon: 'pi pi-exclamation-triangle',
+      message: this.translocoService.translate("settings.confirmDelete"),
+      header: this.translocoService.translate("settings.confirm"),
+      icon: "pi pi-exclamation-triangle",
       accept: () => {
-        this.customLinks.update((links) => links.filter((val) => !this.selectedLinks()?.includes(val)));
+        this.customLinks.update((links) =>
+          links.filter((val) => !this.selectedLinks()?.includes(val))
+        );
         this.selectedLinks.set(null);
         this.messageToastService.success(
-          this.translocoService.translate('settings.success'),
-          this.translocoService.translate('settings.linksDeleted'),
+          this.translocoService.translate("settings.success"),
+          this.translocoService.translate("settings.linksDeleted"),
         );
       },
     });
@@ -120,15 +132,19 @@ export class LinksEditorComponent {
    */
   deleteLink(link: ServiceLink) {
     this.confirmationService.confirm({
-      message: `${this.translocoService.translate('settings.confirmDeleteLink')} ${link.title} ?`,
-      header: this.translocoService.translate('settings.confirmHeader'),
-      icon: 'pi pi-exclamation-triangle',
+      message: `${
+        this.translocoService.translate("settings.confirmDeleteLink")
+      } ${link.title} ?`,
+      header: this.translocoService.translate("settings.confirmHeader"),
+      icon: "pi pi-exclamation-triangle",
       accept: () => {
-        this.customLinks.update((links) => links.filter((val) => val.id !== link.id));
+        this.customLinks.update((links) =>
+          links.filter((val) => val.id !== link.id)
+        );
         this.link.set({} as ServiceLink);
         this.messageToastService.success(
-          this.translocoService.translate('settings.success'),
-          this.translocoService.translate('settings.linkDeleted'),
+          this.translocoService.translate("settings.success"),
+          this.translocoService.translate("settings.linkDeleted"),
         );
       },
     });
@@ -155,8 +171,9 @@ export class LinksEditorComponent {
    * @returns A random string of 5 characters
    */
   createId(): string {
-    let id = '';
-    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    let id = "";
+    const chars =
+      "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
     for (let i = 0; i < 5; i++) {
       id += chars.charAt(Math.floor(Math.random() * chars.length));
     }
@@ -178,16 +195,18 @@ export class LinksEditorComponent {
         return [...links];
       });
       this.messageToastService.success(
-        this.translocoService.translate('settings.success'),
-        this.translocoService.translate('settings.linkUpdated'),
+        this.translocoService.translate("settings.success"),
+        this.translocoService.translate("settings.linkUpdated"),
       );
     } else {
       this.link().id = this.createId();
-      if (!this.link().icon) this.link().icon = 'chrome://branding/content/about-logo.png';
+      if (!this.link().icon) {
+        this.link().icon = "chrome://branding/content/about-logo.png";
+      }
       this.customLinks.update((links) => [...links, this.link()]);
       this.messageToastService.success(
-        this.translocoService.translate('settings.success'),
-        this.translocoService.translate('settings.linkCreated'),
+        this.translocoService.translate("settings.success"),
+        this.translocoService.translate("settings.linkCreated"),
       );
     }
     this.linkDialog.set(false);
@@ -200,6 +219,6 @@ export class LinksEditorComponent {
    */
   onRowReorder() {
     const links: ServiceLinks = [...this.customLinks()];
-    this.configService.updateConfig('customLinks', links);
+    this.configService.updateConfig("customLinks", links);
   }
 }

@@ -1,7 +1,11 @@
-import type { MenuBarItems, SearchEngineEntry, ServiceLinks } from '../app/types';
-import type { AvailableJokeSources } from '../app/jokes/jokes';
-import type { AppTheme } from '../app/theme';
-import type { AutocompleteProvider } from '../config';
+import type {
+  MenuBarItems,
+  SearchEngineEntry,
+  ServiceLinks,
+} from "../app/types";
+import type { AvailableJokeSources } from "../app/jokes/jokes";
+import type { AppTheme } from "../app/theme";
+import type { AutocompleteProvider } from "../config";
 
 export interface AppSettings {
   activeJoke: AvailableJokeSources;

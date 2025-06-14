@@ -1,8 +1,8 @@
-import { type ElementRef, Injectable, type Renderer2 } from '@angular/core';
-import { ConfigService } from '../../config/config.service';
+import { type ElementRef, Injectable, type Renderer2 } from "@angular/core";
+import { ConfigService } from "../../config/config.service";
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: "root",
 })
 export class WallpaperService {
   private prevBlurStrength: null | number = null;
@@ -25,11 +25,11 @@ export class WallpaperService {
     el: ElementRef,
     url?: string,
   ): void {
-    if (wallpaper === 'custom') {
-      this.loadWallpaperExecutor(el, renderer, url ?? '');
-    } else if (wallpaper === 'none') {
+    if (wallpaper === "custom") {
+      this.loadWallpaperExecutor(el, renderer, url ?? "");
+    } else if (wallpaper === "none") {
       this.loadWallpaperExecutor(el, renderer, null);
-    } else if (wallpaper !== '') {
+    } else if (wallpaper !== "") {
       this.loadWallpaperExecutor(el, renderer, wallpaper);
     }
   }
@@ -48,12 +48,12 @@ export class WallpaperService {
     if (wallpaper === null) {
       renderer.removeStyle(
         el.nativeElement.ownerDocument.body,
-        'backgroundImage',
+        "backgroundImage",
       );
     } else {
       renderer.setStyle(
         el.nativeElement.ownerDocument.body,
-        'background-image',
+        "background-image",
         `url(${wallpaper})`,
       );
     }
@@ -73,13 +73,13 @@ export class WallpaperService {
     el: ElementRef,
   ): void {
     switch (kind) {
-      case 'fitWallpaper':
+      case "fitWallpaper":
         this.applyBgContain(el, renderer, value);
         break;
-      case 'blurBackground':
+      case "blurBackground":
         this.applyBgBlur(el, renderer, value);
         break;
-      case 'blurStrength':
+      case "blurStrength":
         if (!this.configService.settings().blurBackground) {
           return;
         }
@@ -128,9 +128,9 @@ export class WallpaperService {
    */
   applyBgContain(el: ElementRef, renderer: Renderer2, apply = true): void {
     if (apply) {
-      renderer.addClass(el.nativeElement.ownerDocument.body, 'bg-contain');
+      renderer.addClass(el.nativeElement.ownerDocument.body, "bg-contain");
     } else {
-      renderer.removeClass(el.nativeElement.ownerDocument.body, 'bg-contain');
+      renderer.removeClass(el.nativeElement.ownerDocument.body, "bg-contain");
     }
   }
 }

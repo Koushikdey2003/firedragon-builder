@@ -1,11 +1,16 @@
 <ng-container *transloco="let t">
   <p-toolbar styleClass="mt-5">
     <ng-template #start>
-      <p-button (onClick)="openNew()" [label]="t('settings.addLink')" class="mr-2" icon="pi pi-plus" />
+      <p-button
+        (onClick)="openNew()"
+        [label]='t("settings.addLink")'
+        class="mr-2"
+        icon="pi pi-plus"
+      />
       <p-button
         (onClick)="deleteSelectedLinks()"
         [disabled]="!selectedLinks() || !selectedLinks()?.length"
-        [label]="t('settings.deleteLink')"
+        [label]='t("settings.deleteLink")'
         icon="pi pi-trash"
         outlined
         severity="danger"
@@ -17,8 +22,8 @@
     #linkTable
     (onRowReorder)="onRowReorder()"
     [(selection)]="selectedLinks"
-    [currentPageReportTemplate]="t('settings.currentPageReport')"
-    [globalFilterFields]="['label', 'url', 'icon']"
+    [currentPageReportTemplate]='t("settings.currentPageReport")'
+    [globalFilterFields]='["label", "url", "icon"]'
     [rows]="10"
     [value]="menuLinks()"
     dataKey="id"
@@ -29,13 +34,13 @@
   >
     <ng-template #caption>
       <div class="flex items-center justify-between">
-        <h5 [innerText]="t('settings.manageLinks')" class="m-0"></h5>
+        <h5 [innerText]='t("settings.manageLinks")' class="m-0"></h5>
         <p-iconfield>
           <p-inputicon styleClass="pi pi-search" />
           <input
             #input
-            (input)="linkTable.filterGlobal(input.value, 'contains')"
-            [placeholder]="t('settings.search')"
+            (input)='linkTable.filterGlobal(input.value, "contains")'
+            [placeholder]='t("settings.search")'
             fluid
             pInputText
             type="text"
@@ -51,18 +56,18 @@
           <p-tableHeaderCheckbox />
         </th>
         <th pReorderableColumn pSortableColumn="title">
-          {{ t('settings.linkTitle') }}
+          {{ t("settings.linkTitle") }}
           <p-sortIcon field="title" />
         </th>
         <th pReorderableColumn pSortableColumn="link">
-          {{ t('settings.url') }}
+          {{ t("settings.url") }}
           <p-sortIcon field="link" />
         </th>
         <th pReorderableColumn>
-          {{ t('settings.icon') }}
+          {{ t("settings.icon") }}
         </th>
         <th pReorderableColumn style="width: 8rem">
-          {{ t('settings.actions') }}
+          {{ t("settings.actions") }}
         </th>
       </tr>
     </ng-template>
@@ -78,10 +83,16 @@
         <td>{{ link.url ?? link.routerLink }}</td>
         <td>{{ link.icon }}</td>
         <td>
-          <p-button (click)="editLink(link)" class="mr-2" icon="pi pi-pencil" outlined rounded />
+          <p-button
+            (click)="editLink(link)"
+            class="mr-2"
+            icon="pi pi-pencil"
+            outlined
+            rounded
+          />
           <p-button
             (click)="deleteLink(link)"
-            [disabled]="link.routerLink === '/settings'"
+            [disabled]='link.routerLink === "/settings"'
             icon="pi pi-trash"
             outlined
             rounded
@@ -92,32 +103,59 @@
     </ng-template>
   </p-table>
 
-  <p-dialog [(visible)]="linkDialog" [header]="t('settings.linkDetails')" modal>
+  <p-dialog [(visible)]="linkDialog" [header]='t("settings.linkDetails")' modal>
     <ng-template #content>
       <div class="flex flex-col gap-6">
         <div>
-          <label class="mb-3 block font-bold" for="link-title"> {{ t('settings.title') }}</label>
-          <input [(ngModel)]="link().label" fluid id="link-title" pInputText required type="text" />
-          <small *ngIf="linkSubmitted() && !link().label" class="text-primary-emphasis-alt">{{
-            t('settings.isRequired')
-          }}</small>
+          <label class="mb-3 block font-bold" for="link-title">
+            {{ t("settings.title") }}</label>
+          <input
+            [(ngModel)]="link().label"
+            fluid
+            id="link-title"
+            pInputText
+            required
+            type="text"
+          />
+          <small
+            *ngIf="linkSubmitted() && !link().label"
+            class="text-primary-emphasis-alt"
+          >{{ t("settings.isRequired") }}</small>
         </div>
         <div>
-          <label class="mb-3 block font-bold" for="url"> {{ t('settings.url') }}</label>
-          <input [(ngModel)]="link().url" fluid id="url" pInputText required type="text" />
-          <small *ngIf="linkSubmitted() && !link().url" class="text-primary-emphasis-alt">{{
-            t('settings.isRequired')
-          }}</small>
+          <label class="mb-3 block font-bold" for="url">
+            {{ t("settings.url") }}</label>
+          <input
+            [(ngModel)]="link().url"
+            fluid
+            id="url"
+            pInputText
+            required
+            type="text"
+          />
+          <small
+            *ngIf="linkSubmitted() && !link().url"
+            class="text-primary-emphasis-alt"
+          >{{ t("settings.isRequired") }}</small>
         </div>
         <div>
-          <label class="mb-3 block font-bold" for="icon"> {{ t('settings.iconLink') }}</label>
-          <input [(ngModel)]="link().icon" fluid id="icon" pInputText required type="text" />
+          <label class="mb-3 block font-bold" for="icon">
+            {{ t("settings.iconLink") }}</label>
+          <input
+            [(ngModel)]="link().icon"
+            fluid
+            id="icon"
+            pInputText
+            required
+            type="text"
+          />
           <a href="https://primeng.org/icons">
-            <small class="text-primary">{{ t('settings.primeNgIcons') }}</small>
+            <small class="text-primary">{{ t("settings.primeNgIcons") }}</small>
           </a>
-          <small *ngIf="linkSubmitted() && !link().icon" class="text-primary-emphasis-alt">{{
-            t('settings.isRequired')
-          }}</small>
+          <small
+            *ngIf="linkSubmitted() && !link().icon"
+            class="text-primary-emphasis-alt"
+          >{{ t("settings.isRequired") }}</small>
         </div>
       </div>
     </ng-template>

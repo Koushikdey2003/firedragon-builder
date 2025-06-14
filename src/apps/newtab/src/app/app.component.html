@@ -2,7 +2,10 @@
   <div class="background-filter">
     <div class="non-blurred overflow-hidden">
       <div class="background min-h-svh">
-        <garuda-shell #shell [menuItems]="configService.settings().customMenuLinks">
+        <garuda-shell
+          #shell
+          [menuItems]="configService.settings().customMenuLinks"
+        >
           <img
             [ngSrc]="logoLink()"
             alt="logo"
@@ -20,11 +23,9 @@
             @if (configService.settings().avatarEnabled) {
               <p-avatar
                 (click)="displayEasterEgg()"
-                [image]="
-                  configService.settings().avatarUrl !== ''
-                    ? configService.settings().avatarUrl
-                    : '/src/public/assets/avatars/cat.png'
-                "
+                [image]='configService.settings().avatarUrl !== ""
+                ? configService.settings().avatarUrl
+                : "/src/public/assets/avatars/cat.png"'
                 shape="circle"
                 ngClass="cursor-pointer"
               >

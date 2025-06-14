@@ -4,5 +4,5 @@
  */
 export function openLinkInNewTab(url: string | undefined): void {
   if (!url) return;
-  window.open(url, '_blank');
+  window.open(url, "_blank");
 }

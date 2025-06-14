@@ -1,4 +1,4 @@
-import type { SearchEngine } from '../config';
+import type { SearchEngine } from "../config";
 
 export interface MenuBarLink {
   icon: string;
