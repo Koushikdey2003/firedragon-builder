@@ -9,14 +9,8 @@ import {
   Renderer2,
   signal,
 } from "@angular/core";
-import { RouterModule, type RouterOutlet } from "@angular/router";
 import { ScrollTop } from "primeng/scrolltop";
-import { routeAnimations } from "./app.routes";
-import {
-  translateSignal,
-  TranslocoDirective,
-  TranslocoService,
-} from "@jsverse/transloco";
+import { TranslocoDirective, TranslocoService } from "@jsverse/transloco";
 import { firstValueFrom } from "rxjs";
 import { MessageToastService, ShellComponent } from "@garudalinux/core";
 import { ConfigService } from "../config/config.service";
@@ -24,25 +18,34 @@ import { menubarItems } from "../config";
 import type { MenuBarLink } from "./types";
 import { Avatar } from "primeng/avatar";
 import type { ToastMessageOptions } from "primeng/api";
+import { HomeComponent } from "./home/home.component";
+import { SettingsComponent } from "./settings/settings.component";
+import {
+  DialogService,
+  DynamicDialogModule,
+  DynamicDialogRef,
+} from "primeng/dynamicdialog";
 
 @Component({
   imports: [
-    RouterModule,
     NgOptimizedImage,
     ScrollTop,
+    DynamicDialogModule,
     ShellComponent,
     TranslocoDirective,
     Avatar,
     NgClass,
+    HomeComponent,
+    SettingsComponent,
   ],
   selector: "app-root",
   templateUrl: "./app.component.html",
   styleUrl: "./app.component.css",
-  animations: [routeAnimations],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [MessageToastService],
+  providers: [DialogService, MessageToastService],
 })
 export class AppComponent implements OnInit {
+  ref: DynamicDialogRef | undefined;
   items = signal<MenuBarLink[]>(menubarItems);
 
   protected readonly configService = inject(ConfigService);
@@ -57,6 +60,7 @@ export class AppComponent implements OnInit {
     return "chrome://branding/content/about-logo.png";
   });
 
+  private readonly dialogService = inject(DialogService);
   private readonly el = inject(ElementRef);
   private readonly messageToastService = inject(MessageToastService);
   private readonly renderer = inject(Renderer2);
@@ -122,15 +126,6 @@ export class AppComponent implements OnInit {
   }
 
   /**
-   * Returns the animation state of the next page for page transitions
-   * @param outlet Router outlet element
-   * @returns The animation state of the target route
-   */
-  prepareRoute(outlet: RouterOutlet): string {
-    return outlet.activatedRouteData["animationState"];
-  }
-
-  /**
    * Display an easter egg message ;)
    */
   displayEasterEgg() {
@@ -171,5 +166,23 @@ export class AppComponent implements OnInit {
         );
         break;
     }
+  }
+
+  /**
+   * Open the home component in a dialog
+   */
+  openSettings() {
+    this.ref = this.dialogService.open(SettingsComponent, {
+      header: this.translocoService.translate("menu.settings"),
+      width: "90%",
+      contentStyle: { overflow: "auto" },
+      baseZIndex: 10000,
+      maximizable: true,
+      closeOnEscape: true,
+      dismissableMask: true,
+      closable: true,
+      resizable: true,
+      draggable: true,
+    });
   }
 }

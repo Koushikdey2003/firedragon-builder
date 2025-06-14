@@ -12,7 +12,7 @@ export const menubarItems: MenuBarItems = [
     icon: "pi pi-home",
     label: "Home",
     translocoKey: "menu.home",
-    url: "https://garudalinux.org",
+    url: "https://firedragon.garudalinux.org",
     id: "gho",
   },
   {
