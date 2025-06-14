@@ -7,7 +7,7 @@ RUN apt-get update
 RUN apt-get upgrade -y
 
 # Install dependencies
-RUN apt-get install -y curl file git msitools p7zip-full patch python3-pip ripgrep rsync rustup zip zstd
+RUN apt-get install -y curl file msitools p7zip-full patch python3-pip ripgrep rsync rustup zip zstd
 
 # Setup rust with all required toolchains
 RUN rustup default stable
