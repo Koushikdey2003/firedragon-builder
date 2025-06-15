@@ -7,7 +7,7 @@ import { globby } from 'globby';
 import { generateJarManifest } from "../common/scripts/gen_jarmanifest.ts";
 
 // https://vitejs.dev/config/
-export default defineConfig(({ mode }) => ({
+export default defineConfig(({ command }) => ({
   build: {
     outDir: "_dist",
     target: ["es2020"],
@@ -28,6 +28,19 @@ export default defineConfig(({ mode }) => ({
       },
     }),
     tailwindcss(),
+    {
+      name: "inject_base_href",
+      async transformIndexHtml() {
+        return [
+          {
+            tag: 'base',
+            attrs: {
+              href: command === 'serve' ? 'http://localhost:5186/' : 'chrome://noraneko-newtab/content/',
+            },
+          },
+        ];
+      },
+    },
     {
       name: "gen_jarmn",
       enforce: "post",
