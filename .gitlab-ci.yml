@@ -80,7 +80,7 @@ build:
     - apt-get install -y zstd patch rsync python3-pip msitools p7zip-full zip ripgrep
     - deno install --allow-scripts --frozen
   script:
-    - deno task make --edition=$EDITION --target=$PLATFORM-$ARCH --enable-bootstrap --enable-update --with-moz-build-date=_dist/moz_build_date --with-buildid2=_dist/buildid2 --with-dist=_dist build
+    - deno task make --edition=$EDITION --target=$PLATFORM-$ARCH --enable-bootstrap ${CI_COMMIT_TAG:+--enable-update} --with-moz-build-date=_dist/moz_build_date --with-buildid2=_dist/buildid2 --with-dist=_dist build
   artifacts:
     paths:
       - .dist/*-$PLATFORM-$ARCH.*
