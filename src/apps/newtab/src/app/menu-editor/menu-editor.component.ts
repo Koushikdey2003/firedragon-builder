@@ -108,6 +108,7 @@ export class MenuEditorComponent {
       accept: () => {
         this.menuLinks.update((links: MenuBarItems) =>
           links.filter((val: MenuBarLink) => {
+            if (val.routerLink === "/settings") return true;
             return !this.selectedLinks()?.includes(val);
           })
         );

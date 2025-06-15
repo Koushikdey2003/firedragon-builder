@@ -59,6 +59,7 @@ export const menubarItems: MenuBarItems = [
   },
   {
     label: "Settings",
+    routerLink: "/settings",
     translocoKey: "menu.settings",
     icon: "pi pi-cog",
     id: "gse",
