@@ -12,11 +12,12 @@
   },
   "js/ts.implicitProjectConfig.experimentalDecorators": true,
   "git.scanRepositories": ["./"],
-  "git.ignoredRepositories": [
-    "../_dist/*"
-  ],
+  "git.ignoredRepositories": ["../_dist/*"],
   "deno.enable": true,
   "deno.lint": true,
   "editor.formatOnSave": true,
-  "[typescript]": { "editor.defaultFormatter": "denoland.vscode-deno" }
+  "[typescript]": {
+    "editor.defaultFormatter": "denoland.vscode-deno"
+  },
+  "angular.enable-strict-mode-prompt": false
 }
