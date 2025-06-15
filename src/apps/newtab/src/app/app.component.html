@@ -10,7 +10,6 @@
             [ngSrc]="logoLink()"
             alt="logo"
             class="cursor-pointer"
-            (click)="openSettings()"
             garudaShellBarStart
             height="32"
             priority
@@ -22,21 +21,19 @@
           </div>
           <div garudaShellBarEnd>
             @if (configService.settings().avatarEnabled) {
-            <p-avatar
-              (click)="displayEasterEgg()"
-              [image]="
-                configService.settings().avatarUrl !== ''
-                  ? configService.settings().avatarUrl
-                  : '/src/public/assets/avatars/cat.png'
-              "
-              shape="circle"
-              ngClass="cursor-pointer"
-            >
-            </p-avatar>
+              <p-avatar
+                (click)="displayEasterEgg()"
+                [image]='configService.settings().avatarUrl !== ""
+                ? configService.settings().avatarUrl
+                : "/src/public/assets/avatars/cat.png"'
+                shape="circle"
+                ngClass="cursor-pointer"
+              >
+              </p-avatar>
             }
           </div>
-          <div class="mt-5">
-            <app-home></app-home>
+          <div [@routerTransition]="prepareRoute(routerOutlet)" class="mt-5">
+            <router-outlet #routerOutlet="outlet"></router-outlet>
           </div>
           <p-scroll-top></p-scroll-top>
         </garuda-shell>

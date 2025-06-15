@@ -7,9 +7,11 @@ import {
   provideExperimentalZonelessChangeDetection,
 } from "@angular/core";
 import { provideAnimationsAsync } from "@angular/platform-browser/animations/async";
+import { provideRouter, withHashLocation } from "@angular/router";
 import { provideGarudaNG } from "@garudalinux/core";
 import { APP_CONFIG } from "../environments/app-config.token";
 import { environment } from "../environments/environment.dev";
+import { routes } from "./app.routes";
 import { TranslocoHttpLoader } from "./transloco-loader";
 import { provideTransloco, provideTranslocoLoader } from "@jsverse/transloco";
 import { ConfigService } from "../config/config.service";
@@ -29,6 +31,7 @@ export const appConfig: ApplicationConfig = {
         inputStyle: "outlined",
       },
     ),
+    provideRouter(routes, withHashLocation()),
     provideExperimentalZonelessChangeDetection(),
     provideHttpClient(),
     provideAppInitializer(async () => {
