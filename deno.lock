@@ -89,6 +89,7 @@
     "npm:fast-glob@^3.3.3": "3.3.3",
     "npm:floating-ui@^5.2.8": "5.2.8",
     "npm:framer-motion@^12.4.10": "12.16.0_react@19.1.0_react-dom@19.1.0__react@19.1.0",
+    "npm:globby@^14.1.0": "14.1.0",
     "npm:hookable@^5.5.3": "5.5.3",
     "npm:i18next-browser-languagedetector@^8.0.3": "8.1.0",
     "npm:i18next@^24.2.2": "24.2.3_typescript@5.8.3",
@@ -384,7 +385,7 @@
     "@angular/animations@19.2.14_@angular+common@19.2.14__@angular+core@19.2.14___rxjs@7.8.2___zone.js@0.15.1__rxjs@7.8.2_@angular+core@19.2.14__rxjs@7.8.2__zone.js@0.15.1_rxjs@7.8.2_zone.js@0.15.1": {
       "integrity": "sha512-xhl8fLto5HHJdVj8Nb6EoBEiTAcXuWDYn1q5uHcGxyVH3kiwENWy/2OQXgCr2CuWo2e6hNUGzSLf/cjbsMNqEA==",
       "dependencies": [
-        "@angular/common@19.2.14_@angular+core@19.2.14__rxjs@7.8.2__zone.js@0.15.1_rxjs@7.8.2_zone.js@0.15.1",
+        "@angular/common@19.2.14_@angular+core@19.2.14__rxjs@7.8.2__zone.js@0.15.1_rxjs@7.8.2",
         "@angular/core",
         "tslib"
       ]
@@ -17218,6 +17219,7 @@
             "npm:birpc@^2.3.0",
             "npm:dayjs@^1.11.13",
             "npm:emoji-js@^3.8.1",
+            "npm:globby@^14.1.0",
             "npm:inter-ui@^4.1.0",
             "npm:jsdom@22",
             "npm:marked@^15.0.12",
