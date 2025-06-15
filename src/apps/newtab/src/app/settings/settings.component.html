@@ -163,9 +163,7 @@
               "ng-invalid ng-dirty":
                 configService.settings().autocompleteProvider !==
                   "none" &&
-                !configService.settings().corsProxy.includes(
-                  "https://",
-                ),
+                !configService.settings().corsProxy.includes("https://")
             }'
             [options]="autocompleteProviders"
             fluid

@@ -225,9 +225,9 @@ export class ConfigService {
     switch (key) {
       case "customTitle": {
         if (!this.settings().customTitle) {
-          await firstValueFrom(
-            this.translocoService.load(this.settings().language),
-          );
+          // await firstValueFrom(
+          //   this.translocoService.load(this.settings().language),
+          // );
         } else {
           this.title.setTitle(value);
         }
