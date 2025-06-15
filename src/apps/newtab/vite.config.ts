@@ -1,40 +1,61 @@
-import { defineConfig, PluginOption } from "vite";
-import tsconfigPaths from "vite-tsconfig-paths";
-import react from "@vitejs/plugin-react-swc";
+/// <reference types="vitest" />
+import { fileURLToPath } from 'node:url';
+import { defineConfig } from "vite";
+import analog from "@analogjs/platform";
 import tailwindcss from "@tailwindcss/vite";
+import { globby } from 'globby';
 import { generateJarManifest } from "../common/scripts/gen_jarmanifest.ts";
-import { join } from "node:path";
-import { dirname } from "node:path";
 
-export default defineConfig({
+// https://vitejs.dev/config/
+export default defineConfig(({ command }) => ({
+  build: {
+    outDir: "_dist",
+    target: ["es2020"],
+  },
+  resolve: {
+    mainFields: ["module"],
+  },
   server: {
     port: 5186,
     strictPort: true,
   },
-  css: {
-    postcss: import.meta.dirname,
-  },
-  build: {
-    outDir: "_dist",
-  },
-  resolve: {
-    alias: {
-      "@/": join(dirname(import.meta.url), "src"),
-    },
-  },
   plugins: [
-    tsconfigPaths() as PluginOption,
-    react(),
+    analog({
+      ssr: false,
+      static: true,
+      prerender: {
+        routes: [],
+      },
+    }),
     tailwindcss(),
+    {
+      name: "inject_base_href",
+      async transformIndexHtml() {
+        return [
+          {
+            tag: 'base',
+            attrs: {
+              href: command === 'serve' ? 'http://localhost:5186/' : 'chrome://noraneko-newtab/content/',
+            },
+          },
+        ];
+      },
+    },
     {
       name: "gen_jarmn",
       enforce: "post",
       async generateBundle(options, bundle, isWrite) {
+        const _bundle: Record<string, {fileName: string}> = { ...bundle };
+        for (const publicFile of await globby('**', { cwd: fileURLToPath(new URL('./public', import.meta.url)), onlyFiles: true })) {
+          _bundle[publicFile] = {
+            fileName: publicFile,
+          };
+        }
         this.emitFile({
           type: "asset",
           fileName: "jar.mn",
           needsCodeReference: false,
-          source: await generateJarManifest(bundle, {
+          source: await generateJarManifest(_bundle, {
             prefix: "content-newtab",
             namespace: "noraneko-newtab",
             register_type: "content",
@@ -49,4 +70,4 @@ export default defineConfig({
       },
     },
   ],
-});
+}));

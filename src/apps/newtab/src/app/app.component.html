@@ -1,0 +1,43 @@
+<ng-container *transloco="let t">
+  <div class="background-filter">
+    <div class="non-blurred overflow-hidden">
+      <div class="background min-h-svh">
+        <garuda-shell
+          #shell
+          [menuItems]="configService.settings().customMenuLinks"
+        >
+          <img
+            [ngSrc]="logoLink()"
+            alt="logo"
+            class="cursor-pointer"
+            garudaShellBarStart
+            height="32"
+            priority
+            routerLink="/"
+            width="32"
+          />
+          <div class="ml-5" garudaShellBarStart>
+            {{ welcomeText() }}
+          </div>
+          <div garudaShellBarEnd>
+            @if (configService.settings().avatarEnabled) {
+              <p-avatar
+                (click)="displayEasterEgg()"
+                [image]='configService.settings().avatarUrl !== ""
+                ? configService.settings().avatarUrl
+                : "assets/avatars/cat.png"'
+                shape="circle"
+                ngClass="cursor-pointer"
+              >
+              </p-avatar>
+            }
+          </div>
+          <div [@routerTransition]="prepareRoute(routerOutlet)" class="mt-5">
+            <router-outlet #routerOutlet="outlet"></router-outlet>
+          </div>
+          <p-scroll-top></p-scroll-top>
+        </garuda-shell>
+      </div>
+    </div>
+  </div>
+</ng-container>

@@ -1,7 +1,5 @@
-import { NRSettingsParentFunctions } from "../../../../common/settings/rpc.ts";
 import { createBirpc } from "birpc";
 
-// deno-lint-ignore no-explicit-any
 declare const Services: any;
 declare global {
   interface Window {
@@ -12,7 +10,16 @@ declare global {
   }
 }
 
-const isLocalhost5186 = import.meta.url?.includes("localhost:5186");
+export interface NRSettingsParentFunctions {
+  getBoolPref(prefName: string): Promise<boolean | null>;
+  getIntPref(prefName: string): Promise<number | null>;
+  getStringPref(prefName: string): Promise<string | null>;
+  setBoolPref(prefName: string, prefValue: boolean): Promise<void>;
+  setIntPref(prefName: string, prefValue: number): Promise<void>;
+  setStringPref(prefName: string, prefValue: string): Promise<void>;
+}
+
+const isLocalhost5183 = import.meta.url?.includes("localhost:5186");
 
 const directServicesFunctions: NRSettingsParentFunctions = {
   getBoolPref: (prefName) => {
@@ -47,7 +54,7 @@ const directServicesFunctions: NRSettingsParentFunctions = {
   },
 };
 
-export const rpc = isLocalhost5186
+export const rpc = isLocalhost5183
   ? createBirpc<NRSettingsParentFunctions, Record<string, never>>(
     {},
     {
