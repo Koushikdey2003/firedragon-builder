@@ -337,7 +337,7 @@ async function appimage(config: Config) {
     const appimageBasename = `${basename}-${target.appimageSuffix}`;
     const appimageDir = `${tmpDir}/${appimageBasename}`;
 
-    const buildTarball = `${distDir}/${basename}-${target.buildSuffix}.tar.zst`;
+    const buildTarball = `${distDir}/${basename}-${target.buildSuffix}.${target.buildOutputFormat}`;
     if (!await exists(buildTarball)) {
         await build(config);
     }
