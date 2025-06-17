@@ -2,7 +2,7 @@
 
 ***WARNING: For advanced users only!***
 
-This method is most often only required for specific circumstances (e.g. packaging for a distribution). Almost everything can be don using the [simple method](./simple.md) by just [customizing the options for the make task](../make.md).
+This method is most often only required for specific circumstances (e.g. packaging for a distribution). Almost everything can be done using the [simple method](./simple.md) by just [customizing the options for the make task](../make.md).
 
 ## Prerequisites
 
@@ -49,7 +49,7 @@ This is optional, you can either install all build dependencies manually (might 
 
 ## Run the actual build
 
-To run the actual build, run the following command and be prepared for this to take a while (upwards of 15 minutes, depending on hardware):
+To run the actual build, run the following command:
 
 ``` shell
 ./mach build
@@ -74,3 +74,7 @@ To package the build run the following command:
 ```
 
 The result will be in either the `obj-artifact-build-output` or the `obj-artifact-build-output/install/sea` (for Windows installers) directory.
+
+## Further information
+
+For more information, you can look at the [ArchLinux PKGBUILD](https://gitlab.com/garuda-linux/pkgbuilds/-/blob/main/firedragon/PKGBUILD?ref_type=heads) to see how it uses this method to package FireDragon.
