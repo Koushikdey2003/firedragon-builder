@@ -1,5 +1,20 @@
 # FireDragon ChangeLog
 
+## [FireDragon v12.0.0-beta.10](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v12.0.0-beta.10) — 2025-06-17 — [`v12.0.0-beta.9`…`v12.0.0-beta.10`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/compare/v12.0.0-beta.9...v12.0.0-beta.10)
+
+### 🐛 Bug Fixes
+
+- Have appimage target check for the correct output format when checking for preexisting build — [`d2babf56…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/d2babf568060197f4ffb238ae2150a372ab1b939)
+
+### 📚 Documentation
+
+- Revamp and expand documentation around building & development — [`b8b8ec27…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/b8b8ec2799a381b7d71be82b99e1b5c65be565db)
+
+### ⚙️ Miscellaneous Tasks
+
+- Update linux package format and remove obsolete apt-get calls — [`ce2f91b1…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/ce2f91b1550fff88a4b9942e0425f63cb0ed9c7c)
+- Fix dr460nized edition name in downloads table — [`4c90efaa…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/4c90efaacba706b32df6ed7a55ad610fd06c00c5)
+
 ## [FireDragon v12.0.0-beta.9](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v12.0.0-beta.9) — 2025-06-17 — [`v12.0.0-beta.8`…`v12.0.0-beta.9`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/compare/v12.0.0-beta.8...v12.0.0-beta.9)
 
 ### 🚀 Features
