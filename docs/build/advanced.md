@@ -1,0 +1,76 @@
+# Advanced build method
+
+***WARNING: For advanced users only!***
+
+This method is most often only required for specific circumstances (e.g. packaging for a distribution). Almost everything can be don using the [simple method](./simple.md) by just [customizing the options for the make task](../make.md).
+
+## Prerequisites
+
+Install [deno](https://docs.deno.com/).
+
+## Download source
+
+[Download](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/permalink/latest/downloads/firedragon-source.tar.zst) the source from the latest release, extract it and navigate into it:
+
+``` shell
+tar -xf firedragon-source-vX.X.X.tar.zst
+cd firedragon-source-vX.X.X
+```
+
+## Before build
+
+Before building, run the following commands:
+
+``` shell
+cd firedragon # Navigate into the firedragon directory
+deno install --allow-scripts --frozen
+deno task build --release-build-before
+cd .. # Return to the parent directory
+```
+
+## Setup build config
+
+Create your `mozconfig` file using the `mozconfig` files in `gecko/mozconfigs/` as a base.
+
+Depending on whether you want to skip the next step of bootstrapping the build environment, you have to add the following config:
+
+``` shell
+ac_add_options --enable-bootstrap # Enable build environment bootstrapping
+ac_add_options --disable-bootstrap # Disable build environment bootstrapping
+```
+
+## Bootstrap build environment *(optional)*
+
+This is optional, you can either install all build dependencies manually (might require additional build configuration in the previous step) or have the build system install them for you:
+
+``` shell
+./mach --no-interactive bootstrap --application-choice browser
+```
+
+## Run the actual build
+
+To run the actual build, run the following command and be prepared for this to take a while (upwards of 15 minutes, depending on hardware):
+
+``` shell
+./mach build
+```
+
+## After build
+
+After building run the following commands:
+
+``` shell
+cd firedragon # Navigate into the firedragon directory
+deno task build --release-build-after
+cd .. # Return to the parent directory
+```
+
+## Packaging build
+
+To package the build run the following command:
+
+``` shell
+./mach package
+```
+
+The result will be in either the `obj-artifact-build-output` or the `obj-artifact-build-output/install/sea` (for Windows installers) directory.
