@@ -45,8 +45,8 @@ const isExists = async (path: string) => {
 const getBinArchive = () => {
   const target = getTarget();
   const ext = {
-    'linux-x64': 'tar.zst',
-    'linux-arm64': 'tar.zst',
+    'linux-x64': 'tar.xz',
+    'linux-arm64': 'tar.xz',
     'win32-x64': 'zip',
     'win32-arm64': 'zip',
     'darwin-x64': 'dmg',

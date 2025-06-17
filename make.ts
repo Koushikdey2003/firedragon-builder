@@ -191,7 +191,7 @@ async function cloneObjDistBin(config: Config, buildDir: string) {
 }
 
 async function packageBuild(config: Config, outputFormat: string, buildBasename: string, buildDir: string) {
-    const { appName, appBasename, distDir, edition } = config;
+    const { distDir } = config;
 
     const { objDistDir, objDistBinDir } = getCommonBuildDirs(config, buildDir);
 
@@ -203,25 +203,12 @@ async function packageBuild(config: Config, outputFormat: string, buildBasename:
     // Run package
     await $`${buildDir}/mach package`;
 
-    // Remove pingsender
-    for (const pingsender of await glob(`${objDistDir}/${appName}{,/${appBasename}.app/Contents/MacOS}/pingsender{,.exe}`)) {
-        await $`rm -f ${pingsender}`;
+    // Move package to dist dir
+    let packageName = (await $`cat ${objDistDir}/package_name.txt`.lines())[0];
+    if (outputFormat === 'exe') {
+        packageName = 'install/sea/' + packageName.replace(/.zip$/, '.installer.exe');
     }
-
-    // Package output archive
-    if (outputFormat === 'tar.zst') {
-        await $`tar --zstd -cf ${distDir}/${buildBasename}.tar.zst -C ${objDistDir} ${appName}`;
-    } else if (outputFormat === 'exe') {
-        const zipPath = `${objDistDir}/${buildBasename}.zip`;
-        await $`cd ${objDistDir} && zip -r ${zipPath} ${appName}`;
-        await $`${buildDir}/mach repackage installer -o ${distDir}/${buildBasename}.exe --package-name ${appName} --package ${zipPath} --tag ${buildDir}/browser/installer/windows/app.tag --setupexe ${buildDir}/obj-artifact-build-output/browser/installer/windows/instgen/setup.exe --sfx-stub ${buildDir}/other-licenses/7zstub/firefox/7zSD.Win32.sfx`;
-    } else if (outputFormat === 'zip') {
-        await $`cd ${objDistDir} && zip -r ${resolve(distDir)}/${buildBasename}.zip ${appName}`;
-    } else if (outputFormat === 'dmg') {
-        await $`${buildDir}/mach python -m mozbuild.action.make_dmg --dsstore ${buildDir}/browser/branding/${edition.branding}/dsstore --background ${buildDir}/browser/branding/${edition.branding}/background.png --icon ${buildDir}/browser/branding/${edition.branding}/disk.icns --volume-name ${appBasename} ${objDistDir}/${appName} ${distDir}/${buildBasename}.dmg`;
-    } else {
-        throw `Invalid build output format ${outputFormat}, must be on of [tar.zst, exe, zip].`;
-    }
+    await $`mv ${objDistDir}/${packageName} ${distDir}/${buildBasename}.${outputFormat}`;
 }
 
 function getUpdateUrls(config: Config) {
@@ -415,8 +402,8 @@ const TARGETS = {
         mozconfig: `${SOURCE_PATH}/gecko/mozconfigs/target/linux-x64.mozconfig`,
         objDistBinPath: 'bin',
         buildSuffix: 'linux-x64',
-        buildOutputFormat: 'tar.zst',
-        buildDevOutputFormat: 'tar.zst',
+        buildOutputFormat: 'tar.xz',
+        buildDevOutputFormat: 'tar.xz',
         appimageSuffix: 'appimage-x64',
         updatePath: APP_NAME,
     },
@@ -424,8 +411,8 @@ const TARGETS = {
         mozconfig: `${SOURCE_PATH}/gecko/mozconfigs/target/linux-arm64.mozconfig`,
         objDistBinPath: 'bin',
         buildSuffix: 'linux-arm64',
-        buildOutputFormat: 'tar.zst',
-        buildDevOutputFormat: 'tar.zst',
+        buildOutputFormat: 'tar.xz',
+        buildDevOutputFormat: 'tar.xz',
         appimageSuffix: 'appimage-arm64',
         updatePath: APP_NAME,
     },

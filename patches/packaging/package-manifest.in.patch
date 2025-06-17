@@ -1,5 +1,5 @@
 diff --git a/browser/installer/package-manifest.in b/browser/installer/package-manifest.in
-index d069529341..6dbffec89c 100644
+index d069529341..4648a80dca 100644
 --- a/browser/installer/package-manifest.in
 +++ b/browser/installer/package-manifest.in
 @@ -193,6 +193,15 @@
@@ -32,3 +32,14 @@ index d069529341..6dbffec89c 100644
  # channel-prefs.js has been removed on macOS.
  #ifndef XP_MACOSX
  ; Warning: changing the path to channel-prefs.js can cause bugs (Bug 756325)
+@@ -398,10 +414,6 @@ bin/libfreebl_64int_3.so
+ @BINPATH@/crashhelper@BIN_SUFFIX@
+ #endif
+ 
+-; [ Ping Sender ]
+-;
+-@BINPATH@/pingsender@BIN_SUFFIX@
+-
+ ; [ Native Messaging Host Proxy ]
+ ;
+ #if defined(XP_WIN) || defined(XP_MACOSX)
