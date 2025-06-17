@@ -1,5 +1,42 @@
 # FireDragon ChangeLog
 
+## [FireDragon v12.0.0-beta.9](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v12.0.0-beta.9) — 2025-06-17 — [`v12.0.0-beta.8`…`v12.0.0-beta.9`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/compare/v12.0.0-beta.8...v12.0.0-beta.9)
+
+### 🚀 Features
+
+- *(make)* Add --with-mozconfig option to supply additional configuration options — [`db7f5b54…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/db7f5b54a89e92ea20a6dcb3d710be06f31d7892)
+- *(newtab)* Add initial working newtab component based on Garuda startpage — [`18b8fd08…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/18b8fd089424f3a634bdeecb754833d8aa9e9384)
+- *(newtab)* Use browser configured search engine — [`7e0b522c…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/7e0b522cdbf1dec5e734856e9bb46899b83e03c7)
+
+### 🐛 Bug Fixes
+
+- *(workspaces)* Disable "Move tab to workspace" context menu item when no workspaces available — [`8e43fe0b…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/8e43fe0bbc5b4c2910684373be236a6af02e5c81)
+- *(workspaces)* Fix "Move tab to workspace" text to be consistent with "Move tab to window" text — [`4c144092…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/4c144092bb1dd01fc22ee6fe779ea19d8a4e7d43)
+- *(moveTabToWindow)* Disable "Move tab to window" instead of hiding when not available — [`164df308…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/164df308b062cd90532fe760f6b972d834fa1705)
+- *(newtab)* Use firedragon logo from resources — [`55552782…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/5555278228a508f69afc6a26acdb8336d0097873)
+- *(newtab)* Use hash-based routing — [`61a0b0ff…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/61a0b0ff993bec54a3f55c4c63aaa1d3e7a4e093)
+- *(newtab)* Prevent angular from calling pushState & replaceState — [`a86e5cb7…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/a86e5cb76176bb7bcffa50cd4c0a7aa0bdb118a3)
+- *(newtab)* Try to workaround location change issue by ripping out router entirely — [`2a45b1e1…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/2a45b1e13d82ac7bf35858ea665e24acd0c325a0)
+- *(newtab)* Rip out more mentions of router — [`c4f0fc4c…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/c4f0fc4ccc53eb7a740bbf193694e3e3df09590a)
+- *(newtab)* Add custom HasLocationStrategy [CI SKIP] — [`0677854f…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/0677854f57d0c1cf9a292c370b556641b5396be3)
+- *(newtab)* Commit out newtab breaking features for testing, use new hashlocationstrategy — [`c31df8b4…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/c31df8b49453577fcabe6bf456b2b4c1b46ca917)
+- *(newtab)* Move src/public to public dir — [`95ebb449…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/95ebb44926e69e47fcca9caa8133480d1aee81b4)
+- *(newtab)* Add public files to jar manifest — [`0c1b82e5…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/0c1b82e51f72ffa5b5b4747b41cc1d643ee07a2f)
+- *(newtab)* Add base href — [`690ab4aa…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/690ab4aa3974c443a5b0e3d04f202bfccb6990ba)
+- *(newtab)* Update assets paths to be relative to base href — [`b5bedb2e…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/b5bedb2e65bf9c3b047b12455966757c83bab458)
+- *(newtab)* Load translations relative to base href — [`9f0a4a17…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/9f0a4a17ca588ae60b17fdf422d57e58c856d9e2)
+
+### 🎨 Styling
+
+- Ran deno fmt on newtab components — [`1061a6d9…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/1061a6d94cc9dc202de0b0b4081174de99adcb4d)
+
+### ⚙️ Miscellaneous Tasks
+
+- Remove git as dependency — [`20cbbbd4…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/20cbbbd422ac2cdb5e71aaf629ff12485b6f11f6)
+- Initial angular setup for revamped newtab page — [`414f8e4f…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/414f8e4f92170a8f329c8b5819fc0d53aeb97211)
+- Only build with --enable-update when building release — [`8d426d03…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/8d426d0364c0c4e1839a33020839533a6bb7cbb8)
+- Add downloads table to release description — [`b9ff1861…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/b9ff1861e6b02bbfdd6db9da45b4ee8bb9185983)
+
 ## [FireDragon v12.0.0-beta.8](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v12.0.0-beta.8) — 2025-06-10 — [`v12.0.0-beta.7`…`v12.0.0-beta.8`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/compare/v12.0.0-beta.7...v12.0.0-beta.8)
 
 ### 🐛 Bug Fixes
