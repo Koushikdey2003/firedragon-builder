@@ -137,68 +137,6 @@
           />
         </div>
 
-        <div class="flex flex-col gap-2">
-          <label for="search-engine">{{
-              t("settings.searchEngineLabel")
-            }}</label>
-          <p-select
-            (ngModelChange)='updateConfig("activeSearchEngine", $event)'
-            [(ngModel)]="activeSearchEngine"
-            [options]="searchEngineMappings"
-            fluid
-            group
-            id="search-engine"
-          >
-          </p-select>
-        </div>
-
-        <div class="flex flex-col gap-2">
-          <label for="autocomplete-provider">{{
-              t("settings.autocompleteLabel")
-            }}</label>
-          <p-select
-            (ngModelChange)='updateConfig("autocompleteProvider", $event)'
-            [(ngModel)]="autocompleteProvider"
-            [ngClass]='{
-              "ng-invalid ng-dirty":
-                configService.settings().autocompleteProvider !==
-                  "none" &&
-                !configService.settings().corsProxy.includes("https://")
-            }'
-            [options]="autocompleteProviders"
-            fluid
-            group
-            id="autocomplete-provider"
-          />
-        </div>
-
-        @if (configService.settings().activeSearchEngine === "custom") {
-          <div class="flex flex-col gap-2">
-            <label for="custom-search">{{
-                t("settings.searchEngineUrl")
-              }}</label>
-            <input
-              pInputText
-              id="custom-search"
-              (ngModelChange)='updateConfig("searchEngineUrl", $event)'
-              [placeholder]='t("settings.searchEngineUrlPlaceholder")'
-              [(ngModel)]="searchEngineUrl"
-            />
-          </div>
-          <div class="flex flex-col gap-2">
-            <label for="custom-search-name">{{
-                t("settings.searchEngineName")
-              }}</label>
-            <input
-              pInputText
-              id="custom-search-name"
-              (ngModelChange)='updateConfig("searchEngineName", $event)'
-              [placeholder]='t("settings.searchEngineNamePlaceholder")'
-              [(ngModel)]="searchEngineName"
-            />
-          </div>
-        }
-
         @if (configService.settings().jokesEnabled) {
           <div class="flex flex-col gap-2">
             <label for="active-joke">{{ t("settings.activeJoke") }}</label>
@@ -226,23 +164,6 @@
           >
           </p-select>
         </div>
-
-        @if (configService.settings().autocompleteProvider !== "none") {
-          <div class="flex flex-col gap-2">
-            <label for="cors-proxy">{{ t("settings.corsProxyLabel") }}</label>
-            <input
-              [ngClass]='{
-              "ng-invalid ng-dirty": !configService.settings()
-                .corsProxy.includes("https://"),
-            }'
-              (ngModelChange)='updateConfig("corsProxy", $event)'
-              [(ngModel)]="corsProxy"
-              [placeholder]='t("settings.corsProxyPlaceholder")'
-              pInputText
-              id="cors-proxy"
-            />
-          </div>
-        }
 
         @if (configService.settings().wallpaper === "custom") {
           <div class="flex flex-col gap-2">

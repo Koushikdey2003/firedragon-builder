@@ -1,5 +1,3 @@
-import type { SearchEngine } from "../config";
-
 export interface MenuBarLink {
   icon: string;
   label: string;
@@ -31,12 +29,6 @@ export interface ServiceLink {
 }
 
 export type ServiceLinks = ServiceLink[];
-
-export interface SearchEngineEntry {
-  value: SearchEngine;
-  label: string;
-  url?: string;
-}
 
 export interface WallpaperEntry {
   label: string;

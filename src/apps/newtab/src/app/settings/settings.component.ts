@@ -11,12 +11,7 @@ import {
 import { CommonModule, DOCUMENT } from "@angular/common";
 import type { LogoList, WallpaperList } from "../types";
 import {
-  type AutocompleteProvider,
-  autocompleteProviders,
   logos,
-  type SearchEngine,
-  type SearchEngineList,
-  searchEngineMappings,
   type Wallpaper,
   wallpapers,
 } from "../../config";
@@ -68,15 +63,12 @@ import { InputNumber } from "primeng/inputnumber";
 })
 export class SettingsComponent {
   activeJoke = signal<AvailableJokeSources>("dev-excuses");
-  activeSearchEngine = signal<SearchEngine>("searxng-privau");
   activeTheme = signal<AppTheme>("Catppuccin Mocha/Latte Aura");
-  autocompleteProvider = signal<AutocompleteProvider>("");
   autoGridCols = signal<boolean>(true);
   avatarEnabled = signal<boolean>(true);
   avatarUrl = signal<string>("");
   blurBackground = signal<number>(0);
   blurStrength = signal<number>(4);
-  corsProxy = signal<string>("");
   customTitle = signal<string>("");
   defaultLinks = signal<boolean>(true);
   darkMode = signal<boolean>(true);
@@ -86,8 +78,6 @@ export class SettingsComponent {
   language = signal<string>("en");
   logo = signal<string>("default");
   logoUrl = signal<string>("");
-  searchEngineName = signal<string>("");
-  searchEngineUrl = signal<string>("");
   showNews = signal<boolean>(true);
   username = signal<string>("");
   wallpaper = signal<Wallpaper>("");
@@ -99,15 +89,11 @@ export class SettingsComponent {
     prettyName: string;
   }[] = [];
   protected readonly availableThemes: string[] = Object.keys(themes).sort();
-  protected readonly autocompleteProviders: SearchEngineList =
-    autocompleteProviders;
   protected readonly configService = inject(ConfigService);
   protected readonly jokeSources = jokeSources.sort((a, b) =>
     a.name.localeCompare(b.name)
   );
   protected readonly logos: LogoList = logos;
-  protected readonly searchEngineMappings: SearchEngineList =
-    searchEngineMappings;
   protected readonly wallpapers: WallpaperList = wallpapers;
 
   private readonly confirmationService = inject(ConfirmationService);

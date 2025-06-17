@@ -1,23 +1,18 @@
 import type {
   MenuBarItems,
-  SearchEngineEntry,
   ServiceLinks,
 } from "../app/types";
 import type { AvailableJokeSources } from "../app/jokes/jokes";
 import type { AppTheme } from "../app/theme";
-import type { AutocompleteProvider } from "../config";
 
 export interface AppSettings {
   activeJoke: AvailableJokeSources;
-  activeSearchEngine: string;
   activeTheme: AppTheme;
   avatarEnabled: boolean;
   avatarUrl: string;
-  autocompleteProvider: AutocompleteProvider;
   autoGridCols: boolean;
   blurBackground: boolean;
   blurStrength: 1 | 2 | 3 | 4;
-  corsProxy: string;
   customLinks: ServiceLinks;
   customMenuLinks: MenuBarItems;
   customTitle: string;
@@ -30,9 +25,6 @@ export interface AppSettings {
   languageChanged: boolean;
   logo: string;
   logoUrl: string;
-  searchEngineName: string;
-  searchEngineUrl: string;
-  searchEngines: SearchEngineEntry[];
   username: string;
   wallpaper: string;
   wallpaperUrl: string;
