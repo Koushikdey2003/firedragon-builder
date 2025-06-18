@@ -51,173 +51,173 @@
       <image>https://gitlab.com/garuda-linux/firedragon/settings/-/raw/master/about.png</image>
     </screenshot>
   </screenshots>
-  <content_rating type="oars-1.1" />
+  <content_rating type="oars-1.1"/>
   <releases>
     <release version="v12.0.0-beta.10" date="2025-06-17">
       <url type="details">https://gitlab.com/garuda-linux/firedragon12/builder/-/releases/v12.0.0-beta.10</url>
-      <description />
+      <description/>
     </release>
     <release version="v12.0.0-beta.9" date="2025-06-17">
       <url type="details">https://gitlab.com/garuda-linux/firedragon12/builder/-/releases/v12.0.0-beta.9</url>
-      <description />
+      <description/>
     </release>
     <release version="v12.0.0-beta.8" date="2025-06-10">
       <url type="details">https://gitlab.com/garuda-linux/firedragon12/builder/-/releases/v12.0.0-beta.8</url>
-      <description />
+      <description/>
     </release>
     <release version="v12.0.0-beta.7" date="2025-06-10">
       <url type="details">https://gitlab.com/garuda-linux/firedragon12/builder/-/releases/v12.0.0-beta.7</url>
-      <description />
+      <description/>
     </release>
     <release version="v12.0.0-beta.6" date="2025-06-09">
       <url type="details">https://gitlab.com/garuda-linux/firedragon12/builder/-/releases/v12.0.0-beta.6</url>
-      <description />
+      <description/>
     </release>
     <release version="v12.0.0-beta.5" date="2025-06-08">
       <url type="details">https://gitlab.com/garuda-linux/firedragon12/builder/-/releases/v12.0.0-beta.5</url>
-      <description />
+      <description/>
     </release>
     <release version="v12.0.0-beta.4" date="2025-06-08">
       <url type="details">https://gitlab.com/garuda-linux/firedragon12/builder/-/releases/v12.0.0-beta.4</url>
-      <description />
+      <description/>
     </release>
     <release version="v12.0.0-beta.3" date="2025-06-06">
       <url type="details">https://gitlab.com/garuda-linux/firedragon12/builder/-/releases/v12.0.0-beta.3</url>
-      <description />
+      <description/>
     </release>
     <release version="v12.0.0-beta.2" date="2025-06-05">
       <url type="details">https://gitlab.com/garuda-linux/firedragon12/builder/-/releases/v12.0.0-beta.2</url>
-      <description />
+      <description/>
     </release>
     <release version="v12.0.0-beta.1" date="2025-06-01">
       <url type="details">https://gitlab.com/garuda-linux/firedragon12/builder/-/releases/v12.0.0-beta.1</url>
-      <description />
+      <description/>
     </release>
     <release version="v11.26.2-1" date="2025-05-21">
-      <description />
+      <description/>
     </release>
     <release version="v11.26.1-1" date="2025-05-11">
-      <description />
+      <description/>
     </release>
     <release version="v11.26.0-1" date="2025-04-29">
-      <description />
+      <description/>
     </release>
     <release version="v11.25.0-1" date="2025-03-28">
-      <description />
+      <description/>
     </release>
     <release version="v11.24.0-2" date="2025-03-07">
-      <description />
+      <description/>
     </release>
     <release version="v11.24.0-1" date="2025-03-05">
-      <description />
+      <description/>
     </release>
     <release version="v11.23.1-1" date="2025-02-18">
-      <description />
+      <description/>
     </release>
     <release version="v11.23.0-4" date="2025-02-09">
-      <description />
+      <description/>
     </release>
     <release version="v11.23.0-2" date="2025-02-09">
-      <description />
+      <description/>
     </release>
     <release version="v11.23.0-1" date="2025-02-05">
-      <description />
+      <description/>
     </release>
     <release version="v11.22.0-2" date="2025-01-18">
-      <description />
+      <description/>
     </release>
     <release version="v11.22.0-1" date="2025-01-08">
-      <description />
+      <description/>
     </release>
     <release version="v11.21.0-1" date="2024-11-24">
-      <description />
+      <description/>
     </release>
     <release version="v11.20.0-1" date="2024-10-31">
-      <description />
+      <description/>
     </release>
     <release version="v11.19.1-2" date="2024-10-27">
-      <description />
+      <description/>
     </release>
     <release version="v11.19.1-1" date="2024-10-10">
-      <description />
+      <description/>
     </release>
     <release version="v11.19.0-1" date="2024-10-01">
-      <description />
+      <description/>
     </release>
     <release version="v11.18.1-2" date="2024-09-22">
-      <description />
+      <description/>
     </release>
     <release version="v11.18.1-1" date="2024-09-09">
-      <description />
+      <description/>
     </release>
     <release version="v11.18.0-1" date="2024-09-03">
-      <description />
+      <description/>
     </release>
     <release version="v11.17.8-1" date="2024-08-27">
-      <description />
+      <description/>
     </release>
     <release version="v11.17.7-2" date="2024-08-26">
-      <description />
+      <description/>
     </release>
     <release version="v11.17.7-1" date="2024-08-24">
-      <description />
+      <description/>
     </release>
     <release version="v11.17.6-1" date="2024-08-22">
-      <description />
+      <description/>
     </release>
     <release version="v11.17.5-1" date="2024-08-21">
-      <description />
+      <description/>
     </release>
     <release version="v11.17.4-3" date="2024-08-21">
-      <description />
+      <description/>
     </release>
     <release version="v11.17.4-2" date="2024-08-19">
-      <description />
+      <description/>
     </release>
     <release version="v11.17.4-1" date="2024-08-18">
-      <description />
+      <description/>
     </release>
     <release version="v11.17.3-2" date="2024-08-18">
-      <description />
+      <description/>
     </release>
     <release version="v11.17.3-1" date="2024-08-17">
-      <description />
+      <description/>
     </release>
     <release version="v11.17.1-1" date="2024-08-17">
-      <description />
+      <description/>
     </release>
     <release version="v11.16.0-1" date="2024-08-11">
-      <description />
+      <description/>
     </release>
     <release version="v11.15.0-1" date="2024-07-15">
-      <description />
+      <description/>
     </release>
     <release version="v11.14.1-1" date="2024-06-26">
-      <description />
+      <description/>
     </release>
     <release version="v11.14.0-2" date="2024-06-12">
-      <description />
+      <description/>
     </release>
     <release version="v11.14.0-1" date="2024-06-11">
-      <description />
+      <description/>
     </release>
     <release version="v11.13.3-1" date="2024-05-25">
-      <description />
+      <description/>
     </release>
     <release version="v11.13.2-1" date="2024-05-19">
-      <description />
+      <description/>
     </release>
     <release version="v11.13.1-1" date="2024-05-18">
-      <description />
+      <description/>
     </release>
     <release version="v11.13.0-1" date="2024-05-17">
-      <description />
+      <description/>
     </release>
     <release version="v11.12.2-2" date="2024-05-13">
-      <description />
+      <description/>
     </release>
     <release version="v11.12.2-1" date="2024-05-13">
-      <description />
+      <description/>
     </release>
   </releases>
 </component>
