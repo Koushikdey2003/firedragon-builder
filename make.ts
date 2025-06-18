@@ -3,7 +3,7 @@
 import { access } from 'node:fs/promises';
 import { isAbsolute, resolve } from 'node:path';
 import process from 'node:process';
-import { json2xml } from "npm:xml-js";
+import { js2xml } from "npm:xml-js";
 import packageJson from './package.json' with { type: 'json' };
 
 async function exists(path: string): Promise<boolean> {
@@ -278,7 +278,7 @@ async function createUpdate(config: Config, buildBasename: string, buildDir: str
         },
     };
 
-    await $`echo -e ${json2xml(JSON.stringify(update), { "compact": true, spaces: 4 })} > ${distDir}/${buildBasename}.update.xml`;
+    await $`echo -e ${js2xml(update, { compact: true, spaces: 4 })} > ${distDir}/${buildBasename}.update.xml`;
 }
 
 async function source(config: Config) {
