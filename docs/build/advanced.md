@@ -65,7 +65,25 @@ deno task build --release-build-after
 cd .. # Return to the parent directory
 ```
 
-## Packaging build
+## Installing or packaging finished build
+
+From here you can either install or package the finished build:
+
+### Installing build
+
+To install the build run the following command:
+
+``` shell
+./mach install
+```
+
+If you want to specify a specific `DESTDIR` to install the build into set it as an environment variable:
+
+``` shell
+DESTDIR=/path/to/install/dir ./mach/install
+```
+
+### Packaging build
 
 To package the build run the following command:
 
@@ -74,6 +92,8 @@ To package the build run the following command:
 ```
 
 The result will be in either the `obj-artifact-build-output` or the `obj-artifact-build-output/install/sea` (for Windows installers) directory.
+
+---
 
 ## Further information
 
