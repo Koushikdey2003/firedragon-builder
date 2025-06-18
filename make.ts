@@ -99,7 +99,7 @@ async function prepareSource(config: Config, dir: string): Promise<void> {
     await $`mkdir ${dir}`;
     await $`tar -xf ${runtimeTarball} --strip-components=1 -C ${dir}`;
     await $`rm -d ${dir}/floorp`;
-    await $`rsync -a --delete --exclude=/.dist --exclude=/.git --exclude=/.idea --exclude=/target --exclude=_dist --exclude=node_modules --exclude=*.tar.* ./ ${dir}/${sourcePath}/`;
+    await $`rsync -a --exclude=/.git --filter=':- .gitignore' ./ ${dir}/${sourcePath}/`;
 
     // Copy branding
     await $`cp -r gecko/branding/* ${dir}/browser/branding/`;
