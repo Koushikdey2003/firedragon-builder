@@ -21,6 +21,7 @@ export default defineConfig(({ command }) => ({
   },
   plugins: [
     analog({
+      workspaceRoot: fileURLToPath(new URL('.', import.meta.url)),
       ssr: false,
       static: true,
       prerender: {
