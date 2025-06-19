@@ -1,22 +1,30 @@
 spec:
   inputs:
+    edition:
+      type: array
+      default:
+        - dr460nized
+        - catppuccin
     platform:
-      type: string
-      default: '*'
-      options:
-        - '*'
+      type: array
+      default:
         - linux
         - win32
         - darwin
-      description: 'Only build platform'
     arch:
-      type: string
-      default: '*'
-      options:
-        - '*'
+      type: array
+      default:
         - x64
         - arm64
-      description: 'Only build arch'
+    build:
+      type: boolean
+      default: true
+    appimage:
+      type: boolean
+      default: true
+    build-dev:
+      type: boolean
+      default: true
 
 ---
 
@@ -104,13 +112,11 @@ build:
       artifacts: true
   parallel:
     matrix:
-      - EDITION: [dr640nized, catppuccin]
-        PLATFORM: [linux, darwin, win32]
-        ARCH: [x64, arm64]
+      - EDITION: $[[inputs.edition]]
+        PLATFORM: $[[inputs.platform]]
+        ARCH: $[[inputs.arch]]
   rules:
-    - if: '"$[[inputs.platform]]" == "*" && $[[inputs.arch]] == "*"'
-    - if: '"$[[inputs.platform]]" == $PLATFORM && "$[[inputs.arch]]" == $ARCH'
-    - when: never
+    - if: '"$[[inputs.build]]" == "true"'
   image: $MAKE_IMAGE
   before_script:
     - deno install --allow-scripts --frozen
@@ -129,13 +135,11 @@ appimage:
       artifacts: true
   parallel:
     matrix:
-      - EDITION: [dr640nized, catppuccin]
+      - EDITION: $[[inputs.edition]]
         PLATFORM: linux
-        ARCH: [x64, arm64]
+        ARCH: $[[inputs.arch]]
   rules:
-    - if: '"$[[inputs.platform]]" == "*" && $[[inputs.arch]] == "*"'
-    - if: '"$[[inputs.platform]]" == $PLATFORM && "$[[inputs.arch]]" == $ARCH'
-    - when: never
+    - if: '"$[[inputs.appimage]]" == "true"'
   image: $MAKE_IMAGE
   before_script:
     - deno install --allow-scripts --frozen
@@ -156,13 +160,11 @@ build-dev:
       artifacts: true
   parallel:
     matrix:
-      - EDITION: [dr640nized, catppuccin]
-        PLATFORM: [linux, darwin, win32]
-        ARCH: [x64, arm64]
+      - EDITION: $[[inputs.edition]]
+        PLATFORM: $[[inputs.platform]]
+        ARCH: $[[inputs.arch]]
   rules:
-    - if: '"$[[inputs.platform]]" == "*" && $[[inputs.arch]] == "*"'
-    - if: '"$[[inputs.platform]]" == $PLATFORM && "$[[inputs.arch]]" == $ARCH'
-    - when: never
+    - if: '"$[[inputs.build-dev]]" == "true"'
   image: $MAKE_IMAGE
   before_script:
     - deno install --allow-scripts --frozen
