@@ -8,7 +8,7 @@ export interface TopPage {
   guid: string;
   hostname: string;
   lastVisitDate: number;
-  screenshot: string;
+  favicon: string;
   title: string;
   type: "history" | "bookmark";
   typedBonus: boolean;

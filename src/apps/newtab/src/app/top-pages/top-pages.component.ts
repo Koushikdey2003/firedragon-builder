@@ -57,7 +57,7 @@ export class TopPagesComponent implements OnInit {
           title: page.title.length > 20
             ? `${page.title.slice(0, 20)}...`
             : page.title,
-          screenshot: page.screenshot ||
+          favicon: page.favicon ||
             "chrome://branding/content/about-logo.png",
         };
       })
