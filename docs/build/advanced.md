@@ -4,9 +4,22 @@
 
 This method is most often only required for specific circumstances (e.g. packaging for a distribution). Almost everything can be done using the [simple method](./simple.md) by just [customizing the options for the make task](../make.md).
 
-## Prerequisites
+## Install dependencies
 
-Install [deno](https://docs.deno.com/).
+First, ensure that the following dependencies are installed:
+
+- [Deno](https://deno.com/)
+- msitools *(For windows build only)*
+- Node.js
+- 7-Zip (Ubuntu: p7zip-full) *(For windows build only)*
+- patch
+- Python3 with pip
+- ripgrep
+- rsync
+- rust
+- tar
+- zip *(For windows build only)*
+- zstd
 
 ## Download source
 
