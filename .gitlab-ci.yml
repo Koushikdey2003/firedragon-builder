@@ -120,8 +120,7 @@ appimage:
         PLATFORM: linux
         ARCH: [x64, arm64]
   rules:
-    - if: '"$[[inputs.target]]" && "$[[inputs.target]]" =~ /(^|,)$PLATFORM-$ARCH(,|$)/'
-    - if: '"$[[inputs.target]]"'
+    - if: '"$[[inputs.target]]" != "" && "$[[inputs.target]]" !~ /(^|,)$PLATFORM-$ARCH(,|$)/'
       when: never
   image: $MAKE_IMAGE
   before_script:
@@ -146,6 +145,9 @@ build-dev:
       - EDITION: [dr640nized, catppuccin]
         PLATFORM: [linux, darwin, win32]
         ARCH: [x64, arm64]
+  rules:
+    - if: '"$[[inputs.target]]" != "" && "$[[inputs.target]]" !~ /(^|,)$PLATFORM-$ARCH(,|$)/'
+      when: never
   image: $MAKE_IMAGE
   before_script:
     - deno install --allow-scripts --frozen
