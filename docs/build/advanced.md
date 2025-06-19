@@ -43,22 +43,31 @@ cd .. # Return to the parent directory
 
 ## Setup build config
 
-Create your `mozconfig` file using the `mozconfig` files in `gecko/mozconfigs/` as a base.
-
-Depending on whether you want to skip the next step of bootstrapping the build environment, you have to add the following config:
+Create your `mozconfig` file using the `mozconfig` files in `gecko/mozconfigs/` as a base with the following addition:
 
 ``` shell
-ac_add_options --enable-bootstrap # Enable build environment bootstrapping
-ac_add_options --disable-bootstrap # Disable build environment bootstrapping
+ac_add_options --with-noraneko-dist=firedragon/_dist/noraneko
+```
+
+Depending on whether you want to skip the next step of bootstrapping the build environment, you have to add one of the following configs:
+
+``` shell
+# To enable build environment bootstrapping:
+ac_add_options --enable-bootstrap
+
+# To disable build environment bootstrapping:
+ac_add_options --disable-bootstrap
 ```
 
 ## Bootstrap build environment *(optional)*
 
-This is optional, you can either install all build dependencies manually (might require additional build configuration in the previous step) or have the build system install them for you:
+This is optional, you can either install all build dependencies manually or have the build system install them for you:
 
 ``` shell
 ./mach --no-interactive bootstrap --application-choice browser
 ```
+
+If you want to skip this step, you will likely have to add additional build configuration, as well as manually install required dependencies.
 
 ## Run the actual build
 
@@ -104,7 +113,7 @@ To package the build run the following command:
 ./mach package
 ```
 
-The result will be in either the `obj-artifact-build-output` or the `obj-artifact-build-output/install/sea` (for Windows installers) directory.
+The result will be in either the `obj-artifact-build-output/` or the `obj-artifact-build-output/install/sea/` (for Windows installers) directory.
 
 ---
 
