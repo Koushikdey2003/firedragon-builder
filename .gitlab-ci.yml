@@ -2,16 +2,18 @@ spec:
   inputs:
     platform:
       type: string
-      default: ''
+      default: '*'
       options:
+        - '*'
         - linux
         - win32
         - darwin
       description: 'Only build platform'
     arch:
       type: string
-      default: ''
+      default: '*'
       options:
+        - '*'
         - x64
         - arm64
       description: 'Only build arch'
@@ -106,9 +108,9 @@ build:
         PLATFORM: [linux, darwin, win32]
         ARCH: [x64, arm64]
   rules:
+    - if: '"$[[inputs.platform]]" == "*" && $[[inputs.arch]] == "*"'
     - if: '"$[[inputs.platform]]" == $PLATFORM && "$[[inputs.arch]]" == $ARCH'
-    - if: '"$[[inputs.platform]]"'
-      when: never
+    - when: never
   image: $MAKE_IMAGE
   before_script:
     - deno install --allow-scripts --frozen
@@ -131,9 +133,9 @@ appimage:
         PLATFORM: linux
         ARCH: [x64, arm64]
   rules:
+    - if: '"$[[inputs.platform]]" == "*" && $[[inputs.arch]] == "*"'
     - if: '"$[[inputs.platform]]" == $PLATFORM && "$[[inputs.arch]]" == $ARCH'
-    - if: '"$[[inputs.platform]]"'
-      when: never
+    - when: never
   image: $MAKE_IMAGE
   before_script:
     - deno install --allow-scripts --frozen
@@ -158,9 +160,9 @@ build-dev:
         PLATFORM: [linux, darwin, win32]
         ARCH: [x64, arm64]
   rules:
+    - if: '"$[[inputs.platform]]" == "*" && $[[inputs.arch]] == "*"'
     - if: '"$[[inputs.platform]]" == $PLATFORM && "$[[inputs.arch]]" == $ARCH'
-    - if: '"$[[inputs.platform]]"'
-      when: never
+    - when: never
   image: $MAKE_IMAGE
   before_script:
     - deno install --allow-scripts --frozen
