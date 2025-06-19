@@ -41,19 +41,31 @@ deno install --allow-scripts --frozen
 
 ## Running build
 
-There are two available editions to build:
+There are two available editions to build, which can be selected using the `--edition` option:
 
-- [Dr560nized](#dr460nized) (default)
-- [Catppuccin](#catppuccin)
+- `dr460nized` (default)
+- `catppuccin`
 
-The build is run using the `make` task for more information [click here](../make.md).
+You can also select a specific target to build, if you want to cross-compile, by setting the `--target` option:
 
-### Dr460nized
+- `linux-x64`: Linux x64 (Rust toolchain: `x86_64-unknown-linux-gnu`)
+- `linux-arm64`: Linux ARM64 (Rust toolchain: `aarch64-unknown-linux-gnu`)
+- `win32-x64`: Windows x64 (Rust toolchain: `x86_64-pc-windows-msvc`)
+- `win32-arm64`: Windows ARM64 (Rust toolchain: `aarch64-pc-windows-msvc`)
+- `darwin-x64`: MacOS x64 (Rust toolchain: `x86_64-apple-darwin`)
+- `darwin-arm64`: MacOS ARM64 (Rust toolchain: `aarch64-apple-darwin`)
 
-To build the dr460nized edition run the following command:
+If the `--target` option is omitted it will auto-detect based on your current system.
+Additionally, if you cross-compile, you will have to install the corresponding rust toolchain:
 
 ``` shell
-deno task make --enable-bootstrap --edition=dr460nized build
+rustup toolchain install TOOLCHAIN
+```
+
+Finally, to run the build, you then run the following command with the correct options:
+
+``` shell
+deno task make --enable-bootstrap --edition=EDITION --target=TARGET build
 ```
 
 The output will be in: `.dist/`
