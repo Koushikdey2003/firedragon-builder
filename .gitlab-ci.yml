@@ -1,3 +1,12 @@
+spec:
+  inputs:
+    target:
+      type: string
+      default: ''
+      description: 'Only build specific targets (comma-separated without spaces, available targets: linux-x64, linux-arm64, win32-x64, win32-arm64, darwin-x64, darwin-arm64)'
+
+---
+
 stages:
   - make-image
   - make-image-latest
@@ -85,6 +94,10 @@ build:
       - EDITION: [dr640nized, catppuccin]
         PLATFORM: [linux, darwin, win32]
         ARCH: [x64, arm64]
+  rules:
+    - if: '"$[[input.target]]" && "$[[input.target]]" =~ /(^|,)$PLATFORM-$ARCH(,|$)/'
+    - if: '"$[[input.target]]"'
+      when: never
   image: $MAKE_IMAGE
   before_script:
     - deno install --allow-scripts --frozen
@@ -106,6 +119,10 @@ appimage:
       - EDITION: [dr640nized, catppuccin]
         PLATFORM: linux
         ARCH: [x64, arm64]
+  rules:
+    - if: '"$[[input.target]]" && "$[[input.target]]" =~ /(^|,)$PLATFORM-$ARCH(,|$)/'
+    - if: '"$[[input.target]]"'
+      when: never
   image: $MAKE_IMAGE
   before_script:
     - deno install --allow-scripts --frozen
