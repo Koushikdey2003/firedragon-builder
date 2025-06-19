@@ -2,22 +2,22 @@
 
 ## Install dependencies
 
-First ensure that the following dependencies are installed:
+First, ensure that the following dependencies are installed:
 
 - curl
 - [Deno](https://deno.com/)
-- file
+- file *(For AppImage build only)*
 - git
-- msitools
+- msitools *(For windows build only)*
 - Node.js
-- 7-Zip (Ubuntu: p7zip-full)
+- 7-Zip (Ubuntu: p7zip-full) *(For windows build only)*
 - patch
 - Python3 with pip
 - ripgrep
 - rsync
-- rustup
+- rust *(For cross-compilation, rustup is also needed)*
 - tar
-- zip
+- zip *(For windows build only)*
 - zstd
 
 ## Clone this repository
