@@ -1,5 +1,52 @@
 # FireDragon ChangeLog
 
+## [FireDragon v12.0.0-beta.11](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v12.0.0-beta.11) — 2025-06-19 — [`v12.0.0-beta.10`…`v12.0.0-beta.11`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/compare/v12.0.0-beta.10...v12.0.0-beta.11)
+
+### 🚀 Features
+
+- *(newtab)* Add top pages — [`325ca96a…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/325ca96a0b35dde221498948df29728f6768d32c)
+
+### 🐛 Bug Fixes
+
+- *(newtab)* Set analog workspaceRoot to prevent cluttering root directory — [`46f130b0…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/46f130b030f394439c8f19300158b0590bd969c7)
+- *(newtab)* Use top site "favicon" value instead of "screenshot" — [`a93a11ce…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/a93a11ce02b89cf99ee9fce155c965789d0d78c4)
+
+### 🚜 Refactor
+
+- *(release)* Use xml-js to update metainfo instead of string replace — [`fe996966…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/fe996966c14c34e10c6b57251c3355dc25ce789b)
+- *(make)* Use js2xml instead of json2xml removing the need for JSON.stringify — [`34b43336…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/34b43336d1088b43584adb36b7b318e882c848a4)
+- *(make)* Have rsync use gitignore as filter when copying source — [`fdfb7e08…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/fdfb7e085799e7b1600a087c4cdec9d78132ba6b)
+
+### 📚 Documentation
+
+- Fix advanced build doc — [`49f5ea90…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/49f5ea902e6ed9f6081393692b999db5b960d0b2)
+- Add install instructions to advanced build instructions — [`7f0530c7…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/7f0530c7274db2e9d9d330f45b1a8f96449efee2)
+- Add dependencies to advanced build instructions — [`10c03250…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/10c032503e24b0fde75724d03ad2df5f3f480cad)
+- Expand descriptions around build config and bootstrapping for advanced build — [`79aaf299…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/79aaf29918046773d024d860ab2976230e3cecad)
+- Clarify optional build dependencies for simple method — [`2c4cb13a…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/2c4cb13a5aebde222a9a3d6b15f4724e3457ea70)
+- Add note about using published make image as a build environment for simple method — [`da7b8810…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/da7b8810241c0b6440a880e91960e95a54d13e9b)
+- Add instructions to package AppImage to simple method — [`8353d3fa…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/8353d3faa20a58dc5a90b11bacaba94cc4a17427)
+- Rewrite simple method build instructions to also add the ability to cross-compile — [`35c822e6…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/35c822e6abc70657013bcb1a81eadb4e0189f8b4)
+
+### 🎨 Styling
+
+- *(newtab)* Deno fmt — [`a0f07941…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/a0f0794146eff08a1419992dc4d7f51f8fcd96d1)
+
+### ⚙️ Miscellaneous Tasks
+
+- Reorder downloads — [`74d45297…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/74d45297b068338db6dcd9adccb4726635ff9fe8)
+- Update org.garudalinux.firedragon.metainfo.xml — [`d94ea5fd…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/d94ea5fd3b674231b270399d4a264084fb436104)
+- Rename "ci" image to "make" and publish latest tag on release — [`f3222eda…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/f3222eda5c2d2bc5fc3c95ce466f21297a17dc86)
+- Add ability to only build specific targets [skip ci] — [`53b4bf1a…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/53b4bf1af8f6893a77f07defdecabc81e5d3a252)
+- Fix ability to only build specific targets [skip ci] — [`492cd7c1…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/492cd7c1f81dc60f238f420f9c1f739bc44382ae)
+- Fix ability to only build specific targets [skip ci] — [`3407a10a…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/3407a10abbee182da72a4aaadf2b56cfdb115b4b)
+- Fix ability to only build specific targets [skip ci] — [`44e84a7f…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/44e84a7fa086f8b1b83e805216c1f2a16b00c6d8)
+- Fix ability to only build specific targets — [`e515a6c0…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/e515a6c0884939be02c11cf80ff92888078b8637)
+- Fix ability to only build specific targets — [`ab8588ae…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/ab8588aec9ef3f714754398f8f07bd5aaf2c1c16)
+- Fix ability to only build specific targets — [`e78b9d47…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/e78b9d476cb39b7d1c717b510e2b60e45f252694)
+- Create inputs to control what jobs are run and to limit parallelization matrices — [`02286048…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/022860484578602296321166caf9603cb7864383)
+- Specifically pull make image in make-image-latest job — [`659e349f…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/659e349f79792a09ffb64daf08089af1a00c449e)
+
 ## [FireDragon v12.0.0-beta.10](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v12.0.0-beta.10) — 2025-06-17 — [`v12.0.0-beta.9`…`v12.0.0-beta.10`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/compare/v12.0.0-beta.9...v12.0.0-beta.10)
 
 ### 🐛 Bug Fixes
