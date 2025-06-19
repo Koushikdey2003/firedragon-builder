@@ -1,7 +1,4 @@
-import type {
-  MenuBarItems,
-  ServiceLinks,
-} from "../app/types";
+import type { MenuBarItems, ServiceLinks } from "../app/types";
 import type { AvailableJokeSources } from "../app/jokes/jokes";
 import type { AppTheme } from "../app/theme";
 
@@ -25,6 +22,8 @@ export interface AppSettings {
   languageChanged: boolean;
   logo: string;
   logoUrl: string;
+  topPagesEnabled: boolean;
+  topPagesLimit: number;
   username: string;
   wallpaper: string;
   wallpaperUrl: string;

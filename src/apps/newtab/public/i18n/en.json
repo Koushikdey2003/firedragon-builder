@@ -94,6 +94,8 @@
     "success": "Success",
     "themeLabel": "Design preset",
     "title": "Settings",
+    "topPagesEnabled": "Show top pages",
+    "topPagesLimit": "Amount of top pages to show",
     "url": "URL",
     "wallpaperCustomLabel": "Custom wallpaper URL",
     "wallpaperLabel": "Wallpaper",
