@@ -468,7 +468,7 @@ try {
             await $`mkdir -p ${distDir}`;
         }
 
-        const edition = EDITIONS[(argv['edition'] ?? 'dr640nized') as keyof typeof EDITIONS];
+        const edition = EDITIONS[(argv['edition'] ?? 'dr460nized') as keyof typeof EDITIONS];
         if (!edition) {
             throw `Unsupported edition ${argv['edition']}, must be one of [${Object.keys(EDITIONS).join(', ')}].`;
         }
