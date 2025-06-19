@@ -1,9 +1,9 @@
 /// <reference types="vitest" />
-import { fileURLToPath } from 'node:url';
+import { fileURLToPath } from "node:url";
 import { defineConfig } from "vite";
 import analog from "@analogjs/platform";
 import tailwindcss from "@tailwindcss/vite";
-import { globby } from 'globby';
+import { globby } from "globby";
 import { generateJarManifest } from "../common/scripts/gen_jarmanifest.ts";
 
 // https://vitejs.dev/config/
@@ -21,7 +21,7 @@ export default defineConfig(({ command }) => ({
   },
   plugins: [
     analog({
-      workspaceRoot: fileURLToPath(new URL('.', import.meta.url)),
+      workspaceRoot: fileURLToPath(new URL(".", import.meta.url)),
       ssr: false,
       static: true,
       prerender: {
@@ -34,9 +34,11 @@ export default defineConfig(({ command }) => ({
       async transformIndexHtml() {
         return [
           {
-            tag: 'base',
+            tag: "base",
             attrs: {
-              href: command === 'serve' ? 'http://localhost:5186/' : 'chrome://noraneko-newtab/content/',
+              href: command === "serve"
+                ? "http://localhost:5186/"
+                : "chrome://noraneko-newtab/content/",
             },
           },
         ];
@@ -46,8 +48,13 @@ export default defineConfig(({ command }) => ({
       name: "gen_jarmn",
       enforce: "post",
       async generateBundle(options, bundle, isWrite) {
-        const _bundle: Record<string, {fileName: string}> = { ...bundle };
-        for (const publicFile of await globby('**', { cwd: fileURLToPath(new URL('./public', import.meta.url)), onlyFiles: true })) {
+        const _bundle: Record<string, { fileName: string }> = { ...bundle };
+        for (
+          const publicFile of await globby("**", {
+            cwd: fileURLToPath(new URL("./public", import.meta.url)),
+            onlyFiles: true,
+          })
+        ) {
           _bundle[publicFile] = {
             fileName: publicFile,
           };

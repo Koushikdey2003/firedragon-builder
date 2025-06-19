@@ -26,7 +26,6 @@ import type { SearchEngine, Suggestions } from "./interfaces";
     NgOptimizedImage,
     TranslocoDirective,
     Button,
-    InputText,
     AutoComplete,
   ],
   templateUrl: "./search.component.html",
@@ -35,12 +34,6 @@ import type { SearchEngine, Suggestions } from "./interfaces";
 })
 export class SearchComponent implements OnInit {
   searchEngine = signal<SearchEngine | null>(null);
-  ngOnInit(): void {
-    NRGetDefaultEngine((value) => {
-      this.searchEngine.set(JSON.parse(value))
-    });
-  }
-
   searchTerm = signal<string>("");
   suggestions = signal<any[]>([]);
 
@@ -55,11 +48,18 @@ export class SearchComponent implements OnInit {
     }
   });
 
+  ngOnInit(): void {
+    NRGetDefaultEngine((value) => {
+      this.searchEngine.set(JSON.parse(value));
+    });
+  }
+
   /**
    * Open the search engine URL in a new tab with the search term.
    */
   search() {
-    location.href = this.searchEngine()?.searchUrl + encodeURIComponent(this.searchTerm());
+    location.href = this.searchEngine()?.searchUrl +
+      encodeURIComponent(this.searchTerm());
 
     this.searchTerm.set("");
     this.suggestions.set([]);
@@ -69,7 +69,7 @@ export class SearchComponent implements OnInit {
    * Handle the autocomplete event and update the suggestions.
    * @param $event The autocomplete event.
    */
-   autocomplete($event: AutoCompleteCompleteEvent) {
+  autocomplete($event: AutoCompleteCompleteEvent) {
     const searchEngine = this.searchEngine();
     if (searchEngine) {
       NRGetSuggestions(this.searchTerm(), searchEngine.id, (value) => {

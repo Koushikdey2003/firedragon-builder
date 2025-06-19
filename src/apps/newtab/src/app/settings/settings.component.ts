@@ -10,11 +10,7 @@ import {
 } from "@angular/core";
 import { CommonModule, DOCUMENT } from "@angular/common";
 import type { LogoList, WallpaperList } from "../types";
-import {
-  logos,
-  type Wallpaper,
-  wallpapers,
-} from "../../config";
+import { logos, type Wallpaper, wallpapers } from "../../config";
 import { Checkbox } from "primeng/checkbox";
 import { FormsModule } from "@angular/forms";
 import { Select } from "primeng/select";
@@ -79,6 +75,8 @@ export class SettingsComponent {
   logo = signal<string>("default");
   logoUrl = signal<string>("");
   showNews = signal<boolean>(true);
+  topPagesEnabled = signal<boolean>(true);
+  topPagesLimit = signal<number>(6);
   username = signal<string>("");
   wallpaper = signal<Wallpaper>("");
   wallpaperUrl = signal<string>("");

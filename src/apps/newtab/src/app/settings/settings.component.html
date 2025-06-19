@@ -80,6 +80,17 @@
               t("settings.autoGridCols")
             }}</label>
         </div>
+        <div class="ml-10">
+          <p-checkbox
+            (ngModelChange)='updateConfig("topPagesEnabled", $event)'
+            [(ngModel)]="topPagesEnabled"
+            [binary]="true"
+            id="top-pages-enabled"
+          />
+          <label class="ml-2" for="top-pages-enabled">{{
+              t("settings.topPagesEnabled")
+            }}</label>
+        </div>
       </div>
 
       <div class="mx-auto mt-10 w-3/4 md:ml-10 md:flex">
@@ -278,6 +289,24 @@
               id="grid-cols"
               inputId="grid-cols"
               mode="decimal"
+            />
+          </div>
+        }
+
+        @if (configService.settings().topPagesEnabled) {
+          <div class="flex flex-col gap-2">
+            <label for="top-pages-limit">{{
+                t("settings.topPagesLimit")
+              }}</label>
+            <p-input-number
+              (ngModelChange)='updateConfig("topPagesLimit", $event)'
+              [(ngModel)]="topPagesLimit"
+              [max]="24"
+              [min]="6"
+              id="top-pages-limit"
+              inputId="grid-cols"
+              mode="decimal"
+              showButtons
             />
           </div>
         }

@@ -19,7 +19,6 @@ import {
 } from "../app/theme";
 import { DOCUMENT } from "@angular/common";
 import { TranslocoService } from "@jsverse/transloco";
-import { firstValueFrom } from "rxjs";
 import { rpc } from "../lib/rpc/rpc";
 
 @Injectable({
@@ -39,7 +38,7 @@ export class ConfigService {
     customLinks: serviceLinks,
     customMenuLinks: menubarItems,
     customTitle: "",
-    defaultLinks: true,
+    defaultLinks: false,
     darkMode: true,
     fitWallpaper: true,
     gridCols: 3,
@@ -48,6 +47,8 @@ export class ConfigService {
     languageChanged: false,
     logo: "chrome://branding/content/about-logo.png",
     logoUrl: "",
+    topPagesEnabled: true,
+    topPagesLimit: 6,
     username: "",
     wallpaper: "none",
     wallpaperUrl: "",
