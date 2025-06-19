@@ -64,8 +64,9 @@ make-image-latest:
   script:
     - docker pull $MAKE_IMAGE
     - docker tag $MAKE_IMAGE $CI_REGISTRY_IMAGE/make:latest
+    - docker tag $MAKE_IMAGE $CI_REGISTRY_IMAGE/make:$CI_COMMIT_TAG
     - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
-    - docker push $CI_REGISTRY_IMAGE/make:latest
+    - docker push -a $CI_REGISTRY_IMAGE/make
 
 source:
   stage: source
