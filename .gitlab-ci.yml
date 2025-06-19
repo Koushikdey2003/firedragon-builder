@@ -1,9 +1,20 @@
 spec:
   inputs:
-    target:
+    platform:
       type: string
       default: ''
-      description: 'Only build specific targets (comma-separated without spaces, available targets: linux-x64, linux-arm64, win32-x64, win32-arm64, darwin-x64, darwin-arm64)'
+      options:
+        - linux
+        - win32
+        - darwin
+      description: 'Only build platform'
+    arch:
+      type: string
+      default: ''
+      options:
+        - x64
+        - arm64
+      description: 'Only build arch'
 
 ---
 
@@ -95,17 +106,8 @@ build:
         PLATFORM: [linux, darwin, win32]
         ARCH: [x64, arm64]
   rules:
-    - if: '$[[inputs.target]] != "" && $[[inputs.target]] !~ /(^|,)linux-x64(,|$)/ && $PLATFORM == "linux" && $ARCH == "x64"'
-      when: never
-    - if: '$[[inputs.target]] != "" && $[[inputs.target]] !~ /(^|,)linux-arm64(,|$)/ && $PLATFORM == "linux" && $ARCH == "arm64"'
-      when: never
-    - if: '$[[inputs.target]] != "" && $[[inputs.target]] !~ /(^|,)win32-x64(,|$)/ && $PLATFORM == "win32" && $ARCH == "x64"'
-      when: never
-    - if: '$[[inputs.target]] != "" && $[[inputs.target]] !~ /(^|,)win32-arm64(,|$)/ && $PLATFORM == "win32" && $ARCH == "arm64"'
-      when: never
-    - if: '$[[inputs.target]] != "" && $[[inputs.target]] !~ /(^|,)darwin-x64(,|$)/ && $PLATFORM == "darwin" && $ARCH == "x64"'
-      when: never
-    - if: '$[[inputs.target]] != "" && $[[inputs.target]] !~ /(^|,)darwin-arm64(,|$)/ && $PLATFORM == "darwin" && $ARCH == "arm64"'
+    - if: '"$[[inputs.platform]]" == $PLATFORM && "$[[inputs.arch]]" == $ARCH'
+    - if: '"$[[inputs.platform]]"'
       when: never
   image: $MAKE_IMAGE
   before_script:
@@ -129,9 +131,8 @@ appimage:
         PLATFORM: linux
         ARCH: [x64, arm64]
   rules:
-    - if: '$[[inputs.target]] != "" && $[[inputs.target]] !~ /(^|,)linux-x64(,|$)/ && $PLATFORM == "linux" && $ARCH == "x64"'
-      when: never
-    - if: '$[[inputs.target]] != "" && $[[inputs.target]] !~ /(^|,)linux-arm64(,|$)/ && $PLATFORM == "linux" && $ARCH == "arm64"'
+    - if: '"$[[inputs.platform]]" == $PLATFORM && "$[[inputs.arch]]" == $ARCH'
+    - if: '"$[[inputs.platform]]"'
       when: never
   image: $MAKE_IMAGE
   before_script:
@@ -157,17 +158,8 @@ build-dev:
         PLATFORM: [linux, darwin, win32]
         ARCH: [x64, arm64]
   rules:
-    - if: '$[[inputs.target]] != "" && $[[inputs.target]] !~ /(^|,)linux-x64(,|$)/ && $PLATFORM == "linux" && $ARCH == "x64"'
-      when: never
-    - if: '$[[inputs.target]] != "" && $[[inputs.target]] !~ /(^|,)linux-arm64(,|$)/ && $PLATFORM == "linux" && $ARCH == "arm64"'
-      when: never
-    - if: '$[[inputs.target]] != "" && $[[inputs.target]] !~ /(^|,)win32-x64(,|$)/ && $PLATFORM == "win32" && $ARCH == "x64"'
-      when: never
-    - if: '$[[inputs.target]] != "" && $[[inputs.target]] !~ /(^|,)win32-arm64(,|$)/ && $PLATFORM == "win32" && $ARCH == "arm64"'
-      when: never
-    - if: '$[[inputs.target]] != "" && $[[inputs.target]] !~ /(^|,)darwin-x64(,|$)/ && $PLATFORM == "darwin" && $ARCH == "x64"'
-      when: never
-    - if: '$[[inputs.target]] != "" && $[[inputs.target]] !~ /(^|,)darwin-arm64(,|$)/ && $PLATFORM == "darwin" && $ARCH == "arm64"'
+    - if: '"$[[inputs.platform]]" == $PLATFORM && "$[[inputs.arch]]" == $ARCH'
+    - if: '"$[[inputs.platform]]"'
       when: never
   image: $MAKE_IMAGE
   before_script:
