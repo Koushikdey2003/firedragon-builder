@@ -50,7 +50,7 @@ export class SearchComponent implements OnInit {
 
   ngOnInit(): void {
     NRGetDefaultEngine((value) => {
-      this.searchEngine.set(JSON.parse(value))
+      this.searchEngine.set(JSON.parse(value));
     });
   }
 
@@ -58,7 +58,8 @@ export class SearchComponent implements OnInit {
    * Open the search engine URL in a new tab with the search term.
    */
   search() {
-    location.href = this.searchEngine()?.searchUrl + encodeURIComponent(this.searchTerm());
+    location.href = this.searchEngine()?.searchUrl +
+      encodeURIComponent(this.searchTerm());
 
     this.searchTerm.set("");
     this.suggestions.set([]);
@@ -68,7 +69,7 @@ export class SearchComponent implements OnInit {
    * Handle the autocomplete event and update the suggestions.
    * @param $event The autocomplete event.
    */
-   autocomplete($event: AutoCompleteCompleteEvent) {
+  autocomplete($event: AutoCompleteCompleteEvent) {
     const searchEngine = this.searchEngine();
     if (searchEngine) {
       NRGetSuggestions(this.searchTerm(), searchEngine.id, (value) => {

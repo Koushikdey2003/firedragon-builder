@@ -15,7 +15,7 @@ import { routes } from "./app.routes";
 import { TranslocoHttpLoader } from "./transloco-loader";
 import { provideTransloco, provideTranslocoLoader } from "@jsverse/transloco";
 import { ConfigService } from "../config/config.service";
-import { provideHashLocationStrategy} from "./hash_location_strategy";
+import { provideHashLocationStrategy } from "./hash_location_strategy";
 
 export const appConfig: ApplicationConfig = {
   providers: [

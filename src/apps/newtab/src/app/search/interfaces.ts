@@ -8,18 +8,22 @@ export interface SearchEngine {
 }
 
 export interface SuggestionsSuccess {
-  success: true,
-  suggestions: string[],
+  success: true;
+  suggestions: string[];
 }
 
 export interface SuggestionsError {
-  success: false,
-  error: string,
+  success: false;
+  error: string;
 }
 
 export type Suggestions = SuggestionsSuccess | SuggestionsError;
 
 declare global {
   export function NRGetDefaultEngine(callback: (value: string) => void): void;
-  export function NRGetSuggestions(query: string, engineId: string, callback: (value: string) => void): void;
+  export function NRGetSuggestions(
+    query: string,
+    engineId: string,
+    callback: (value: string) => void,
+  ): void;
 }
