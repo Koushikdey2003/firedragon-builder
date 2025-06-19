@@ -1,5 +1,6 @@
 stages:
-  - ci-image
+  - make-image
+  - make-image-latest
   - source
   - prepare
   - build
@@ -9,24 +10,38 @@ stages:
   - release
 
 variables:
-  CI_IMAGE: $CI_REGISTRY_IMAGE/ci:$CI_PIPELINE_ID
+  MAKE_IMAGE: $CI_REGISTRY_IMAGE/make:ci-$CI_PIPELINE_ID
 
-ci-image:
-  stage: ci-image
+make-image:
+  stage: make-image
   needs: []
   tags:
     - dind
   script:
-    - docker build -f docker/ci.dockerfile -t $CI_IMAGE .
+    - docker build -f docker/make.dockerfile -t $MAKE_IMAGE .
     - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
-    - docker push $CI_IMAGE
+    - docker push $MAKE_IMAGE
+
+make-image-latest:
+  stage: make-image-latest
+  needs:
+    - job: make-image
+      artifacts: false
+  tags:
+    - dind
+  rules:
+    - if: $CI_COMMIT_TAG
+  script:
+    - docker tag $MAKE_IMAGE $CI_REGISTRY_IMAGE/make:latest
+    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+    - docker push $CI_REGISTRY_IMAGE/make:latest
 
 source:
   stage: source
   needs:
-    - job: ci-image
+    - job: make-image
       artifacts: false
-  image: $CI_IMAGE
+  image: $MAKE_IMAGE
   before_script:
     - deno install --allow-scripts --frozen
   script:
@@ -38,9 +53,9 @@ source:
 prepare:
   stage: prepare
   needs:
-    - job: ci-image
+    - job: make-image
       artifacts: false
-  image: $CI_IMAGE
+  image: $MAKE_IMAGE
   before_script:
     - deno install --allow-scripts --frozen
   script:
@@ -59,7 +74,7 @@ prepare:
 build:
   stage: build
   needs:
-    - job: ci-image
+    - job: make-image
       artifacts: false
     - job: source
       artifacts: true
@@ -70,7 +85,7 @@ build:
       - EDITION: [dr640nized, catppuccin]
         PLATFORM: [linux, darwin, win32]
         ARCH: [x64, arm64]
-  image: $CI_IMAGE
+  image: $MAKE_IMAGE
   before_script:
     - deno install --allow-scripts --frozen
   script:
@@ -82,7 +97,7 @@ build:
 appimage:
   stage: appimage
   needs:
-    - job: ci-image
+    - job: make-image
       artifacts: false
     - job: build
       artifacts: true
@@ -91,7 +106,7 @@ appimage:
       - EDITION: [dr640nized, catppuccin]
         PLATFORM: linux
         ARCH: [x64, arm64]
-  image: $CI_IMAGE
+  image: $MAKE_IMAGE
   before_script:
     - deno install --allow-scripts --frozen
   script:
@@ -103,7 +118,7 @@ appimage:
 build-dev:
   stage: build-dev
   needs:
-    - job: ci-image
+    - job: make-image
       artifacts: false
     - job: source
       artifacts: true
@@ -114,7 +129,7 @@ build-dev:
       - EDITION: [dr640nized, catppuccin]
         PLATFORM: [linux, darwin, win32]
         ARCH: [x64, arm64]
-  image: $CI_IMAGE
+  image: $MAKE_IMAGE
   before_script:
     - deno install --allow-scripts --frozen
   script:
