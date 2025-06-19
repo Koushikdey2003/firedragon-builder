@@ -58,12 +58,12 @@ deno task make --enable-bootstrap --edition=dr460nized build
 
 The output will be in: `.dist/`
 
-### Catppuccin
+## Package AppImage *(optional, only available on linux)*
 
-To build the catppuccin edition run the following command:
+To package the finished build as an AppImage, run the following command:
 
 ``` shell
-deno task make --enable-bootstrap --edition=catppuccin build
+deno task make appimage
 ```
 
-The output will be in: `.dist/`
+The output will also be in `.dist/`
