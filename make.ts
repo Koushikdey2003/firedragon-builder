@@ -386,7 +386,7 @@ const APP_BASENAME = 'FireDragon';
 const REPO_URL = 'https://gitlab.com/garuda-linux/firedragon/firedragon12';
 const SOURCE_PATH = 'firedragon';
 const EDITIONS = {
-    dr640nized: {
+    dr460nized: {
         mozconfig: `${SOURCE_PATH}/gecko/mozconfigs/edition/firedragon-dr460nized.mozconfig`,
         branding: 'firedragon',
         basename: APP_NAME,
