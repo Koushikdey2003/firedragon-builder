@@ -18,10 +18,10 @@ async function updateMetainfo(file: string) {
         url: {
             _attributes: {
                 type: 'details',
-                _text: `https://gitlab.com/garuda-linux/firedragon12/builder/-/releases/${version}`,
             },
-            description: {},
+            _text: `https://gitlab.com/garuda-linux/firedragon12/builder/-/releases/${version}`,
         },
+        description: {},
     });
     await writeFile(file, js2xml(metainfo, { compact: true, spaces: 2 }), 'utf-8');
 }
