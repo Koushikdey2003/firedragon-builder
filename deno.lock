@@ -4,12 +4,12 @@
     "jsr:@std/encoding@^1.0.7": "1.0.10",
     "jsr:@std/fs@^1.0.11": "1.0.17",
     "jsr:@std/path@^1.0.9": "1.0.9",
-    "npm:@analogjs/content@^1.17.1": "1.17.1_@angular+common@19.2.14__@angular+core@19.2.14___rxjs@7.8.2___zone.js@0.15.1__rxjs@7.8.2_@angular+core@19.2.14__rxjs@7.8.2__zone.js@0.15.1_@angular+platform-browser@19.2.14__@angular+animations@19.2.14___@angular+common@19.2.14____@angular+core@19.2.14_____rxjs@7.8.2_____zone.js@0.15.1____rxjs@7.8.2___@angular+core@19.2.14____rxjs@7.8.2____zone.js@0.15.1___rxjs@7.8.2__@angular+common@19.2.14___@angular+core@19.2.14____rxjs@7.8.2____zone.js@0.15.1___rxjs@7.8.2__@angular+core@19.2.14___rxjs@7.8.2___zone.js@0.15.1__rxjs@7.8.2_@angular+router@19.2.14__@angular+common@19.2.14___@angular+core@19.2.14____rxjs@7.8.2____zone.js@0.15.1___rxjs@7.8.2__@angular+core@19.2.14___rxjs@7.8.2___zone.js@0.15.1__@angular+platform-browser@19.2.14___@angular+animations@19.2.14____@angular+common@19.2.14_____@angular+core@19.2.14______rxjs@7.8.2______zone.js@0.15.1_____rxjs@7.8.2____@angular+core@19.2.14_____rxjs@7.8.2_____zone.js@0.15.1____rxjs@7.8.2___@angular+common@19.2.14____@angular+core@19.2.14_____rxjs@7.8.2_____zone.js@0.15.1____rxjs@7.8.2___@angular+core@19.2.14____rxjs@7.8.2____zone.js@0.15.1___rxjs@7.8.2__rxjs@7.8.2__@angular+animations@19.2.14___@angular+common@19.2.14____@angular+core@19.2.14_____rxjs@7.8.2_____zone.js@0.15.1____rxjs@7.8.2___@angular+core@19.2.14____rxjs@7.8.2____zone.js@0.15.1___rxjs@7.8.2_@nx+devkit@21.1.3__nx@21.1.3___@swc-node+register@1.10.10____@swc+core@1.3.96_____@swc+helpers@0.5.17____typescript@5.8.3___@swc+core@1.3.96____@swc+helpers@0.5.17___typescript@5.8.3__@swc-node+register@1.10.10___@swc+core@1.3.96____@swc+helpers@0.5.17___typescript@5.8.3__@swc+core@1.3.96___@swc+helpers@0.5.17__typescript@5.8.3_front-matter@4.0.2_marked@15.0.12_marked-gfm-heading-id@4.1.1__marked@15.0.12_marked-highlight@2.2.1__marked@15.0.12_marked-mangle@1.1.10__marked@15.0.12_prismjs@1.30.0_rxjs@7.8.2_@angular+animations@19.2.14__@angular+common@19.2.14___@angular+core@19.2.14____rxjs@7.8.2____zone.js@0.15.1___rxjs@7.8.2__@angular+core@19.2.14___rxjs@7.8.2___zone.js@0.15.1__rxjs@7.8.2_@swc-node+register@1.10.10__@swc+core@1.3.96___@swc+helpers@0.5.17__typescript@5.8.3_@swc+core@1.3.96__@swc+helpers@0.5.17_typescript@5.8.3",
-    "npm:@analogjs/platform@^1.17.1": "1.17.1_@nx+angular@21.1.3__@angular-devkit+build-angular@19.2.14___@angular+compiler-cli@19.2.14____@angular+compiler@19.2.14____typescript@5.8.3___karma@6.4.4___tailwindcss@4.1.8___typescript@5.8.3___webpack@5.98.0___webpack-dev-server@5.2.0____webpack@5.98.0____@types+express@4.17.23___chokidar@4.0.3___@angular+compiler@19.2.14___less@4.2.2___postcss@8.5.2___@babel+core@7.26.10___vite@6.0.11____@types+node@22.15.30____lightningcss@1.30.1____less@4.2.2____sass@1.85.0____terser@5.39.0___sass@1.85.0___@types+node@22.15.30___lightningcss@1.30.1___terser@5.39.0__@angular-devkit+core@19.2.14___chokidar@4.0.3___ajv@8.17.1__@angular-devkit+schematics@19.2.14___chokidar@4.0.3__@schematics+angular@19.2.14___chokidar@4.0.3__rxjs@7.8.2__karma@6.4.4__tailwindcss@4.1.8__typescript@5.8.3__chokidar@4.0.3__@angular+compiler@19.2.14__vite@6.0.11___@types+node@22.15.30___lightningcss@1.30.1___less@4.2.2___sass@1.85.0___terser@5.39.0__@swc-node+register@1.10.10___@swc+core@1.3.96____@swc+helpers@0.5.17___typescript@5.8.3__@swc+core@1.3.96___@swc+helpers@0.5.17__react@19.1.0__react-dom@19.1.0___react@19.1.0__react-refresh@0.16.0__@types+node@22.15.30__lightningcss@1.30.1_@nx+devkit@21.1.3__nx@21.1.3___@swc-node+register@1.10.10____@swc+core@1.3.96_____@swc+helpers@0.5.17____typescript@5.8.3___@swc+core@1.3.96____@swc+helpers@0.5.17___typescript@5.8.3__@swc-node+register@1.10.10___@swc+core@1.3.96____@swc+helpers@0.5.17___typescript@5.8.3__@swc+core@1.3.96___@swc+helpers@0.5.17__typescript@5.8.3_@nx+vite@21.1.3__vite@6.0.11___@types+node@22.15.30___lightningcss@1.30.1___less@4.2.2___sass@1.85.0___terser@5.39.0__vitest@3.2.2___@types+node@22.15.30___jsdom@22.1.0___vite@6.3.5____@types+node@22.15.30____lightningcss@1.30.1____picomatch@4.0.2___lightningcss@1.30.1__typescript@5.8.3__@types+node@22.15.30__lightningcss@1.30.1__jsdom@22.1.0__@swc-node+register@1.10.10___@swc+core@1.3.96____@swc+helpers@0.5.17___typescript@5.8.3__@swc+core@1.3.96___@swc+helpers@0.5.17__@swc+helpers@0.5.17_marked@15.0.12_marked-gfm-heading-id@4.1.1__marked@15.0.12_marked-mangle@1.1.10__marked@15.0.12_@angular+build@19.2.14__@angular+compiler@19.2.14__@angular+compiler-cli@19.2.14__karma@6.4.4__postcss@8.5.4__tailwindcss@4.1.8__typescript@5.8.3__@babel+core@7.26.10__@types+node@22.15.30__vite@6.2.7___@types+node@22.15.30___lightningcss@1.30.1___sass@1.85.0__lightningcss@1.30.1__sass@1.85.0__chokidar@4.0.3__less@4.2.2_rxjs@7.8.2_vite@6.0.11__@types+node@22.15.30__lightningcss@1.30.1__less@4.2.2__sass@1.85.0__terser@5.39.0_vitest@3.2.2__@types+node@22.15.30__jsdom@22.1.0__vite@6.3.5___@types+node@22.15.30___lightningcss@1.30.1___picomatch@4.0.2__lightningcss@1.30.1_@angular+compiler@19.2.14_karma@6.4.4_postcss@8.5.4_tailwindcss@4.1.8_typescript@5.8.3_chokidar@4.0.3_@swc-node+register@1.10.10__@swc+core@1.3.96___@swc+helpers@0.5.17__typescript@5.8.3_@swc+core@1.3.96__@swc+helpers@0.5.17_@types+node@22.15.30_lightningcss@1.30.1_jsdom@22.1.0_rolldown@1.0.0-beta.3__valibot@1.0.0-beta.12___typescript@5.8.3__typescript@5.8.3_react@19.1.0_react-dom@19.1.0__react@19.1.0_react-refresh@0.16.0",
-    "npm:@analogjs/vite-plugin-angular@^1.17.1": "1.17.1_@angular+build@19.2.14__@angular+compiler@19.2.14__@angular+compiler-cli@19.2.14__karma@6.4.4__postcss@8.5.4__tailwindcss@4.1.8__typescript@5.8.3__@babel+core@7.26.10__@types+node@22.15.30__vite@6.2.7___@types+node@22.15.30___lightningcss@1.30.1___sass@1.85.0__lightningcss@1.30.1__sass@1.85.0__chokidar@4.0.3__less@4.2.2_@angular+compiler@19.2.14_karma@6.4.4_postcss@8.5.4_tailwindcss@4.1.8_typescript@5.8.3_@types+node@22.15.30_lightningcss@1.30.1_chokidar@4.0.3",
-    "npm:@analogjs/vitest-angular@^1.17.1": "1.17.1_@analogjs+vite-plugin-angular@1.17.1__@angular+build@19.2.14___@angular+compiler@19.2.14___@angular+compiler-cli@19.2.14___karma@6.4.4___postcss@8.5.4___tailwindcss@4.1.8___typescript@5.8.3___@babel+core@7.26.10___@types+node@22.15.30___vite@6.2.7____@types+node@22.15.30____lightningcss@1.30.1____sass@1.85.0___lightningcss@1.30.1___sass@1.85.0___chokidar@4.0.3___less@4.2.2__@angular+compiler@19.2.14__karma@6.4.4__postcss@8.5.4__tailwindcss@4.1.8__typescript@5.8.3__@types+node@22.15.30__lightningcss@1.30.1__chokidar@4.0.3_@angular-devkit+architect@0.2000.1__chokidar@4.0.3_vitest@3.2.2__@types+node@22.15.30__jsdom@22.1.0__vite@6.3.5___@types+node@22.15.30___lightningcss@1.30.1___picomatch@4.0.2__lightningcss@1.30.1_@angular+build@19.2.14__@angular+compiler@19.2.14__@angular+compiler-cli@19.2.14__karma@6.4.4__postcss@8.5.4__tailwindcss@4.1.8__typescript@5.8.3__@babel+core@7.26.10__@types+node@22.15.30__vite@6.2.7___@types+node@22.15.30___lightningcss@1.30.1___sass@1.85.0__lightningcss@1.30.1__sass@1.85.0__chokidar@4.0.3__less@4.2.2_@types+node@22.15.30_jsdom@22.1.0_@angular+compiler@19.2.14_karma@6.4.4_postcss@8.5.4_tailwindcss@4.1.8_typescript@5.8.3_chokidar@4.0.3_lightningcss@1.30.1",
+    "npm:@analogjs/content@^1.17.1": "1.17.1_@angular+common@19.2.14__@angular+core@19.2.14___rxjs@7.8.2___zone.js@0.15.1__rxjs@7.8.2_@angular+core@19.2.14__rxjs@7.8.2__zone.js@0.15.1_@angular+platform-browser@19.2.14__@angular+animations@19.2.14___@angular+common@19.2.14____@angular+core@19.2.14_____rxjs@7.8.2_____zone.js@0.15.1____rxjs@7.8.2___@angular+core@19.2.14____rxjs@7.8.2____zone.js@0.15.1___rxjs@7.8.2__@angular+common@19.2.14___@angular+core@19.2.14____rxjs@7.8.2____zone.js@0.15.1___rxjs@7.8.2__@angular+core@19.2.14___rxjs@7.8.2___zone.js@0.15.1__rxjs@7.8.2_@angular+router@19.2.14__@angular+common@19.2.14___@angular+core@19.2.14____rxjs@7.8.2____zone.js@0.15.1___rxjs@7.8.2__@angular+core@19.2.14___rxjs@7.8.2___zone.js@0.15.1__@angular+platform-browser@19.2.14___@angular+animations@19.2.14____@angular+common@19.2.14_____@angular+core@19.2.14______rxjs@7.8.2______zone.js@0.15.1_____rxjs@7.8.2____@angular+core@19.2.14_____rxjs@7.8.2_____zone.js@0.15.1____rxjs@7.8.2___@angular+common@19.2.14____@angular+core@19.2.14_____rxjs@7.8.2_____zone.js@0.15.1____rxjs@7.8.2___@angular+core@19.2.14____rxjs@7.8.2____zone.js@0.15.1___rxjs@7.8.2__rxjs@7.8.2__@angular+animations@19.2.14___@angular+common@19.2.14____@angular+core@19.2.14_____rxjs@7.8.2_____zone.js@0.15.1____rxjs@7.8.2___@angular+core@19.2.14____rxjs@7.8.2____zone.js@0.15.1___rxjs@7.8.2_@nx+devkit@21.1.3__nx@21.1.3___@swc+core@1.3.96____@swc+helpers@0.5.17__@swc+core@1.3.96___@swc+helpers@0.5.17_front-matter@4.0.2_marked@15.0.12_marked-gfm-heading-id@4.1.1__marked@15.0.12_marked-highlight@2.2.1__marked@15.0.12_marked-mangle@1.1.10__marked@15.0.12_prismjs@1.30.0_rxjs@7.8.2_@angular+animations@19.2.14__@angular+common@19.2.14___@angular+core@19.2.14____rxjs@7.8.2____zone.js@0.15.1___rxjs@7.8.2__@angular+core@19.2.14___rxjs@7.8.2___zone.js@0.15.1__rxjs@7.8.2_@swc+core@1.3.96__@swc+helpers@0.5.17_@swc-node+register@1.10.10__@swc+core@1.3.96___@swc+helpers@0.5.17__typescript@5.8.3_typescript@5.8.3",
+    "npm:@analogjs/platform@^1.17.1": "1.17.1_@nx+angular@21.1.3__@angular-devkit+build-angular@19.2.14___@angular+compiler-cli@19.2.14____@angular+compiler@19.2.14____typescript@5.8.3___karma@6.4.4___tailwindcss@4.1.8___typescript@5.8.3___webpack@5.98.0___webpack-dev-server@5.2.0____webpack@5.98.0____@types+express@4.17.23___@angular+compiler@19.2.14___less@4.2.2___postcss@8.5.2___@babel+core@7.26.10___vite@6.0.11____@types+node@22.15.30____lightningcss@1.30.1____less@4.2.2____sass@1.85.0____terser@5.39.0___sass@1.85.0___@types+node@22.15.30___lightningcss@1.30.1___terser@5.39.0__@angular-devkit+core@19.2.14___ajv@8.17.1__@angular-devkit+schematics@19.2.14__@schematics+angular@19.2.14__rxjs@7.8.2__karma@6.4.4__tailwindcss@4.1.8__typescript@5.8.3__@angular+compiler@19.2.14__vite@6.0.11___@types+node@22.15.30___lightningcss@1.30.1___less@4.2.2___sass@1.85.0___terser@5.39.0__@swc+core@1.3.96___@swc+helpers@0.5.17__react@19.1.0__react-dom@19.1.0___react@19.1.0__react-refresh@0.16.0__@types+node@22.15.30__lightningcss@1.30.1_@nx+devkit@21.1.3__nx@21.1.3___@swc+core@1.3.96____@swc+helpers@0.5.17__@swc+core@1.3.96___@swc+helpers@0.5.17_@nx+vite@21.1.3__vite@6.0.11___@types+node@22.15.30___lightningcss@1.30.1___less@4.2.2___sass@1.85.0___terser@5.39.0__vitest@3.2.2___@types+node@22.15.30___jsdom@22.1.0___vite@6.3.5____@types+node@22.15.30____lightningcss@1.30.1____picomatch@4.0.2___lightningcss@1.30.1__typescript@5.8.3__@types+node@22.15.30__lightningcss@1.30.1__jsdom@22.1.0__@swc+core@1.3.96___@swc+helpers@0.5.17__@swc+helpers@0.5.17_marked@15.0.12_marked-gfm-heading-id@4.1.1__marked@15.0.12_marked-mangle@1.1.10__marked@15.0.12_@angular+build@19.2.14__@angular+compiler@19.2.14__@angular+compiler-cli@19.2.14__karma@6.4.4__postcss@8.5.4__tailwindcss@4.1.8__typescript@5.8.3__@babel+core@7.26.10__@types+node@22.15.30__vite@6.2.7___@types+node@22.15.30___lightningcss@1.30.1___sass@1.85.0__lightningcss@1.30.1__sass@1.85.0__less@4.2.2_rxjs@7.8.2_vite@6.0.11__@types+node@22.15.30__lightningcss@1.30.1__less@4.2.2__sass@1.85.0__terser@5.39.0_vitest@3.2.2__@types+node@22.15.30__jsdom@22.1.0__vite@6.3.5___@types+node@22.15.30___lightningcss@1.30.1___picomatch@4.0.2__lightningcss@1.30.1_@angular+compiler@19.2.14_karma@6.4.4_postcss@8.5.4_tailwindcss@4.1.8_typescript@5.8.3_@swc+core@1.3.96__@swc+helpers@0.5.17_@types+node@22.15.30_lightningcss@1.30.1_jsdom@22.1.0_rolldown@1.0.0-beta.3__valibot@1.0.0-beta.12___typescript@5.8.3__typescript@5.8.3_react@19.1.0_react-dom@19.1.0__react@19.1.0_react-refresh@0.16.0_chokidar@4.0.3_@swc-node+register@1.10.10__@swc+core@1.3.96___@swc+helpers@0.5.17__typescript@5.8.3",
+    "npm:@analogjs/vite-plugin-angular@^1.17.1": "1.17.1_@angular+build@19.2.14__@angular+compiler@19.2.14__@angular+compiler-cli@19.2.14__karma@6.4.4__postcss@8.5.4__tailwindcss@4.1.8__typescript@5.8.3__@babel+core@7.26.10__@types+node@22.15.30__vite@6.2.7___@types+node@22.15.30___lightningcss@1.30.1___sass@1.85.0__lightningcss@1.30.1__sass@1.85.0__less@4.2.2_@angular+compiler@19.2.14_karma@6.4.4_postcss@8.5.4_tailwindcss@4.1.8_typescript@5.8.3_@types+node@22.15.30_lightningcss@1.30.1_chokidar@4.0.3",
+    "npm:@analogjs/vitest-angular@^1.17.1": "1.17.1_@analogjs+vite-plugin-angular@1.17.1__@angular+build@19.2.14___@angular+compiler@19.2.14___@angular+compiler-cli@19.2.14___karma@6.4.4___postcss@8.5.4___tailwindcss@4.1.8___typescript@5.8.3___@babel+core@7.26.10___@types+node@22.15.30___vite@6.2.7____@types+node@22.15.30____lightningcss@1.30.1____sass@1.85.0___lightningcss@1.30.1___sass@1.85.0___less@4.2.2__@angular+compiler@19.2.14__karma@6.4.4__postcss@8.5.4__tailwindcss@4.1.8__typescript@5.8.3__@types+node@22.15.30__lightningcss@1.30.1_@angular-devkit+architect@0.2000.1_vitest@3.2.2__@types+node@22.15.30__jsdom@22.1.0__vite@6.3.5___@types+node@22.15.30___lightningcss@1.30.1___picomatch@4.0.2__lightningcss@1.30.1_@angular+build@19.2.14__@angular+compiler@19.2.14__@angular+compiler-cli@19.2.14__karma@6.4.4__postcss@8.5.4__tailwindcss@4.1.8__typescript@5.8.3__@babel+core@7.26.10__@types+node@22.15.30__vite@6.2.7___@types+node@22.15.30___lightningcss@1.30.1___sass@1.85.0__lightningcss@1.30.1__sass@1.85.0__less@4.2.2_@types+node@22.15.30_jsdom@22.1.0_@angular+compiler@19.2.14_karma@6.4.4_postcss@8.5.4_tailwindcss@4.1.8_typescript@5.8.3_lightningcss@1.30.1_chokidar@4.0.3",
     "npm:@angular/animations@^19.2.13": "19.2.14_@angular+common@19.2.14__@angular+core@19.2.14___rxjs@7.8.2___zone.js@0.15.1__rxjs@7.8.2_@angular+core@19.2.14__rxjs@7.8.2__zone.js@0.15.1_rxjs@7.8.2",
-    "npm:@angular/build@19": "19.2.14_@angular+compiler@19.2.14_@angular+compiler-cli@19.2.14_karma@6.4.4_postcss@8.5.4_tailwindcss@4.1.8_typescript@5.8.3_@babel+core@7.26.10_@types+node@22.15.30_vite@6.2.7__@types+node@22.15.30__lightningcss@1.30.1__sass@1.85.0_lightningcss@1.30.1_sass@1.85.0_chokidar@4.0.3_less@4.2.2",
+    "npm:@angular/build@19": "19.2.14_@angular+compiler@19.2.14_@angular+compiler-cli@19.2.14_karma@6.4.4_postcss@8.5.4_tailwindcss@4.1.8_typescript@5.8.3_@babel+core@7.26.10_@types+node@22.15.30_vite@6.2.7__@types+node@22.15.30__lightningcss@1.30.1__sass@1.85.0_lightningcss@1.30.1_sass@1.85.0_less@4.2.2_chokidar@4.0.3",
     "npm:@angular/cdk@^19.2.17": "19.2.18_@angular+common@19.2.14__@angular+core@19.2.14___rxjs@7.8.2___zone.js@0.15.1__rxjs@7.8.2_@angular+core@19.2.14__rxjs@7.8.2__zone.js@0.15.1_rxjs@7.8.2",
     "npm:@angular/common@^19.2.13": "19.2.14_@angular+core@19.2.14__rxjs@7.8.2__zone.js@0.15.1_rxjs@7.8.2",
     "npm:@angular/compiler@^19.2.13": "19.2.14",
@@ -193,14 +193,14 @@
         "@jridgewell/trace-mapping"
       ]
     },
-    "@analogjs/content@1.17.1_@angular+common@19.2.14__@angular+core@19.2.14___rxjs@7.8.2___zone.js@0.15.1__rxjs@7.8.2_@angular+core@19.2.14__rxjs@7.8.2__zone.js@0.15.1_@angular+platform-browser@19.2.14__@angular+animations@19.2.14___@angular+common@19.2.14____@angular+core@19.2.14_____rxjs@7.8.2_____zone.js@0.15.1____rxjs@7.8.2___@angular+core@19.2.14____rxjs@7.8.2____zone.js@0.15.1___rxjs@7.8.2__@angular+common@19.2.14___@angular+core@19.2.14____rxjs@7.8.2____zone.js@0.15.1___rxjs@7.8.2__@angular+core@19.2.14___rxjs@7.8.2___zone.js@0.15.1__rxjs@7.8.2_@angular+router@19.2.14__@angular+common@19.2.14___@angular+core@19.2.14____rxjs@7.8.2____zone.js@0.15.1___rxjs@7.8.2__@angular+core@19.2.14___rxjs@7.8.2___zone.js@0.15.1__@angular+platform-browser@19.2.14___@angular+animations@19.2.14____@angular+common@19.2.14_____@angular+core@19.2.14______rxjs@7.8.2______zone.js@0.15.1_____rxjs@7.8.2____@angular+core@19.2.14_____rxjs@7.8.2_____zone.js@0.15.1____rxjs@7.8.2___@angular+common@19.2.14____@angular+core@19.2.14_____rxjs@7.8.2_____zone.js@0.15.1____rxjs@7.8.2___@angular+core@19.2.14____rxjs@7.8.2____zone.js@0.15.1___rxjs@7.8.2__rxjs@7.8.2__@angular+animations@19.2.14___@angular+common@19.2.14____@angular+core@19.2.14_____rxjs@7.8.2_____zone.js@0.15.1____rxjs@7.8.2___@angular+core@19.2.14____rxjs@7.8.2____zone.js@0.15.1___rxjs@7.8.2_@nx+devkit@21.1.3__nx@21.1.3___@swc-node+register@1.10.10____@swc+core@1.3.96_____@swc+helpers@0.5.17____typescript@5.8.3___@swc+core@1.3.96____@swc+helpers@0.5.17___typescript@5.8.3__@swc-node+register@1.10.10___@swc+core@1.3.96____@swc+helpers@0.5.17___typescript@5.8.3__@swc+core@1.3.96___@swc+helpers@0.5.17__typescript@5.8.3_front-matter@4.0.2_marked@15.0.12_marked-gfm-heading-id@4.1.1__marked@15.0.12_marked-highlight@2.2.1__marked@15.0.12_marked-mangle@1.1.10__marked@15.0.12_prismjs@1.30.0_rxjs@7.8.2_@angular+animations@19.2.14__@angular+common@19.2.14___@angular+core@19.2.14____rxjs@7.8.2____zone.js@0.15.1___rxjs@7.8.2__@angular+core@19.2.14___rxjs@7.8.2___zone.js@0.15.1__rxjs@7.8.2_@swc-node+register@1.10.10__@swc+core@1.3.96___@swc+helpers@0.5.17__typescript@5.8.3_@swc+core@1.3.96__@swc+helpers@0.5.17_typescript@5.8.3": {
+    "@analogjs/content@1.17.1_@angular+common@19.2.14__@angular+core@19.2.14___rxjs@7.8.2___zone.js@0.15.1__rxjs@7.8.2_@angular+core@19.2.14__rxjs@7.8.2__zone.js@0.15.1_@angular+platform-browser@19.2.14__@angular+animations@19.2.14___@angular+common@19.2.14____@angular+core@19.2.14_____rxjs@7.8.2_____zone.js@0.15.1____rxjs@7.8.2___@angular+core@19.2.14____rxjs@7.8.2____zone.js@0.15.1___rxjs@7.8.2__@angular+common@19.2.14___@angular+core@19.2.14____rxjs@7.8.2____zone.js@0.15.1___rxjs@7.8.2__@angular+core@19.2.14___rxjs@7.8.2___zone.js@0.15.1__rxjs@7.8.2_@angular+router@19.2.14__@angular+common@19.2.14___@angular+core@19.2.14____rxjs@7.8.2____zone.js@0.15.1___rxjs@7.8.2__@angular+core@19.2.14___rxjs@7.8.2___zone.js@0.15.1__@angular+platform-browser@19.2.14___@angular+animations@19.2.14____@angular+common@19.2.14_____@angular+core@19.2.14______rxjs@7.8.2______zone.js@0.15.1_____rxjs@7.8.2____@angular+core@19.2.14_____rxjs@7.8.2_____zone.js@0.15.1____rxjs@7.8.2___@angular+common@19.2.14____@angular+core@19.2.14_____rxjs@7.8.2_____zone.js@0.15.1____rxjs@7.8.2___@angular+core@19.2.14____rxjs@7.8.2____zone.js@0.15.1___rxjs@7.8.2__rxjs@7.8.2__@angular+animations@19.2.14___@angular+common@19.2.14____@angular+core@19.2.14_____rxjs@7.8.2_____zone.js@0.15.1____rxjs@7.8.2___@angular+core@19.2.14____rxjs@7.8.2____zone.js@0.15.1___rxjs@7.8.2_@nx+devkit@21.1.3__nx@21.1.3___@swc+core@1.3.96____@swc+helpers@0.5.17__@swc+core@1.3.96___@swc+helpers@0.5.17_front-matter@4.0.2_marked@15.0.12_marked-gfm-heading-id@4.1.1__marked@15.0.12_marked-highlight@2.2.1__marked@15.0.12_marked-mangle@1.1.10__marked@15.0.12_prismjs@1.30.0_rxjs@7.8.2_@angular+animations@19.2.14__@angular+common@19.2.14___@angular+core@19.2.14____rxjs@7.8.2____zone.js@0.15.1___rxjs@7.8.2__@angular+core@19.2.14___rxjs@7.8.2___zone.js@0.15.1__rxjs@7.8.2_@swc+core@1.3.96__@swc+helpers@0.5.17": {
       "integrity": "sha512-ocC6lfMNyYMz6pAFuXgxiB4cT+OMeCpA4F33R2gfEPoEyzum/q3VnadbjSQn1jGtoxnrlT3OaToA8vUuGXieqg==",
       "dependencies": [
         "@angular/common@19.2.14_@angular+core@19.2.14__rxjs@7.8.2__zone.js@0.15.1_rxjs@7.8.2",
         "@angular/core",
         "@angular/platform-browser@19.2.14_@angular+animations@19.2.14__@angular+common@19.2.14___@angular+core@19.2.14____rxjs@7.8.2____zone.js@0.15.1___rxjs@7.8.2__@angular+core@19.2.14___rxjs@7.8.2___zone.js@0.15.1__rxjs@7.8.2_@angular+common@19.2.14__@angular+core@19.2.14___rxjs@7.8.2___zone.js@0.15.1__rxjs@7.8.2_@angular+core@19.2.14__rxjs@7.8.2__zone.js@0.15.1_rxjs@7.8.2",
         "@angular/router",
-        "@nx/devkit@21.1.3_nx@21.1.3__@swc-node+register@1.10.10___@swc+core@1.3.96____@swc+helpers@0.5.17___typescript@5.8.3__@swc+core@1.3.96___@swc+helpers@0.5.17__typescript@5.8.3_@swc-node+register@1.10.10__@swc+core@1.3.96___@swc+helpers@0.5.17__typescript@5.8.3_@swc+core@1.3.96__@swc+helpers@0.5.17_typescript@5.8.3",
+        "@nx/devkit@21.1.3_nx@21.1.3__@swc+core@1.3.96___@swc+helpers@0.5.17_@swc+core@1.3.96__@swc+helpers@0.5.17",
         "front-matter",
         "marked",
         "marked-gfm-heading-id",
@@ -211,14 +211,32 @@
         "tslib"
       ]
     },
-    "@analogjs/platform@1.17.1_@nx+angular@21.1.3__@angular-devkit+build-angular@19.2.14___@angular+compiler-cli@19.2.14____@angular+compiler@19.2.14____typescript@5.8.3___karma@6.4.4___tailwindcss@4.1.8___typescript@5.8.3___webpack@5.98.0___webpack-dev-server@5.2.0____webpack@5.98.0____@types+express@4.17.23___chokidar@4.0.3___@angular+compiler@19.2.14___less@4.2.2___postcss@8.5.2___@babel+core@7.26.10___vite@6.0.11____@types+node@22.15.30____lightningcss@1.30.1____less@4.2.2____sass@1.85.0____terser@5.39.0___sass@1.85.0___@types+node@22.15.30___lightningcss@1.30.1___terser@5.39.0__@angular-devkit+core@19.2.14___chokidar@4.0.3___ajv@8.17.1__@angular-devkit+schematics@19.2.14___chokidar@4.0.3__@schematics+angular@19.2.14___chokidar@4.0.3__rxjs@7.8.2__karma@6.4.4__tailwindcss@4.1.8__typescript@5.8.3__chokidar@4.0.3__@angular+compiler@19.2.14__vite@6.0.11___@types+node@22.15.30___lightningcss@1.30.1___less@4.2.2___sass@1.85.0___terser@5.39.0__@swc-node+register@1.10.10___@swc+core@1.3.96____@swc+helpers@0.5.17___typescript@5.8.3__@swc+core@1.3.96___@swc+helpers@0.5.17__react@19.1.0__react-dom@19.1.0___react@19.1.0__react-refresh@0.16.0__@types+node@22.15.30__lightningcss@1.30.1_@nx+devkit@21.1.3__nx@21.1.3___@swc-node+register@1.10.10____@swc+core@1.3.96_____@swc+helpers@0.5.17____typescript@5.8.3___@swc+core@1.3.96____@swc+helpers@0.5.17___typescript@5.8.3__@swc-node+register@1.10.10___@swc+core@1.3.96____@swc+helpers@0.5.17___typescript@5.8.3__@swc+core@1.3.96___@swc+helpers@0.5.17__typescript@5.8.3_@nx+vite@21.1.3__vite@6.0.11___@types+node@22.15.30___lightningcss@1.30.1___less@4.2.2___sass@1.85.0___terser@5.39.0__vitest@3.2.2___@types+node@22.15.30___jsdom@22.1.0___vite@6.3.5____@types+node@22.15.30____lightningcss@1.30.1____picomatch@4.0.2___lightningcss@1.30.1__typescript@5.8.3__@types+node@22.15.30__lightningcss@1.30.1__jsdom@22.1.0__@swc-node+register@1.10.10___@swc+core@1.3.96____@swc+helpers@0.5.17___typescript@5.8.3__@swc+core@1.3.96___@swc+helpers@0.5.17__@swc+helpers@0.5.17_marked@15.0.12_marked-gfm-heading-id@4.1.1__marked@15.0.12_marked-mangle@1.1.10__marked@15.0.12_@angular+build@19.2.14__@angular+compiler@19.2.14__@angular+compiler-cli@19.2.14__karma@6.4.4__postcss@8.5.4__tailwindcss@4.1.8__typescript@5.8.3__@babel+core@7.26.10__@types+node@22.15.30__vite@6.2.7___@types+node@22.15.30___lightningcss@1.30.1___sass@1.85.0__lightningcss@1.30.1__sass@1.85.0__chokidar@4.0.3__less@4.2.2_rxjs@7.8.2_vite@6.0.11__@types+node@22.15.30__lightningcss@1.30.1__less@4.2.2__sass@1.85.0__terser@5.39.0_vitest@3.2.2__@types+node@22.15.30__jsdom@22.1.0__vite@6.3.5___@types+node@22.15.30___lightningcss@1.30.1___picomatch@4.0.2__lightningcss@1.30.1_@angular+compiler@19.2.14_karma@6.4.4_postcss@8.5.4_tailwindcss@4.1.8_typescript@5.8.3_chokidar@4.0.3_@swc-node+register@1.10.10__@swc+core@1.3.96___@swc+helpers@0.5.17__typescript@5.8.3_@swc+core@1.3.96__@swc+helpers@0.5.17_@types+node@22.15.30_lightningcss@1.30.1_jsdom@22.1.0_rolldown@1.0.0-beta.3__valibot@1.0.0-beta.12___typescript@5.8.3__typescript@5.8.3_react@19.1.0_react-dom@19.1.0__react@19.1.0_react-refresh@0.16.0": {
+    "@analogjs/content@1.17.1_@angular+common@19.2.14__@angular+core@19.2.14___rxjs@7.8.2___zone.js@0.15.1__rxjs@7.8.2_@angular+core@19.2.14__rxjs@7.8.2__zone.js@0.15.1_@angular+platform-browser@19.2.14__@angular+animations@19.2.14___@angular+common@19.2.14____@angular+core@19.2.14_____rxjs@7.8.2_____zone.js@0.15.1____rxjs@7.8.2___@angular+core@19.2.14____rxjs@7.8.2____zone.js@0.15.1___rxjs@7.8.2__@angular+common@19.2.14___@angular+core@19.2.14____rxjs@7.8.2____zone.js@0.15.1___rxjs@7.8.2__@angular+core@19.2.14___rxjs@7.8.2___zone.js@0.15.1__rxjs@7.8.2_@angular+router@19.2.14__@angular+common@19.2.14___@angular+core@19.2.14____rxjs@7.8.2____zone.js@0.15.1___rxjs@7.8.2__@angular+core@19.2.14___rxjs@7.8.2___zone.js@0.15.1__@angular+platform-browser@19.2.14___@angular+animations@19.2.14____@angular+common@19.2.14_____@angular+core@19.2.14______rxjs@7.8.2______zone.js@0.15.1_____rxjs@7.8.2____@angular+core@19.2.14_____rxjs@7.8.2_____zone.js@0.15.1____rxjs@7.8.2___@angular+common@19.2.14____@angular+core@19.2.14_____rxjs@7.8.2_____zone.js@0.15.1____rxjs@7.8.2___@angular+core@19.2.14____rxjs@7.8.2____zone.js@0.15.1___rxjs@7.8.2__rxjs@7.8.2__@angular+animations@19.2.14___@angular+common@19.2.14____@angular+core@19.2.14_____rxjs@7.8.2_____zone.js@0.15.1____rxjs@7.8.2___@angular+core@19.2.14____rxjs@7.8.2____zone.js@0.15.1___rxjs@7.8.2_@nx+devkit@21.1.3__nx@21.1.3___@swc+core@1.3.96____@swc+helpers@0.5.17__@swc+core@1.3.96___@swc+helpers@0.5.17_front-matter@4.0.2_marked@15.0.12_marked-gfm-heading-id@4.1.1__marked@15.0.12_marked-highlight@2.2.1__marked@15.0.12_marked-mangle@1.1.10__marked@15.0.12_prismjs@1.30.0_rxjs@7.8.2_@angular+animations@19.2.14__@angular+common@19.2.14___@angular+core@19.2.14____rxjs@7.8.2____zone.js@0.15.1___rxjs@7.8.2__@angular+core@19.2.14___rxjs@7.8.2___zone.js@0.15.1__rxjs@7.8.2_@swc+core@1.3.96__@swc+helpers@0.5.17_@swc-node+register@1.10.10__@swc+core@1.3.96___@swc+helpers@0.5.17__typescript@5.8.3_typescript@5.8.3": {
+      "integrity": "sha512-ocC6lfMNyYMz6pAFuXgxiB4cT+OMeCpA4F33R2gfEPoEyzum/q3VnadbjSQn1jGtoxnrlT3OaToA8vUuGXieqg==",
+      "dependencies": [
+        "@angular/common@19.2.14_@angular+core@19.2.14__rxjs@7.8.2__zone.js@0.15.1_rxjs@7.8.2",
+        "@angular/core",
+        "@angular/platform-browser@19.2.14_@angular+animations@19.2.14__@angular+common@19.2.14___@angular+core@19.2.14____rxjs@7.8.2____zone.js@0.15.1___rxjs@7.8.2__@angular+core@19.2.14___rxjs@7.8.2___zone.js@0.15.1__rxjs@7.8.2_@angular+common@19.2.14__@angular+core@19.2.14___rxjs@7.8.2___zone.js@0.15.1__rxjs@7.8.2_@angular+core@19.2.14__rxjs@7.8.2__zone.js@0.15.1_rxjs@7.8.2",
+        "@angular/router",
+        "@nx/devkit@21.1.3_nx@21.1.3__@swc+core@1.3.96___@swc+helpers@0.5.17_@swc+core@1.3.96__@swc+helpers@0.5.17_@swc-node+register@1.10.10__@swc+core@1.3.96___@swc+helpers@0.5.17__typescript@5.8.3_typescript@5.8.3",
+        "front-matter",
+        "marked",
+        "marked-gfm-heading-id",
+        "marked-highlight",
+        "marked-mangle",
+        "prismjs",
+        "rxjs@7.8.2",
+        "tslib"
+      ]
+    },
+    "@analogjs/platform@1.17.1_@nx+angular@21.1.3__@angular-devkit+build-angular@19.2.14___@angular+compiler-cli@19.2.14____@angular+compiler@19.2.14____typescript@5.8.3___karma@6.4.4___tailwindcss@4.1.8___typescript@5.8.3___webpack@5.98.0___webpack-dev-server@5.2.0____webpack@5.98.0____@types+express@4.17.23___@angular+compiler@19.2.14___less@4.2.2___postcss@8.5.2___@babel+core@7.26.10___vite@6.0.11____@types+node@22.15.30____lightningcss@1.30.1____less@4.2.2____sass@1.85.0____terser@5.39.0___sass@1.85.0___@types+node@22.15.30___lightningcss@1.30.1___terser@5.39.0__@angular-devkit+core@19.2.14___ajv@8.17.1__@angular-devkit+schematics@19.2.14__@schematics+angular@19.2.14__rxjs@7.8.2__karma@6.4.4__tailwindcss@4.1.8__typescript@5.8.3__@angular+compiler@19.2.14__vite@6.0.11___@types+node@22.15.30___lightningcss@1.30.1___less@4.2.2___sass@1.85.0___terser@5.39.0__@swc+core@1.3.96___@swc+helpers@0.5.17__react@19.1.0__react-dom@19.1.0___react@19.1.0__react-refresh@0.16.0__@types+node@22.15.30__lightningcss@1.30.1_@nx+devkit@21.1.3__nx@21.1.3___@swc+core@1.3.96____@swc+helpers@0.5.17__@swc+core@1.3.96___@swc+helpers@0.5.17_@nx+vite@21.1.3__vite@6.0.11___@types+node@22.15.30___lightningcss@1.30.1___less@4.2.2___sass@1.85.0___terser@5.39.0__vitest@3.2.2___@types+node@22.15.30___jsdom@22.1.0___vite@6.3.5____@types+node@22.15.30____lightningcss@1.30.1____picomatch@4.0.2___lightningcss@1.30.1__typescript@5.8.3__@types+node@22.15.30__lightningcss@1.30.1__jsdom@22.1.0__@swc+core@1.3.96___@swc+helpers@0.5.17__@swc+helpers@0.5.17_marked@15.0.12_marked-gfm-heading-id@4.1.1__marked@15.0.12_marked-mangle@1.1.10__marked@15.0.12_@angular+build@19.2.14__@angular+compiler@19.2.14__@angular+compiler-cli@19.2.14__karma@6.4.4__postcss@8.5.4__tailwindcss@4.1.8__typescript@5.8.3__@babel+core@7.26.10__@types+node@22.15.30__vite@6.2.7___@types+node@22.15.30___lightningcss@1.30.1___sass@1.85.0__lightningcss@1.30.1__sass@1.85.0__less@4.2.2_rxjs@7.8.2_vite@6.0.11__@types+node@22.15.30__lightningcss@1.30.1__less@4.2.2__sass@1.85.0__terser@5.39.0_vitest@3.2.2__@types+node@22.15.30__jsdom@22.1.0__vite@6.3.5___@types+node@22.15.30___lightningcss@1.30.1___picomatch@4.0.2__lightningcss@1.30.1_@angular+compiler@19.2.14_karma@6.4.4_postcss@8.5.4_tailwindcss@4.1.8_typescript@5.8.3_@swc+core@1.3.96__@swc+helpers@0.5.17_@types+node@22.15.30_lightningcss@1.30.1_jsdom@22.1.0_rolldown@1.0.0-beta.3__valibot@1.0.0-beta.12___typescript@5.8.3__typescript@5.8.3_react@19.1.0_react-dom@19.1.0__react@19.1.0_react-refresh@0.16.0": {
       "integrity": "sha512-X/rhSNfDf+8oOLmN91kR6IWokWgpTxa+nw29zwoxp7xRb/Ob6vQTAY7oduE86X6rJl/PbLrm4J1TT8tF1TfMmw==",
       "dependencies": [
-        "@analogjs/vite-plugin-angular",
+        "@analogjs/vite-plugin-angular@1.17.1_@angular+build@19.2.14__@angular+compiler@19.2.14__@angular+compiler-cli@19.2.14__karma@6.4.4__postcss@8.5.4__tailwindcss@4.1.8__typescript@5.8.3__@babel+core@7.26.10__@types+node@22.15.30__vite@6.2.7___@types+node@22.15.30___lightningcss@1.30.1___sass@1.85.0__lightningcss@1.30.1__sass@1.85.0__less@4.2.2_@angular+compiler@19.2.14_karma@6.4.4_postcss@8.5.4_tailwindcss@4.1.8_typescript@5.8.3_@types+node@22.15.30_lightningcss@1.30.1",
         "@analogjs/vite-plugin-nitro",
-        "@nx/angular",
-        "@nx/devkit@21.1.3_nx@21.1.3__@swc-node+register@1.10.10___@swc+core@1.3.96____@swc+helpers@0.5.17___typescript@5.8.3__@swc+core@1.3.96___@swc+helpers@0.5.17__typescript@5.8.3_@swc-node+register@1.10.10__@swc+core@1.3.96___@swc+helpers@0.5.17__typescript@5.8.3_@swc+core@1.3.96__@swc+helpers@0.5.17_typescript@5.8.3",
-        "@nx/vite",
+        "@nx/angular@21.1.3_@angular-devkit+build-angular@19.2.14__@angular+compiler-cli@19.2.14___@angular+compiler@19.2.14___typescript@5.8.3__karma@6.4.4__tailwindcss@4.1.8__typescript@5.8.3__webpack@5.98.0__webpack-dev-server@5.2.0___webpack@5.98.0___@types+express@4.17.23__@angular+compiler@19.2.14__less@4.2.2__postcss@8.5.2__@babel+core@7.26.10__vite@6.0.11___@types+node@22.15.30___lightningcss@1.30.1___less@4.2.2___sass@1.85.0___terser@5.39.0__sass@1.85.0__@types+node@22.15.30__lightningcss@1.30.1__terser@5.39.0_@angular-devkit+core@19.2.14__ajv@8.17.1_@angular-devkit+schematics@19.2.14_@schematics+angular@19.2.14_rxjs@7.8.2_karma@6.4.4_tailwindcss@4.1.8_typescript@5.8.3_@angular+compiler@19.2.14_vite@6.0.11__@types+node@22.15.30__lightningcss@1.30.1__less@4.2.2__sass@1.85.0__terser@5.39.0_@swc+core@1.3.96__@swc+helpers@0.5.17_react@19.1.0_react-dom@19.1.0__react@19.1.0_react-refresh@0.16.0_@types+node@22.15.30_lightningcss@1.30.1",
+        "@nx/devkit@21.1.3_nx@21.1.3__@swc+core@1.3.96___@swc+helpers@0.5.17_@swc+core@1.3.96__@swc+helpers@0.5.17",
+        "@nx/vite@21.1.3_vite@6.0.11__@types+node@22.15.30__lightningcss@1.30.1__less@4.2.2__sass@1.85.0__terser@5.39.0_vitest@3.2.2__@types+node@22.15.30__jsdom@22.1.0__vite@6.3.5___@types+node@22.15.30___lightningcss@1.30.1___picomatch@4.0.2__lightningcss@1.30.1_typescript@5.8.3_@types+node@22.15.30_lightningcss@1.30.1_jsdom@22.1.0_@swc+core@1.3.96__@swc+helpers@0.5.17_@swc+helpers@0.5.17",
         "marked",
         "marked-gfm-heading-id",
         "marked-mangle",
@@ -226,10 +244,33 @@
         "vitefu"
       ]
     },
-    "@analogjs/vite-plugin-angular@1.17.1_@angular+build@19.2.14__@angular+compiler@19.2.14__@angular+compiler-cli@19.2.14__karma@6.4.4__postcss@8.5.4__tailwindcss@4.1.8__typescript@5.8.3__@babel+core@7.26.10__@types+node@22.15.30__vite@6.2.7___@types+node@22.15.30___lightningcss@1.30.1___sass@1.85.0__lightningcss@1.30.1__sass@1.85.0__chokidar@4.0.3__less@4.2.2_@angular+compiler@19.2.14_karma@6.4.4_postcss@8.5.4_tailwindcss@4.1.8_typescript@5.8.3_@types+node@22.15.30_lightningcss@1.30.1_chokidar@4.0.3": {
+    "@analogjs/platform@1.17.1_@nx+angular@21.1.3__@angular-devkit+build-angular@19.2.14___@angular+compiler-cli@19.2.14____@angular+compiler@19.2.14____typescript@5.8.3___karma@6.4.4___tailwindcss@4.1.8___typescript@5.8.3___webpack@5.98.0___webpack-dev-server@5.2.0____webpack@5.98.0____@types+express@4.17.23___@angular+compiler@19.2.14___less@4.2.2___postcss@8.5.2___@babel+core@7.26.10___vite@6.0.11____@types+node@22.15.30____lightningcss@1.30.1____less@4.2.2____sass@1.85.0____terser@5.39.0___sass@1.85.0___@types+node@22.15.30___lightningcss@1.30.1___terser@5.39.0__@angular-devkit+core@19.2.14___ajv@8.17.1__@angular-devkit+schematics@19.2.14__@schematics+angular@19.2.14__rxjs@7.8.2__karma@6.4.4__tailwindcss@4.1.8__typescript@5.8.3__@angular+compiler@19.2.14__vite@6.0.11___@types+node@22.15.30___lightningcss@1.30.1___less@4.2.2___sass@1.85.0___terser@5.39.0__@swc+core@1.3.96___@swc+helpers@0.5.17__react@19.1.0__react-dom@19.1.0___react@19.1.0__react-refresh@0.16.0__@types+node@22.15.30__lightningcss@1.30.1_@nx+devkit@21.1.3__nx@21.1.3___@swc+core@1.3.96____@swc+helpers@0.5.17__@swc+core@1.3.96___@swc+helpers@0.5.17_@nx+vite@21.1.3__vite@6.0.11___@types+node@22.15.30___lightningcss@1.30.1___less@4.2.2___sass@1.85.0___terser@5.39.0__vitest@3.2.2___@types+node@22.15.30___jsdom@22.1.0___vite@6.3.5____@types+node@22.15.30____lightningcss@1.30.1____picomatch@4.0.2___lightningcss@1.30.1__typescript@5.8.3__@types+node@22.15.30__lightningcss@1.30.1__jsdom@22.1.0__@swc+core@1.3.96___@swc+helpers@0.5.17__@swc+helpers@0.5.17_marked@15.0.12_marked-gfm-heading-id@4.1.1__marked@15.0.12_marked-mangle@1.1.10__marked@15.0.12_@angular+build@19.2.14__@angular+compiler@19.2.14__@angular+compiler-cli@19.2.14__karma@6.4.4__postcss@8.5.4__tailwindcss@4.1.8__typescript@5.8.3__@babel+core@7.26.10__@types+node@22.15.30__vite@6.2.7___@types+node@22.15.30___lightningcss@1.30.1___sass@1.85.0__lightningcss@1.30.1__sass@1.85.0__less@4.2.2_rxjs@7.8.2_vite@6.0.11__@types+node@22.15.30__lightningcss@1.30.1__less@4.2.2__sass@1.85.0__terser@5.39.0_vitest@3.2.2__@types+node@22.15.30__jsdom@22.1.0__vite@6.3.5___@types+node@22.15.30___lightningcss@1.30.1___picomatch@4.0.2__lightningcss@1.30.1_@angular+compiler@19.2.14_karma@6.4.4_postcss@8.5.4_tailwindcss@4.1.8_typescript@5.8.3_@swc+core@1.3.96__@swc+helpers@0.5.17_@types+node@22.15.30_lightningcss@1.30.1_jsdom@22.1.0_rolldown@1.0.0-beta.3__valibot@1.0.0-beta.12___typescript@5.8.3__typescript@5.8.3_react@19.1.0_react-dom@19.1.0__react@19.1.0_react-refresh@0.16.0_chokidar@4.0.3_@swc-node+register@1.10.10__@swc+core@1.3.96___@swc+helpers@0.5.17__typescript@5.8.3": {
+      "integrity": "sha512-X/rhSNfDf+8oOLmN91kR6IWokWgpTxa+nw29zwoxp7xRb/Ob6vQTAY7oduE86X6rJl/PbLrm4J1TT8tF1TfMmw==",
+      "dependencies": [
+        "@analogjs/vite-plugin-angular@1.17.1_@angular+build@19.2.14__@angular+compiler@19.2.14__@angular+compiler-cli@19.2.14__karma@6.4.4__postcss@8.5.4__tailwindcss@4.1.8__typescript@5.8.3__@babel+core@7.26.10__@types+node@22.15.30__vite@6.2.7___@types+node@22.15.30___lightningcss@1.30.1___sass@1.85.0__lightningcss@1.30.1__sass@1.85.0__less@4.2.2_@angular+compiler@19.2.14_karma@6.4.4_postcss@8.5.4_tailwindcss@4.1.8_typescript@5.8.3_@types+node@22.15.30_lightningcss@1.30.1_chokidar@4.0.3",
+        "@analogjs/vite-plugin-nitro",
+        "@nx/angular@21.1.3_@angular-devkit+build-angular@19.2.14__@angular+compiler-cli@19.2.14___@angular+compiler@19.2.14___typescript@5.8.3__karma@6.4.4__tailwindcss@4.1.8__typescript@5.8.3__webpack@5.98.0__webpack-dev-server@5.2.0___webpack@5.98.0___@types+express@4.17.23__@angular+compiler@19.2.14__less@4.2.2__postcss@8.5.2__@babel+core@7.26.10__vite@6.0.11___@types+node@22.15.30___lightningcss@1.30.1___less@4.2.2___sass@1.85.0___terser@5.39.0__sass@1.85.0__@types+node@22.15.30__lightningcss@1.30.1__terser@5.39.0_@angular-devkit+core@19.2.14__ajv@8.17.1_@angular-devkit+schematics@19.2.14_@schematics+angular@19.2.14_rxjs@7.8.2_karma@6.4.4_tailwindcss@4.1.8_typescript@5.8.3_@angular+compiler@19.2.14_vite@6.0.11__@types+node@22.15.30__lightningcss@1.30.1__less@4.2.2__sass@1.85.0__terser@5.39.0_@swc+core@1.3.96__@swc+helpers@0.5.17_react@19.1.0_react-dom@19.1.0__react@19.1.0_react-refresh@0.16.0_@types+node@22.15.30_lightningcss@1.30.1_chokidar@4.0.3_@swc-node+register@1.10.10__@swc+core@1.3.96___@swc+helpers@0.5.17__typescript@5.8.3",
+        "@nx/devkit@21.1.3_nx@21.1.3__@swc+core@1.3.96___@swc+helpers@0.5.17_@swc+core@1.3.96__@swc+helpers@0.5.17_@swc-node+register@1.10.10__@swc+core@1.3.96___@swc+helpers@0.5.17__typescript@5.8.3_typescript@5.8.3",
+        "@nx/vite@21.1.3_vite@6.0.11__@types+node@22.15.30__lightningcss@1.30.1__less@4.2.2__sass@1.85.0__terser@5.39.0_vitest@3.2.2__@types+node@22.15.30__jsdom@22.1.0__vite@6.3.5___@types+node@22.15.30___lightningcss@1.30.1___picomatch@4.0.2__lightningcss@1.30.1_typescript@5.8.3_@types+node@22.15.30_lightningcss@1.30.1_jsdom@22.1.0_@swc+core@1.3.96__@swc+helpers@0.5.17_@swc+helpers@0.5.17_@swc-node+register@1.10.10__@swc+core@1.3.96___@swc+helpers@0.5.17__typescript@5.8.3",
+        "marked",
+        "marked-gfm-heading-id",
+        "marked-mangle",
+        "nitropack",
+        "vitefu"
+      ]
+    },
+    "@analogjs/vite-plugin-angular@1.17.1_@angular+build@19.2.14__@angular+compiler@19.2.14__@angular+compiler-cli@19.2.14__karma@6.4.4__postcss@8.5.4__tailwindcss@4.1.8__typescript@5.8.3__@babel+core@7.26.10__@types+node@22.15.30__vite@6.2.7___@types+node@22.15.30___lightningcss@1.30.1___sass@1.85.0__lightningcss@1.30.1__sass@1.85.0__less@4.2.2_@angular+compiler@19.2.14_karma@6.4.4_postcss@8.5.4_tailwindcss@4.1.8_typescript@5.8.3_@types+node@22.15.30_lightningcss@1.30.1": {
       "integrity": "sha512-t9bx62a33pBwscFY2j7ecOKskKu9ewr2KRoenJYQljMWgySu6mues+faZLl+fHE5ZWfcIGtawNLEJ89HzaRrIQ==",
       "dependencies": [
-        "@angular/build@19.2.14_@angular+compiler@19.2.14_@angular+compiler-cli@19.2.14_karma@6.4.4_postcss@8.5.4_tailwindcss@4.1.8_typescript@5.8.3_@babel+core@7.26.10_@types+node@22.15.30_vite@6.2.7__@types+node@22.15.30__lightningcss@1.30.1__sass@1.85.0_lightningcss@1.30.1_sass@1.85.0_chokidar@4.0.3_less@4.2.2",
+        "@angular/build@19.2.14_@angular+compiler@19.2.14_@angular+compiler-cli@19.2.14_karma@6.4.4_postcss@8.5.4_tailwindcss@4.1.8_typescript@5.8.3_@babel+core@7.26.10_@types+node@22.15.30_vite@6.2.7__@types+node@22.15.30__lightningcss@1.30.1__sass@1.85.0_lightningcss@1.30.1_sass@1.85.0_less@4.2.2",
+        "ts-morph",
+        "vfile"
+      ]
+    },
+    "@analogjs/vite-plugin-angular@1.17.1_@angular+build@19.2.14__@angular+compiler@19.2.14__@angular+compiler-cli@19.2.14__karma@6.4.4__postcss@8.5.4__tailwindcss@4.1.8__typescript@5.8.3__@babel+core@7.26.10__@types+node@22.15.30__vite@6.2.7___@types+node@22.15.30___lightningcss@1.30.1___sass@1.85.0__lightningcss@1.30.1__sass@1.85.0__less@4.2.2_@angular+compiler@19.2.14_karma@6.4.4_postcss@8.5.4_tailwindcss@4.1.8_typescript@5.8.3_@types+node@22.15.30_lightningcss@1.30.1_chokidar@4.0.3": {
+      "integrity": "sha512-t9bx62a33pBwscFY2j7ecOKskKu9ewr2KRoenJYQljMWgySu6mues+faZLl+fHE5ZWfcIGtawNLEJ89HzaRrIQ==",
+      "dependencies": [
+        "@angular/build@19.2.14_@angular+compiler@19.2.14_@angular+compiler-cli@19.2.14_karma@6.4.4_postcss@8.5.4_tailwindcss@4.1.8_typescript@5.8.3_@babel+core@7.26.10_@types+node@22.15.30_vite@6.2.7__@types+node@22.15.30__lightningcss@1.30.1__sass@1.85.0_lightningcss@1.30.1_sass@1.85.0_less@4.2.2_chokidar@4.0.3",
         "ts-morph",
         "vfile"
       ]
@@ -244,35 +285,122 @@
         "xmlbuilder2"
       ]
     },
-    "@analogjs/vitest-angular@1.17.1_@analogjs+vite-plugin-angular@1.17.1__@angular+build@19.2.14___@angular+compiler@19.2.14___@angular+compiler-cli@19.2.14___karma@6.4.4___postcss@8.5.4___tailwindcss@4.1.8___typescript@5.8.3___@babel+core@7.26.10___@types+node@22.15.30___vite@6.2.7____@types+node@22.15.30____lightningcss@1.30.1____sass@1.85.0___lightningcss@1.30.1___sass@1.85.0___chokidar@4.0.3___less@4.2.2__@angular+compiler@19.2.14__karma@6.4.4__postcss@8.5.4__tailwindcss@4.1.8__typescript@5.8.3__@types+node@22.15.30__lightningcss@1.30.1__chokidar@4.0.3_@angular-devkit+architect@0.2000.1__chokidar@4.0.3_vitest@3.2.2__@types+node@22.15.30__jsdom@22.1.0__vite@6.3.5___@types+node@22.15.30___lightningcss@1.30.1___picomatch@4.0.2__lightningcss@1.30.1_@angular+build@19.2.14__@angular+compiler@19.2.14__@angular+compiler-cli@19.2.14__karma@6.4.4__postcss@8.5.4__tailwindcss@4.1.8__typescript@5.8.3__@babel+core@7.26.10__@types+node@22.15.30__vite@6.2.7___@types+node@22.15.30___lightningcss@1.30.1___sass@1.85.0__lightningcss@1.30.1__sass@1.85.0__chokidar@4.0.3__less@4.2.2_@types+node@22.15.30_jsdom@22.1.0_@angular+compiler@19.2.14_karma@6.4.4_postcss@8.5.4_tailwindcss@4.1.8_typescript@5.8.3_chokidar@4.0.3_lightningcss@1.30.1": {
+    "@analogjs/vitest-angular@1.17.1_@analogjs+vite-plugin-angular@1.17.1__@angular+build@19.2.14___@angular+compiler@19.2.14___@angular+compiler-cli@19.2.14___karma@6.4.4___postcss@8.5.4___tailwindcss@4.1.8___typescript@5.8.3___@babel+core@7.26.10___@types+node@22.15.30___vite@6.2.7____@types+node@22.15.30____lightningcss@1.30.1____sass@1.85.0___lightningcss@1.30.1___sass@1.85.0___less@4.2.2__@angular+compiler@19.2.14__karma@6.4.4__postcss@8.5.4__tailwindcss@4.1.8__typescript@5.8.3__@types+node@22.15.30__lightningcss@1.30.1_@angular-devkit+architect@0.2000.1_vitest@3.2.2__@types+node@22.15.30__jsdom@22.1.0__vite@6.3.5___@types+node@22.15.30___lightningcss@1.30.1___picomatch@4.0.2__lightningcss@1.30.1_@angular+build@19.2.14__@angular+compiler@19.2.14__@angular+compiler-cli@19.2.14__karma@6.4.4__postcss@8.5.4__tailwindcss@4.1.8__typescript@5.8.3__@babel+core@7.26.10__@types+node@22.15.30__vite@6.2.7___@types+node@22.15.30___lightningcss@1.30.1___sass@1.85.0__lightningcss@1.30.1__sass@1.85.0__less@4.2.2_@types+node@22.15.30_jsdom@22.1.0_@angular+compiler@19.2.14_karma@6.4.4_postcss@8.5.4_tailwindcss@4.1.8_typescript@5.8.3_lightningcss@1.30.1": {
       "integrity": "sha512-Hx6uCuV4FXtnDaeYN3GzOXpcZla5qHQUNDAmo6fcP+kLrWNq8q5faMpLc0xHxBfdIuWF4nT2v/xpFotL/w139g==",
       "dependencies": [
-        "@analogjs/vite-plugin-angular",
+        "@analogjs/vite-plugin-angular@1.17.1_@angular+build@19.2.14__@angular+compiler@19.2.14__@angular+compiler-cli@19.2.14__karma@6.4.4__postcss@8.5.4__tailwindcss@4.1.8__typescript@5.8.3__@babel+core@7.26.10__@types+node@22.15.30__vite@6.2.7___@types+node@22.15.30___lightningcss@1.30.1___sass@1.85.0__lightningcss@1.30.1__sass@1.85.0__less@4.2.2_@angular+compiler@19.2.14_karma@6.4.4_postcss@8.5.4_tailwindcss@4.1.8_typescript@5.8.3_@types+node@22.15.30_lightningcss@1.30.1",
+        "@angular-devkit/architect@0.2000.1",
+        "vitest"
+      ]
+    },
+    "@analogjs/vitest-angular@1.17.1_@analogjs+vite-plugin-angular@1.17.1__@angular+build@19.2.14___@angular+compiler@19.2.14___@angular+compiler-cli@19.2.14___karma@6.4.4___postcss@8.5.4___tailwindcss@4.1.8___typescript@5.8.3___@babel+core@7.26.10___@types+node@22.15.30___vite@6.2.7____@types+node@22.15.30____lightningcss@1.30.1____sass@1.85.0___lightningcss@1.30.1___sass@1.85.0___less@4.2.2__@angular+compiler@19.2.14__karma@6.4.4__postcss@8.5.4__tailwindcss@4.1.8__typescript@5.8.3__@types+node@22.15.30__lightningcss@1.30.1_@angular-devkit+architect@0.2000.1_vitest@3.2.2__@types+node@22.15.30__jsdom@22.1.0__vite@6.3.5___@types+node@22.15.30___lightningcss@1.30.1___picomatch@4.0.2__lightningcss@1.30.1_@angular+build@19.2.14__@angular+compiler@19.2.14__@angular+compiler-cli@19.2.14__karma@6.4.4__postcss@8.5.4__tailwindcss@4.1.8__typescript@5.8.3__@babel+core@7.26.10__@types+node@22.15.30__vite@6.2.7___@types+node@22.15.30___lightningcss@1.30.1___sass@1.85.0__lightningcss@1.30.1__sass@1.85.0__less@4.2.2_@types+node@22.15.30_jsdom@22.1.0_@angular+compiler@19.2.14_karma@6.4.4_postcss@8.5.4_tailwindcss@4.1.8_typescript@5.8.3_lightningcss@1.30.1_chokidar@4.0.3": {
+      "integrity": "sha512-Hx6uCuV4FXtnDaeYN3GzOXpcZla5qHQUNDAmo6fcP+kLrWNq8q5faMpLc0xHxBfdIuWF4nT2v/xpFotL/w139g==",
+      "dependencies": [
+        "@analogjs/vite-plugin-angular@1.17.1_@angular+build@19.2.14__@angular+compiler@19.2.14__@angular+compiler-cli@19.2.14__karma@6.4.4__postcss@8.5.4__tailwindcss@4.1.8__typescript@5.8.3__@babel+core@7.26.10__@types+node@22.15.30__vite@6.2.7___@types+node@22.15.30___lightningcss@1.30.1___sass@1.85.0__lightningcss@1.30.1__sass@1.85.0__less@4.2.2_@angular+compiler@19.2.14_karma@6.4.4_postcss@8.5.4_tailwindcss@4.1.8_typescript@5.8.3_@types+node@22.15.30_lightningcss@1.30.1_chokidar@4.0.3",
         "@angular-devkit/architect@0.2000.1_chokidar@4.0.3",
         "vitest"
+      ]
+    },
+    "@angular-devkit/architect@0.1902.14": {
+      "integrity": "sha512-rgMkqOrxedzqLZ8w59T/0YrpWt7LDmGwt+ZhNHE7cn27jZ876yGC2Bhcn58YZh2+R03WEJ9q0ePblaBYz03SMw==",
+      "dependencies": [
+        "@angular-devkit/core@19.2.14_ajv@8.17.1",
+        "rxjs@7.8.1"
       ]
     },
     "@angular-devkit/architect@0.1902.14_chokidar@4.0.3": {
       "integrity": "sha512-rgMkqOrxedzqLZ8w59T/0YrpWt7LDmGwt+ZhNHE7cn27jZ876yGC2Bhcn58YZh2+R03WEJ9q0ePblaBYz03SMw==",
       "dependencies": [
-        "@angular-devkit/core@19.2.14_chokidar@4.0.3_ajv@8.17.1",
+        "@angular-devkit/core@19.2.14_ajv@8.17.1_chokidar@4.0.3",
         "rxjs@7.8.1"
+      ]
+    },
+    "@angular-devkit/architect@0.2000.1": {
+      "integrity": "sha512-EcOGU1xEhARYpDF391VaeUg/+YRym9OxzJMcc0rSHl3YLK8/m+24ap2YAQY5N7n9+mmEqHVu/q31ldFpOoMCTw==",
+      "dependencies": [
+        "@angular-devkit/core@20.0.1_ajv@8.17.1",
+        "rxjs@7.8.2"
       ]
     },
     "@angular-devkit/architect@0.2000.1_chokidar@4.0.3": {
       "integrity": "sha512-EcOGU1xEhARYpDF391VaeUg/+YRym9OxzJMcc0rSHl3YLK8/m+24ap2YAQY5N7n9+mmEqHVu/q31ldFpOoMCTw==",
       "dependencies": [
-        "@angular-devkit/core@20.0.1_chokidar@4.0.3_ajv@8.17.1",
+        "@angular-devkit/core@20.0.1_ajv@8.17.1_chokidar@4.0.3",
         "rxjs@7.8.2"
       ]
     },
-    "@angular-devkit/build-angular@19.2.14_@angular+compiler-cli@19.2.14__@angular+compiler@19.2.14__typescript@5.8.3_karma@6.4.4_tailwindcss@4.1.8_typescript@5.8.3_webpack@5.98.0_webpack-dev-server@5.2.0__webpack@5.98.0__@types+express@4.17.23_chokidar@4.0.3_@angular+compiler@19.2.14_less@4.2.2_postcss@8.5.2_@babel+core@7.26.10_vite@6.0.11__@types+node@22.15.30__lightningcss@1.30.1__less@4.2.2__sass@1.85.0__terser@5.39.0_sass@1.85.0_@types+node@22.15.30_lightningcss@1.30.1_terser@5.39.0": {
+    "@angular-devkit/build-angular@19.2.14_@angular+compiler-cli@19.2.14__@angular+compiler@19.2.14__typescript@5.8.3_karma@6.4.4_tailwindcss@4.1.8_typescript@5.8.3_webpack@5.98.0_webpack-dev-server@5.2.0__webpack@5.98.0__@types+express@4.17.23_@angular+compiler@19.2.14_less@4.2.2_postcss@8.5.2_@babel+core@7.26.10_vite@6.0.11__@types+node@22.15.30__lightningcss@1.30.1__less@4.2.2__sass@1.85.0__terser@5.39.0_sass@1.85.0_@types+node@22.15.30_lightningcss@1.30.1_terser@5.39.0": {
+      "integrity": "sha512-0K8vZxXdkME31fd6/+WACug8j4eLlU7mxR2/XJvS+VQ+a7bqdEsVddZDkwdWE+Y3ccZXvD/aNLZSEuSKmVFsnA==",
+      "dependencies": [
+        "@ampproject/remapping",
+        "@angular-devkit/architect@0.1902.14",
+        "@angular-devkit/build-webpack@0.1902.14_webpack@5.98.0_webpack-dev-server@5.2.0__webpack@5.98.0__@types+express@4.17.23",
+        "@angular-devkit/core@19.2.14_ajv@8.17.1",
+        "@angular/build@19.2.14_@angular+compiler@19.2.14_@angular+compiler-cli@19.2.14__@angular+compiler@19.2.14__typescript@5.8.3_karma@6.4.4_less@4.2.2_postcss@8.5.2_tailwindcss@4.1.8_typescript@5.8.3_@babel+core@7.26.10_@types+node@22.15.30_vite@6.2.7__@types+node@22.15.30__less@4.2.2__lightningcss@1.30.1__sass@1.85.0__terser@5.39.0_lightningcss@1.30.1_sass@1.85.0_terser@5.39.0",
+        "@angular/compiler-cli",
+        "@babel/core@7.26.10",
+        "@babel/generator@7.26.10",
+        "@babel/helper-annotate-as-pure@7.25.9",
+        "@babel/helper-split-export-declaration",
+        "@babel/plugin-transform-async-generator-functions@7.26.8_@babel+core@7.26.10",
+        "@babel/plugin-transform-async-to-generator@7.25.9_@babel+core@7.26.10",
+        "@babel/plugin-transform-runtime@7.26.10_@babel+core@7.26.10",
+        "@babel/preset-env@7.26.9_@babel+core@7.26.10",
+        "@babel/runtime@7.26.10",
+        "@discoveryjs/json-ext",
+        "@ngtools/webpack",
+        "@vitejs/plugin-basic-ssl@1.2.0_vite@6.0.11__@types+node@22.15.30__lightningcss@1.30.1__less@4.2.2__sass@1.85.0__terser@5.39.0_@types+node@22.15.30_less@4.2.2_lightningcss@1.30.1_sass@1.85.0_terser@5.39.0",
+        "ansi-colors",
+        "autoprefixer@10.4.20_postcss@8.5.2",
+        "babel-loader@9.2.1_@babel+core@7.26.10_webpack@5.98.0",
+        "browserslist",
+        "copy-webpack-plugin@12.0.2_webpack@5.98.0",
+        "css-loader@7.1.2_webpack@5.98.0_postcss@8.5.4",
+        "esbuild-wasm@0.25.4",
+        "esbuild@0.25.4",
+        "fast-glob",
+        "http-proxy-middleware@3.0.5",
+        "istanbul-lib-instrument@6.0.3",
+        "jsonc-parser@3.3.1",
+        "karma",
+        "karma-source-map-support",
+        "less-loader@12.2.0_less@4.2.2_webpack@5.98.0",
+        "less@4.2.2",
+        "license-webpack-plugin",
+        "loader-utils@3.3.1",
+        "mini-css-extract-plugin@2.9.2_webpack@5.98.0",
+        "open@10.1.0",
+        "ora@5.4.1",
+        "picomatch@4.0.2",
+        "piscina@4.8.0",
+        "postcss-loader@8.1.1_postcss@8.5.2_webpack@5.98.0_typescript@5.8.3_@rspack+core@1.3.15",
+        "postcss@8.5.2",
+        "resolve-url-loader",
+        "rxjs@7.8.1",
+        "sass",
+        "sass-loader@16.0.5_sass@1.85.0_webpack@5.98.0_@rspack+core@1.3.15_sass-embedded@1.89.1",
+        "semver@7.7.1",
+        "source-map-loader",
+        "source-map-support@0.5.21",
+        "tailwindcss",
+        "terser@5.39.0",
+        "tree-kill",
+        "tslib",
+        "typescript@5.8.3",
+        "webpack",
+        "webpack-dev-middleware",
+        "webpack-dev-server@5.2.0_webpack@5.98.0_@types+express@4.17.23",
+        "webpack-merge@6.0.1",
+        "webpack-subresource-integrity"
+      ]
+    },
+    "@angular-devkit/build-angular@19.2.14_@angular+compiler-cli@19.2.14__@angular+compiler@19.2.14__typescript@5.8.3_karma@6.4.4_tailwindcss@4.1.8_typescript@5.8.3_webpack@5.98.0_webpack-dev-server@5.2.0__webpack@5.98.0__@types+express@4.17.23_@angular+compiler@19.2.14_less@4.2.2_postcss@8.5.2_@babel+core@7.26.10_vite@6.0.11__@types+node@22.15.30__lightningcss@1.30.1__less@4.2.2__sass@1.85.0__terser@5.39.0_sass@1.85.0_@types+node@22.15.30_lightningcss@1.30.1_terser@5.39.0_chokidar@4.0.3": {
       "integrity": "sha512-0K8vZxXdkME31fd6/+WACug8j4eLlU7mxR2/XJvS+VQ+a7bqdEsVddZDkwdWE+Y3ccZXvD/aNLZSEuSKmVFsnA==",
       "dependencies": [
         "@ampproject/remapping",
         "@angular-devkit/architect@0.1902.14_chokidar@4.0.3",
-        "@angular-devkit/build-webpack",
-        "@angular-devkit/core@19.2.14_chokidar@4.0.3_ajv@8.17.1",
+        "@angular-devkit/build-webpack@0.1902.14_webpack@5.98.0_webpack-dev-server@5.2.0__webpack@5.98.0__@types+express@4.17.23_chokidar@4.0.3",
+        "@angular-devkit/core@19.2.14_ajv@8.17.1_chokidar@4.0.3",
         "@angular/build@19.2.14_@angular+compiler@19.2.14_@angular+compiler-cli@19.2.14__@angular+compiler@19.2.14__typescript@5.8.3_karma@6.4.4_less@4.2.2_postcss@8.5.2_tailwindcss@4.1.8_typescript@5.8.3_@babel+core@7.26.10_@types+node@22.15.30_vite@6.2.7__@types+node@22.15.30__less@4.2.2__lightningcss@1.30.1__sass@1.85.0__terser@5.39.0_lightningcss@1.30.1_sass@1.85.0_terser@5.39.0_chokidar@4.0.3",
         "@angular/compiler-cli",
         "@babel/core@7.26.10",
@@ -331,6 +459,15 @@
         "webpack-subresource-integrity"
       ]
     },
+    "@angular-devkit/build-webpack@0.1902.14_webpack@5.98.0_webpack-dev-server@5.2.0__webpack@5.98.0__@types+express@4.17.23": {
+      "integrity": "sha512-XDNB8Nlau/v59Ukd6UgBRBRnTnUmC244832SECmMxXHs1ljJMWGlI1img2xPErGd8426rUA9Iws4RkQiqbsybQ==",
+      "dependencies": [
+        "@angular-devkit/architect@0.1902.14",
+        "rxjs@7.8.1",
+        "webpack",
+        "webpack-dev-server@5.2.0_webpack@5.98.0_@types+express@4.17.23"
+      ]
+    },
     "@angular-devkit/build-webpack@0.1902.14_webpack@5.98.0_webpack-dev-server@5.2.0__webpack@5.98.0__@types+express@4.17.23_chokidar@4.0.3": {
       "integrity": "sha512-XDNB8Nlau/v59Ukd6UgBRBRnTnUmC244832SECmMxXHs1ljJMWGlI1img2xPErGd8426rUA9Iws4RkQiqbsybQ==",
       "dependencies": [
@@ -340,7 +477,18 @@
         "webpack-dev-server@5.2.0_webpack@5.98.0_@types+express@4.17.23"
       ]
     },
-    "@angular-devkit/core@19.2.14_chokidar@4.0.3_ajv@8.17.1": {
+    "@angular-devkit/core@19.2.14_ajv@8.17.1": {
+      "integrity": "sha512-aaPEnRNIBoYT4XrrYcZlHadX8vFDTUR+4wUgcmr0cNDLeWzWtoPFeVq8TQD6kFDeqovSx/UVEblGgg/28WvHyg==",
+      "dependencies": [
+        "ajv-formats@3.0.1_ajv@8.17.1",
+        "ajv@8.17.1",
+        "jsonc-parser@3.3.1",
+        "picomatch@4.0.2",
+        "rxjs@7.8.1",
+        "source-map@0.7.4"
+      ]
+    },
+    "@angular-devkit/core@19.2.14_ajv@8.17.1_chokidar@4.0.3": {
       "integrity": "sha512-aaPEnRNIBoYT4XrrYcZlHadX8vFDTUR+4wUgcmr0cNDLeWzWtoPFeVq8TQD6kFDeqovSx/UVEblGgg/28WvHyg==",
       "dependencies": [
         "ajv-formats@3.0.1_ajv@8.17.1",
@@ -352,7 +500,18 @@
         "source-map@0.7.4"
       ]
     },
-    "@angular-devkit/core@20.0.1_chokidar@4.0.3_ajv@8.17.1": {
+    "@angular-devkit/core@20.0.1_ajv@8.17.1": {
+      "integrity": "sha512-Ilafyj8JVwq3NZsaiGw5UDkP4EAkGKiEvZ4TC3WVidZbM4EpKt9/Jd7ZpsTRGDLG429U+fGhay+ZQeCFGqy5rA==",
+      "dependencies": [
+        "ajv-formats@3.0.1_ajv@8.17.1",
+        "ajv@8.17.1",
+        "jsonc-parser@3.3.1",
+        "picomatch@4.0.2",
+        "rxjs@7.8.2",
+        "source-map@0.7.4"
+      ]
+    },
+    "@angular-devkit/core@20.0.1_ajv@8.17.1_chokidar@4.0.3": {
       "integrity": "sha512-Ilafyj8JVwq3NZsaiGw5UDkP4EAkGKiEvZ4TC3WVidZbM4EpKt9/Jd7ZpsTRGDLG429U+fGhay+ZQeCFGqy5rA==",
       "dependencies": [
         "ajv-formats@3.0.1_ajv@8.17.1",
@@ -364,10 +523,20 @@
         "source-map@0.7.4"
       ]
     },
+    "@angular-devkit/schematics@19.2.14": {
+      "integrity": "sha512-s89/MWXHy8+GP/cRfFbSECIG3FQQQwNVv44OOmghPVgKQgQ+EoE/zygL2hqKYTUPoPaS/IhNXdXjSE5pS9yLeg==",
+      "dependencies": [
+        "@angular-devkit/core@19.2.14_ajv@8.17.1",
+        "jsonc-parser@3.3.1",
+        "magic-string",
+        "ora@5.4.1",
+        "rxjs@7.8.1"
+      ]
+    },
     "@angular-devkit/schematics@19.2.14_chokidar@4.0.3": {
       "integrity": "sha512-s89/MWXHy8+GP/cRfFbSECIG3FQQQwNVv44OOmghPVgKQgQ+EoE/zygL2hqKYTUPoPaS/IhNXdXjSE5pS9yLeg==",
       "dependencies": [
-        "@angular-devkit/core@19.2.14_chokidar@4.0.3_ajv@8.17.1",
+        "@angular-devkit/core@19.2.14_ajv@8.17.1_chokidar@4.0.3",
         "jsonc-parser@3.3.1",
         "magic-string",
         "ora@5.4.1",
@@ -388,6 +557,45 @@
         "@angular/common@19.2.14_@angular+core@19.2.14__rxjs@7.8.2__zone.js@0.15.1_rxjs@7.8.2",
         "@angular/core",
         "tslib"
+      ]
+    },
+    "@angular/build@19.2.14_@angular+compiler@19.2.14_@angular+compiler-cli@19.2.14__@angular+compiler@19.2.14__typescript@5.8.3_karma@6.4.4_less@4.2.2_postcss@8.5.2_tailwindcss@4.1.8_typescript@5.8.3_@babel+core@7.26.10_@types+node@22.15.30_vite@6.2.7__@types+node@22.15.30__less@4.2.2__lightningcss@1.30.1__sass@1.85.0__terser@5.39.0_lightningcss@1.30.1_sass@1.85.0_terser@5.39.0": {
+      "integrity": "sha512-PAUR8vZpGKXy0Vc5gpJkigOthoj5YeGDpeykl/yLi6sx6yAIlXcE0MD+LGehKeqFSBL56rEpn9n710lI7eTJwg==",
+      "dependencies": [
+        "@ampproject/remapping",
+        "@angular-devkit/architect@0.1902.14",
+        "@angular/compiler",
+        "@angular/compiler-cli",
+        "@babel/core@7.26.10",
+        "@babel/helper-annotate-as-pure@7.25.9",
+        "@babel/helper-split-export-declaration",
+        "@babel/plugin-syntax-import-attributes@7.26.0_@babel+core@7.26.10",
+        "@inquirer/confirm",
+        "@vitejs/plugin-basic-ssl@1.2.0_vite@6.2.7__@types+node@22.15.30__less@4.2.2__lightningcss@1.30.1__sass@1.85.0__terser@5.39.0_@types+node@22.15.30_less@4.2.2_lightningcss@1.30.1_sass@1.85.0_terser@5.39.0",
+        "beasties",
+        "browserslist",
+        "esbuild@0.25.4",
+        "fast-glob",
+        "https-proxy-agent@7.0.6",
+        "istanbul-lib-instrument@6.0.3",
+        "karma",
+        "less@4.2.2",
+        "listr2",
+        "lmdb",
+        "magic-string",
+        "mrmime",
+        "parse5-html-rewriting-stream",
+        "picomatch@4.0.2",
+        "piscina@4.8.0",
+        "postcss@8.5.2",
+        "rollup@4.34.8",
+        "sass",
+        "semver@7.7.1",
+        "source-map-support@0.5.21",
+        "tailwindcss",
+        "typescript@5.8.3",
+        "vite@6.2.7_@types+node@22.15.30_less@4.2.2_lightningcss@1.30.1_sass@1.85.0_terser@5.39.0",
+        "watchpack"
       ]
     },
     "@angular/build@19.2.14_@angular+compiler@19.2.14_@angular+compiler-cli@19.2.14__@angular+compiler@19.2.14__typescript@5.8.3_karma@6.4.4_less@4.2.2_postcss@8.5.2_tailwindcss@4.1.8_typescript@5.8.3_@babel+core@7.26.10_@types+node@22.15.30_vite@6.2.7__@types+node@22.15.30__less@4.2.2__lightningcss@1.30.1__sass@1.85.0__terser@5.39.0_lightningcss@1.30.1_sass@1.85.0_terser@5.39.0_chokidar@4.0.3": {
@@ -429,7 +637,46 @@
         "watchpack"
       ]
     },
-    "@angular/build@19.2.14_@angular+compiler@19.2.14_@angular+compiler-cli@19.2.14_karma@6.4.4_postcss@8.5.4_tailwindcss@4.1.8_typescript@5.8.3_@babel+core@7.26.10_@types+node@22.15.30_vite@6.2.7__@types+node@22.15.30__lightningcss@1.30.1__sass@1.85.0_lightningcss@1.30.1_sass@1.85.0_chokidar@4.0.3_less@4.2.2": {
+    "@angular/build@19.2.14_@angular+compiler@19.2.14_@angular+compiler-cli@19.2.14_karma@6.4.4_postcss@8.5.4_tailwindcss@4.1.8_typescript@5.8.3_@babel+core@7.26.10_@types+node@22.15.30_vite@6.2.7__@types+node@22.15.30__lightningcss@1.30.1__sass@1.85.0_lightningcss@1.30.1_sass@1.85.0_less@4.2.2": {
+      "integrity": "sha512-PAUR8vZpGKXy0Vc5gpJkigOthoj5YeGDpeykl/yLi6sx6yAIlXcE0MD+LGehKeqFSBL56rEpn9n710lI7eTJwg==",
+      "dependencies": [
+        "@ampproject/remapping",
+        "@angular-devkit/architect@0.1902.14",
+        "@angular/compiler",
+        "@angular/compiler-cli",
+        "@babel/core@7.26.10",
+        "@babel/helper-annotate-as-pure@7.25.9",
+        "@babel/helper-split-export-declaration",
+        "@babel/plugin-syntax-import-attributes@7.26.0_@babel+core@7.26.10",
+        "@inquirer/confirm",
+        "@vitejs/plugin-basic-ssl@1.2.0_vite@6.2.7__@types+node@22.15.30__lightningcss@1.30.1__sass@1.85.0_@types+node@22.15.30_lightningcss@1.30.1_sass@1.85.0_less@4.2.2",
+        "beasties",
+        "browserslist",
+        "esbuild@0.25.4",
+        "fast-glob",
+        "https-proxy-agent@7.0.6",
+        "istanbul-lib-instrument@6.0.3",
+        "karma",
+        "less@4.2.2",
+        "listr2",
+        "lmdb",
+        "magic-string",
+        "mrmime",
+        "parse5-html-rewriting-stream",
+        "picomatch@4.0.2",
+        "piscina@4.8.0",
+        "postcss@8.5.4",
+        "rollup@4.34.8",
+        "sass",
+        "semver@7.7.1",
+        "source-map-support@0.5.21",
+        "tailwindcss",
+        "typescript@5.8.3",
+        "vite@6.2.7_@types+node@22.15.30_lightningcss@1.30.1_sass@1.85.0_less@4.2.2_terser@5.39.0",
+        "watchpack"
+      ]
+    },
+    "@angular/build@19.2.14_@angular+compiler@19.2.14_@angular+compiler-cli@19.2.14_karma@6.4.4_postcss@8.5.4_tailwindcss@4.1.8_typescript@5.8.3_@babel+core@7.26.10_@types+node@22.15.30_vite@6.2.7__@types+node@22.15.30__lightningcss@1.30.1__sass@1.85.0_lightningcss@1.30.1_sass@1.85.0_less@4.2.2_chokidar@4.0.3": {
       "integrity": "sha512-PAUR8vZpGKXy0Vc5gpJkigOthoj5YeGDpeykl/yLi6sx6yAIlXcE0MD+LGehKeqFSBL56rEpn9n710lI7eTJwg==",
       "dependencies": [
         "@ampproject/remapping",
@@ -4051,22 +4298,22 @@
         "fastq"
       ]
     },
-    "@nx/angular@21.1.3_@angular-devkit+build-angular@19.2.14__@angular+compiler-cli@19.2.14___@angular+compiler@19.2.14___typescript@5.8.3__karma@6.4.4__tailwindcss@4.1.8__typescript@5.8.3__webpack@5.98.0__webpack-dev-server@5.2.0___webpack@5.98.0___@types+express@4.17.23__chokidar@4.0.3__@angular+compiler@19.2.14__less@4.2.2__postcss@8.5.2__@babel+core@7.26.10__vite@6.0.11___@types+node@22.15.30___lightningcss@1.30.1___less@4.2.2___sass@1.85.0___terser@5.39.0__sass@1.85.0__@types+node@22.15.30__lightningcss@1.30.1__terser@5.39.0_@angular-devkit+core@19.2.14__chokidar@4.0.3__ajv@8.17.1_@angular-devkit+schematics@19.2.14__chokidar@4.0.3_@schematics+angular@19.2.14__chokidar@4.0.3_rxjs@7.8.2_karma@6.4.4_tailwindcss@4.1.8_typescript@5.8.3_chokidar@4.0.3_@angular+compiler@19.2.14_vite@6.0.11__@types+node@22.15.30__lightningcss@1.30.1__less@4.2.2__sass@1.85.0__terser@5.39.0_@swc-node+register@1.10.10__@swc+core@1.3.96___@swc+helpers@0.5.17__typescript@5.8.3_@swc+core@1.3.96__@swc+helpers@0.5.17_react@19.1.0_react-dom@19.1.0__react@19.1.0_react-refresh@0.16.0_@types+node@22.15.30_lightningcss@1.30.1": {
+    "@nx/angular@21.1.3_@angular-devkit+build-angular@19.2.14__@angular+compiler-cli@19.2.14___@angular+compiler@19.2.14___typescript@5.8.3__karma@6.4.4__tailwindcss@4.1.8__typescript@5.8.3__webpack@5.98.0__webpack-dev-server@5.2.0___webpack@5.98.0___@types+express@4.17.23__@angular+compiler@19.2.14__less@4.2.2__postcss@8.5.2__@babel+core@7.26.10__vite@6.0.11___@types+node@22.15.30___lightningcss@1.30.1___less@4.2.2___sass@1.85.0___terser@5.39.0__sass@1.85.0__@types+node@22.15.30__lightningcss@1.30.1__terser@5.39.0_@angular-devkit+core@19.2.14__ajv@8.17.1_@angular-devkit+schematics@19.2.14_@schematics+angular@19.2.14_rxjs@7.8.2_karma@6.4.4_tailwindcss@4.1.8_typescript@5.8.3_@angular+compiler@19.2.14_vite@6.0.11__@types+node@22.15.30__lightningcss@1.30.1__less@4.2.2__sass@1.85.0__terser@5.39.0_@swc+core@1.3.96__@swc+helpers@0.5.17_react@19.1.0_react-dom@19.1.0__react@19.1.0_react-refresh@0.16.0_@types+node@22.15.30_lightningcss@1.30.1": {
       "integrity": "sha512-/VB9PCGm7BFrIOnBxnYDQhb9qNXo/uVa1i4YljOVTbY5w5oCYe50kTZZTinOiN1IrIt19/jPxv+OUrU4YgprKw==",
       "dependencies": [
-        "@angular-devkit/build-angular",
-        "@angular-devkit/core@19.2.14_chokidar@4.0.3_ajv@8.17.1",
-        "@angular-devkit/schematics",
-        "@nx/devkit@21.1.3_nx@21.1.3__@swc-node+register@1.10.10___@swc+core@1.3.96____@swc+helpers@0.5.17___typescript@5.8.3__@swc+core@1.3.96___@swc+helpers@0.5.17__typescript@5.8.3_@swc-node+register@1.10.10__@swc+core@1.3.96___@swc+helpers@0.5.17__typescript@5.8.3_@swc+core@1.3.96__@swc+helpers@0.5.17_typescript@5.8.3",
-        "@nx/eslint",
-        "@nx/js@21.1.3_@babel+core@7.27.4_@swc-node+register@1.10.10__@swc+core@1.3.96___@swc+helpers@0.5.17__typescript@5.8.3_@swc+core@1.3.96__@swc+helpers@0.5.17_typescript@5.8.3",
-        "@nx/module-federation",
-        "@nx/rspack",
-        "@nx/web",
-        "@nx/webpack",
-        "@nx/workspace@21.1.3_nx@21.1.3__@swc-node+register@1.10.10___@swc+core@1.3.96____@swc+helpers@0.5.17___typescript@5.8.3__@swc+core@1.3.96___@swc+helpers@0.5.17__typescript@5.8.3_@swc-node+register@1.10.10__@swc+core@1.3.96___@swc+helpers@0.5.17__typescript@5.8.3_@swc+core@1.3.96__@swc+helpers@0.5.17_typescript@5.8.3",
+        "@angular-devkit/build-angular@19.2.14_@angular+compiler-cli@19.2.14__@angular+compiler@19.2.14__typescript@5.8.3_karma@6.4.4_tailwindcss@4.1.8_typescript@5.8.3_webpack@5.98.0_webpack-dev-server@5.2.0__webpack@5.98.0__@types+express@4.17.23_@angular+compiler@19.2.14_less@4.2.2_postcss@8.5.2_@babel+core@7.26.10_vite@6.0.11__@types+node@22.15.30__lightningcss@1.30.1__less@4.2.2__sass@1.85.0__terser@5.39.0_sass@1.85.0_@types+node@22.15.30_lightningcss@1.30.1_terser@5.39.0",
+        "@angular-devkit/core@19.2.14_ajv@8.17.1",
+        "@angular-devkit/schematics@19.2.14",
+        "@nx/devkit@21.1.3_nx@21.1.3__@swc+core@1.3.96___@swc+helpers@0.5.17_@swc+core@1.3.96__@swc+helpers@0.5.17",
+        "@nx/eslint@21.1.3_eslint@9.28.0_@swc+core@1.3.96__@swc+helpers@0.5.17",
+        "@nx/js@21.1.3_@babel+core@7.27.4_@swc+core@1.3.96__@swc+helpers@0.5.17",
+        "@nx/module-federation@21.1.3_typescript@5.8.3_webpack@5.98.0_react@19.1.0_react-dom@19.1.0__react@19.1.0_@rspack+core@1.3.15_@swc+core@1.3.96__@swc+helpers@0.5.17",
+        "@nx/rspack@21.1.3_@module-federation+enhanced@0.9.1__typescript@5.8.3__webpack@5.98.0__react@19.1.0__react-dom@19.1.0___react@19.1.0__@module-federation+runtime-tools@0.9.1__@rspack+core@1.3.15_@module-federation+node@2.7.7__react@19.1.0__react-dom@19.1.0___react@19.1.0__webpack@5.98.0__typescript@5.8.3__encoding@0.1.13__@rspack+core@1.3.15_typescript@5.8.3_webpack@5.98.0_react@19.1.0_react-dom@19.1.0__react@19.1.0_@rspack+core@1.3.15_react-refresh@0.16.0_postcss@8.5.4_sass@1.85.0_sass-embedded@1.89.1_@swc+core@1.3.96__@swc+helpers@0.5.17",
+        "@nx/web@21.1.3_@swc+core@1.3.96__@swc+helpers@0.5.17",
+        "@nx/webpack@21.1.3_typescript@5.8.3_postcss@8.5.4_@babel+core@7.27.4_webpack@5.98.0_less@4.1.3_sass@1.85.0_sass-embedded@1.89.1_stylus@0.64.0_@swc+core@1.3.96__@swc+helpers@0.5.17",
+        "@nx/workspace@21.1.3_nx@21.1.3__@swc+core@1.3.96___@swc+helpers@0.5.17_@swc+core@1.3.96__@swc+helpers@0.5.17",
         "@phenomnomnominal/tsquery",
-        "@schematics/angular",
+        "@schematics/angular@19.2.14",
         "@typescript-eslint/type-utils",
         "enquirer",
         "magic-string",
@@ -4079,46 +4326,113 @@
         "webpack-merge@5.10.0"
       ]
     },
-    "@nx/devkit@21.1.3_nx@21.1.3__@swc-node+register@1.10.10___@swc+core@1.3.96____@swc+helpers@0.5.17___typescript@5.8.3__@swc+core@1.3.96___@swc+helpers@0.5.17__typescript@5.8.3_@swc-node+register@1.10.10__@swc+core@1.3.96___@swc+helpers@0.5.17__typescript@5.8.3_@swc+core@1.3.96__@swc+helpers@0.5.17_typescript@5.8.3": {
+    "@nx/angular@21.1.3_@angular-devkit+build-angular@19.2.14__@angular+compiler-cli@19.2.14___@angular+compiler@19.2.14___typescript@5.8.3__karma@6.4.4__tailwindcss@4.1.8__typescript@5.8.3__webpack@5.98.0__webpack-dev-server@5.2.0___webpack@5.98.0___@types+express@4.17.23__@angular+compiler@19.2.14__less@4.2.2__postcss@8.5.2__@babel+core@7.26.10__vite@6.0.11___@types+node@22.15.30___lightningcss@1.30.1___less@4.2.2___sass@1.85.0___terser@5.39.0__sass@1.85.0__@types+node@22.15.30__lightningcss@1.30.1__terser@5.39.0_@angular-devkit+core@19.2.14__ajv@8.17.1_@angular-devkit+schematics@19.2.14_@schematics+angular@19.2.14_rxjs@7.8.2_karma@6.4.4_tailwindcss@4.1.8_typescript@5.8.3_@angular+compiler@19.2.14_vite@6.0.11__@types+node@22.15.30__lightningcss@1.30.1__less@4.2.2__sass@1.85.0__terser@5.39.0_@swc+core@1.3.96__@swc+helpers@0.5.17_react@19.1.0_react-dom@19.1.0__react@19.1.0_react-refresh@0.16.0_@types+node@22.15.30_lightningcss@1.30.1_chokidar@4.0.3_@swc-node+register@1.10.10__@swc+core@1.3.96___@swc+helpers@0.5.17__typescript@5.8.3": {
+      "integrity": "sha512-/VB9PCGm7BFrIOnBxnYDQhb9qNXo/uVa1i4YljOVTbY5w5oCYe50kTZZTinOiN1IrIt19/jPxv+OUrU4YgprKw==",
+      "dependencies": [
+        "@angular-devkit/build-angular@19.2.14_@angular+compiler-cli@19.2.14__@angular+compiler@19.2.14__typescript@5.8.3_karma@6.4.4_tailwindcss@4.1.8_typescript@5.8.3_webpack@5.98.0_webpack-dev-server@5.2.0__webpack@5.98.0__@types+express@4.17.23_@angular+compiler@19.2.14_less@4.2.2_postcss@8.5.2_@babel+core@7.26.10_vite@6.0.11__@types+node@22.15.30__lightningcss@1.30.1__less@4.2.2__sass@1.85.0__terser@5.39.0_sass@1.85.0_@types+node@22.15.30_lightningcss@1.30.1_terser@5.39.0_chokidar@4.0.3",
+        "@angular-devkit/core@19.2.14_ajv@8.17.1_chokidar@4.0.3",
+        "@angular-devkit/schematics@19.2.14_chokidar@4.0.3",
+        "@nx/devkit@21.1.3_nx@21.1.3__@swc+core@1.3.96___@swc+helpers@0.5.17_@swc+core@1.3.96__@swc+helpers@0.5.17_@swc-node+register@1.10.10__@swc+core@1.3.96___@swc+helpers@0.5.17__typescript@5.8.3_typescript@5.8.3",
+        "@nx/eslint@21.1.3_eslint@9.28.0_@swc+core@1.3.96__@swc+helpers@0.5.17_@swc-node+register@1.10.10__@swc+core@1.3.96___@swc+helpers@0.5.17__typescript@5.8.3_typescript@5.8.3",
+        "@nx/js@21.1.3_@babel+core@7.27.4_@swc+core@1.3.96__@swc+helpers@0.5.17_@swc-node+register@1.10.10__@swc+core@1.3.96___@swc+helpers@0.5.17__typescript@5.8.3_typescript@5.8.3",
+        "@nx/module-federation@21.1.3_typescript@5.8.3_webpack@5.98.0_react@19.1.0_react-dom@19.1.0__react@19.1.0_@rspack+core@1.3.15_@swc+core@1.3.96__@swc+helpers@0.5.17_@swc-node+register@1.10.10__@swc+core@1.3.96___@swc+helpers@0.5.17__typescript@5.8.3",
+        "@nx/rspack@21.1.3_@module-federation+enhanced@0.9.1__typescript@5.8.3__webpack@5.98.0__react@19.1.0__react-dom@19.1.0___react@19.1.0__@module-federation+runtime-tools@0.9.1__@rspack+core@1.3.15_@module-federation+node@2.7.7__react@19.1.0__react-dom@19.1.0___react@19.1.0__webpack@5.98.0__typescript@5.8.3__encoding@0.1.13__@rspack+core@1.3.15_typescript@5.8.3_webpack@5.98.0_react@19.1.0_react-dom@19.1.0__react@19.1.0_@rspack+core@1.3.15_react-refresh@0.16.0_postcss@8.5.4_sass@1.85.0_sass-embedded@1.89.1_@swc+core@1.3.96__@swc+helpers@0.5.17_@swc-node+register@1.10.10__@swc+core@1.3.96___@swc+helpers@0.5.17__typescript@5.8.3",
+        "@nx/web@21.1.3_@swc+core@1.3.96__@swc+helpers@0.5.17_@swc-node+register@1.10.10__@swc+core@1.3.96___@swc+helpers@0.5.17__typescript@5.8.3_typescript@5.8.3",
+        "@nx/webpack@21.1.3_typescript@5.8.3_postcss@8.5.4_@babel+core@7.27.4_webpack@5.98.0_less@4.1.3_sass@1.85.0_sass-embedded@1.89.1_stylus@0.64.0_@swc+core@1.3.96__@swc+helpers@0.5.17_@swc-node+register@1.10.10__@swc+core@1.3.96___@swc+helpers@0.5.17__typescript@5.8.3",
+        "@nx/workspace@21.1.3_nx@21.1.3__@swc+core@1.3.96___@swc+helpers@0.5.17_@swc+core@1.3.96__@swc+helpers@0.5.17_@swc-node+register@1.10.10__@swc+core@1.3.96___@swc+helpers@0.5.17__typescript@5.8.3_typescript@5.8.3",
+        "@phenomnomnominal/tsquery",
+        "@schematics/angular@19.2.14_chokidar@4.0.3",
+        "@typescript-eslint/type-utils",
+        "enquirer",
+        "magic-string",
+        "picocolors",
+        "picomatch@4.0.2",
+        "piscina@4.9.2",
+        "rxjs@7.8.2",
+        "semver@7.7.2",
+        "tslib",
+        "webpack-merge@5.10.0"
+      ]
+    },
+    "@nx/devkit@21.1.3_nx@21.1.3__@swc+core@1.3.96___@swc+helpers@0.5.17_@swc+core@1.3.96__@swc+helpers@0.5.17": {
       "integrity": "sha512-NSNXdn+PaNoPcxAKIhnZUbOA91Jzgk68paZEiABzAhkvfmrE5jM6VDMT6sJZ8lHWocrf6QFnzAOon1R4MoBeZw==",
       "dependencies": [
         "ejs",
         "enquirer",
         "ignore@5.3.2",
         "minimatch@9.0.3",
-        "nx@21.1.3_@swc-node+register@1.10.10__@swc+core@1.3.96___@swc+helpers@0.5.17__typescript@5.8.3_@swc+core@1.3.96__@swc+helpers@0.5.17_typescript@5.8.3",
+        "nx@21.1.3_@swc+core@1.3.96__@swc+helpers@0.5.17",
         "semver@7.7.2",
         "tmp",
         "tslib",
         "yargs-parser@21.1.1"
       ]
     },
-    "@nx/devkit@21.1.3_nx@21.1.3__@swc-node+register@1.10.10___@swc+core@1.3.96____@swc+helpers@0.5.17___typescript@5.8.3__@swc+core@1.3.96___@swc+helpers@0.5.17__typescript@5.8.3_@swc-node+register@1.10.10__@swc+core@1.3.96___@swc+helpers@0.5.17__typescript@5.8.3_@swc+core@1.3.96__@swc+helpers@0.5.17_typescript@5.8.3_@swc+helpers@0.5.17": {
+    "@nx/devkit@21.1.3_nx@21.1.3__@swc+core@1.3.96___@swc+helpers@0.5.17_@swc+core@1.3.96__@swc+helpers@0.5.17_@swc+helpers@0.5.17": {
       "integrity": "sha512-NSNXdn+PaNoPcxAKIhnZUbOA91Jzgk68paZEiABzAhkvfmrE5jM6VDMT6sJZ8lHWocrf6QFnzAOon1R4MoBeZw==",
       "dependencies": [
         "ejs",
         "enquirer",
         "ignore@5.3.2",
         "minimatch@9.0.3",
-        "nx@21.1.3_@swc-node+register@1.10.10__@swc+core@1.3.96___@swc+helpers@0.5.17__typescript@5.8.3_@swc+core@1.3.96__@swc+helpers@0.5.17_typescript@5.8.3_@swc+helpers@0.5.17",
+        "nx@21.1.3_@swc+core@1.3.96__@swc+helpers@0.5.17_@swc+helpers@0.5.17",
         "semver@7.7.2",
         "tmp",
         "tslib",
         "yargs-parser@21.1.1"
       ]
     },
-    "@nx/eslint@21.1.3_eslint@9.28.0_@swc-node+register@1.10.10__@swc+core@1.3.96___@swc+helpers@0.5.17__typescript@5.8.3_@swc+core@1.3.96__@swc+helpers@0.5.17_typescript@5.8.3": {
+    "@nx/devkit@21.1.3_nx@21.1.3__@swc+core@1.3.96___@swc+helpers@0.5.17_@swc+core@1.3.96__@swc+helpers@0.5.17_@swc+helpers@0.5.17_@swc-node+register@1.10.10__@swc+core@1.3.96___@swc+helpers@0.5.17__typescript@5.8.3_typescript@5.8.3": {
+      "integrity": "sha512-NSNXdn+PaNoPcxAKIhnZUbOA91Jzgk68paZEiABzAhkvfmrE5jM6VDMT6sJZ8lHWocrf6QFnzAOon1R4MoBeZw==",
+      "dependencies": [
+        "ejs",
+        "enquirer",
+        "ignore@5.3.2",
+        "minimatch@9.0.3",
+        "nx@21.1.3_@swc+core@1.3.96__@swc+helpers@0.5.17_@swc+helpers@0.5.17_@swc-node+register@1.10.10__@swc+core@1.3.96___@swc+helpers@0.5.17__typescript@5.8.3_typescript@5.8.3",
+        "semver@7.7.2",
+        "tmp",
+        "tslib",
+        "yargs-parser@21.1.1"
+      ]
+    },
+    "@nx/devkit@21.1.3_nx@21.1.3__@swc+core@1.3.96___@swc+helpers@0.5.17_@swc+core@1.3.96__@swc+helpers@0.5.17_@swc-node+register@1.10.10__@swc+core@1.3.96___@swc+helpers@0.5.17__typescript@5.8.3_typescript@5.8.3": {
+      "integrity": "sha512-NSNXdn+PaNoPcxAKIhnZUbOA91Jzgk68paZEiABzAhkvfmrE5jM6VDMT6sJZ8lHWocrf6QFnzAOon1R4MoBeZw==",
+      "dependencies": [
+        "ejs",
+        "enquirer",
+        "ignore@5.3.2",
+        "minimatch@9.0.3",
+        "nx@21.1.3_@swc+core@1.3.96__@swc+helpers@0.5.17_@swc-node+register@1.10.10__@swc+core@1.3.96___@swc+helpers@0.5.17__typescript@5.8.3_typescript@5.8.3",
+        "semver@7.7.2",
+        "tmp",
+        "tslib",
+        "yargs-parser@21.1.1"
+      ]
+    },
+    "@nx/eslint@21.1.3_eslint@9.28.0_@swc+core@1.3.96__@swc+helpers@0.5.17": {
       "integrity": "sha512-g4Os1AfTjS+51a6+X+5ZgY/J7TGIKdc1byORreaSnLXtN9BU6r4WKzGkT5TAAXS+UXXmSih7QAJhKPur2IHddQ==",
       "dependencies": [
-        "@nx/devkit@21.1.3_nx@21.1.3__@swc-node+register@1.10.10___@swc+core@1.3.96____@swc+helpers@0.5.17___typescript@5.8.3__@swc+core@1.3.96___@swc+helpers@0.5.17__typescript@5.8.3_@swc-node+register@1.10.10__@swc+core@1.3.96___@swc+helpers@0.5.17__typescript@5.8.3_@swc+core@1.3.96__@swc+helpers@0.5.17_typescript@5.8.3",
-        "@nx/js@21.1.3_@babel+core@7.27.4_@swc-node+register@1.10.10__@swc+core@1.3.96___@swc+helpers@0.5.17__typescript@5.8.3_@swc+core@1.3.96__@swc+helpers@0.5.17_typescript@5.8.3",
+        "@nx/devkit@21.1.3_nx@21.1.3__@swc+core@1.3.96___@swc+helpers@0.5.17_@swc+core@1.3.96__@swc+helpers@0.5.17",
+        "@nx/js@21.1.3_@babel+core@7.27.4_@swc+core@1.3.96__@swc+helpers@0.5.17",
         "eslint",
         "semver@7.7.2",
         "tslib",
         "typescript@5.7.3"
       ]
     },
-    "@nx/js@21.1.3_@babel+core@7.27.4_@swc-node+register@1.10.10__@swc+core@1.3.96___@swc+helpers@0.5.17__typescript@5.8.3_@swc+core@1.3.96__@swc+helpers@0.5.17_typescript@5.8.3": {
+    "@nx/eslint@21.1.3_eslint@9.28.0_@swc+core@1.3.96__@swc+helpers@0.5.17_@swc-node+register@1.10.10__@swc+core@1.3.96___@swc+helpers@0.5.17__typescript@5.8.3_typescript@5.8.3": {
+      "integrity": "sha512-g4Os1AfTjS+51a6+X+5ZgY/J7TGIKdc1byORreaSnLXtN9BU6r4WKzGkT5TAAXS+UXXmSih7QAJhKPur2IHddQ==",
+      "dependencies": [
+        "@nx/devkit@21.1.3_nx@21.1.3__@swc+core@1.3.96___@swc+helpers@0.5.17_@swc+core@1.3.96__@swc+helpers@0.5.17_@swc-node+register@1.10.10__@swc+core@1.3.96___@swc+helpers@0.5.17__typescript@5.8.3_typescript@5.8.3",
+        "@nx/js@21.1.3_@babel+core@7.27.4_@swc+core@1.3.96__@swc+helpers@0.5.17_@swc-node+register@1.10.10__@swc+core@1.3.96___@swc+helpers@0.5.17__typescript@5.8.3_typescript@5.8.3",
+        "eslint",
+        "semver@7.7.2",
+        "tslib",
+        "typescript@5.7.3"
+      ]
+    },
+    "@nx/js@21.1.3_@babel+core@7.27.4_@swc+core@1.3.96__@swc+helpers@0.5.17": {
       "integrity": "sha512-pwn1tgWX8sxh+VKZRZl9VkabXkEyeELFCgkWS/on2Y1J6W2dMBcmyGuZAeLef2GkUNaR79VMWIqvPaK0JLyf4g==",
       "dependencies": [
         "@babel/core@7.27.4",
@@ -4128,8 +4442,8 @@
         "@babel/preset-env@7.26.9_@babel+core@7.27.4",
         "@babel/preset-typescript",
         "@babel/runtime@7.27.6",
-        "@nx/devkit@21.1.3_nx@21.1.3__@swc-node+register@1.10.10___@swc+core@1.3.96____@swc+helpers@0.5.17___typescript@5.8.3__@swc+core@1.3.96___@swc+helpers@0.5.17__typescript@5.8.3_@swc-node+register@1.10.10__@swc+core@1.3.96___@swc+helpers@0.5.17__typescript@5.8.3_@swc+core@1.3.96__@swc+helpers@0.5.17_typescript@5.8.3",
-        "@nx/workspace@21.1.3_nx@21.1.3__@swc-node+register@1.10.10___@swc+core@1.3.96____@swc+helpers@0.5.17___typescript@5.8.3__@swc+core@1.3.96___@swc+helpers@0.5.17__typescript@5.8.3_@swc-node+register@1.10.10__@swc+core@1.3.96___@swc+helpers@0.5.17__typescript@5.8.3_@swc+core@1.3.96__@swc+helpers@0.5.17_typescript@5.8.3",
+        "@nx/devkit@21.1.3_nx@21.1.3__@swc+core@1.3.96___@swc+helpers@0.5.17_@swc+core@1.3.96__@swc+helpers@0.5.17",
+        "@nx/workspace@21.1.3_nx@21.1.3__@swc+core@1.3.96___@swc+helpers@0.5.17_@swc+core@1.3.96__@swc+helpers@0.5.17",
         "@zkochan/js-yaml",
         "babel-plugin-const-enum",
         "babel-plugin-macros",
@@ -4152,7 +4466,7 @@
         "tslib"
       ]
     },
-    "@nx/js@21.1.3_@babel+core@7.27.4_@swc-node+register@1.10.10__@swc+core@1.3.96___@swc+helpers@0.5.17__typescript@5.8.3_@swc+core@1.3.96__@swc+helpers@0.5.17_typescript@5.8.3_@swc+helpers@0.5.17": {
+    "@nx/js@21.1.3_@babel+core@7.27.4_@swc+core@1.3.96__@swc+helpers@0.5.17_@swc+helpers@0.5.17": {
       "integrity": "sha512-pwn1tgWX8sxh+VKZRZl9VkabXkEyeELFCgkWS/on2Y1J6W2dMBcmyGuZAeLef2GkUNaR79VMWIqvPaK0JLyf4g==",
       "dependencies": [
         "@babel/core@7.27.4",
@@ -4162,8 +4476,8 @@
         "@babel/preset-env@7.26.9_@babel+core@7.27.4",
         "@babel/preset-typescript",
         "@babel/runtime@7.27.6",
-        "@nx/devkit@21.1.3_nx@21.1.3__@swc-node+register@1.10.10___@swc+core@1.3.96____@swc+helpers@0.5.17___typescript@5.8.3__@swc+core@1.3.96___@swc+helpers@0.5.17__typescript@5.8.3_@swc-node+register@1.10.10__@swc+core@1.3.96___@swc+helpers@0.5.17__typescript@5.8.3_@swc+core@1.3.96__@swc+helpers@0.5.17_typescript@5.8.3_@swc+helpers@0.5.17",
-        "@nx/workspace@21.1.3_nx@21.1.3__@swc-node+register@1.10.10___@swc+core@1.3.96____@swc+helpers@0.5.17___typescript@5.8.3__@swc+core@1.3.96___@swc+helpers@0.5.17__typescript@5.8.3_@swc-node+register@1.10.10__@swc+core@1.3.96___@swc+helpers@0.5.17__typescript@5.8.3_@swc+core@1.3.96__@swc+helpers@0.5.17_typescript@5.8.3_@swc+helpers@0.5.17",
+        "@nx/devkit@21.1.3_nx@21.1.3__@swc+core@1.3.96___@swc+helpers@0.5.17_@swc+core@1.3.96__@swc+helpers@0.5.17_@swc+helpers@0.5.17",
+        "@nx/workspace@21.1.3_nx@21.1.3__@swc+core@1.3.96___@swc+helpers@0.5.17_@swc+core@1.3.96__@swc+helpers@0.5.17_@swc+helpers@0.5.17",
         "@zkochan/js-yaml",
         "babel-plugin-const-enum",
         "babel-plugin-macros",
@@ -4186,15 +4500,100 @@
         "tslib"
       ]
     },
-    "@nx/module-federation@21.1.3_typescript@5.8.3_webpack@5.98.0_react@19.1.0_react-dom@19.1.0__react@19.1.0_@rspack+core@1.3.15_@swc-node+register@1.10.10__@swc+core@1.3.96___@swc+helpers@0.5.17__typescript@5.8.3_@swc+core@1.3.96__@swc+helpers@0.5.17": {
+    "@nx/js@21.1.3_@babel+core@7.27.4_@swc+core@1.3.96__@swc+helpers@0.5.17_@swc+helpers@0.5.17_@swc-node+register@1.10.10__@swc+core@1.3.96___@swc+helpers@0.5.17__typescript@5.8.3_typescript@5.8.3": {
+      "integrity": "sha512-pwn1tgWX8sxh+VKZRZl9VkabXkEyeELFCgkWS/on2Y1J6W2dMBcmyGuZAeLef2GkUNaR79VMWIqvPaK0JLyf4g==",
+      "dependencies": [
+        "@babel/core@7.27.4",
+        "@babel/plugin-proposal-decorators",
+        "@babel/plugin-transform-class-properties@7.27.1_@babel+core@7.27.4",
+        "@babel/plugin-transform-runtime@7.26.10_@babel+core@7.27.4",
+        "@babel/preset-env@7.26.9_@babel+core@7.27.4",
+        "@babel/preset-typescript",
+        "@babel/runtime@7.27.6",
+        "@nx/devkit@21.1.3_nx@21.1.3__@swc+core@1.3.96___@swc+helpers@0.5.17_@swc+core@1.3.96__@swc+helpers@0.5.17_@swc+helpers@0.5.17_@swc-node+register@1.10.10__@swc+core@1.3.96___@swc+helpers@0.5.17__typescript@5.8.3_typescript@5.8.3",
+        "@nx/workspace@21.1.3_nx@21.1.3__@swc+core@1.3.96___@swc+helpers@0.5.17_@swc+core@1.3.96__@swc+helpers@0.5.17_@swc+helpers@0.5.17_@swc-node+register@1.10.10__@swc+core@1.3.96___@swc+helpers@0.5.17__typescript@5.8.3_typescript@5.8.3",
+        "@zkochan/js-yaml",
+        "babel-plugin-const-enum",
+        "babel-plugin-macros",
+        "babel-plugin-transform-typescript-metadata",
+        "chalk@4.1.2",
+        "columnify",
+        "detect-port",
+        "enquirer",
+        "ignore@5.3.2",
+        "js-tokens@4.0.0",
+        "jsonc-parser@3.2.0",
+        "npm-package-arg",
+        "npm-run-path@4.0.1",
+        "ora@5.3.0",
+        "picocolors",
+        "picomatch@4.0.2",
+        "semver@7.7.2",
+        "source-map-support@0.5.19",
+        "tinyglobby",
+        "tslib"
+      ]
+    },
+    "@nx/js@21.1.3_@babel+core@7.27.4_@swc+core@1.3.96__@swc+helpers@0.5.17_@swc-node+register@1.10.10__@swc+core@1.3.96___@swc+helpers@0.5.17__typescript@5.8.3_typescript@5.8.3": {
+      "integrity": "sha512-pwn1tgWX8sxh+VKZRZl9VkabXkEyeELFCgkWS/on2Y1J6W2dMBcmyGuZAeLef2GkUNaR79VMWIqvPaK0JLyf4g==",
+      "dependencies": [
+        "@babel/core@7.27.4",
+        "@babel/plugin-proposal-decorators",
+        "@babel/plugin-transform-class-properties@7.27.1_@babel+core@7.27.4",
+        "@babel/plugin-transform-runtime@7.26.10_@babel+core@7.27.4",
+        "@babel/preset-env@7.26.9_@babel+core@7.27.4",
+        "@babel/preset-typescript",
+        "@babel/runtime@7.27.6",
+        "@nx/devkit@21.1.3_nx@21.1.3__@swc+core@1.3.96___@swc+helpers@0.5.17_@swc+core@1.3.96__@swc+helpers@0.5.17_@swc-node+register@1.10.10__@swc+core@1.3.96___@swc+helpers@0.5.17__typescript@5.8.3_typescript@5.8.3",
+        "@nx/workspace@21.1.3_nx@21.1.3__@swc+core@1.3.96___@swc+helpers@0.5.17_@swc+core@1.3.96__@swc+helpers@0.5.17_@swc-node+register@1.10.10__@swc+core@1.3.96___@swc+helpers@0.5.17__typescript@5.8.3_typescript@5.8.3",
+        "@zkochan/js-yaml",
+        "babel-plugin-const-enum",
+        "babel-plugin-macros",
+        "babel-plugin-transform-typescript-metadata",
+        "chalk@4.1.2",
+        "columnify",
+        "detect-port",
+        "enquirer",
+        "ignore@5.3.2",
+        "js-tokens@4.0.0",
+        "jsonc-parser@3.2.0",
+        "npm-package-arg",
+        "npm-run-path@4.0.1",
+        "ora@5.3.0",
+        "picocolors",
+        "picomatch@4.0.2",
+        "semver@7.7.2",
+        "source-map-support@0.5.19",
+        "tinyglobby",
+        "tslib"
+      ]
+    },
+    "@nx/module-federation@21.1.3_typescript@5.8.3_webpack@5.98.0_react@19.1.0_react-dom@19.1.0__react@19.1.0_@rspack+core@1.3.15_@swc+core@1.3.96__@swc+helpers@0.5.17": {
       "integrity": "sha512-NmKs9hWQwA+vDtImHfkOQOti06CDSbRRGAJ5gfnHN7yGXQWZn9cVHupTgxj9XHyJ8JzzXGHgSKxkqryydszLGw==",
       "dependencies": [
         "@module-federation/enhanced@0.9.1_typescript@5.8.3_webpack@5.98.0_react@19.1.0_react-dom@19.1.0__react@19.1.0_@module-federation+runtime-tools@0.9.1_@rspack+core@1.3.15",
         "@module-federation/node",
         "@module-federation/sdk@0.9.1",
-        "@nx/devkit@21.1.3_nx@21.1.3__@swc-node+register@1.10.10___@swc+core@1.3.96____@swc+helpers@0.5.17___typescript@5.8.3__@swc+core@1.3.96___@swc+helpers@0.5.17__typescript@5.8.3_@swc-node+register@1.10.10__@swc+core@1.3.96___@swc+helpers@0.5.17__typescript@5.8.3_@swc+core@1.3.96__@swc+helpers@0.5.17_typescript@5.8.3",
-        "@nx/js@21.1.3_@babel+core@7.27.4_@swc-node+register@1.10.10__@swc+core@1.3.96___@swc+helpers@0.5.17__typescript@5.8.3_@swc+core@1.3.96__@swc+helpers@0.5.17_typescript@5.8.3",
-        "@nx/web",
+        "@nx/devkit@21.1.3_nx@21.1.3__@swc+core@1.3.96___@swc+helpers@0.5.17_@swc+core@1.3.96__@swc+helpers@0.5.17",
+        "@nx/js@21.1.3_@babel+core@7.27.4_@swc+core@1.3.96__@swc+helpers@0.5.17",
+        "@nx/web@21.1.3_@swc+core@1.3.96__@swc+helpers@0.5.17",
+        "@rspack/core",
+        "express",
+        "http-proxy-middleware@3.0.5",
+        "picocolors",
+        "tslib",
+        "webpack"
+      ]
+    },
+    "@nx/module-federation@21.1.3_typescript@5.8.3_webpack@5.98.0_react@19.1.0_react-dom@19.1.0__react@19.1.0_@rspack+core@1.3.15_@swc+core@1.3.96__@swc+helpers@0.5.17_@swc-node+register@1.10.10__@swc+core@1.3.96___@swc+helpers@0.5.17__typescript@5.8.3": {
+      "integrity": "sha512-NmKs9hWQwA+vDtImHfkOQOti06CDSbRRGAJ5gfnHN7yGXQWZn9cVHupTgxj9XHyJ8JzzXGHgSKxkqryydszLGw==",
+      "dependencies": [
+        "@module-federation/enhanced@0.9.1_typescript@5.8.3_webpack@5.98.0_react@19.1.0_react-dom@19.1.0__react@19.1.0_@module-federation+runtime-tools@0.9.1_@rspack+core@1.3.15",
+        "@module-federation/node",
+        "@module-federation/sdk@0.9.1",
+        "@nx/devkit@21.1.3_nx@21.1.3__@swc+core@1.3.96___@swc+helpers@0.5.17_@swc+core@1.3.96__@swc+helpers@0.5.17_@swc-node+register@1.10.10__@swc+core@1.3.96___@swc+helpers@0.5.17__typescript@5.8.3_typescript@5.8.3",
+        "@nx/js@21.1.3_@babel+core@7.27.4_@swc+core@1.3.96__@swc+helpers@0.5.17_@swc-node+register@1.10.10__@swc+core@1.3.96___@swc+helpers@0.5.17__typescript@5.8.3_typescript@5.8.3",
+        "@nx/web@21.1.3_@swc+core@1.3.96__@swc+helpers@0.5.17_@swc-node+register@1.10.10__@swc+core@1.3.96___@swc+helpers@0.5.17__typescript@5.8.3_typescript@5.8.3",
         "@rspack/core",
         "express",
         "http-proxy-middleware@3.0.5",
@@ -4233,15 +4632,15 @@
     "@nx/nx-win32-x64-msvc@21.1.3": {
       "integrity": "sha512-k3/1b2dLQjnWzrg2UqHDLCoaqEBx2SRgujjYCACRJ12vmYH2gTyFX2UPXikVbbpaTJNeXv8eaCzyCKhuvPK1sQ=="
     },
-    "@nx/rspack@21.1.3_@module-federation+enhanced@0.9.1__typescript@5.8.3__webpack@5.98.0__react@19.1.0__react-dom@19.1.0___react@19.1.0__@module-federation+runtime-tools@0.9.1__@rspack+core@1.3.15_@module-federation+node@2.7.7__react@19.1.0__react-dom@19.1.0___react@19.1.0__webpack@5.98.0__typescript@5.8.3__encoding@0.1.13__@rspack+core@1.3.15_typescript@5.8.3_webpack@5.98.0_react@19.1.0_react-dom@19.1.0__react@19.1.0_@rspack+core@1.3.15_react-refresh@0.16.0_postcss@8.5.4_sass@1.85.0_sass-embedded@1.89.1_@swc-node+register@1.10.10__@swc+core@1.3.96___@swc+helpers@0.5.17__typescript@5.8.3_@swc+core@1.3.96__@swc+helpers@0.5.17": {
+    "@nx/rspack@21.1.3_@module-federation+enhanced@0.9.1__typescript@5.8.3__webpack@5.98.0__react@19.1.0__react-dom@19.1.0___react@19.1.0__@module-federation+runtime-tools@0.9.1__@rspack+core@1.3.15_@module-federation+node@2.7.7__react@19.1.0__react-dom@19.1.0___react@19.1.0__webpack@5.98.0__typescript@5.8.3__encoding@0.1.13__@rspack+core@1.3.15_typescript@5.8.3_webpack@5.98.0_react@19.1.0_react-dom@19.1.0__react@19.1.0_@rspack+core@1.3.15_react-refresh@0.16.0_postcss@8.5.4_sass@1.85.0_sass-embedded@1.89.1_@swc+core@1.3.96__@swc+helpers@0.5.17": {
       "integrity": "sha512-bt/SegqsfL9DFK9iGgK/zcWx86mJQCOAHNhtQ2TkzXSZMbgzu1onGgJteAuoKbilr2+Qx0i2e+T0bluJ4yJNoQ==",
       "dependencies": [
         "@module-federation/enhanced@0.9.1_typescript@5.8.3_webpack@5.98.0_react@19.1.0_react-dom@19.1.0__react@19.1.0_@module-federation+runtime-tools@0.9.1_@rspack+core@1.3.15",
         "@module-federation/node",
-        "@nx/devkit@21.1.3_nx@21.1.3__@swc-node+register@1.10.10___@swc+core@1.3.96____@swc+helpers@0.5.17___typescript@5.8.3__@swc+core@1.3.96___@swc+helpers@0.5.17__typescript@5.8.3_@swc-node+register@1.10.10__@swc+core@1.3.96___@swc+helpers@0.5.17__typescript@5.8.3_@swc+core@1.3.96__@swc+helpers@0.5.17_typescript@5.8.3",
-        "@nx/js@21.1.3_@babel+core@7.27.4_@swc-node+register@1.10.10__@swc+core@1.3.96___@swc+helpers@0.5.17__typescript@5.8.3_@swc+core@1.3.96__@swc+helpers@0.5.17_typescript@5.8.3",
-        "@nx/module-federation",
-        "@nx/web",
+        "@nx/devkit@21.1.3_nx@21.1.3__@swc+core@1.3.96___@swc+helpers@0.5.17_@swc+core@1.3.96__@swc+helpers@0.5.17",
+        "@nx/js@21.1.3_@babel+core@7.27.4_@swc+core@1.3.96__@swc+helpers@0.5.17",
+        "@nx/module-federation@21.1.3_typescript@5.8.3_webpack@5.98.0_react@19.1.0_react-dom@19.1.0__react@19.1.0_@rspack+core@1.3.15_@swc+core@1.3.96__@swc+helpers@0.5.17",
+        "@nx/web@21.1.3_@swc+core@1.3.96__@swc+helpers@0.5.17",
         "@phenomnomnominal/tsquery",
         "@rspack/core",
         "@rspack/dev-server",
@@ -4271,11 +4670,49 @@
         "webpack-node-externals"
       ]
     },
-    "@nx/vite@21.1.3_vite@6.0.11__@types+node@22.15.30__lightningcss@1.30.1__less@4.2.2__sass@1.85.0__terser@5.39.0_vitest@3.2.2__@types+node@22.15.30__jsdom@22.1.0__vite@6.3.5___@types+node@22.15.30___lightningcss@1.30.1___picomatch@4.0.2__lightningcss@1.30.1_typescript@5.8.3_@types+node@22.15.30_lightningcss@1.30.1_jsdom@22.1.0_@swc-node+register@1.10.10__@swc+core@1.3.96___@swc+helpers@0.5.17__typescript@5.8.3_@swc+core@1.3.96__@swc+helpers@0.5.17_@swc+helpers@0.5.17": {
+    "@nx/rspack@21.1.3_@module-federation+enhanced@0.9.1__typescript@5.8.3__webpack@5.98.0__react@19.1.0__react-dom@19.1.0___react@19.1.0__@module-federation+runtime-tools@0.9.1__@rspack+core@1.3.15_@module-federation+node@2.7.7__react@19.1.0__react-dom@19.1.0___react@19.1.0__webpack@5.98.0__typescript@5.8.3__encoding@0.1.13__@rspack+core@1.3.15_typescript@5.8.3_webpack@5.98.0_react@19.1.0_react-dom@19.1.0__react@19.1.0_@rspack+core@1.3.15_react-refresh@0.16.0_postcss@8.5.4_sass@1.85.0_sass-embedded@1.89.1_@swc+core@1.3.96__@swc+helpers@0.5.17_@swc-node+register@1.10.10__@swc+core@1.3.96___@swc+helpers@0.5.17__typescript@5.8.3": {
+      "integrity": "sha512-bt/SegqsfL9DFK9iGgK/zcWx86mJQCOAHNhtQ2TkzXSZMbgzu1onGgJteAuoKbilr2+Qx0i2e+T0bluJ4yJNoQ==",
+      "dependencies": [
+        "@module-federation/enhanced@0.9.1_typescript@5.8.3_webpack@5.98.0_react@19.1.0_react-dom@19.1.0__react@19.1.0_@module-federation+runtime-tools@0.9.1_@rspack+core@1.3.15",
+        "@module-federation/node",
+        "@nx/devkit@21.1.3_nx@21.1.3__@swc+core@1.3.96___@swc+helpers@0.5.17_@swc+core@1.3.96__@swc+helpers@0.5.17_@swc-node+register@1.10.10__@swc+core@1.3.96___@swc+helpers@0.5.17__typescript@5.8.3_typescript@5.8.3",
+        "@nx/js@21.1.3_@babel+core@7.27.4_@swc+core@1.3.96__@swc+helpers@0.5.17_@swc-node+register@1.10.10__@swc+core@1.3.96___@swc+helpers@0.5.17__typescript@5.8.3_typescript@5.8.3",
+        "@nx/module-federation@21.1.3_typescript@5.8.3_webpack@5.98.0_react@19.1.0_react-dom@19.1.0__react@19.1.0_@rspack+core@1.3.15_@swc+core@1.3.96__@swc+helpers@0.5.17_@swc-node+register@1.10.10__@swc+core@1.3.96___@swc+helpers@0.5.17__typescript@5.8.3",
+        "@nx/web@21.1.3_@swc+core@1.3.96__@swc+helpers@0.5.17_@swc-node+register@1.10.10__@swc+core@1.3.96___@swc+helpers@0.5.17__typescript@5.8.3_typescript@5.8.3",
+        "@phenomnomnominal/tsquery",
+        "@rspack/core",
+        "@rspack/dev-server",
+        "@rspack/plugin-react-refresh",
+        "autoprefixer@10.4.21_postcss@8.5.4",
+        "browserslist",
+        "css-loader@6.11.0_@rspack+core@1.3.15_webpack@5.98.0_postcss@8.5.4",
+        "enquirer",
+        "express",
+        "http-proxy-middleware@3.0.5",
+        "less-loader@11.1.0_less@4.2.2_webpack@5.98.0",
+        "license-webpack-plugin",
+        "loader-utils@2.0.4",
+        "parse5@4.0.0",
+        "picocolors",
+        "postcss-import",
+        "postcss-loader@8.1.1_@rspack+core@1.3.15_postcss@8.5.4_webpack@5.98.0_typescript@5.8.3",
+        "postcss@8.5.4",
+        "sass",
+        "sass-embedded",
+        "sass-loader@16.0.5_@rspack+core@1.3.15_sass@1.85.0_sass-embedded@1.89.1_webpack@5.98.0",
+        "source-map-loader",
+        "style-loader",
+        "ts-checker-rspack-plugin",
+        "tslib",
+        "webpack",
+        "webpack-node-externals"
+      ]
+    },
+    "@nx/vite@21.1.3_vite@6.0.11__@types+node@22.15.30__lightningcss@1.30.1__less@4.2.2__sass@1.85.0__terser@5.39.0_vitest@3.2.2__@types+node@22.15.30__jsdom@22.1.0__vite@6.3.5___@types+node@22.15.30___lightningcss@1.30.1___picomatch@4.0.2__lightningcss@1.30.1_typescript@5.8.3_@types+node@22.15.30_lightningcss@1.30.1_jsdom@22.1.0_@swc+core@1.3.96__@swc+helpers@0.5.17_@swc+helpers@0.5.17": {
       "integrity": "sha512-xd3WFYQDIZFm3DPza1fY52dVa1km1gCJyoE9/2s+m9Jbvxu40BukdSw37SZVgCtVqyNjsl4rrlXOmzOIKLb98g==",
       "dependencies": [
-        "@nx/devkit@21.1.3_nx@21.1.3__@swc-node+register@1.10.10___@swc+core@1.3.96____@swc+helpers@0.5.17___typescript@5.8.3__@swc+core@1.3.96___@swc+helpers@0.5.17__typescript@5.8.3_@swc-node+register@1.10.10__@swc+core@1.3.96___@swc+helpers@0.5.17__typescript@5.8.3_@swc+core@1.3.96__@swc+helpers@0.5.17_typescript@5.8.3_@swc+helpers@0.5.17",
-        "@nx/js@21.1.3_@babel+core@7.27.4_@swc-node+register@1.10.10__@swc+core@1.3.96___@swc+helpers@0.5.17__typescript@5.8.3_@swc+core@1.3.96__@swc+helpers@0.5.17_typescript@5.8.3_@swc+helpers@0.5.17",
+        "@nx/devkit@21.1.3_nx@21.1.3__@swc+core@1.3.96___@swc+helpers@0.5.17_@swc+core@1.3.96__@swc+helpers@0.5.17_@swc+helpers@0.5.17",
+        "@nx/js@21.1.3_@babel+core@7.27.4_@swc+core@1.3.96__@swc+helpers@0.5.17_@swc+helpers@0.5.17",
         "@phenomnomnominal/tsquery",
         "@swc/helpers",
         "ajv@8.17.1",
@@ -4287,23 +4724,50 @@
         "vitest"
       ]
     },
-    "@nx/web@21.1.3_@swc-node+register@1.10.10__@swc+core@1.3.96___@swc+helpers@0.5.17__typescript@5.8.3_@swc+core@1.3.96__@swc+helpers@0.5.17_typescript@5.8.3": {
+    "@nx/vite@21.1.3_vite@6.0.11__@types+node@22.15.30__lightningcss@1.30.1__less@4.2.2__sass@1.85.0__terser@5.39.0_vitest@3.2.2__@types+node@22.15.30__jsdom@22.1.0__vite@6.3.5___@types+node@22.15.30___lightningcss@1.30.1___picomatch@4.0.2__lightningcss@1.30.1_typescript@5.8.3_@types+node@22.15.30_lightningcss@1.30.1_jsdom@22.1.0_@swc+core@1.3.96__@swc+helpers@0.5.17_@swc+helpers@0.5.17_@swc-node+register@1.10.10__@swc+core@1.3.96___@swc+helpers@0.5.17__typescript@5.8.3": {
+      "integrity": "sha512-xd3WFYQDIZFm3DPza1fY52dVa1km1gCJyoE9/2s+m9Jbvxu40BukdSw37SZVgCtVqyNjsl4rrlXOmzOIKLb98g==",
+      "dependencies": [
+        "@nx/devkit@21.1.3_nx@21.1.3__@swc+core@1.3.96___@swc+helpers@0.5.17_@swc+core@1.3.96__@swc+helpers@0.5.17_@swc+helpers@0.5.17_@swc-node+register@1.10.10__@swc+core@1.3.96___@swc+helpers@0.5.17__typescript@5.8.3_typescript@5.8.3",
+        "@nx/js@21.1.3_@babel+core@7.27.4_@swc+core@1.3.96__@swc+helpers@0.5.17_@swc+helpers@0.5.17_@swc-node+register@1.10.10__@swc+core@1.3.96___@swc+helpers@0.5.17__typescript@5.8.3_typescript@5.8.3",
+        "@phenomnomnominal/tsquery",
+        "@swc/helpers",
+        "ajv@8.17.1",
+        "enquirer",
+        "picomatch@4.0.2",
+        "semver@7.7.2",
+        "tsconfig-paths",
+        "vite@6.0.11_@types+node@22.15.30_lightningcss@1.30.1_less@4.2.2_sass@1.85.0_terser@5.39.0",
+        "vitest"
+      ]
+    },
+    "@nx/web@21.1.3_@swc+core@1.3.96__@swc+helpers@0.5.17": {
       "integrity": "sha512-9UV3uacxJ6oMYPfXbPDq1jadM6nPMs13QhSEpjQLAxNDi4ay0zTOobbHZG6LYnf69dAFEIppoayiS42Kuk6L3Q==",
       "dependencies": [
-        "@nx/devkit@21.1.3_nx@21.1.3__@swc-node+register@1.10.10___@swc+core@1.3.96____@swc+helpers@0.5.17___typescript@5.8.3__@swc+core@1.3.96___@swc+helpers@0.5.17__typescript@5.8.3_@swc-node+register@1.10.10__@swc+core@1.3.96___@swc+helpers@0.5.17__typescript@5.8.3_@swc+core@1.3.96__@swc+helpers@0.5.17_typescript@5.8.3",
-        "@nx/js@21.1.3_@babel+core@7.27.4_@swc-node+register@1.10.10__@swc+core@1.3.96___@swc+helpers@0.5.17__typescript@5.8.3_@swc+core@1.3.96__@swc+helpers@0.5.17_typescript@5.8.3",
+        "@nx/devkit@21.1.3_nx@21.1.3__@swc+core@1.3.96___@swc+helpers@0.5.17_@swc+core@1.3.96__@swc+helpers@0.5.17",
+        "@nx/js@21.1.3_@babel+core@7.27.4_@swc+core@1.3.96__@swc+helpers@0.5.17",
         "detect-port",
         "http-server",
         "picocolors",
         "tslib"
       ]
     },
-    "@nx/webpack@21.1.3_typescript@5.8.3_postcss@8.5.4_@babel+core@7.27.4_webpack@5.98.0_less@4.1.3_sass@1.85.0_sass-embedded@1.89.1_stylus@0.64.0_@swc-node+register@1.10.10__@swc+core@1.3.96___@swc+helpers@0.5.17__typescript@5.8.3_@swc+core@1.3.96__@swc+helpers@0.5.17": {
+    "@nx/web@21.1.3_@swc+core@1.3.96__@swc+helpers@0.5.17_@swc-node+register@1.10.10__@swc+core@1.3.96___@swc+helpers@0.5.17__typescript@5.8.3_typescript@5.8.3": {
+      "integrity": "sha512-9UV3uacxJ6oMYPfXbPDq1jadM6nPMs13QhSEpjQLAxNDi4ay0zTOobbHZG6LYnf69dAFEIppoayiS42Kuk6L3Q==",
+      "dependencies": [
+        "@nx/devkit@21.1.3_nx@21.1.3__@swc+core@1.3.96___@swc+helpers@0.5.17_@swc+core@1.3.96__@swc+helpers@0.5.17_@swc-node+register@1.10.10__@swc+core@1.3.96___@swc+helpers@0.5.17__typescript@5.8.3_typescript@5.8.3",
+        "@nx/js@21.1.3_@babel+core@7.27.4_@swc+core@1.3.96__@swc+helpers@0.5.17_@swc-node+register@1.10.10__@swc+core@1.3.96___@swc+helpers@0.5.17__typescript@5.8.3_typescript@5.8.3",
+        "detect-port",
+        "http-server",
+        "picocolors",
+        "tslib"
+      ]
+    },
+    "@nx/webpack@21.1.3_typescript@5.8.3_postcss@8.5.4_@babel+core@7.27.4_webpack@5.98.0_less@4.1.3_sass@1.85.0_sass-embedded@1.89.1_stylus@0.64.0_@swc+core@1.3.96__@swc+helpers@0.5.17": {
       "integrity": "sha512-xrWio5Bg0bXrDsWiE54Y2XrajaLhIQBuKWUvkTb6rdn6n7yWC3pSdfAdMZ6MUtmJr6HMSBc8bFSb44IYXSMJ9Q==",
       "dependencies": [
         "@babel/core@7.27.4",
-        "@nx/devkit@21.1.3_nx@21.1.3__@swc-node+register@1.10.10___@swc+core@1.3.96____@swc+helpers@0.5.17___typescript@5.8.3__@swc+core@1.3.96___@swc+helpers@0.5.17__typescript@5.8.3_@swc-node+register@1.10.10__@swc+core@1.3.96___@swc+helpers@0.5.17__typescript@5.8.3_@swc+core@1.3.96__@swc+helpers@0.5.17_typescript@5.8.3",
-        "@nx/js@21.1.3_@babel+core@7.27.4_@swc-node+register@1.10.10__@swc+core@1.3.96___@swc+helpers@0.5.17__typescript@5.8.3_@swc+core@1.3.96__@swc+helpers@0.5.17_typescript@5.8.3",
+        "@nx/devkit@21.1.3_nx@21.1.3__@swc+core@1.3.96___@swc+helpers@0.5.17_@swc+core@1.3.96__@swc+helpers@0.5.17",
+        "@nx/js@21.1.3_@babel+core@7.27.4_@swc+core@1.3.96__@swc+helpers@0.5.17",
         "@phenomnomnominal/tsquery",
         "ajv@8.17.1",
         "autoprefixer@10.4.21_postcss@8.5.4",
@@ -4341,27 +4805,96 @@
         "webpack-subresource-integrity"
       ]
     },
-    "@nx/workspace@21.1.3_nx@21.1.3__@swc-node+register@1.10.10___@swc+core@1.3.96____@swc+helpers@0.5.17___typescript@5.8.3__@swc+core@1.3.96___@swc+helpers@0.5.17__typescript@5.8.3_@swc-node+register@1.10.10__@swc+core@1.3.96___@swc+helpers@0.5.17__typescript@5.8.3_@swc+core@1.3.96__@swc+helpers@0.5.17_typescript@5.8.3": {
+    "@nx/webpack@21.1.3_typescript@5.8.3_postcss@8.5.4_@babel+core@7.27.4_webpack@5.98.0_less@4.1.3_sass@1.85.0_sass-embedded@1.89.1_stylus@0.64.0_@swc+core@1.3.96__@swc+helpers@0.5.17_@swc-node+register@1.10.10__@swc+core@1.3.96___@swc+helpers@0.5.17__typescript@5.8.3": {
+      "integrity": "sha512-xrWio5Bg0bXrDsWiE54Y2XrajaLhIQBuKWUvkTb6rdn6n7yWC3pSdfAdMZ6MUtmJr6HMSBc8bFSb44IYXSMJ9Q==",
+      "dependencies": [
+        "@babel/core@7.27.4",
+        "@nx/devkit@21.1.3_nx@21.1.3__@swc+core@1.3.96___@swc+helpers@0.5.17_@swc+core@1.3.96__@swc+helpers@0.5.17_@swc-node+register@1.10.10__@swc+core@1.3.96___@swc+helpers@0.5.17__typescript@5.8.3_typescript@5.8.3",
+        "@nx/js@21.1.3_@babel+core@7.27.4_@swc+core@1.3.96__@swc+helpers@0.5.17_@swc-node+register@1.10.10__@swc+core@1.3.96___@swc+helpers@0.5.17__typescript@5.8.3_typescript@5.8.3",
+        "@phenomnomnominal/tsquery",
+        "ajv@8.17.1",
+        "autoprefixer@10.4.21_postcss@8.5.4",
+        "babel-loader@9.2.1_@babel+core@7.27.4_webpack@5.98.0",
+        "browserslist",
+        "copy-webpack-plugin@10.2.4_webpack@5.98.0",
+        "css-loader@6.11.0_@rspack+core@1.3.15_webpack@5.98.0_postcss@8.5.4",
+        "css-minimizer-webpack-plugin",
+        "fork-ts-checker-webpack-plugin",
+        "less-loader@11.1.0_less@4.1.3_webpack@5.98.0",
+        "less@4.1.3",
+        "license-webpack-plugin",
+        "loader-utils@2.0.4",
+        "mini-css-extract-plugin@2.4.7_webpack@5.98.0",
+        "parse5@4.0.0",
+        "picocolors",
+        "postcss-import",
+        "postcss-loader@6.2.1_postcss@8.5.4_webpack@5.98.0",
+        "postcss@8.5.4",
+        "rxjs@7.8.2",
+        "sass",
+        "sass-embedded",
+        "sass-loader@16.0.5_@rspack+core@1.3.15_sass@1.85.0_sass-embedded@1.89.1_webpack@5.98.0",
+        "source-map-loader",
+        "style-loader",
+        "stylus",
+        "stylus-loader",
+        "terser-webpack-plugin",
+        "ts-loader",
+        "tsconfig-paths-webpack-plugin",
+        "tslib",
+        "webpack",
+        "webpack-dev-server@5.2.2_webpack@5.98.0_@types+express@4.17.23",
+        "webpack-node-externals",
+        "webpack-subresource-integrity"
+      ]
+    },
+    "@nx/workspace@21.1.3_nx@21.1.3__@swc+core@1.3.96___@swc+helpers@0.5.17_@swc+core@1.3.96__@swc+helpers@0.5.17": {
       "integrity": "sha512-SAObZmW1cx0hRddC2PCFWJBHpzdjsTGNArJta8iyzfrbP9KAxQd8jjDBZvXLpXU6YMOw0fLwm8YAD2E1xvIoyw==",
       "dependencies": [
-        "@nx/devkit@21.1.3_nx@21.1.3__@swc-node+register@1.10.10___@swc+core@1.3.96____@swc+helpers@0.5.17___typescript@5.8.3__@swc+core@1.3.96___@swc+helpers@0.5.17__typescript@5.8.3_@swc-node+register@1.10.10__@swc+core@1.3.96___@swc+helpers@0.5.17__typescript@5.8.3_@swc+core@1.3.96__@swc+helpers@0.5.17_typescript@5.8.3",
+        "@nx/devkit@21.1.3_nx@21.1.3__@swc+core@1.3.96___@swc+helpers@0.5.17_@swc+core@1.3.96__@swc+helpers@0.5.17",
         "@zkochan/js-yaml",
         "chalk@4.1.2",
         "enquirer",
-        "nx@21.1.3_@swc-node+register@1.10.10__@swc+core@1.3.96___@swc+helpers@0.5.17__typescript@5.8.3_@swc+core@1.3.96__@swc+helpers@0.5.17_typescript@5.8.3",
+        "nx@21.1.3_@swc+core@1.3.96__@swc+helpers@0.5.17",
         "picomatch@4.0.2",
         "tslib",
         "yargs-parser@21.1.1"
       ]
     },
-    "@nx/workspace@21.1.3_nx@21.1.3__@swc-node+register@1.10.10___@swc+core@1.3.96____@swc+helpers@0.5.17___typescript@5.8.3__@swc+core@1.3.96___@swc+helpers@0.5.17__typescript@5.8.3_@swc-node+register@1.10.10__@swc+core@1.3.96___@swc+helpers@0.5.17__typescript@5.8.3_@swc+core@1.3.96__@swc+helpers@0.5.17_typescript@5.8.3_@swc+helpers@0.5.17": {
+    "@nx/workspace@21.1.3_nx@21.1.3__@swc+core@1.3.96___@swc+helpers@0.5.17_@swc+core@1.3.96__@swc+helpers@0.5.17_@swc+helpers@0.5.17": {
       "integrity": "sha512-SAObZmW1cx0hRddC2PCFWJBHpzdjsTGNArJta8iyzfrbP9KAxQd8jjDBZvXLpXU6YMOw0fLwm8YAD2E1xvIoyw==",
       "dependencies": [
-        "@nx/devkit@21.1.3_nx@21.1.3__@swc-node+register@1.10.10___@swc+core@1.3.96____@swc+helpers@0.5.17___typescript@5.8.3__@swc+core@1.3.96___@swc+helpers@0.5.17__typescript@5.8.3_@swc-node+register@1.10.10__@swc+core@1.3.96___@swc+helpers@0.5.17__typescript@5.8.3_@swc+core@1.3.96__@swc+helpers@0.5.17_typescript@5.8.3_@swc+helpers@0.5.17",
+        "@nx/devkit@21.1.3_nx@21.1.3__@swc+core@1.3.96___@swc+helpers@0.5.17_@swc+core@1.3.96__@swc+helpers@0.5.17_@swc+helpers@0.5.17",
         "@zkochan/js-yaml",
         "chalk@4.1.2",
         "enquirer",
-        "nx@21.1.3_@swc-node+register@1.10.10__@swc+core@1.3.96___@swc+helpers@0.5.17__typescript@5.8.3_@swc+core@1.3.96__@swc+helpers@0.5.17_typescript@5.8.3_@swc+helpers@0.5.17",
+        "nx@21.1.3_@swc+core@1.3.96__@swc+helpers@0.5.17_@swc+helpers@0.5.17",
+        "picomatch@4.0.2",
+        "tslib",
+        "yargs-parser@21.1.1"
+      ]
+    },
+    "@nx/workspace@21.1.3_nx@21.1.3__@swc+core@1.3.96___@swc+helpers@0.5.17_@swc+core@1.3.96__@swc+helpers@0.5.17_@swc+helpers@0.5.17_@swc-node+register@1.10.10__@swc+core@1.3.96___@swc+helpers@0.5.17__typescript@5.8.3_typescript@5.8.3": {
+      "integrity": "sha512-SAObZmW1cx0hRddC2PCFWJBHpzdjsTGNArJta8iyzfrbP9KAxQd8jjDBZvXLpXU6YMOw0fLwm8YAD2E1xvIoyw==",
+      "dependencies": [
+        "@nx/devkit@21.1.3_nx@21.1.3__@swc+core@1.3.96___@swc+helpers@0.5.17_@swc+core@1.3.96__@swc+helpers@0.5.17_@swc+helpers@0.5.17_@swc-node+register@1.10.10__@swc+core@1.3.96___@swc+helpers@0.5.17__typescript@5.8.3_typescript@5.8.3",
+        "@zkochan/js-yaml",
+        "chalk@4.1.2",
+        "enquirer",
+        "nx@21.1.3_@swc+core@1.3.96__@swc+helpers@0.5.17_@swc+helpers@0.5.17_@swc-node+register@1.10.10__@swc+core@1.3.96___@swc+helpers@0.5.17__typescript@5.8.3_typescript@5.8.3",
+        "picomatch@4.0.2",
+        "tslib",
+        "yargs-parser@21.1.1"
+      ]
+    },
+    "@nx/workspace@21.1.3_nx@21.1.3__@swc+core@1.3.96___@swc+helpers@0.5.17_@swc+core@1.3.96__@swc+helpers@0.5.17_@swc-node+register@1.10.10__@swc+core@1.3.96___@swc+helpers@0.5.17__typescript@5.8.3_typescript@5.8.3": {
+      "integrity": "sha512-SAObZmW1cx0hRddC2PCFWJBHpzdjsTGNArJta8iyzfrbP9KAxQd8jjDBZvXLpXU6YMOw0fLwm8YAD2E1xvIoyw==",
+      "dependencies": [
+        "@nx/devkit@21.1.3_nx@21.1.3__@swc+core@1.3.96___@swc+helpers@0.5.17_@swc+core@1.3.96__@swc+helpers@0.5.17_@swc-node+register@1.10.10__@swc+core@1.3.96___@swc+helpers@0.5.17__typescript@5.8.3_typescript@5.8.3",
+        "@zkochan/js-yaml",
+        "chalk@4.1.2",
+        "enquirer",
+        "nx@21.1.3_@swc+core@1.3.96__@swc+helpers@0.5.17_@swc-node+register@1.10.10__@swc+core@1.3.96___@swc+helpers@0.5.17__typescript@5.8.3_typescript@5.8.3",
         "picomatch@4.0.2",
         "tslib",
         "yargs-parser@21.1.1"
@@ -5135,11 +5668,19 @@
         "react-refresh"
       ]
     },
+    "@schematics/angular@19.2.14": {
+      "integrity": "sha512-p/jvMwth67g7tOrziTx+yWRagIPtjx21TF2uU2Pv5bqTY+JjRTczJs3yHPmVpzJN+ptmw47K4/NeLJmVUGuBgA==",
+      "dependencies": [
+        "@angular-devkit/core@19.2.14_ajv@8.17.1",
+        "@angular-devkit/schematics@19.2.14",
+        "jsonc-parser@3.3.1"
+      ]
+    },
     "@schematics/angular@19.2.14_chokidar@4.0.3": {
       "integrity": "sha512-p/jvMwth67g7tOrziTx+yWRagIPtjx21TF2uU2Pv5bqTY+JjRTczJs3yHPmVpzJN+ptmw47K4/NeLJmVUGuBgA==",
       "dependencies": [
-        "@angular-devkit/core@19.2.14_chokidar@4.0.3_ajv@8.17.1",
-        "@angular-devkit/schematics",
+        "@angular-devkit/core@19.2.14_ajv@8.17.1_chokidar@4.0.3",
+        "@angular-devkit/schematics@19.2.14_chokidar@4.0.3",
         "jsonc-parser@3.3.1"
       ]
     },
@@ -5353,6 +5894,21 @@
       "dependencies": [
         "source-map-support@0.5.21",
         "tslib"
+      ]
+    },
+    "@swc/cli@0.6.0_@swc+core@1.3.96__@swc+helpers@0.5.17": {
+      "integrity": "sha512-Q5FsI3Cw0fGMXhmsg7c08i4EmXCrcl+WnAxb6LYOLHw4JFFC3yzmx9LaXZ7QMbA+JZXbigU2TirI7RAfO0Qlnw==",
+      "dependencies": [
+        "@swc/core@1.3.96_@swc+helpers@0.5.17",
+        "@swc/counter",
+        "@xhmikosr/bin-wrapper",
+        "commander@8.3.0",
+        "fast-glob",
+        "minimatch@9.0.5",
+        "piscina@4.9.2",
+        "semver@7.7.2",
+        "slash@3.0.0",
+        "source-map@0.7.4"
       ]
     },
     "@swc/cli@0.6.0_@swc+core@1.3.96__@swc+helpers@0.5.17_chokidar@4.0.3": {
@@ -12856,7 +13412,7 @@
     "nwsapi@2.2.20": {
       "integrity": "sha512-/ieB+mDe4MrrKMT8z+mQL8klXydZWGR5Dowt4RAGKbJ3kIGEx3X4ljUo+6V73IXtUPWgfOlU5B9MlGxFO5T+cA=="
     },
-    "nx@21.1.3_@swc-node+register@1.10.10__@swc+core@1.3.96___@swc+helpers@0.5.17__typescript@5.8.3_@swc+core@1.3.96__@swc+helpers@0.5.17_typescript@5.8.3": {
+    "nx@21.1.3_@swc+core@1.3.96__@swc+helpers@0.5.17": {
       "integrity": "sha512-GZ7+Bve4xOVIk/hb9nN16fVqVq5PNNyFom1SCQbEGhGkyABJF8kA4JImCKhZpZyg1CtZeUrkPHK4xNO+rw9G5w==",
       "dependencies": [
         "@napi-rs/wasm-runtime@0.2.4",
@@ -12870,7 +13426,6 @@
         "@nx/nx-linux-x64-musl",
         "@nx/nx-win32-arm64-msvc",
         "@nx/nx-win32-x64-msvc",
-        "@swc-node/register@1.10.10_@swc+core@1.3.96__@swc+helpers@0.5.17_typescript@5.8.3",
         "@swc/core@1.3.96_@swc+helpers@0.5.17",
         "@yarnpkg/lockfile",
         "@yarnpkg/parsers",
@@ -12908,7 +13463,58 @@
         "yargs@17.7.2"
       ]
     },
-    "nx@21.1.3_@swc-node+register@1.10.10__@swc+core@1.3.96___@swc+helpers@0.5.17__typescript@5.8.3_@swc+core@1.3.96__@swc+helpers@0.5.17_typescript@5.8.3_@swc+helpers@0.5.17": {
+    "nx@21.1.3_@swc+core@1.3.96__@swc+helpers@0.5.17_@swc+helpers@0.5.17": {
+      "integrity": "sha512-GZ7+Bve4xOVIk/hb9nN16fVqVq5PNNyFom1SCQbEGhGkyABJF8kA4JImCKhZpZyg1CtZeUrkPHK4xNO+rw9G5w==",
+      "dependencies": [
+        "@napi-rs/wasm-runtime@0.2.4",
+        "@nx/nx-darwin-arm64",
+        "@nx/nx-darwin-x64",
+        "@nx/nx-freebsd-x64",
+        "@nx/nx-linux-arm-gnueabihf",
+        "@nx/nx-linux-arm64-gnu",
+        "@nx/nx-linux-arm64-musl",
+        "@nx/nx-linux-x64-gnu",
+        "@nx/nx-linux-x64-musl",
+        "@nx/nx-win32-arm64-msvc",
+        "@nx/nx-win32-x64-msvc",
+        "@swc/core@1.3.96_@swc+helpers@0.5.17",
+        "@yarnpkg/lockfile",
+        "@yarnpkg/parsers",
+        "@zkochan/js-yaml",
+        "axios",
+        "chalk@4.1.2",
+        "cli-cursor@3.1.0",
+        "cli-spinners@2.6.1",
+        "cliui@8.0.1",
+        "dotenv-expand",
+        "dotenv@16.4.7",
+        "enquirer",
+        "figures",
+        "flat",
+        "front-matter",
+        "ignore@5.3.2",
+        "jest-diff",
+        "jsonc-parser@3.2.0",
+        "lines-and-columns@2.0.3",
+        "minimatch@9.0.3",
+        "node-machine-id",
+        "npm-run-path@4.0.1",
+        "open@8.4.2",
+        "ora@5.3.0",
+        "resolve.exports",
+        "semver@7.7.2",
+        "string-width@4.2.3",
+        "tar-stream@2.2.0",
+        "tmp",
+        "tree-kill",
+        "tsconfig-paths",
+        "tslib",
+        "yaml@2.8.0",
+        "yargs-parser@21.1.1",
+        "yargs@17.7.2"
+      ]
+    },
+    "nx@21.1.3_@swc+core@1.3.96__@swc+helpers@0.5.17_@swc+helpers@0.5.17_@swc-node+register@1.10.10__@swc+core@1.3.96___@swc+helpers@0.5.17__typescript@5.8.3_typescript@5.8.3": {
       "integrity": "sha512-GZ7+Bve4xOVIk/hb9nN16fVqVq5PNNyFom1SCQbEGhGkyABJF8kA4JImCKhZpZyg1CtZeUrkPHK4xNO+rw9G5w==",
       "dependencies": [
         "@napi-rs/wasm-runtime@0.2.4",
@@ -12923,6 +13529,58 @@
         "@nx/nx-win32-arm64-msvc",
         "@nx/nx-win32-x64-msvc",
         "@swc-node/register@1.10.10_@swc+core@1.3.96__@swc+helpers@0.5.17_typescript@5.8.3_@swc+helpers@0.5.17",
+        "@swc/core@1.3.96_@swc+helpers@0.5.17",
+        "@yarnpkg/lockfile",
+        "@yarnpkg/parsers",
+        "@zkochan/js-yaml",
+        "axios",
+        "chalk@4.1.2",
+        "cli-cursor@3.1.0",
+        "cli-spinners@2.6.1",
+        "cliui@8.0.1",
+        "dotenv-expand",
+        "dotenv@16.4.7",
+        "enquirer",
+        "figures",
+        "flat",
+        "front-matter",
+        "ignore@5.3.2",
+        "jest-diff",
+        "jsonc-parser@3.2.0",
+        "lines-and-columns@2.0.3",
+        "minimatch@9.0.3",
+        "node-machine-id",
+        "npm-run-path@4.0.1",
+        "open@8.4.2",
+        "ora@5.3.0",
+        "resolve.exports",
+        "semver@7.7.2",
+        "string-width@4.2.3",
+        "tar-stream@2.2.0",
+        "tmp",
+        "tree-kill",
+        "tsconfig-paths",
+        "tslib",
+        "yaml@2.8.0",
+        "yargs-parser@21.1.1",
+        "yargs@17.7.2"
+      ]
+    },
+    "nx@21.1.3_@swc+core@1.3.96__@swc+helpers@0.5.17_@swc-node+register@1.10.10__@swc+core@1.3.96___@swc+helpers@0.5.17__typescript@5.8.3_typescript@5.8.3": {
+      "integrity": "sha512-GZ7+Bve4xOVIk/hb9nN16fVqVq5PNNyFom1SCQbEGhGkyABJF8kA4JImCKhZpZyg1CtZeUrkPHK4xNO+rw9G5w==",
+      "dependencies": [
+        "@napi-rs/wasm-runtime@0.2.4",
+        "@nx/nx-darwin-arm64",
+        "@nx/nx-darwin-x64",
+        "@nx/nx-freebsd-x64",
+        "@nx/nx-linux-arm-gnueabihf",
+        "@nx/nx-linux-arm64-gnu",
+        "@nx/nx-linux-arm64-musl",
+        "@nx/nx-linux-x64-gnu",
+        "@nx/nx-linux-x64-musl",
+        "@nx/nx-win32-arm64-msvc",
+        "@nx/nx-win32-x64-msvc",
+        "@swc-node/register@1.10.10_@swc+core@1.3.96__@swc+helpers@0.5.17_typescript@5.8.3",
         "@swc/core@1.3.96_@swc+helpers@0.5.17",
         "@yarnpkg/lockfile",
         "@yarnpkg/parsers",
@@ -15944,7 +16602,7 @@
         "picocolors",
         "pkg-types@1.3.1",
         "publint",
-        "rolldown@1.0.0-beta.13",
+        "rolldown@1.0.0-beta.3_valibot@1.0.0-beta.12__typescript@5.8.3_typescript@5.8.3",
         "rollup-plugin-dts",
         "rollup@4.42.0",
         "tinyglobby",
