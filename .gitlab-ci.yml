@@ -191,7 +191,7 @@ release:
     - if: $CI_COMMIT_TAG
   image: registry.gitlab.com/stefanwimmer128/archlinux-chaotic-paru-user:latest
   before_script:
-    - paru -Syu --noconfirm git-cliff release-cli
+    - paru -Syu --noconfirm git-cliff jq release-cli
   script:
     - 'curl --header "JOB-TOKEN: $CI_JOB_TOKEN" --upload-file ".dist/firedragon-source-$CI_COMMIT_TAG.tar.zst" "$CI_API_V4_URL/projects/$CI_PROJECT_ID/packages/generic/firedragon-source/${CI_COMMIT_TAG#v}/firedragon-source-$CI_COMMIT_TAG.tar.zst"'
     - 'curl --header "JOB-TOKEN: $CI_JOB_TOKEN" --upload-file ".dist/firedragon-$CI_COMMIT_TAG-linux-x64.tar.xz" "$CI_API_V4_URL/projects/$CI_PROJECT_ID/packages/generic/firedragon/${CI_COMMIT_TAG#v}/firedragon-$CI_COMMIT_TAG-linux-x64.tar.xz"'
