@@ -1,5 +1,40 @@
 # FireDragon ChangeLog
 
+## [FireDragon v12.0.0-beta.12](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v12.0.0-beta.12) — 2025-06-22 — [`v12.0.0-beta.11`…`v12.0.0-beta.12`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/compare/v12.0.0-beta.11...v12.0.0-beta.12)
+
+### 🚀 Features
+
+- *(publish_release)* MacOS用のビルドIDと更新XMLのURLを追加 — [`61e9a43a…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/61e9a43a17c7878998034ddf918f8d8de0402eac)
+- *(publish_release)* 更新XMLのURLをFloorpプロジェクトに合わせて修正し、認証トークンを更新 — [`11b9f0c3…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/11b9f0c35eafc7f00ffbede0506cd2bf27aeac4a)
+- *(publish_release)* Use "buildid" and "firefox version" for argment name — [`d13e1a6a…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/d13e1a6ab38a222486ad406102c68ec044d8e5fa)
+- *(workflows)* Upload artifact for testing bin — [`08bf8718…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/08bf87184f553c46601c3f95c1aada6906b85628)
+- *(patches)* Update patches for fx 140.0 — [`f99b5a2b…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/f99b5a2b3f9bbd848a72f6d478a715d82202538f)
+- *(workflows)* Inherit secrets on publish — [`48e8e722…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/48e8e72222d570ec85ff7b6f0345ed0c0ab811cf)
+- *(docker/make)* Add script to make docker image to install rust with all toolchains — [`f7c56b23…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/f7c56b233f05337c3472d77ecad13a83131c12bd)
+- *(patches)* Update BrowserGlue.sys.mjs patch — [`26aa3a6b…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/26aa3a6b8de28a3c29960428e0aa87d0b4043e9b)
+- *(reboot menu)* Implement reboot menu on PanelView — [`91abb0a6…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/91abb0a62a1d7316c84f9cc405f230724f26efa8)
+
+### 🐛 Bug Fixes
+
+- *(release)* Fix metainfo update — [`38100068…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/38100068d8d5b7b15e9a024ee2b894f500de8dfe)
+- *(patches)* Update patch for BrowserGlue.sys.mjs — [`15950a19…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/15950a1926850ab512e83bbdbcfbcad3f0739643)
+
+### 🚜 Refactor
+
+- Use separate git-cliff templates to generate changelog and release notes — [`f55d603e…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/f55d603e34640dde6749235c133ae1e1684b81c5)
+
+### 📚 Documentation
+
+- Add more documentation about using make docker image with distrobox — [`229c9a9a…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/229c9a9a2b43f40e886989c59f241f23d7a7302e)
+
+### ⚙️ Miscellaneous Tasks
+
+- *(package)* バージョンを12.0.3から12.0.4に更新 — [`743def61…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/743def612a1cea016ab47ed38eb765afa5bdd48b)
+- *(workflows)* Fetch-depthを1に設定し、msitoolsのインストールを簡素化 — [`5657a532…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/5657a53295f735b81e8f1a91a37f20b7c6db1145)
+- Update runtime to firefox 140.0 — [`deb0427f…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/deb0427ff799d456a9ce8450aebfec4ba8c25c21)
+- (version) update version — [`1562eff5…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/1562eff5601c5d05b2f8d00df2fcb1ab9df563cb)
+- Install jq for release job — [`9338142f…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/9338142f9b6a412e0347fccafe29bf0affeb72c9)
+
 ## [FireDragon v12.0.0-beta.11](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v12.0.0-beta.11) — 2025-06-19 — [`v12.0.0-beta.10`…`v12.0.0-beta.11`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/compare/v12.0.0-beta.10...v12.0.0-beta.11)
 
 ### 🚀 Features
