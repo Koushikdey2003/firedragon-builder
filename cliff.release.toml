@@ -1,0 +1,111 @@
+# git-cliff ~ default configuration file
+# https://git-cliff.org/docs/configuration
+#
+# Lines starting with "#" are comments.
+# Configuration options are organized into tables and keys.
+# See documentation for more information on available options.
+
+[changelog]
+# template for the changelog header
+header = """
+{% set version = releases.0.version %}# FireDragon {{ version }}
+
+## Downloads
+
+Source archive: [firedragon-source-{{ version }}.tar.zst](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/{{ version }}/downloads/firedragon-source.tar.zst)
+
+| Edition      | OS       | Architecture | Download                                                                                                                                                                                                |
+|--------------|----------|--------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Dr460nized   | Linux    | x64          | [firedragon-{{ version }}-linux-x64.tar.xz](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/{{ version }}/downloads/firedragon-linux-x64.tar.xz)                                     |
+| Dr460nized   | Linux    | arm64        | [firedragon-{{ version }}-linux-arm64.tar.xz](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/{{ version }}/downloads/firedragon-linux-arm64.tar.xz)                                 |
+| Dr460nized   | Windows  | x64          | [firedragon-{{ version }}-win32-x64.exe](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/{{ version }}/downloads/firedragon-win32-x64.exe)                                           |
+| Dr460nized   | Windows  | arm64        | [firedragon-{{ version }}-win32-arm64.exe](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/{{ version }}/downloads/firedragon-win32-arm64.exe)                                       |
+| Dr460nized   | MacOS    | x64          | [firedragon-{{ version }}-darwin-x64.dmg](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/{{ version }}/downloads/firedragon-darwin-x64.dmg)                                         |
+| Dr460nized   | MacOS    | arm64        | [firedragon-{{ version }}-darwin-arm64.dmg](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/{{ version }}/downloads/firedragon-darwin-arm64.dmg)                                     |
+| Dr460nized   | AppImage | x64          | [firedragon-{{ version }}-appimage-x64.AppImage](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/{{ version }}/downloads/firedragon-appimage-x64.AppImage)                           |
+| Dr460nized   | AppImage | arm64        | [firedragon-{{ version }}-appimage-arm64.AppImage](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/{{ version }}/downloads/firedragon-appimage-arm64.AppImage)                       |
+| Catppuccin   | Linux    | x64          | [firedragon-catppuccin-{{ version }}-linux-x64.tar.xz](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/{{ version }}/downloads/firedragon-catppuccin-linux-x64.tar.xz)               |
+| Catppuccin   | Linux    | arm64        | [firedragon-catppuccin-{{ version }}-linux-arm64.tar.xz](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/{{ version }}/downloads/firedragon-catppuccin-linux-arm64.tar.xz)           |
+| Catppuccin   | Windows  | x64          | [firedragon-catppuccin-{{ version }}-win32-x64.exe](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/{{ version }}/downloads/firedragon-catppuccin-win32-x64.exe)                     |
+| Catppuccin   | Windows  | arm64        | [firedragon-catppuccin-{{ version }}-win32-arm64.exe](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/{{ version }}/downloads/firedragon-catppuccin-win32-arm64.exe)                 |
+| Catppuccin   | MacOS    | x64          | [firedragon-catppuccin-{{ version }}-darwin-x64.dmg](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/{{ version }}/downloads/firedragon-catppuccin-darwin-x64.dmg)                   |
+| Catppuccin   | MacOS    | arm64        | [firedragon-catppuccin-{{ version }}-darwin-arm64.dmg](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/{{ version }}/downloads/firedragon-catppuccin-darwin-arm64.dmg)               |
+| Catppuccin   | AppImage | x64          | [firedragon-catppuccin-{{ version }}-appimage-x64.AppImage](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/{{ version }}/downloads/firedragon-catppuccin-appimage-x64.AppImage)     |
+| Catppuccin   | AppImage | arm64        | [firedragon-catppuccin-{{ version }}-appimage-arm64.AppImage](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/{{ version }}/downloads/firedragon-catppuccin-appimage-arm64.AppImage) |
+
+"""
+# template for the changelog body
+# https://keats.github.io/tera/docs/#introduction
+body = """
+{% if version %}\
+    ## ChangeLog{% if previous.version %} — [`{{ previous.version }}`…`{{ version }}`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/compare/{{ previous.version }}...{{ version }}){% endif %}
+{% else %}\
+    ## [unreleased]
+{% endif %}\
+{% for group, commits in commits | group_by(attribute="group") %}
+    ### {{ group | striptags | trim | upper_first }}
+    {% for commit in commits %}
+        - {% if commit.scope %}*({{ commit.scope }})* {% endif %}\
+            {% if commit.breaking %}[**breaking**] {% endif %}\
+            {{ commit.message | upper_first }} — [`{{ commit.id | truncate(length=8) }}`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/{{ commit.id }})\
+    {% endfor %}
+{% endfor %}
+
+"""
+# template for the changelog footer
+footer = """
+## Technical information
+
+Firefox: {{ releases.0.extra.firefox }}
+Floorp: {{ releases.0.extra.floorp }}
+
+<!-- generated by git-cliff -->
+"""
+# remove the leading and trailing s
+trim = true
+# postprocessors
+postprocessors = [
+  # { pattern = '<REPO>', replace = "https://github.com/orhun/git-cliff" }, # replace repository URL
+]
+
+[git]
+# parse the commits based on https://www.conventionalcommits.org
+conventional_commits = true
+# filter out the commits that are not conventional
+filter_unconventional = true
+# process each line of a commit as an individual commit
+split_commits = false
+# regex for preprocessing the commit messages
+commit_preprocessors = [
+  # Replace issue numbers
+  #{ pattern = '\((\w+\s)?#([0-9]+)\)', replace = "([#${2}](<REPO>/issues/${2}))"},
+  # Check spelling of the commit with https://github.com/crate-ci/typos
+  # If the spelling is incorrect, it will be automatically fixed.
+  #{ pattern = '.*', replace_command = 'typos --write-changes -' },
+]
+# regex for parsing and grouping commits
+commit_parsers = [
+  { message = "^feat", group = "<!-- 0 -->🚀 Features" },
+  { message = "^fix", group = "<!-- 1 -->🐛 Bug Fixes" },
+  { message = "^doc", group = "<!-- 3 -->📚 Documentation" },
+  { message = "^perf", group = "<!-- 4 -->⚡ Performance" },
+  { message = "^refactor", group = "<!-- 2 -->🚜 Refactor" },
+  { message = "^style", group = "<!-- 5 -->🎨 Styling" },
+  { message = "^test", group = "<!-- 6 -->🧪 Testing" },
+  { message = "^chore: Merge from upstream", skip = true },
+  { message = "^chore\\(release\\): prepare for", skip = true },
+  { message = "^chore\\(deps.*\\)", skip = true },
+  { message = "^chore\\(pr\\)", skip = true },
+  { message = "^chore\\(pull\\)", skip = true },
+  { message = "^chore|^ci", group = "<!-- 7 -->⚙️ Miscellaneous Tasks" },
+  { body = ".*security", group = "<!-- 8 -->🛡️ Security" },
+  { message = "^revert\\: release", skip = true },
+  { message = "^revert", group = "<!-- 9 -->◀️ Revert" },
+  { message = "^release", skip = true },
+]
+# filter out the commits that are not matched by commit parsers
+filter_commits = false
+# sort the tags topologically
+topo_order = false
+# sort the commits inside sections by oldest/newest order
+sort_commits = "oldest"

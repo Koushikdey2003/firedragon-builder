@@ -247,9 +247,7 @@ release:
     - 'curl --header "JOB-TOKEN: $CI_JOB_TOKEN" --upload-file ".dist/firedragon-catppuccin-$CI_COMMIT_TAG-darwin-x64-dev.dmg" "$CI_API_V4_URL/projects/$CI_PROJECT_ID/packages/generic/firedragon-catppuccin/${CI_COMMIT_TAG#v}/firedragon-catppuccin-$CI_COMMIT_TAG-darwin-x64-dev.dmg"'
     - 'curl --header "JOB-TOKEN: $CI_JOB_TOKEN" --upload-file ".dist/firedragon-catppuccin-$CI_COMMIT_TAG-darwin-arm64-dev.dmg" "$CI_API_V4_URL/projects/$CI_PROJECT_ID/packages/generic/firedragon-catppuccin/${CI_COMMIT_TAG#v}/firedragon-catppuccin-$CI_COMMIT_TAG-darwin-arm64-dev.dmg"'
     - git config --global --add safe.directory "$PWD"
-    - sed "s/@VERSION@/${CI_COMMIT_TAG#v}/" assets/downloads.md > .dist/release.md
-    - echo '' >> .dist/release.md
-    - git-cliff --current -s header >> .dist/release.md
+    - git-cliff -c cliff.release.toml --context --latest | jq --slurpfile package package.json '.[0].extra = $package[0].release' | git-cliff -c cliff.release.toml --from-context -
     - |
       release-cli create --tag-name "$CI_COMMIT_TAG" --name "FireDragon $CI_COMMIT_TAG" --description ".dist/release.md" \
         --assets-link "{\"name\":\"firedragon-catppuccin-$CI_COMMIT_TAG-darwin-arm64.update.xml\",\"url\":\"$CI_API_V4_URL/projects/$CI_PROJECT_ID/packages/generic/firedragon-catppuccin/${CI_COMMIT_TAG#v}/firedragon-catppuccin-$CI_COMMIT_TAG-darwin-arm64.update.xml\",\"direct_asset_path\":\"/firedragon-catppuccin-darwin-arm64.update.xml\",\"link_type\":\"package\"}" \
