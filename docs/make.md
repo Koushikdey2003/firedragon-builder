@@ -26,3 +26,18 @@ deno task make [...options] [...targets]
 | `build`     | Build release build     |
 | `build-dev` | Build development build |
 | `appimage`  | Build AppImage          |
+
+## Docker image
+
+Each release publishes a docker image designed to have avery dependency required to build FireDragon (at least with `--enable-bootstrap`). To use this image locally, you can use [distrobox](https://distrobox.it/):
+
+``` shell
+distrbox create -i registry.gitlab.com/garuda-linux/firedragon/firedragon12/make:latest -n firedragon12-make
+distrobx enter firedragon12-make
+```
+
+But since distrobox creates an entirely new user, you will have to reinstall rust manually:
+
+``` shell
+install-rust.sh
+```

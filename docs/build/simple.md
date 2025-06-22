@@ -20,7 +20,7 @@ First, ensure that the following dependencies are installed:
 - zip *(For windows build only)*
 - zstd
 
-Alternatively you can use [distrobox](https://github.com/89luca89/distrobox) to create yourself a build environment using the `registry.gitlab.com/garuda-linux/firedragon/firedragon12/make:latest` image.
+Alternatively you can use [distrobox](https://github.com/89luca89/distrobox) to create yourself a build environment using the published [docker image](../make.md#docker-image).
 
 ## Clone this repository
 
