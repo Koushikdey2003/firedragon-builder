@@ -1,31 +1,13 @@
 diff --git a/python/mozbuild/mozbuild/artifacts.py b/python/mozbuild/mozbuild/artifacts.py
-index 1037106f67..0ac943e756 100644
+index 4949fbf932..fb14f7dc7e 100644
 --- a/python/mozbuild/mozbuild/artifacts.py
 +++ b/python/mozbuild/mozbuild/artifacts.py
-@@ -553,7 +553,7 @@ class AndroidArtifactJob(ArtifactJob):
+@@ -91,7 +91,7 @@ UNFILTERED_PROJECT_PACKAGE_PROCESSED_SUFFIX = (
  
- class LinuxArtifactJob(ArtifactJob):
-     package_re = r"public/build/target\.tar\.(bz2|xz)$"
+ class GeckoJobConfiguration:
+     trust_domain = "gecko"
 -    product = "floorp"
 +    product = "firedragon"
- 
-     _package_artifact_patterns = {
-         "{product}/crashreporter",
-@@ -647,7 +647,7 @@ class ResignJarWriter(JarWriter):
- 
- class MacArtifactJob(ArtifactJob):
-     package_re = r"public/build/target\.dmg$"
--    product = "floorp"
-+    product = "firedragon"
- 
-     # These get copied into dist/bin without the path, so "root/a/b/c" -> "dist/bin/c".
-     _paths_no_keep_path = (
-@@ -790,7 +790,7 @@ class MacArtifactJob(ArtifactJob):
- 
- class WinArtifactJob(ArtifactJob):
-     package_re = r"public/build/target\.(zip|tar\.gz)$"
--    product = "floorp"
-+    product = "firedragon"
- 
-     _package_artifact_patterns = {
-         "{product}/dependentlibs.list",
+     default_candidate_trees = [
+         "releases/mozilla-release",
+     ]

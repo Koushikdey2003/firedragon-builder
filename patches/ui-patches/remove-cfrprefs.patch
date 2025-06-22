@@ -1,8 +1,8 @@
 diff --git a/browser/components/preferences/main.js b/browser/components/preferences/main.js
-index aa339be9ba..fb272b4325 100644
+index 5878132edf..e77e53dd72 100644
 --- a/browser/components/preferences/main.js
 +++ b/browser/components/preferences/main.js
-@@ -347,18 +347,6 @@ let SETTINGS_CONFIG = {
+@@ -377,18 +377,6 @@ let SETTINGS_CONFIG = {
          l10nId: "browsing-media-control",
          supportPage: "media-keyboard-control",
        },
@@ -18,6 +18,6 @@ index aa339be9ba..fb272b4325 100644
 -        supportPage: "extensionrecommendations",
 -        subcategory: "cfrfeatures",
 -      },
-     ],
-   },
- };
+       {
+         id: "linkPreviewEnabled",
+         l10nId: "link-preview-settings-enable",
