@@ -10,13 +10,8 @@ RUN apt-get upgrade -y
 RUN apt-get install -y curl file msitools nodejs p7zip-full patch python3-pip ripgrep rsync rustup zip zstd
 
 # Setup rust with all required toolchains
-RUN rustup default stable
-RUN rustup target add x86_64-unknown-linux-gnu
-RUN rustup target add aarch64-unknown-linux-gnu
-RUN rustup target add x86_64-pc-windows-msvc
-RUN rustup target add aarch64-pc-windows-msvc
-RUN rustup target add x86_64-apple-darwin
-RUN rustup target add aarch64-apple-darwin
+ADD docker/install-rust.sh /usr/local/bin/install-rust.sh
+RUN install-rust.sh
 
 # Install deno
 COPY --from=deno /deno /usr/bin/deno
