@@ -1,5 +1,22 @@
 # FireDragon ChangeLog
 
+## [FireDragon v12.0.0-beta.13](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v12.0.0-beta.13) — 2025-06-24 — [`v12.0.0-beta.12`…`v12.0.0-beta.13`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/compare/v12.0.0-beta.12...v12.0.0-beta.13)
+
+### 🚀 Features
+
+- *(branding)* Update private browsing images — [`0ab10bc7…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/0ab10bc7db47361ee8fd544d0e5317adf1a32d5b)
+- *(workflows)* 修正インストーラー名の拡張子を変更し、パッケージテストを追加 — [`14594988…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/145949886ef55a203edc35da59739b26e88659f1)
+- *(deno.json)* "patch" to "links" — [`e55dcc48…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/e55dcc486f7db9cd79992ae60bbc3fb337d8e69d)
+- *(workflows)* Add input option for skipping codesign — [`aa387fca…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/aa387fca18a21bd72a5e4ffbb2850a85ae68ada5)
+- *(bookmarkBar)* Add bookmarks bootom feature — [`b2bba1a2…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/b2bba1a2a02acb7b54d0d5eb590c3b1e5cd2bf68)
+- *(patches)* Remove chrome-toolkit and Extension.sys patches — [`7b2c6deb…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/7b2c6debaf5ede8e48fc8dce814b3156f0d89230)
+
+### ⚙️ Miscellaneous Tasks
+
+- Fix release notes — [`c3bc6ac4…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/c3bc6ac45b80618b1b9933e0d0109f62b677aab0)
+- *(workflows)* コメントアウトされたコードを整理 — [`01129258…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/01129258deaaf1ce03160a4dfc94fb9596dd4033)
+- *(workflows)* Chrome-formatオプションをコメントアウト — [`90692e38…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/90692e3857f3eea0a2732bf3a629ad472b14df70)
+
 ## [FireDragon v12.0.0-beta.12](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v12.0.0-beta.12) — 2025-06-22 — [`v12.0.0-beta.11`…`v12.0.0-beta.12`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/compare/v12.0.0-beta.11...v12.0.0-beta.12)
 
 ### 🚀 Features

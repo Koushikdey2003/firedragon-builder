@@ -53,6 +53,10 @@
   </screenshots>
   <content_rating type="oars-1.1"/>
   <releases>
+    <release version="v12.0.0-beta.13" date="2025-06-24">
+      <url type="details">https://gitlab.com/garuda-linux/firedragon12/builder/-/releases/v12.0.0-beta.13</url>
+      <description/>
+    </release>
     <release version="v12.0.0-beta.12" date="2025-06-22">
       <url type="details">https://gitlab.com/garuda-linux/firedragon12/builder/-/releases/v12.0.0-beta.12</url>
       <description/>
