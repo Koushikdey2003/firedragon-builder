@@ -396,9 +396,9 @@ defaultPref("pdfjs.enableScripting", false); // Disable js scripting in the buil
 /** [CATEGORY] REGION */
 
 /** [SECTION] LOCATION
- * Replace Google with Mozilla as the default geolocation provide and prevent use of OS location services
+ * Replace Google with beacondb as the default geolocation provide and prevent use of OS location services
  */
-defaultPref("geo.provider.network.url", "https://location.services.mozilla.com/v1/geolocate?key=%MOZILLA_API_KEY%");
+defaultPref("geo.provider.network.url", "https://api.beacondb.net/v1/geolocate");
 defaultPref("geo.provider.ms-windows-location", false); // [WINDOWS]
 defaultPref("geo.provider.use_corelocation", false); // [MAC]
 defaultPref("geo.provider.use_gpsd", false); // [LINUX]
