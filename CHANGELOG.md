@@ -1,5 +1,25 @@
 # FireDragon ChangeLog
 
+## [FireDragon v12.0.0-beta.14](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v12.0.0-beta.14) — 2025-06-25 — [`v12.0.0-beta.13`…`v12.0.0-beta.14`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/compare/v12.0.0-beta.13...v12.0.0-beta.14)
+
+### 🚀 Features
+
+- *(branding)* Add private logo to content — [`3a3cdcbd…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/3a3cdcbd9c9be5ed5a01b7e9b27d1a80f696cf59)
+- Pass-through XULCommandEvent to widget onCommand listener — [`9cbc3423…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/9cbc3423a6af10cae4c99e212e8825d5ba57272e)
+- *(settings)* Switch geolocation provider to beacondb — [`754c3a68…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/754c3a68b6eab36d4d99a94cadc7c66ca3749dff)
+
+### 🐛 Bug Fixes
+
+- Use view from XULCommandEvent to trigger undo closed tab — [`e311f4b4…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/e311f4b49d4272f502e46a84f29fd027f623dc86)
+- Fix hiding sidebar when fullscreen — [`152b4354…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/152b435422c3a6198a062ab2af3ed3bc267c1f5c)
+
+### ⚙️ Miscellaneous Tasks
+
+- Use artifacts.json to auto generate artifact upload, release assets & downloads table — [`1c596248…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/1c596248295a3c4695db0b423ee0629c07c566ca)
+- Merge fix for multi window undo closed tab — [`ecdd41be…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/ecdd41be133f11e3d0b36e38dd816cb212de50fd)
+- Merge fix for hiding sidebar when fullscreen — [`04b048ea…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/04b048ea9f4c4326ddb55417d1e7d39e9894cb88)
+- Fix package registry API url in release job — [`39e813d7…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/39e813d79c12253ad1bef7ade8c42a1890e31725)
+
 ## [FireDragon v12.0.0-beta.13](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v12.0.0-beta.13) — 2025-06-24 — [`v12.0.0-beta.12`…`v12.0.0-beta.13`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/compare/v12.0.0-beta.12...v12.0.0-beta.13)
 
 ### 🚀 Features
