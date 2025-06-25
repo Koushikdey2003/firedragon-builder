@@ -12,26 +12,10 @@ header = """
 
 ## Downloads
 
-Source archive: [firedragon-source-{{ version }}.tar.zst](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/{{ version }}/downloads/firedragon-source.tar.zst)
-
-| Edition      | OS       | Architecture | Download                                                                                                                                                                                                |
-|--------------|----------|--------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Dr460nized   | Linux    | x64          | [firedragon-{{ version }}-linux-x64.tar.xz](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/{{ version }}/downloads/firedragon-linux-x64.tar.xz)                                     |
-| Dr460nized   | Linux    | arm64        | [firedragon-{{ version }}-linux-arm64.tar.xz](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/{{ version }}/downloads/firedragon-linux-arm64.tar.xz)                                 |
-| Dr460nized   | Windows  | x64          | [firedragon-{{ version }}-win32-x64.exe](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/{{ version }}/downloads/firedragon-win32-x64.exe)                                           |
-| Dr460nized   | Windows  | arm64        | [firedragon-{{ version }}-win32-arm64.exe](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/{{ version }}/downloads/firedragon-win32-arm64.exe)                                       |
-| Dr460nized   | MacOS    | x64          | [firedragon-{{ version }}-darwin-x64.dmg](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/{{ version }}/downloads/firedragon-darwin-x64.dmg)                                         |
-| Dr460nized   | MacOS    | arm64        | [firedragon-{{ version }}-darwin-arm64.dmg](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/{{ version }}/downloads/firedragon-darwin-arm64.dmg)                                     |
-| Dr460nized   | AppImage | x64          | [firedragon-{{ version }}-appimage-x64.AppImage](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/{{ version }}/downloads/firedragon-appimage-x64.AppImage)                           |
-| Dr460nized   | AppImage | arm64        | [firedragon-{{ version }}-appimage-arm64.AppImage](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/{{ version }}/downloads/firedragon-appimage-arm64.AppImage)                       |
-| Catppuccin   | Linux    | x64          | [firedragon-catppuccin-{{ version }}-linux-x64.tar.xz](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/{{ version }}/downloads/firedragon-catppuccin-linux-x64.tar.xz)               |
-| Catppuccin   | Linux    | arm64        | [firedragon-catppuccin-{{ version }}-linux-arm64.tar.xz](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/{{ version }}/downloads/firedragon-catppuccin-linux-arm64.tar.xz)           |
-| Catppuccin   | Windows  | x64          | [firedragon-catppuccin-{{ version }}-win32-x64.exe](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/{{ version }}/downloads/firedragon-catppuccin-win32-x64.exe)                     |
-| Catppuccin   | Windows  | arm64        | [firedragon-catppuccin-{{ version }}-win32-arm64.exe](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/{{ version }}/downloads/firedragon-catppuccin-win32-arm64.exe)                 |
-| Catppuccin   | MacOS    | x64          | [firedragon-catppuccin-{{ version }}-darwin-x64.dmg](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/{{ version }}/downloads/firedragon-catppuccin-darwin-x64.dmg)                   |
-| Catppuccin   | MacOS    | arm64        | [firedragon-catppuccin-{{ version }}-darwin-arm64.dmg](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/{{ version }}/downloads/firedragon-catppuccin-darwin-arm64.dmg)               |
-| Catppuccin   | AppImage | x64          | [firedragon-catppuccin-{{ version }}-appimage-x64.AppImage](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/{{ version }}/downloads/firedragon-catppuccin-appimage-x64.AppImage)     |
-| Catppuccin   | AppImage | arm64        | [firedragon-catppuccin-{{ version }}-appimage-arm64.AppImage](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/{{ version }}/downloads/firedragon-catppuccin-appimage-arm64.AppImage) |
+| Type | Download |
+|------|----------|
+{% for artifact in releases.0.extra.artifacts %}{% if artifact.download %}| {{ artifact.download }} | [{{ artifact.basename }}-{{ version }}{{ artifact.suffix }}](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/{{ version }}/downloads/{{ artifact.basename }}{{ artifact.suffix }}) |
+{% endif %}{% endfor %}
 
 """
 # template for the changelog body
@@ -56,8 +40,8 @@ body = """
 footer = """
 ## Technical information
 
-Firefox: {{ releases.0.extra.firefox }}\\
-Floorp: {{ releases.0.extra.floorp }}
+Firefox: {{ releases.0.extra.release.firefox }}\\
+Floorp: {{ releases.0.extra.release.floorp }}
 
 <!-- generated by git-cliff -->
 """
