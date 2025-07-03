@@ -11,12 +11,11 @@ import { FormsModule } from "@angular/forms";
 import { TranslocoDirective } from "@jsverse/transloco";
 import { ConfigService } from "../../config/config.service";
 import { Button } from "primeng/button";
-import { InputText } from "primeng/inputtext";
 import {
   AutoComplete,
   type AutoCompleteCompleteEvent,
 } from "primeng/autocomplete";
-import type { SearchEngine, Suggestions } from "./interfaces";
+import type { SearchEngine } from "./interfaces";
 
 @Component({
   selector: "app-search",
@@ -35,7 +34,7 @@ import type { SearchEngine, Suggestions } from "./interfaces";
 export class SearchComponent implements OnInit {
   searchEngine = signal<SearchEngine | null>(null);
   searchTerm = signal<string>("");
-  suggestions = signal<any[]>([]);
+  suggestions = signal<string[]>([]);
 
   protected readonly configService = inject(ConfigService);
   logoSource = computed(() => {
@@ -49,37 +48,36 @@ export class SearchComponent implements OnInit {
   });
 
   ngOnInit(): void {
-    NRGetDefaultEngine((value) => {
-      this.searchEngine.set(JSON.parse(value));
-    });
+    FDSearchEngine.GetDefaultEngine().then((value) => {
+      this.searchEngine.set(value);
+    })
   }
 
   /**
    * Open the search engine URL in a new tab with the search term.
    */
-  search() {
-    location.href = this.searchEngine()?.searchUrl +
-      encodeURIComponent(this.searchTerm());
+  async search() {
+    const searchEngine = this.searchEngine();
+    if (searchEngine) {
+      await FDSearchEngine.PerformSearch(searchEngine.id, this.searchTerm());
 
-    this.searchTerm.set("");
-    this.suggestions.set([]);
+      this.searchTerm.set("");
+      this.suggestions.set([]);
+    }
   }
 
   /**
    * Handle the autocomplete event and update the suggestions.
    * @param $event The autocomplete event.
    */
-  autocomplete($event: AutoCompleteCompleteEvent) {
+  async autocomplete($event: AutoCompleteCompleteEvent) {
     const searchEngine = this.searchEngine();
     if (searchEngine) {
-      NRGetSuggestions(this.searchTerm(), searchEngine.id, (value) => {
-        const suggestions: Suggestions = JSON.parse(value);
-        if (suggestions.success) {
-          this.suggestions.set(suggestions.suggestions);
-        } else {
-          this.suggestions.set([]);
-        }
-      });
+      const suggestions = await FDSearchEngine.FetchSuggestions(searchEngine.id, this.searchTerm());
+      this.suggestions.set([
+          ...suggestions.local,
+          ...suggestions.remote,
+      ].map(entry => entry.value));
     } else {
       this.suggestions.set([]);
     }

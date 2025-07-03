@@ -1,29 +1,25 @@
 export interface SearchEngine {
-  aliases: string[];
   iconURL?: string | null;
   id: string;
-  isDefault: boolean;
   name: string;
-  searchUrl: string;
 }
 
-export interface SuggestionsSuccess {
-  success: true;
-  suggestions: string[];
+export interface SearchSuggestionEntry {
+  value: string;
 }
 
-export interface SuggestionsError {
-  success: false;
-  error: string;
+export interface SearchSuggestions {
+  local: SearchSuggestionEntry[];
+  remote: SearchSuggestionEntry[];
 }
-
-export type Suggestions = SuggestionsSuccess | SuggestionsError;
 
 declare global {
-  export function NRGetDefaultEngine(callback: (value: string) => void): void;
-  export function NRGetSuggestions(
-    query: string,
-    engineId: string,
-    callback: (value: string) => void,
-  ): void;
+  interface FDSearchEngine {
+    GetDefaultEngine(): Promise<SearchEngine>;
+    EngineOffersSuggestions(engineId: string): Promise<boolean>;
+    FetchSuggestions(engineId: string, searchTerm: string): Promise<SearchSuggestions>;
+    PerformSearch(engineId: string, searchTerm: string): Promise<void>;
+  }
+
+  export const FDSearchEngine: FDSearchEngine;
 }
