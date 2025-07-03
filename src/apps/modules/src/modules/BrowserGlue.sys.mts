@@ -295,6 +295,29 @@ const JS_WINDOW_ACTORS: {
       "about:*",
     ],
   },
+
+  FDSearchEngine: {
+    parent: {
+      esModuleURI: localPathToResourceURI(
+          "../actors/FDSearchEngineParent.sys.mts",
+      ),
+    },
+
+    child: {
+      esModuleURI: localPathToResourceURI(
+          "../actors/FDSearchEngineChild.sys.mts",
+      ),
+      events: {
+        DOMContentLoaded: {},
+      },
+    },
+
+    matches: [
+      "*://localhost/*",
+      "chrome://noraneko-newtab/*",
+      "about:*",
+    ],
+  },
 };
 
 ActorManagerParent.addJSWindowActors(JS_WINDOW_ACTORS);
