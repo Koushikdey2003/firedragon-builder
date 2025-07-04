@@ -1,12 +1,5 @@
 # FireDragon ChangeLog
 
-## [FireDragon v12.0.0-beta.15](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v12.0.0-beta.15) — 2025-07-03 — [`v12.0.0-beta.14`…`v12.0.0-beta.15`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/compare/v12.0.0-beta.14...v12.0.0-beta.15)
-
-### 🚀 Features
-
-- *(modules)* Add FDSearchEngine JSWindowActor — [`b6f7da6c…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/b6f7da6ceb2e5d1a2d82bbb2412f7041fc7d0458)
-- *(newtab)* Switch to new FDSearchEngine JSWindowActor implementation — [`a54fe7b6…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/a54fe7b63ea685ea57bfaab3cf583b466035644a)
-
 ## [FireDragon v12.0.0-beta.14](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v12.0.0-beta.14) — 2025-06-25 — [`v12.0.0-beta.13`…`v12.0.0-beta.14`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/compare/v12.0.0-beta.13...v12.0.0-beta.14)
 
 ### 🚀 Features
