@@ -74,7 +74,12 @@ source:
     - job: make-image
       artifacts: false
   image: $MAKE_IMAGE
+  cache:
+    - key: deno
+      paths:
+        - .deno
   before_script:
+    - export DENO_DIR="$PWD"/.deno
     - deno install --allow-scripts --frozen
   script:
     - deno task make source
@@ -88,7 +93,12 @@ prepare:
     - job: make-image
       artifacts: false
   image: $MAKE_IMAGE
+  cache:
+    - key: deno
+      paths:
+        - .deno
   before_script:
+    - export DENO_DIR="$PWD"/.deno
     - deno install --allow-scripts --frozen
   script:
     - deno task build --write-buildid2
@@ -119,7 +129,16 @@ build:
   rules:
     - if: '"$[[inputs.build]]" == "true"'
   image: $MAKE_IMAGE
+  cache:
+    - key: deno
+      paths:
+        - .deno
+    - key: mozbuild
+      paths:
+        - .mozbuild
   before_script:
+    - export DENO_DIR="$PWD"/.deno
+    - export MOZBUILD_STATE_PATH="$PWD"/.mozbuild
     - deno install --allow-scripts --frozen
   script:
     - deno task make --edition=$EDITION --target=$PLATFORM-$ARCH --enable-bootstrap ${CI_COMMIT_TAG:+--enable-update} --with-moz-build-date=_dist/moz_build_date --with-buildid2=_dist/buildid2 --with-dist=_dist build
@@ -167,7 +186,16 @@ build-dev:
   rules:
     - if: '"$[[inputs.build-dev]]" == "true"'
   image: $MAKE_IMAGE
+  cache:
+    - key: deno
+      paths:
+        - .deno
+    - key: mozbuild
+      paths:
+        - .mozbuild
   before_script:
+    - export DENO_DIR="$PWD"/.deno
+    - export MOZBUILD_STATE_PATH="$PWD"/.mozbuild
     - deno install --allow-scripts --frozen
   script:
     - deno task make --edition=$EDITION --target=$PLATFORM-$ARCH --enable-bootstrap --with-moz-build-date=_dist/moz_build_date --with-buildid2=_dist/buildid2 build-dev
