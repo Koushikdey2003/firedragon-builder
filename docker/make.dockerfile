@@ -7,7 +7,7 @@ RUN apt-get update
 RUN apt-get upgrade -y
 
 # Install dependencies
-RUN apt-get install -y curl file msitools nodejs p7zip-full patch python3-pip ripgrep rsync rustup zip zstd
+RUN apt-get install -y curl file msitools nodejs p7zip-full patch python3-pip ripgrep rsync rustup watchman zip zstd
 
 # Setup rust with all required toolchains
 ADD docker/install-rust.sh /usr/local/bin/install-rust.sh
