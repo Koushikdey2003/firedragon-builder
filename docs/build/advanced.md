@@ -37,13 +37,14 @@ Before building, run the following commands:
 ``` shell
 cd firedragon # Navigate into the firedragon directory
 deno install --allow-scripts --frozen
+deno task build --write-buildid2
 deno task build --release-build-before
 cd .. # Return to the parent directory
 ```
 
 ## Setup build config
 
-Create your `mozconfig` file using the `mozconfig` files in `gecko/mozconfigs/` as a base with the following addition:
+Create your `mozconfig` file using the `mozconfig` files in [`gecko/mozconfigs/`](../../gecko/mozconfigs/) as a base with the following addition:
 
 ``` shell
 ac_add_options --with-noraneko-dist=firedragon/_dist/noraneko
@@ -107,13 +108,13 @@ DESTDIR=/path/to/install/dir ./mach/install
 
 ### Packaging build
 
-To package the build run the following command:
+To package the build, run the following command:
 
 ``` shell
 ./mach package
 ```
 
-The result will be in either the `obj-artifact-build-output/` or the `obj-artifact-build-output/install/sea/` (for Windows installers) directory.
+The result will be in either the `obj-artifact-build-output/dist/` or the `obj-artifact-build-output/dist/install/sea/` (for Windows installers) directory.
 
 ---
 
