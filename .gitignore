@@ -15,3 +15,7 @@
 /.dist/
 
 vite.config.ts.timestamp-*
+
+# CI cache dirs
+/.deno/
+/.mozbuild/
