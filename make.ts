@@ -195,7 +195,7 @@ async function packageBuild(config: Config, outputFormat: string, buildBasename:
 
     const { objDistDir, objDistBinDir } = getCommonBuildDirs(config, buildDir);
 
-    // Remove references to build directory
+    // Remove references to the build directory
     for (const file of await $`rg -Fl ${buildDir} ${objDistBinDir}`.nothrow().lines()) {
         await $`sed -i 's#${buildDir}##g' ${file}`;
     }
