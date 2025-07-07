@@ -1,5 +1,27 @@
 # FireDragon ChangeLog
 
+## [FireDragon v12.0.0-beta.16](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v12.0.0-beta.16) — 2025-07-07 — [`v12.0.0-beta.15`…`v12.0.0-beta.16`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/compare/v12.0.0-beta.15...v12.0.0-beta.16)
+
+### 🚀 Features
+
+- *(docker/make)* Preinstall watchman in make image — [`a1beaa80…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/a1beaa8099461dea12f56952bc8d8675269ce81e)
+- *(publish_release)* Include meta,.json for release — [`bdb8eb83…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/bdb8eb83e5ef564a446088ebf2b794b7a53de546)
+- *(publish_release)* プラットフォーム固有の名前を持つmeta.jsonファイルを準備し、リリースに含めるファイルを更新 — [`de7d6b99…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/de7d6b99a2ab0ddb16ed179288ca2132c28fcd02)
+
+### 🐛 Bug Fixes
+
+- *(publish_release)* BUILDID2の取得方法を修正し、noraneko_buildidに更新 — [`3f78c29d…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/3f78c29dfccb7f3bb42463a2aa26cf67ab93ed9e)
+
+### 📚 Documentation
+
+- Various updates in advanced build documentation — [`5293ce18…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/5293ce189171bcc2850fc3622940273437d808a4)
+
+### ⚙️ Miscellaneous Tasks
+
+- *(make)* Fix comment — [`3f0f6ca1…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/3f0f6ca1a25333a3f59f760969e79ef1424d5e4e)
+- *(version)* Update to 12.0.7 — [`0d1b5007…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/0d1b50070b04a546124eee1bce1affac374bb326)
+- *(version)* バージョンを12.0.8に更新 — [`011702de…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/011702de474488bb3b8a33e23ff75e6ee3e46a66)
+
 ## [FireDragon v12.0.0-beta.15](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v12.0.0-beta.15) — 2025-07-04 — [`v12.0.0-beta.14`…`v12.0.0-beta.15`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/compare/v12.0.0-beta.14...v12.0.0-beta.15)
 
 ### 🚀 Features
