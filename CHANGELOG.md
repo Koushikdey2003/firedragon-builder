@@ -1,5 +1,46 @@
 # FireDragon ChangeLog
 
+## [FireDragon v12.0.0-beta.17](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v12.0.0-beta.17) — 2025-07-12 — [`v12.0.0-beta.16`…`v12.0.0-beta.17`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/compare/v12.0.0-beta.16...v12.0.0-beta.17)
+
+### 🚀 Features
+
+- *(pref)* Create override.ps1 for windows — [`6f666fbd…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/6f666fbd2905b834fd8b8199e59eec01d4a96ed6)
+- *(type)* Fix cannot read firefox native api typedef — [`0b5f4578…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/0b5f4578e21eb7b979e18a8e8cdda2697cf1ac82)
+- *(chrome-css)* Re-enable chromeCSS feature by fixing path excusing fixing — [`ca3d498d…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/ca3d498d61ad4f7fa4f6784d224169c71b1a136c)
+- *(package)* Use signed package for generate MAR — [`8bc5e4a8…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/8bc5e4a88bf116a4ebb54b3c74370c57af2f0280)
+- *(build)* Add Extension webpanel-ua — [`92b4205c…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/92b4205c4690de48e2dfd4598a43d1dfb67796f6)
+- *(build)* Webpanel-uaをwebextensionsに置き換え — [`c6d25ea6…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/c6d25ea6c341e13c9f781f37893ad280ea91dcc1)
+- *(package)* Fix mar generation — [`edfe4148…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/edfe4148e540519c83319fa3ef47f929c6a8bb0c)
+- *(chrome-css)* Fix for Mac — [`b45868df…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/b45868dfd35164edbe4f90cc757c91bbbff05dda)
+- *(chrome-css)* Use oncommand istead of onclick — [`c1393569…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/c1393569eeb9a88a606a258ec94b912422ccceb0)
+- *(build)* DIST_SUBDIRを更新し、webpanel-uaのターゲットファイルを整理 — [`7f3ecd0e…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/7f3ecd0e90c07d387dd105c58e64422af333bc89)
+- *(panelsidebar)* Implement ua injection — [`764b4849…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/764b4849a9c5360ad538f1c8fdcb11bb13754b9c)
+- *(panelsidebar)* Part2 Implement UA switcher — [`6ed351e6…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/6ed351e6f9e35a519490fca4a8dd1182cb0a2b24)
+- *(panelsidebar)* Filter webrequest for override UA — [`948827a0…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/948827a0b9aa9e77d5533a84d0a553043992f3f7)
+- *(panelsidebar)* Cleanup code — [`2951be21…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/2951be219f5ab14b54ed5b7fefb0c3d9c022ddad)
+- *(panelsidebar)* Cleanup code — [`633a4ff7…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/633a4ff7934b60df947d5973a3f20086438b63a4)
+- *(docs)* Update docs — [`05e73c10…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/05e73c10fe830d10776c3892e8efc4ddc0a7e430)
+- *(workflow)* Add patchelf installation for Linux-x64 platform — [`8bc32c20…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/8bc32c20a06ffa3aac65552893d6dac9ebb12ede)
+- *(styles)* Add Floorp View tab hiding and Firefox icon localization override — [`49a57bc8…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/49a57bc86c2b12004ed16532da2b7b79e1c711d9)
+- *(localization)* Add dynamic dropdown direction based on viewport size — [`73a2b9df…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/73a2b9dfad15e88d9029948d065dd739a900a016)
+
+### 📚 Documentation
+
+- Move floorp documentation into subdirectory — [`c1e84645…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/c1e84645d75ebc4484a2653def72a2e1d7422f35)
+- Integrate Floorp Browser Documentation into FireDragon Browser Documentation — [`65a51acf…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/65a51acf76dce90db246c5be068cc7414e2f4e79)
+
+### ⚙️ Miscellaneous Tasks
+
+- *(version)* Update version to 12.0.9 — [`624b1261…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/624b1261680a58f429a61cfa45f468babbae287d)
+- *(package)* Use stable channel name — [`20d47cc1…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/20d47cc131596d8d2d095824f2161e7aec4a07c7)
+- *(version)* Update version to 12.0.10 — [`e0a332f9…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/e0a332f9006b1176e85c367fb801a63e52881da6)
+- *(version)* Update version 12.0.12 — [`3892cc7f…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/3892cc7f75cf3abfb769b992f6b0fcbfb190c131)
+- *(package)* Remove test package — [`e039e597…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/e039e597588465b3dade5e4b84db58a24aca032a)
+
+### Chrore
+
+- (version) update to 12.0.11 — [`74af9f94…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/74af9f943a9255505f770628b90e193eedcd356d)
+
 ## [FireDragon v12.0.0-beta.16](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v12.0.0-beta.16) — 2025-07-07 — [`v12.0.0-beta.15`…`v12.0.0-beta.16`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/compare/v12.0.0-beta.15...v12.0.0-beta.16)
 
 ### 🚀 Features
