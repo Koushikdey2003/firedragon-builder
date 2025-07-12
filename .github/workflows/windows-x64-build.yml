@@ -24,9 +24,10 @@ jobs:
         run: |
           mkdir .deno
           mkdir .mozbuild
+          mkdir _dist
           echo "dummy-date" > _dist/moz_build_date
           echo "dummy-buildid" > _dist/buildid2
-          mkdir _dist
+          
 
       - name: Run build
         env:
