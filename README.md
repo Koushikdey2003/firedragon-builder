@@ -4,6 +4,4 @@ This repository contains the source of the upcoming FireDragon version 12 based 
 
 ![](assets/screenshot.png)
 
-## [Build documentation](./docs/build.md)
-
-## [Development documentation](./docs/development.md)
+## [FireDragon Browser Documentation](./docs/README.md)
